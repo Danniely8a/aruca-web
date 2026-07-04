@@ -87,6 +87,14 @@ export const brands: Brand[] = [
     logo: "",
   },
   {
+    id: "euroair",
+    name: "Euroair",
+    description: "Accesorios y repuestos para compresores: anillos, bielas, ciguenales, valvulas, filtros, presostatos y mas.",
+    category: "Accesorios para Compresores",
+    country: "Venezuela",
+    logo: "",
+  },
+  {
     id: "caiman",
     name: "Caiman",
     description: "Clavos y grapas de alta resistencia para la industria de la madera y construcción.",
