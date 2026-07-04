@@ -79,6 +79,14 @@ export const brands: Brand[] = [
     website: "https://milescraft.com",
   },
   {
+    id: "mors",
+    name: "Mors",
+    description: "Prensas manuales profesionales para carpintería en diversas medidas desde 150mm hasta 2000mm.",
+    category: "Prensas",
+    country: "Europa",
+    logo: "",
+  },
+  {
     id: "caiman",
     name: "Caiman",
     description: "Clavos y grapas de alta resistencia para la industria de la madera y construcción.",
