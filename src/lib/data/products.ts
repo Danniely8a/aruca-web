@@ -25,7 +25,7 @@ export const products: Product[] = [
     description: "Sierra de banco de alta precisión con motor de 1.650W para cortes rectos en madera. Capacidad de corte a 90° de 91mm y a 45° de 63mm.",
     shortDescription: "Sierra de banco de 255mm (10\") con motor de 1.650W.",
     category: "Maquinaria para Madera",
-    image: "/assets/product-images/makita/2703.png",
+    image: "/assets/product-images/makita/2703.jpg",
     specs: {
       "Potencia": "1.650W",
       "Capacidad corte 90°": "91mm (3-9/16\")",
@@ -46,7 +46,7 @@ export const products: Product[] = [
     description: "Cepillador de sobremesa de 304mm con motor de 1.650W y alimentación automática. Profundidad de corte variable según ancho de tabla.",
     shortDescription: "Cepillador de 304mm (12\") con motor de 1.650W.",
     category: "Maquinaria para Madera",
-    image: "/assets/product-images/makita/2012NB.png",
+    image: "/assets/product-images/makita/2012NB.jpg",
     specs: {
       "Potencia": "1.650W",
       "Ancho de corte": "304mm (12\")",
@@ -70,7 +70,7 @@ export const products: Product[] = [
     description: "Sierra de inglete compuesta telescópica con láser. Ángulo de inglete 47°L/60°R y ángulo biselado 45°L/45°R.",
     shortDescription: "Sierra de inglete telescópica de 255mm con láser.",
     category: "Ingletadoras",
-    image: "/assets/product-images/makita/LS1018L.png",
+    image: "/assets/product-images/makita/LS1018L.jpg",
     specs: {
       "Potencia": "1.430W",
       "Ángulo de inglete": "47°L/60°R",
@@ -94,7 +94,7 @@ export const products: Product[] = [
     description: "Sierra de inglete compuesta de 255mm con motor de 1.650W. Capacidad de corte a 90° de 90.5x95mm.",
     shortDescription: "Sierra de inglete compuesta de 255mm.",
     category: "Ingletadoras",
-    image: "/assets/product-images/makita/LS1040F.png",
+    image: "/assets/product-images/makita/LS1040F.jpg",
     specs: {
       "Potencia": "1.650W",
       "Diámetro del disco": "260mm (10-1/4\")",
@@ -118,7 +118,7 @@ export const products: Product[] = [
     description: "Cortadora de metal con disco de 355mm y motor de 2.200W. Capacidad de tubo sólido de 127mm.",
     shortDescription: "Cortadora de metal de 355mm (14\") con motor de 2.200W.",
     category: "Sierras",
-    image: "/assets/product-images/makita/LW1400.png",
+    image: "/assets/product-images/makita/LW1400.jpg",
     specs: {
       "Potencia": "2.200W",
       "Diámetro del disco": "355mm (14\")",
@@ -142,7 +142,7 @@ export const products: Product[] = [
     description: "Sierra circular de 185mm con motor de 1.800W. Capacidad de corte a 90° de 63.5mm.",
     shortDescription: "Sierra circular de 185mm (7-1/4\") con motor de 1.800W.",
     category: "Sierras",
-    image: "/assets/product-images/makita/5007N.png",
+    image: "/assets/product-images/makita/5007N.jpg",
     specs: {
       "Potencia": "1.800W",
       "Capacidad corte 90°": "63.5mm (2-1/2\")",
@@ -165,7 +165,7 @@ export const products: Product[] = [
     description: "Sierra circular de 210mm con motor de 1.800W y base de magnesio.",
     shortDescription: "Sierra circular de 210mm (8-1/4\") con base de magnesio.",
     category: "Sierras",
-    image: "/assets/product-images/makita/5008MG.png",
+    image: "/assets/product-images/makita/5008MG.jpg",
     specs: {
       "Potencia": "1.800W",
       "Capacidad corte 90°": "75.5mm (3\")",
@@ -187,7 +187,7 @@ export const products: Product[] = [
     description: "Sierra circular de 235mm con motor de 2.000W para cortes pesados.",
     shortDescription: "Sierra circular de 235mm (9-1/4\") con motor de 2.000W.",
     category: "Sierras",
-    image: "/assets/product-images/makita/N5900B.png",
+    image: "/assets/product-images/makita/N5900B.jpg",
     specs: {
       "Potencia": "2.000W",
       "Capacidad corte 90°": "85mm (3-3/8\")",
@@ -209,7 +209,7 @@ export const products: Product[] = [
     description: "Sierra circular de 165mm con motor de 1.800W y guía lateral.",
     shortDescription: "Sierra circular de 165mm (6-1/2\") con guía lateral.",
     category: "Sierras",
-    image: "/assets/product-images/makita/SP6000.png",
+    image: "/assets/product-images/makita/SP6000.jpg",
     specs: {
       "Potencia": "1.800W",
       "Capacidad corte 90°": "75.5mm (3\")",
@@ -231,7 +231,7 @@ export const products: Product[] = [
     description: "Sierra recíproca de 125mm con motor de 1.010W. Capacidad de tubo 130mm y madera 255mm.",
     shortDescription: "Sierra recíproca de 125mm (5\") con motor de 1.010W.",
     category: "Sierras",
-    image: "/assets/product-images/makita/JR3051TK.png",
+    image: "/assets/product-images/makita/JR3051TK.jpg",
     specs: {
       "Potencia": "1.010W",
       "Capacidad tubo": "130mm",
@@ -254,7 +254,7 @@ export const products: Product[] = [
     description: "Trompo rematador de formica de 6mm con motor de 530W y velocidad de 30.000rpm.",
     shortDescription: "Trompo rematador de formica 6mm (1/4\") con 530W.",
     category: "Trompos",
-    image: "/assets/product-images/makita/3709.png",
+    image: "/assets/product-images/makita/3709.jpg",
     specs: {
       "Potencia": "530W",
       "Capacidad Collet": "6mm (1/4\")",
@@ -274,7 +274,7 @@ export const products: Product[] = [
     description: "Trompo rematador de formica de 25.4mm con motor de 6.5 Amps y velocidad variable.",
     shortDescription: "Trompo rematador de formica 25.4mm (1\") con velocidad variable.",
     category: "Trompos",
-    image: "/assets/product-images/makita/RT0701C.png",
+    image: "/assets/product-images/makita/RT0701C.jpg",
     specs: {
       "Potencia": "6.5 Amps",
       "Velocidad sin carga": "10.000-30.000rpm",
@@ -294,7 +294,7 @@ export const products: Product[] = [
     description: "Trompo router pesado de 12mm con motor de 1.650W y ajuste de profundidad 0-70mm.",
     shortDescription: "Trompo router pesado 12mm (1/2\") con 1.650W.",
     category: "Trompos",
-    image: "/assets/product-images/makita/RP1800.png",
+    image: "/assets/product-images/makita/RP1800.jpg",
     specs: {
       "Potencia": "1.650W",
       "Capacidad Anillo": "12mm (1/2\")",
@@ -317,7 +317,7 @@ export const products: Product[] = [
     description: "Pistola de calor de 2.000W con temperatura de 50-650°C y 3 modos de flujo de aire.",
     shortDescription: "Pistola de calor de 2.000W con temperatura hasta 650°C.",
     category: "Herramientas Eléctricas",
-    image: "/assets/product-images/makita/HG6530VK.png",
+    image: "/assets/product-images/makita/HG6530VK.jpg",
     specs: {
       "Potencia": "2.000W",
       "Temperatura (grados C)": "50-650",
@@ -340,7 +340,7 @@ export const products: Product[] = [
     description: "Sierra caladora de 450W con capacidad de madera 65mm y acero 6mm.",
     shortDescription: "Sierra caladora de 450W con capacidad 65mm en madera.",
     category: "Sierras Caladoras",
-    image: "/assets/product-images/makita/4327.png",
+    image: "/assets/product-images/makita/4327.jpg",
     specs: {
       "Potencia": "450W",
       "Capacidad madera": "65mm (2-9/16\")",
@@ -361,7 +361,7 @@ export const products: Product[] = [
     description: "Sierra caladora de 650W con capacidad de madera 90mm y acero 10mm.",
     shortDescription: "Sierra caladora de 650W con capacidad 90mm en madera.",
     category: "Sierras Caladoras",
-    image: "/assets/product-images/makita/JV0600K.png",
+    image: "/assets/product-images/makita/JV0600K.jpg",
     specs: {
       "Potencia": "650W",
       "Capacidad madera": "90mm (3-1/2\")",
@@ -384,7 +384,7 @@ export const products: Product[] = [
     description: "Taladro percutor de 680W con capacidad de concreto 16mm.",
     shortDescription: "Taladro percutor de 680W con capacidad 16mm en concreto.",
     category: "Taladros",
-    image: "/assets/product-images/makita/HP1640.png",
+    image: "/assets/product-images/makita/HP1640.jpg",
     specs: {
       "Potencia": "680W",
       "Capacidad concreto": "16mm (5/8\")",
@@ -406,7 +406,7 @@ export const products: Product[] = [
     description: "Taladro percutor de 720W con 2 velocidades y capacidad de concreto 20mm.",
     shortDescription: "Taladro percutor de 720W con 2 velocidades.",
     category: "Taladros",
-    image: "/assets/product-images/makita/HP2050H.png",
+    image: "/assets/product-images/makita/HP2050H.jpg",
     specs: {
       "Potencia": "720W",
       "Capacidad concreto": "20mm (3/4\")",
@@ -431,7 +431,7 @@ export const products: Product[] = [
     description: "Rotomartillo electro-neumático SDS-Plus de 780W con 3 funciones.",
     shortDescription: "Rotomartillo SDS-Plus de 780W con 3 funciones.",
     category: "Taladros",
-    image: "/assets/product-images/makita/HR2470.png",
+    image: "/assets/product-images/makita/HR2470.jpg",
     specs: {
       "Potencia": "780W / 6.7A",
       "Energía de impacto": "2.4J",
@@ -455,7 +455,7 @@ export const products: Product[] = [
     description: "Rotomartillo electro-neumático SDS-Plus de 850W con control de velocidad variable.",
     shortDescription: "Rotomartillo SDS-Plus de 850W con 32mm de capacidad.",
     category: "Taladros",
-    image: "/assets/product-images/makita/HR3200C.png",
+    image: "/assets/product-images/makita/HR3200C.jpg",
     specs: {
       "Potencia": "850W / 8.2A",
       "Energía de impacto": "5.1J",
@@ -478,7 +478,7 @@ export const products: Product[] = [
     description: "Taladro de 450W con capacidad de acero 10mm y madera 25mm.",
     shortDescription: "Taladro de 450W con capacidad 10mm en acero.",
     category: "Taladros",
-    image: "/assets/product-images/makita/6413.png",
+    image: "/assets/product-images/makita/6413.jpg",
     specs: {
       "Potencia": "450W",
       "Capacidad acero": "10mm (3/8\")",
@@ -497,7 +497,7 @@ export const products: Product[] = [
     description: "Atornillador para gypsum de 570W con zanco hexagonal de 6.35mm.",
     shortDescription: "Atornillador para gypsum de 570W.",
     category: "Taladros",
-    image: "/assets/product-images/makita/FS4200.png",
+    image: "/assets/product-images/makita/FS4200.jpg",
     specs: {
       "Potencia": "570W",
       "Zanco (hex)": "6.35mm (1/4\")",
@@ -518,7 +518,7 @@ export const products: Product[] = [
     description: "Lijadora de acabado de 190W con respaldo de 93x185mm y 11.000opm.",
     shortDescription: "Lijadora de acabado 93x185mm con 190W.",
     category: "Lijadoras",
-    image: "/assets/product-images/makita/BO3710.png",
+    image: "/assets/product-images/makita/BO3710.jpg",
     specs: {
       "Potencia": "190W",
       "Respaldo": "93x185mm (3-5/8\"x7-1/4\")",
@@ -538,7 +538,7 @@ export const products: Product[] = [
     description: "Lijadora de acabado de 200W con respaldo de 112x102mm y 14.000opm.",
     shortDescription: "Lijadora de acabado 112x102mm con 200W.",
     category: "Lijadoras",
-    image: "/assets/product-images/makita/BO4556.png",
+    image: "/assets/product-images/makita/BO4556.jpg",
     specs: {
       "Potencia": "200W",
       "Respaldo": "112x102mm (4-3/8\"x4\")",
@@ -558,7 +558,7 @@ export const products: Product[] = [
     description: "Lijadora de acabado de 330W con respaldo de 115x229mm y 10.000opm.",
     shortDescription: "Lijadora de acabado 115x229mm con 330W.",
     category: "Lijadoras",
-    image: "/assets/product-images/makita/BO4900.png",
+    image: "/assets/product-images/makita/BO4900.jpg",
     specs: {
       "Potencia": "330W",
       "Respaldo": "115x229mm (4-1/2\"x9\")",
@@ -578,7 +578,7 @@ export const products: Product[] = [
     description: "Lijadora orbital de 300W con respaldo de 123mm y 12.000opm.",
     shortDescription: "Lijadora orbital de 300W con respaldo 125mm.",
     category: "Lijadoras",
-    image: "/assets/product-images/makita/BO5030.png",
+    image: "/assets/product-images/makita/BO5030.jpg",
     specs: {
       "Potencia": "300W",
       "Respaldo": "123mm (4-7/8\")",
@@ -598,7 +598,7 @@ export const products: Product[] = [
     description: "Lijadora orbital de 600W con respaldo de 115x229mm y 6.000opm.",
     shortDescription: "Lijadora orbital de 600W con respaldo 115x229mm.",
     category: "Lijadoras",
-    image: "/assets/product-images/makita/9046.png",
+    image: "/assets/product-images/makita/9046.jpg",
     specs: {
       "Potencia": "600W",
       "Respaldo": "115x229mm (4-1/2\"x9\")",
@@ -619,7 +619,7 @@ export const products: Product[] = [
     description: "Lijadora de banda de 650W con banda de 76x457mm y velocidad de 270m/min.",
     shortDescription: "Lijadora de banda 76x457mm (3\"x18\") con 650W.",
     category: "Lijadoras",
-    image: "/assets/product-images/makita/9910.png",
+    image: "/assets/product-images/makita/9910.jpg",
     specs: {
       "Potencia": "650W",
       "Tamaño de banda": "76x457mm (3\"x18\")",
@@ -639,7 +639,7 @@ export const products: Product[] = [
     description: "Lijadora de banda de 1.010W con velocidad variable de 210-440m/min.",
     shortDescription: "Lijadora de banda 76x533mm (3\"x21\") con 1.010W.",
     category: "Lijadoras",
-    image: "/assets/product-images/makita/9902.png",
+    image: "/assets/product-images/makita/9902.jpg",
     specs: {
       "Potencia": "1.010W",
       "Tamaño de banda": "76x533mm (3\"x21\")",
@@ -658,7 +658,7 @@ export const products: Product[] = [
     description: "Lijadora de banda de 1.200W con banda de 100x610mm y velocidad de 500m/min.",
     shortDescription: "Lijadora de banda 100x610mm (4\"x24\") con 1.200W.",
     category: "Lijadoras",
-    image: "/assets/product-images/makita/9403.png",
+    image: "/assets/product-images/makita/9403.jpg",
     specs: {
       "Potencia": "1.200W",
       "Tamaño de banda": "100x610mm (4\"x24\")",
@@ -679,7 +679,7 @@ export const products: Product[] = [
     description: "Cepilladora eléctrica de 850W con ancho de cepillo de 110mm.",
     shortDescription: "Cepilladora eléctrica 110mm (4-3/8\") con 850W.",
     category: "Cepillos",
-    image: "/assets/product-images/makita/1912B.png",
+    image: "/assets/product-images/makita/1912B.jpg",
     specs: {
       "Potencia": "850W",
       "Ancho de cepillo": "110mm (4-3/8\")",
@@ -699,7 +699,7 @@ export const products: Product[] = [
     description: "Cepilladora eléctrica de 620W con ancho de cepillo de 82mm.",
     shortDescription: "Cepilladora eléctrica 82mm (3-1/4\") con 620W.",
     category: "Cepillos",
-    image: "/assets/product-images/makita/KP0800.png",
+    image: "/assets/product-images/makita/KP0800.jpg",
     specs: {
       "Potencia": "620W",
       "Ancho de cepillo": "82mm (3-1/4\")",
@@ -721,7 +721,7 @@ export const products: Product[] = [
     description: "Engalletadora de 701W con disco de 100mm y velocidad de 11.000rpm.",
     shortDescription: "Engalletadora de 701W con disco de 100mm.",
     category: "Cortadoras",
-    image: "/assets/product-images/makita/PJ7000.png",
+    image: "/assets/product-images/makita/PJ7000.jpg",
     specs: {
       "Potencia": "701W",
       "Diámetro del disco": "100mm (4\")",
@@ -740,7 +740,7 @@ export const products: Product[] = [
     description: "Rectificador de 400W con collet de 3-6mm y velocidad de 25.000rpm.",
     shortDescription: "Rectificador de 400W con capacidad 3-6mm.",
     category: "Cortadoras",
-    image: "/assets/product-images/makita/GD0600.png",
+    image: "/assets/product-images/makita/GD0600.jpg",
     specs: {
       "Potencia": "400W",
       "Capacidad Collet": "3-6mm",
@@ -761,7 +761,7 @@ export const products: Product[] = [
     description: "Esmeril angular de 720W con disco de 115mm y velocidad de 11.000rpm.",
     shortDescription: "Esmeril angular 115mm (4-1/2\") con 720W.",
     category: "Esmeriles",
-    image: "/assets/product-images/makita/GA4530.png",
+    image: "/assets/product-images/makita/GA4530.jpg",
     specs: {
       "Potencia": "720W",
       "Diámetro del disco": "115mm (4-1/2\")",
@@ -781,7 +781,7 @@ export const products: Product[] = [
     description: "Esmeril angular de 1.800W con disco de 178mm y velocidad de 8.500rpm.",
     shortDescription: "Esmeril angular 178mm (7\") con 1.800W.",
     category: "Esmeriles",
-    image: "/assets/product-images/makita/GA7082.png",
+    image: "/assets/product-images/makita/GA7082.jpg",
     specs: {
       "Potencia": "1.800W",
       "Diámetro del disco": "178mm (7\")",
@@ -801,7 +801,7 @@ export const products: Product[] = [
     description: "Lijadora-pulidora de 1.200W con capacidad de 180mm y velocidad variable.",
     shortDescription: "Lijadora-pulidora 180mm (7\") con 1.200W.",
     category: "Pulidora",
-    image: "/assets/product-images/makita/GA4530_PULIDORA.png",
+    image: "/assets/product-images/makita/GA4530_PULIDORA.jpg",
     specs: {
       "Potencia": "1.200W",
       "Capacidad": "180mm (7\")",
@@ -823,7 +823,7 @@ export const products: Product[] = [
     description: "Taladro percutor inalámbrico LXT 18V con torque de 60N.m y 2 velocidades.",
     shortDescription: "Taladro percutor inalámbrico 18V LXT con 60N.m.",
     category: "Taladros Inalámbricos",
-    image: "/assets/product-images/makita/DHP484Z.png",
+    image: "/assets/product-images/makita/DHP484Z.jpg",
     specs: {
       "Capacidad acero": "13mm (1/2\")",
       "Capacidad madera": "38mm (1-1/2\")",
@@ -848,7 +848,7 @@ export const products: Product[] = [
     description: "Llave de impacto inalámbrica LXT 18V con torque de 190N.m.",
     shortDescription: "Llave de impacto inalámbrica 18V LXT con 190N.m.",
     category: "Taladros Inalámbricos",
-    image: "/assets/product-images/makita/DTW190Z.png",
+    image: "/assets/product-images/makita/DTW190Z.jpg",
     specs: {
       "Tornillo estándar": "M8-M16 (5/16\"-5/8\")",
       "T. alta resistencia": "M8-M12 (5/16\"-1/2\")",
@@ -872,7 +872,7 @@ export const products: Product[] = [
     description: "Kit inalámbrico LXT 18V con taladro percutor y atornillador de impacto. Incluye 2 baterías de 1.5Ah y cargador.",
     shortDescription: "Kit LXT 18V: taladro percutor + atornillador de impacto + 2 baterías + cargador.",
     category: "Kits",
-    image: "/assets/product-images/makita/DLX2142Y.png",
+    image: "/assets/product-images/makita/DLX2142Y.jpg",
     specs: {
       "Taladro - Cap. acero": "13mm (1/2\")",
       "Taladro - Cap. madera": "36mm (1-7/16\")",
@@ -897,7 +897,7 @@ export const products: Product[] = [
     description: "Esmeriladora angular inalámbrica LXT 18V con disco de 115mm.",
     shortDescription: "Esmeriladora angular inalámbrica 18V LXT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DGA452R.png",
+    image: "/assets/product-images/makita/DGA452R.jpg",
     specs: {
       "Diámetro del disco": "115mm (4-1/2\")",
       "Velocidad sin carga": "11.000rpm",
@@ -914,7 +914,7 @@ export const products: Product[] = [
     description: "Rotomartillo inalámbrico LXT 18V con energía de impacto de 1.9J.",
     shortDescription: "Rotomartillo inalámbrico 18V LXT con 1.9J.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DHR241Z.png",
+    image: "/assets/product-images/makita/DHR241Z.jpg",
     specs: {
       "Energía de impacto": "1.9J",
       "Capacidad concreto": "20mm (13/16\")",
@@ -935,7 +935,7 @@ export const products: Product[] = [
     description: "Lijadora orbital inalámbrica LXT 18V con respaldo de 123mm y 3 velocidades.",
     shortDescription: "Lijadora orbital inalámbrica 18V LXT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DBO180Z.png",
+    image: "/assets/product-images/makita/DBO180Z.jpg",
     specs: {
       "Respaldo": "123mm (4-7/8\")",
       "Disco de lija": "125mm (5\")",
@@ -953,7 +953,7 @@ export const products: Product[] = [
     description: "Lijadora de acabado inalámbrica LXT 18V con potencia de salida de 210W.",
     shortDescription: "Lijadora de acabado inalámbrica 18V LXT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DBO482.png",
+    image: "/assets/product-images/makita/DBO482.jpg",
     specs: {
       "Potencia máxima": "210W",
       "Diámetro órbita": "1.5mm",
@@ -972,7 +972,7 @@ export const products: Product[] = [
     description: "Recortadora inalámbrica LXT 18V con collar de 6-8mm y velocidad variable.",
     shortDescription: "Recortadora inalámbrica 18V LXT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DRT50Z.png",
+    image: "/assets/product-images/makita/DRT50Z.jpg",
     specs: {
       "Capacidad collar": "6-8mm (1/4\"-3/8\")",
       "Velocidad sin carga": "10.000-30.000rpm",
@@ -991,7 +991,7 @@ export const products: Product[] = [
     description: "Sierra caladora inalámbrica LXT 18V con potencia de salida de 400W.",
     shortDescription: "Sierra caladora inalámbrica 18V LXT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DJV184Z.png",
+    image: "/assets/product-images/makita/DJV184Z.jpg",
     specs: {
       "Potencia máxima": "400W",
       "Longitud de carrera": "23mm",
@@ -1011,7 +1011,7 @@ export const products: Product[] = [
     description: "Cepillo eléctrico inalámbrico LXT 18V con ancho de cepillado de 82mm.",
     shortDescription: "Cepillo eléctrico inalámbrico 18V LXT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DKP180Z.png",
+    image: "/assets/product-images/makita/DKP180Z.jpg",
     specs: {
       "Voltaje": "18V MAX",
       "Ancho de cepillado": "82mm",
@@ -1029,7 +1029,7 @@ export const products: Product[] = [
     description: "Atornillador inalámbrico LXT 18V con zanco hex de 6.35mm.",
     shortDescription: "Atornillador inalámbrico 18V LXT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DFS452Z.png",
+    image: "/assets/product-images/makita/DFS452Z.jpg",
     specs: {
       "Cap. tornillo autoperforante": "6mm (1/4\")",
       "Cap. tornillo para pared": "5mm (3/16\")",
@@ -1048,7 +1048,7 @@ export const products: Product[] = [
     description: "Clavadora inalámbrica LXT 18V para clavos de 15-35mm.",
     shortDescription: "Clavadora inalámbrica 18V LXT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DFN350Z.png",
+    image: "/assets/product-images/makita/DFN350Z.jpg",
     specs: {
       "Capacidad longitud clavo": "15-35mm (5/8\"-1-3/8\")",
       "Capacidad clavos interior": "110",
@@ -1066,7 +1066,7 @@ export const products: Product[] = [
     description: "Pistola de calor inalámbrica LXT 18V con temperatura hasta 550°C.",
     shortDescription: "Pistola de calor inalámbrica 18V LXT hasta 550°C.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/HG6530VK_INALAMBRICO.png",
+    image: "/assets/product-images/makita/HG6530VK_INALAMBRICO.jpg",
     specs: {
       "Volumen de aire": "120-200 L/min",
       "Temperatura máxima": "150/550°C",
@@ -1090,7 +1090,7 @@ export const products: Product[] = [
     description: "Fresador angular inalámbrico LXT 18V para acero, inoxidable y aluminio.",
     shortDescription: "Fresador angular inalámbrico 18V LXT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DJN161Z.png",
+    image: "/assets/product-images/makita/DJN161Z.jpg",
     specs: {
       "Capacidad acero": "1.6mm",
       "Capacidad inoxidable": "1.2mm",
@@ -1111,7 +1111,7 @@ export const products: Product[] = [
     description: "Multiherramienta inalámbrica LXT 18V con ángulo de oscilación de 1.8°.",
     shortDescription: "Multiherramienta inalámbrica 18V LXT BL AVT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DTM52.png",
+    image: "/assets/product-images/makita/DTM52.jpg",
     specs: {
       "Voltaje": "18V MAX",
       "Ángulo de oscilación": "1.8° (3.6mm total)",
@@ -1129,7 +1129,7 @@ export const products: Product[] = [
     description: "Sierra circular inalámbrica LXT 18V con disco de 165mm.",
     shortDescription: "Sierra circular inalámbrica 18V LXT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/DSS611Z.png",
+    image: "/assets/product-images/makita/DSS611Z.jpg",
     specs: {
       "Capacidad corte 90°": "57mm (2-1/4\")",
       "Capacidad corte 45°": "40mm (1-9/16\")",
@@ -1149,7 +1149,7 @@ export const products: Product[] = [
     description: "Lijadora de acabado inalámbrica LXT 18V con vibraciones por minuto de 8.000-24.000.",
     shortDescription: "Lijadora de acabado inalámbrica 18V LXT BL AVT.",
     category: "LXT Inalámbricos",
-    image: "/assets/product-images/makita/BO3710.png",
+    image: "/assets/product-images/makita/BO3710.jpg",
     specs: {
       "Potencia": "200W",
       "Voltaje": "18V MAX",
@@ -1170,7 +1170,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 15 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 15 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-16",
@@ -1181,7 +1181,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 16 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 16 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-17",
@@ -1192,7 +1192,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 17 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 17 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-18",
@@ -1203,7 +1203,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 18 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 18 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-19",
@@ -1214,7 +1214,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 19 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 19 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-20",
@@ -1225,7 +1225,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 20 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 20 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-21",
@@ -1236,7 +1236,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 21 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 21 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-22",
@@ -1247,7 +1247,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 22 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 22 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-23",
@@ -1258,7 +1258,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 23 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 23 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-24",
@@ -1269,7 +1269,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 24 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 24 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-25",
@@ -1280,7 +1280,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 25 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 25 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-26",
@@ -1291,7 +1291,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 26 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 26 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-27",
@@ -1302,7 +1302,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 27 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 27 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-28",
@@ -1313,7 +1313,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 28 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 28 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-29",
@@ -1324,7 +1324,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 29 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 29 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-30",
@@ -1335,7 +1335,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 30 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 30 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-31",
@@ -1346,7 +1346,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 31 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 31 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-32",
@@ -1357,7 +1357,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 32 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 32 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-33",
@@ -1368,7 +1368,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 33 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 33 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-34",
@@ -1379,7 +1379,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 34 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 34 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-35",
@@ -1390,7 +1390,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 35 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 35 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-36",
@@ -1401,7 +1401,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 36 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 36 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-37",
@@ -1412,7 +1412,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 37 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 37 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-38",
@@ -1423,7 +1423,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 38 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 38 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-39",
@@ -1434,7 +1434,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 39 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 39 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-40",
@@ -1445,7 +1445,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 40 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 40 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-41",
@@ -1456,7 +1456,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 41 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 41 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-42",
@@ -1467,7 +1467,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 42 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 42 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-43",
@@ -1478,7 +1478,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 43 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 43 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-44",
@@ -1489,7 +1489,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 44 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 44 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-45",
@@ -1500,7 +1500,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 45 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 45 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-46",
@@ -1511,7 +1511,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 46 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 46 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-47",
@@ -1522,7 +1522,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 47 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 47 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-48",
@@ -1533,7 +1533,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 48 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 48 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-49",
@@ -1544,7 +1544,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 49 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 49 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-50",
@@ -1555,7 +1555,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 50 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 50 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-51",
@@ -1566,7 +1566,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 51 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 51 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-52",
@@ -1577,7 +1577,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 52 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 52 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-53",
@@ -1588,7 +1588,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 53 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 53 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-54",
@@ -1599,7 +1599,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 54 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 54 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-55",
@@ -1610,7 +1610,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 55 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 55 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-56",
@@ -1621,7 +1621,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 56 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 56 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-57",
@@ -1632,7 +1632,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 57 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 57 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-58",
@@ -1643,7 +1643,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 58 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 58 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-59",
@@ -1654,7 +1654,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 59 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 59 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-60",
@@ -1665,7 +1665,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 60 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 60 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-61",
@@ -1676,7 +1676,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 61 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 61 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-62",
@@ -1687,7 +1687,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 62 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 62 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-63",
@@ -1698,7 +1698,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 63 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 63 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-64",
@@ -1709,7 +1709,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 64 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 64 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-65",
@@ -1720,7 +1720,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 65 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 65 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-66",
@@ -1731,7 +1731,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 66 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 66 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-67",
@@ -1742,7 +1742,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 67 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 67 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-68",
@@ -1753,7 +1753,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 68 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 68 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-69",
@@ -1764,7 +1764,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 69 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 69 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-70",
@@ -1775,7 +1775,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 70 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 70 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-71",
@@ -1786,7 +1786,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 71 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 71 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-72",
@@ -1797,7 +1797,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 72 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 72 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-73",
@@ -1808,7 +1808,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 73 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 73 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-74",
@@ -1819,7 +1819,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 74 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 74 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-75",
@@ -1830,7 +1830,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 75 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 75 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-76",
@@ -1841,7 +1841,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 76 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 76 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-77",
@@ -1852,7 +1852,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 77 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 77 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-78",
@@ -1863,7 +1863,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 78 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 78 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-79",
@@ -1874,7 +1874,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 79 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 79 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-80",
@@ -1885,7 +1885,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 80 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 80 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-81",
@@ -1896,7 +1896,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 81 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 81 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-82",
@@ -1907,7 +1907,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 82 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 82 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-83",
@@ -1918,7 +1918,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 83 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 83 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-84",
@@ -1929,7 +1929,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 84 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 84 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-85",
@@ -1940,7 +1940,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 85 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 85 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-86",
@@ -1951,7 +1951,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 86 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 86 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-87",
@@ -1962,7 +1962,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 87 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 87 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-88",
@@ -1973,7 +1973,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 88 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 88 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-89",
@@ -1984,7 +1984,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 89 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 89 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-90",
@@ -1995,7 +1995,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 90 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 90 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-91",
@@ -2006,7 +2006,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 91 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 91 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-92",
@@ -2017,7 +2017,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 92 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 92 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-93",
@@ -2028,7 +2028,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 93 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 93 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-94",
@@ -2039,7 +2039,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 94 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 94 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-95",
@@ -2050,7 +2050,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 95 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 95 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-96",
@@ -2061,7 +2061,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 96 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 96 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-97",
@@ -2072,7 +2072,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 97 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 97 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-98",
@@ -2083,7 +2083,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 98 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 98 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-99",
@@ -2094,7 +2094,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 99 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 99 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-a-100",
@@ -2105,7 +2105,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo A medida 100 pulgadas para maquinaria industrial.",
     shortDescription: "Correa Tipo A 100 pulgadas.",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-130",
@@ -2116,7 +2116,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 130\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 130\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-140",
@@ -2127,7 +2127,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 140\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 140\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-150",
@@ -2138,7 +2138,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 150\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 150\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-160",
@@ -2149,7 +2149,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 160\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 160\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-170",
@@ -2160,7 +2160,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 170\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 170\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-180",
@@ -2171,7 +2171,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 180\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 180\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-190",
@@ -2182,7 +2182,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 190\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 190\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-200",
@@ -2193,7 +2193,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 200\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 200\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-210",
@@ -2204,7 +2204,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 210\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 210\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-220",
@@ -2215,7 +2215,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 220\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 220\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-225",
@@ -2226,7 +2226,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 225\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 225\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-230",
@@ -2237,7 +2237,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 230\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 230\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-240",
@@ -2248,7 +2248,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 240\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 240\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-250",
@@ -2259,7 +2259,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 250\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 250\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-255",
@@ -2270,7 +2270,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 255\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 255\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-260",
@@ -2281,7 +2281,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 260\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 260\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-270",
@@ -2292,7 +2292,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 270\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 270\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-280",
@@ -2303,7 +2303,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 280\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 280\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-290",
@@ -2314,7 +2314,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 290\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 290\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-300",
@@ -2325,7 +2325,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 300\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 300\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-310",
@@ -2336,7 +2336,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 310\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 310\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-320",
@@ -2347,7 +2347,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 320\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 320\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-330",
@@ -2358,7 +2358,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 330\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 330\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-340",
@@ -2369,7 +2369,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 340\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 340\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-350",
@@ -2380,7 +2380,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 350\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 350\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-360",
@@ -2391,7 +2391,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 360\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 360\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-370",
@@ -2402,7 +2402,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 370\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 370\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-380",
@@ -2413,7 +2413,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 380\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 380\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-390",
@@ -2424,7 +2424,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 390\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 390\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-400",
@@ -2435,7 +2435,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 400\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 400\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-410",
@@ -2446,7 +2446,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 410\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 410\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-420",
@@ -2457,7 +2457,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 420\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 420\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-430",
@@ -2468,7 +2468,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 430\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 430\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-440",
@@ -2479,7 +2479,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 440\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 440\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-450",
@@ -2490,7 +2490,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 450\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 450\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-460",
@@ -2501,7 +2501,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 460\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 460\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-470",
@@ -2512,7 +2512,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 470\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 470\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-480",
@@ -2523,7 +2523,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 480\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 480\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-490",
@@ -2534,7 +2534,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 490\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 490\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-500",
@@ -2545,7 +2545,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 500\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 500\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-510",
@@ -2556,7 +2556,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 510\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 510\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-520",
@@ -2567,7 +2567,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 520\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 520\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-530",
@@ -2578,7 +2578,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 530\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 530\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-540",
@@ -2589,7 +2589,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 540\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 540\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-550",
@@ -2600,7 +2600,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 550\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 550\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-560",
@@ -2611,7 +2611,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 560\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 560\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-570",
@@ -2622,7 +2622,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 570\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 570\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-580",
@@ -2633,7 +2633,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 580\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 580\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-590",
@@ -2644,7 +2644,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 590\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 590\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-600",
@@ -2655,7 +2655,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 600\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 600\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-610",
@@ -2666,7 +2666,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 610\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 610\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-620",
@@ -2677,7 +2677,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 620\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 620\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-630",
@@ -2688,7 +2688,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 630\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 630\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-640",
@@ -2699,7 +2699,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 640\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 640\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-650",
@@ -2710,7 +2710,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 650\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 650\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-660",
@@ -2721,7 +2721,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 660\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 660\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-680",
@@ -2732,7 +2732,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 680\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 680\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-690",
@@ -2743,7 +2743,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 690\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 690\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-700",
@@ -2754,7 +2754,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 700\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 700\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-710",
@@ -2765,7 +2765,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 710\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 710\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-720",
@@ -2776,7 +2776,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 720\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 720\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3l-730",
@@ -2787,7 +2787,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3L medida 730\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3L 730\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-19",
@@ -2798,7 +2798,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 19\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 19\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-20",
@@ -2809,7 +2809,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 20\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 20\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-21",
@@ -2820,7 +2820,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 21\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 21\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-22",
@@ -2831,7 +2831,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 22\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 22\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-23",
@@ -2842,7 +2842,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 23\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 23\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-24",
@@ -2853,7 +2853,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 24\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 24\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-25",
@@ -2864,7 +2864,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 25\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 25\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-26",
@@ -2875,7 +2875,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 26\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 26\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-27",
@@ -2886,7 +2886,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 27\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 27\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-28",
@@ -2897,7 +2897,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 28\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 28\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-29",
@@ -2908,7 +2908,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 29\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 29\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-30",
@@ -2919,7 +2919,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 30\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 30\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-31",
@@ -2930,7 +2930,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 31\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 31\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-32",
@@ -2941,7 +2941,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 32\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 32\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-33",
@@ -2952,7 +2952,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 33\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 33\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-34",
@@ -2963,7 +2963,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 34\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 34\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-35",
@@ -2974,7 +2974,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 35\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 35\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-36",
@@ -2985,7 +2985,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 36\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 36\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-37",
@@ -2996,7 +2996,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 37\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 37\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-38",
@@ -3007,7 +3007,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 38\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 38\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-39",
@@ -3018,7 +3018,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 39\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 39\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-40",
@@ -3029,7 +3029,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 40\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 40\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-41",
@@ -3040,7 +3040,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 41\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 41\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-42",
@@ -3051,7 +3051,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 42\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 42\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-43",
@@ -3062,7 +3062,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 43\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 43\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-44",
@@ -3073,7 +3073,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 44\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 44\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-45",
@@ -3084,7 +3084,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 45\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 45\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-46",
@@ -3095,7 +3095,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 46\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 46\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-47",
@@ -3106,7 +3106,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 47\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 47\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-48",
@@ -3117,7 +3117,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 48\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 48\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-49",
@@ -3128,7 +3128,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 49\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 49\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-50",
@@ -3139,7 +3139,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 50\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 50\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-51",
@@ -3150,7 +3150,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 51\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 51\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-52",
@@ -3161,7 +3161,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 52\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 52\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-53",
@@ -3172,7 +3172,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 53\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 53\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-54",
@@ -3183,7 +3183,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 54\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 54\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-55",
@@ -3194,7 +3194,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 55\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 55\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-56",
@@ -3205,7 +3205,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 56\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 56\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-57",
@@ -3216,7 +3216,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 57\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 57\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-58",
@@ -3227,7 +3227,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 58\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 58\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-59",
@@ -3238,7 +3238,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 59\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 59\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-60",
@@ -3249,7 +3249,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 60\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 60\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-61",
@@ -3260,7 +3260,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 61\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 61\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-62",
@@ -3271,7 +3271,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 62\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 62\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-63",
@@ -3282,7 +3282,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 63\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 63\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-64",
@@ -3293,7 +3293,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 64\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 64\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-65",
@@ -3304,7 +3304,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 65\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 65\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-66",
@@ -3315,7 +3315,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 66\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 66\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-67",
@@ -3326,7 +3326,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 67\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 67\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-68",
@@ -3337,7 +3337,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 68\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 68\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-69",
@@ -3348,7 +3348,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 69\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 69\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-70",
@@ -3359,7 +3359,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 70\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 70\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-71",
@@ -3370,7 +3370,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 71\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 71\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-72",
@@ -3381,7 +3381,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 72\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 72\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-73",
@@ -3392,7 +3392,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 73\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 73\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-74",
@@ -3403,7 +3403,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 74\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 74\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-75",
@@ -3414,7 +3414,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 75\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 75\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-76",
@@ -3425,7 +3425,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 76\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 76\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-77",
@@ -3436,7 +3436,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 77\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 77\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-78",
@@ -3447,7 +3447,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 78\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 78\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-79",
@@ -3458,7 +3458,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 79\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 79\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-80",
@@ -3469,7 +3469,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 80\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 80\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-81",
@@ -3480,7 +3480,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 81\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 81\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-82",
@@ -3491,7 +3491,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 82\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 82\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-83",
@@ -3502,7 +3502,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 83\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 83\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-84",
@@ -3513,7 +3513,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 84\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 84\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-85",
@@ -3524,7 +3524,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 85\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 85\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-86",
@@ -3535,7 +3535,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 86\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 86\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-87",
@@ -3546,7 +3546,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 87\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 87\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-88",
@@ -3557,7 +3557,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 88\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 88\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-89",
@@ -3568,7 +3568,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 89\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 89\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-90",
@@ -3579,7 +3579,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 90\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 90\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-91",
@@ -3590,7 +3590,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 91\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 91\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-92",
@@ -3601,7 +3601,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 92\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 92\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-93",
@@ -3612,7 +3612,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 93\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 93\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-94",
@@ -3623,7 +3623,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 94\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 94\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-95",
@@ -3634,7 +3634,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 95\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 95\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-96",
@@ -3645,7 +3645,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 96\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 96\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-97",
@@ -3656,7 +3656,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 97\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 97\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-98",
@@ -3667,7 +3667,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 98\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 98\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-99",
@@ -3678,7 +3678,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 99\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 99\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-b-100",
@@ -3689,7 +3689,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo B medida 100\" para maquinaria industrial.",
     shortDescription: "Correa Tipo B 100\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-250",
@@ -3700,7 +3700,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 250\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 250\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-265",
@@ -3711,7 +3711,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 265\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 265\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-280",
@@ -3722,7 +3722,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 280\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 280\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-300",
@@ -3733,7 +3733,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 300\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 300\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-315",
@@ -3744,7 +3744,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 315\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 315\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-335",
@@ -3755,7 +3755,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 335\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 335\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-355",
@@ -3766,7 +3766,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 355\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 355\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-375",
@@ -3777,7 +3777,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 375\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 375\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-400",
@@ -3788,7 +3788,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 400\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 400\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-425",
@@ -3799,7 +3799,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 425\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 425\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-450",
@@ -3810,7 +3810,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 450\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 450\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-475",
@@ -3821,7 +3821,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 475\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 475\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-500",
@@ -3832,7 +3832,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 500\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 500\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-530",
@@ -3843,7 +3843,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 530\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 530\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-560",
@@ -3854,7 +3854,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 560\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 560\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-600",
@@ -3865,7 +3865,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 600\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 600\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-630",
@@ -3876,7 +3876,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 630\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 630\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-670",
@@ -3887,7 +3887,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 670\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 670\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-710",
@@ -3898,7 +3898,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 710\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 710\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-750",
@@ -3909,7 +3909,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 750\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 750\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-800",
@@ -3920,7 +3920,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 800\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 800\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
   {
     id: "rexon-3vx-850",
@@ -3931,7 +3931,7 @@ export const products: Product[] = [
     description: "Correa de transmisión Tipo 3VX medida 850\" para maquinaria industrial.",
     shortDescription: "Correa Tipo 3VX 850\".",
     category: "Correas",
-    image: "/assets/product-images/rexon/REXON.png",
+    image: "/assets/product-images/rexon/REXON.jpg",
   },
 // ─── FORZA ───────────────────────────────────────────────
   {
@@ -3943,7 +3943,7 @@ export const products: Product[] = [
     description: "Cemento de contacto industrial Forza 7K. Presentación cuñete para uso profesional.",
     shortDescription: "Cemento de contacto 7K - Cuñete.",
     category: "Adhesivos y Pegamentos",
-        image: "/assets/product-images/forza/FORZA 7K CUNO.png",
+        image: "/assets/product-images/forza/FORZA 7K CUNO.jpg",
   },
   {
     id: "forza-7k-galon",
@@ -3954,7 +3954,7 @@ export const products: Product[] = [
     description: "Cemento de contacto industrial Forza 7K. Presentación galón para uso profesional.",
     shortDescription: "Cemento de contacto 7K - Galón.",
     category: "Adhesivos y Pegamentos",
-        image: "/assets/product-images/forza/FORZA 7K GALON 3.78.png",
+        image: "/assets/product-images/forza/FORZA 7K GALON 3.78.jpg",
   },
   {
     id: "forza-7k-galon-5l",
@@ -3965,7 +3965,7 @@ export const products: Product[] = [
     description: "Cemento de contacto industrial Forza 7K. Presentación galón de 5 litros.",
     shortDescription: "Cemento de contacto 7K - Galón 5 Litros.",
     category: "Adhesivos y Pegamentos",
-        image: "/assets/product-images/forza/FORZA 7K GALON 5 LITROS.png",
+        image: "/assets/product-images/forza/FORZA 7K GALON 5 LITROS.jpg",
   },
   {
     id: "forza-7k-cuarto",
@@ -3976,7 +3976,7 @@ export const products: Product[] = [
     description: "Cemento de contacto industrial Forza 7K. Presentación cuarto de galón (1 litro).",
     shortDescription: "Cemento de contacto 7K - Cuarto 1 Litro.",
     category: "Adhesivos y Pegamentos",
-        image: "/assets/product-images/forza/FORZA 7K CUARTO.png",
+        image: "/assets/product-images/forza/FORZA 7K CUARTO.jpg",
   },
   {
     id: "forza-9k-cunete",
@@ -3987,7 +3987,7 @@ export const products: Product[] = [
     description: "Cemento de contacto industrial Forza 9K. Presentación cuñete para uso profesional de alta resistencia.",
     shortDescription: "Cemento de contacto 9K - Cuñete.",
     category: "Adhesivos y Pegamentos",
-        image: "/assets/product-images/forza/FORZA 9K CUNO.png",
+        image: "/assets/product-images/forza/FORZA 9K CUNO.jpg",
   },
   {
     id: "forza-9k-galon",
@@ -3998,7 +3998,7 @@ export const products: Product[] = [
     description: "Cemento de contacto industrial Forza 9K. Presentación galón para uso profesional de alta resistencia.",
     shortDescription: "Cemento de contacto 9K - Galón.",
     category: "Adhesivos y Pegamentos",
-    image: "/assets/product-images/forza/FORZA 9K GALON.png",
+    image: "/assets/product-images/forza/FORZA 9K GALON.jpg",
   },
   {
     id: "forza-9k-cuarto",
@@ -4009,7 +4009,7 @@ export const products: Product[] = [
     description: "Cemento de contacto industrial Forza 9K. Presentación cuarto de galón (1 litro).",
     shortDescription: "Cemento de contacto 9K - Cuarto 1 Litro.",
     category: "Adhesivos y Pegamentos",
-        image: "/assets/product-images/forza/FORZA 9K CUARTO.png",
+        image: "/assets/product-images/forza/FORZA 9K CUARTO.jpg",
   },
 
     {
@@ -4021,7 +4021,7 @@ export const products: Product[] = [
     description: "Corredera telescópica de 30cm para cajones y muebles.",
     shortDescription: "Corredera telescópica 30cm.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/CORREDERAS.png",
+    image: "/assets/product-images/bluexpress/CORREDERAS.jpg",
   },
   {
     id: "bx-corr-35",
@@ -4032,7 +4032,7 @@ export const products: Product[] = [
     description: "Corredera telescópica de 35cm para cajones y muebles.",
     shortDescription: "Corredera telescópica 35cm.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/CORREDERAS.png",
+    image: "/assets/product-images/bluexpress/CORREDERAS.jpg",
   },
   {
     id: "bx-corr-40",
@@ -4043,7 +4043,7 @@ export const products: Product[] = [
     description: "Corredera telescópica de 40cm para cajones y muebles.",
     shortDescription: "Corredera telescópica 40cm.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/CORREDERAS.png",
+    image: "/assets/product-images/bluexpress/CORREDERAS.jpg",
   },
   {
     id: "bx-corr-45",
@@ -4054,7 +4054,7 @@ export const products: Product[] = [
     description: "Corredera telescópica de 45cm para cajones y muebles.",
     shortDescription: "Corredera telescópica 45cm.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/CORREDERAS.png",
+    image: "/assets/product-images/bluexpress/CORREDERAS.jpg",
   },
   {
     id: "bx-corr-50",
@@ -4065,7 +4065,7 @@ export const products: Product[] = [
     description: "Corredera telescópica de 50cm para cajones y muebles.",
     shortDescription: "Corredera telescópica 50cm.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/CORREDERAS.png",
+    image: "/assets/product-images/bluexpress/CORREDERAS.jpg",
   },
   {
     id: "bx-corr-55",
@@ -4076,7 +4076,7 @@ export const products: Product[] = [
     description: "Corredera telescópica de 55cm para cajones y muebles.",
     shortDescription: "Corredera telescópica 55cm.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/CORREDERAS.png",
+    image: "/assets/product-images/bluexpress/CORREDERAS.jpg",
   },
   {
     id: "bx-bis-semicurvas",
@@ -4109,7 +4109,7 @@ export const products: Product[] = [
     description: "Bisagra de cazoleta 35mm recta para muebles.",
     shortDescription: "Bisagra cazoleta 35mm recta.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/BISAGRA RECTA.png",
+    image: "/assets/product-images/bluexpress/BISAGRA RECTA.jpg",
   },
   {
     id: "bx-bh-8kg",
@@ -4131,7 +4131,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 6 x 5/8 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 6 x 5/8 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw6-3-4",
@@ -4142,7 +4142,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 6 x 3/4 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 6 x 3/4 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw6-1",
@@ -4153,7 +4153,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 6 x 1 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 6 x 1 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw6-1-1-4",
@@ -4164,7 +4164,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 6 x 1-1/4 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 6 x 1-1/4 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw6-1-1-2",
@@ -4175,7 +4175,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 6 x 1-1/2 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 6 x 1-1/2 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw6-1-5-8",
@@ -4186,7 +4186,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 6 x 1-5/8 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 6 x 1-5/8 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw6-1-3-4",
@@ -4197,7 +4197,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 6 x 1-3/4 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 6 x 1-3/4 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw6-2",
@@ -4208,7 +4208,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 6 x 2 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 6 x 2 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw6-2-1-4",
@@ -4219,7 +4219,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 6 x 2-1/4 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 6 x 2-1/4 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw6-2-1-2",
@@ -4230,7 +4230,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 6 x 2-1/2 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 6 x 2-1/2 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw7-1",
@@ -4241,7 +4241,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 7 x 1 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 7 x 1 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw7-1-1-4",
@@ -4252,7 +4252,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 7 x 1-1/4 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 7 x 1-1/4 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw8-1-5-8",
@@ -4263,7 +4263,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 8 x 1-5/8 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 8 x 1-5/8 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw8-1-3-4",
@@ -4274,7 +4274,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 8 x 1-3/4 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 8 x 1-3/4 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw8-2",
@@ -4285,7 +4285,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 8 x 2 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 8 x 2 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw8-2-1-2",
@@ -4296,7 +4296,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 8 x 2-1/2 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 8 x 2-1/2 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw8-3",
@@ -4307,7 +4307,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 8 x 3 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 8 x 3 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
   {
     id: "bx-dw8-3-1-2",
@@ -4318,7 +4318,7 @@ export const products: Product[] = [
     description: "Tornillo para drywall calibre 8 x 3-1/2 pulgadas. Caja.",
     shortDescription: "Tornillo drywall 8 x 3-1/2 pulgadas.",
     category: "Accesorios",
-    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.png",
+    image: "/assets/product-images/bluexpress/TORNILLOS DRYWALL.jpg",
   },
 
   // ─── MICROFLEX ──────────────────────────────────────────
@@ -4331,7 +4331,7 @@ export const products: Product[] = [
     description: "Masilla plastica profesional Microflex. Presentacion galon.",
     shortDescription: "Masilla plastica galon.",
     category: "Recubrimientos",
-    image: "/assets/product-images/microflex/MASILLA PLASTICA GALON.png",
+    image: "/assets/product-images/microflex/MASILLA PLASTICA GALON.jpg",
   },
   {
     id: "mf-masilla-cuarto",
@@ -4342,7 +4342,7 @@ export const products: Product[] = [
     description: "Masilla plastica profesional Microflex. Presentacion cuarto de galon (1 litro).",
     shortDescription: "Masilla plastica cuarto 1 litro.",
     category: "Recubrimientos",
-    image: "/assets/product-images/microflex/MASILLA PLASTICA CUARTO.png",
+    image: "/assets/product-images/microflex/MASILLA PLASTICA CUARTO.jpg",
   },
 
   {
@@ -4354,7 +4354,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 607 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 607.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-608",
@@ -4365,7 +4365,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 608 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 608.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-609",
@@ -4376,7 +4376,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 609 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 609.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-627",
@@ -4387,7 +4387,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 627 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 627.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-628",
@@ -4398,7 +4398,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 628 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 628.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-629",
@@ -4409,7 +4409,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 629 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 629.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6000",
@@ -4420,7 +4420,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6000 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6000.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6001",
@@ -4431,7 +4431,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6001 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6001.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6002",
@@ -4442,7 +4442,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6002 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6002.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6003",
@@ -4453,7 +4453,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6003 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6003.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6004",
@@ -4464,7 +4464,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6004 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6004.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6005",
@@ -4475,7 +4475,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6005 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6005.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6006",
@@ -4486,7 +4486,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6006 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6006.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6007",
@@ -4497,7 +4497,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6007 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6007.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6008",
@@ -4508,7 +4508,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6008 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6008.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6009",
@@ -4519,7 +4519,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6009 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6009.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6200",
@@ -4530,7 +4530,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6200 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6200.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6201",
@@ -4541,7 +4541,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6201 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6201.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6202",
@@ -4552,7 +4552,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6202 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6202.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6203",
@@ -4563,7 +4563,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6203 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6203.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6204",
@@ -4574,7 +4574,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6204 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6204.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6205",
@@ -4585,7 +4585,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6205 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6205.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6206",
@@ -4596,7 +4596,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6206 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6206.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6207",
@@ -4607,7 +4607,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6207 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6207.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6208",
@@ -4618,7 +4618,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6208 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6208.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6209",
@@ -4629,7 +4629,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6209 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6209.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6210",
@@ -4640,7 +4640,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6210 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6210.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6211",
@@ -4651,7 +4651,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6211 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6211.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6300",
@@ -4662,7 +4662,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6300 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6300.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6301",
@@ -4673,7 +4673,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6301 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6301.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6302",
@@ -4684,7 +4684,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6302 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6302.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6303",
@@ -4695,7 +4695,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6303 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6303.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6304",
@@ -4706,7 +4706,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6304 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6304.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6305",
@@ -4717,7 +4717,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6305 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6305.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6306",
@@ -4728,7 +4728,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6306 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6306.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6307",
@@ -4739,7 +4739,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6307 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6307.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-6308",
@@ -4750,7 +4750,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 6308 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 6308.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-63002",
@@ -4761,7 +4761,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 63002 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 63002.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-51102",
@@ -4772,7 +4772,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 51102 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 51102.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-51103",
@@ -4783,7 +4783,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 51103 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 51103.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-zz-51104",
@@ -4794,7 +4794,7 @@ export const products: Product[] = [
     description: "Rolinera ZZ modelo 51104 para maquinaria industrial.",
     shortDescription: "Rolinera ZZ 51104.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA ZZ.png",
+    image: "/assets/product-images/isb/ROLINERA ZZ.jpg",
   },
   {
     id: "isb-rrs-62205",
@@ -4805,7 +4805,7 @@ export const products: Product[] = [
     description: "Rolinera RRS modelo 62205 para maquinaria industrial.",
     shortDescription: "Rolinera RRS 62205.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA RRS.png",
+    image: "/assets/product-images/isb/ROLINERA RRS.jpg",
   },
   {
     id: "isb-rrs-62206",
@@ -4816,7 +4816,7 @@ export const products: Product[] = [
     description: "Rolinera RRS modelo 62206 para maquinaria industrial.",
     shortDescription: "Rolinera RRS 62206.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA RRS.png",
+    image: "/assets/product-images/isb/ROLINERA RRS.jpg",
   },
   {
     id: "isb-rrs-62207",
@@ -4827,7 +4827,7 @@ export const products: Product[] = [
     description: "Rolinera RRS modelo 62207 para maquinaria industrial.",
     shortDescription: "Rolinera RRS 62207.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA RRS.png",
+    image: "/assets/product-images/isb/ROLINERA RRS.jpg",
   },
   {
     id: "isb-rrs-62208",
@@ -4838,7 +4838,7 @@ export const products: Product[] = [
     description: "Rolinera RRS modelo 62208 para maquinaria industrial.",
     shortDescription: "Rolinera RRS 62208.",
     category: "Rolineras",
-    image: "/assets/product-images/isb/ROLINERA RRS.png",
+    image: "/assets/product-images/isb/ROLINERA RRS.jpg",
   },
   {
     id: "ipl-ta-60",
@@ -4849,7 +4849,7 @@ export const products: Product[] = [
     description: "Tubo de aspiracion IPL de 60mm para colectores de polvo y maquinaria.",
     shortDescription: "Tubo de aspiracion 60mm.",
     category: "Accesorios",
-    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.png",
+    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.jpg",
   },
   {
     id: "ipl-ta-80",
@@ -4860,7 +4860,7 @@ export const products: Product[] = [
     description: "Tubo de aspiracion IPL de 80mm para colectores de polvo y maquinaria.",
     shortDescription: "Tubo de aspiracion 80mm.",
     category: "Accesorios",
-    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.png",
+    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.jpg",
   },
   {
     id: "ipl-ta-100",
@@ -4871,7 +4871,7 @@ export const products: Product[] = [
     description: "Tubo de aspiracion IPL de 100mm para colectores de polvo y maquinaria.",
     shortDescription: "Tubo de aspiracion 100mm.",
     category: "Accesorios",
-    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.png",
+    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.jpg",
   },
   {
     id: "ipl-ta-120",
@@ -4882,7 +4882,7 @@ export const products: Product[] = [
     description: "Tubo de aspiracion IPL de 120mm para colectores de polvo y maquinaria.",
     shortDescription: "Tubo de aspiracion 120mm.",
     category: "Accesorios",
-    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.png",
+    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.jpg",
   },
   {
     id: "ipl-ta-150",
@@ -4893,7 +4893,7 @@ export const products: Product[] = [
     description: "Tubo de aspiracion IPL de 150mm para colectores de polvo y maquinaria.",
     shortDescription: "Tubo de aspiracion 150mm.",
     category: "Accesorios",
-    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.png",
+    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.jpg",
   },
   {
     id: "ipl-ta-160",
@@ -4904,7 +4904,7 @@ export const products: Product[] = [
     description: "Tubo de aspiracion IPL de 160mm para colectores de polvo y maquinaria.",
     shortDescription: "Tubo de aspiracion 160mm.",
     category: "Accesorios",
-    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.png",
+    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.jpg",
   },
   {
     id: "ipl-ta-180",
@@ -4915,7 +4915,7 @@ export const products: Product[] = [
     description: "Tubo de aspiracion IPL de 180mm para colectores de polvo y maquinaria.",
     shortDescription: "Tubo de aspiracion 180mm.",
     category: "Accesorios",
-    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.png",
+    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.jpg",
   },
   {
     id: "ipl-ta-200",
@@ -4926,7 +4926,7 @@ export const products: Product[] = [
     description: "Tubo de aspiracion IPL de 200mm para colectores de polvo y maquinaria.",
     shortDescription: "Tubo de aspiracion 200mm.",
     category: "Accesorios",
-    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.png",
+    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.jpg",
   },
   {
     id: "ipl-ta-250",
@@ -4937,7 +4937,7 @@ export const products: Product[] = [
     description: "Tubo de aspiracion IPL de 250mm para colectores de polvo y maquinaria.",
     shortDescription: "Tubo de aspiracion 250mm.",
     category: "Accesorios",
-    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.png",
+    image: "/assets/product-images/ipl/TUBO DE ASPIRACION.jpg",
   },
   {
     id: "nastroflex-4a-80",
@@ -4948,7 +4948,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco. Ancho 115mm, largo 50m. Grano 80.",
     shortDescription: "Lija 4 pulg amarilla seco grano 80.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nastroflex-4a-100",
@@ -4959,7 +4959,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco. Ancho 115mm, largo 50m. Grano 100.",
     shortDescription: "Lija 4 pulg amarilla seco grano 100.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nastroflex-4a-120",
@@ -4970,7 +4970,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco. Ancho 115mm, largo 50m. Grano 120.",
     shortDescription: "Lija 4 pulg amarilla seco grano 120.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nastroflex-4a-150",
@@ -4981,7 +4981,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco. Ancho 115mm, largo 50m. Grano 150.",
     shortDescription: "Lija 4 pulg amarilla seco grano 150.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nastroflex-4a-180",
@@ -4992,7 +4992,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco. Ancho 115mm, largo 50m. Grano 180.",
     shortDescription: "Lija 4 pulg amarilla seco grano 180.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nastroflex-4a-220",
@@ -5003,7 +5003,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco. Ancho 115mm, largo 50m. Grano 220.",
     shortDescription: "Lija 4 pulg amarilla seco grano 220.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nastroflex-4a-240",
@@ -5014,7 +5014,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco. Ancho 115mm, largo 50m. Grano 240.",
     shortDescription: "Lija 4 pulg amarilla seco grano 240.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nastroflex-4a-280",
@@ -5025,7 +5025,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco. Ancho 115mm, largo 50m. Grano 280.",
     shortDescription: "Lija 4 pulg amarilla seco grano 280.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nastroflex-4a-320",
@@ -5036,7 +5036,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco. Ancho 115mm, largo 50m. Grano 320.",
     shortDescription: "Lija 4 pulg amarilla seco grano 320.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nastroflex-4a-400",
@@ -5047,7 +5047,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco. Ancho 115mm, largo 50m. Grano 400.",
     shortDescription: "Lija 4 pulg amarilla seco grano 400.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nf-4a-esp-280",
@@ -5058,7 +5058,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco con respaldo esponja. Ancho 115mm, largo 25m. Grano 280.",
     shortDescription: "Lija 4 pulg amarilla esponja grano 280.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nf-4a-esp-320",
@@ -5069,7 +5069,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco con respaldo esponja. Ancho 115mm, largo 25m. Grano 320.",
     shortDescription: "Lija 4 pulg amarilla esponja grano 320.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nf-4a-esp-360",
@@ -5080,7 +5080,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco con respaldo esponja. Ancho 115mm, largo 25m. Grano 360.",
     shortDescription: "Lija 4 pulg amarilla esponja grano 360.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nf-4a-esp-400",
@@ -5091,7 +5091,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco con respaldo esponja. Ancho 115mm, largo 25m. Grano 400.",
     shortDescription: "Lija 4 pulg amarilla esponja grano 400.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nf-4a-esp-600",
@@ -5102,7 +5102,7 @@ export const products: Product[] = [
     description: "Lija de 4 pulgadas amarilla x metro para lijar a seco con respaldo esponja. Ancho 115mm, largo 25m. Grano 600.",
     shortDescription: "Lija 4 pulg amarilla esponja grano 600.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA AMARILLA.png",
+    image: "/assets/product-images/nastroflex/LIJA AMARILLA.jpg",
   },
   {
     id: "nf-agua-negro-80",
@@ -5113,7 +5113,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 80.",
     shortDescription: "Lija agua pliego negro grano 80.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-100",
@@ -5124,7 +5124,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 100.",
     shortDescription: "Lija agua pliego negro grano 100.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-120",
@@ -5135,7 +5135,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 120.",
     shortDescription: "Lija agua pliego negro grano 120.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-150",
@@ -5146,7 +5146,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 150.",
     shortDescription: "Lija agua pliego negro grano 150.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-180",
@@ -5157,7 +5157,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 180.",
     shortDescription: "Lija agua pliego negro grano 180.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-220",
@@ -5168,7 +5168,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 220.",
     shortDescription: "Lija agua pliego negro grano 220.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-240",
@@ -5179,7 +5179,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 240.",
     shortDescription: "Lija agua pliego negro grano 240.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-320",
@@ -5190,7 +5190,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 320.",
     shortDescription: "Lija agua pliego negro grano 320.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-360",
@@ -5201,7 +5201,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 360.",
     shortDescription: "Lija agua pliego negro grano 360.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-400",
@@ -5212,7 +5212,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 400.",
     shortDescription: "Lija agua pliego negro grano 400.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-500",
@@ -5223,7 +5223,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 500.",
     shortDescription: "Lija agua pliego negro grano 500.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-600",
@@ -5234,7 +5234,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 600.",
     shortDescription: "Lija agua pliego negro grano 600.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-800",
@@ -5245,7 +5245,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 800.",
     shortDescription: "Lija agua pliego negro grano 800.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-1000",
@@ -5256,7 +5256,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 1000.",
     shortDescription: "Lija agua pliego negro grano 1000.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-1200",
@@ -5267,7 +5267,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 1200.",
     shortDescription: "Lija agua pliego negro grano 1200.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-1500",
@@ -5278,7 +5278,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 1500.",
     shortDescription: "Lija agua pliego negro grano 1500.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-agua-negro-2000",
@@ -5289,7 +5289,7 @@ export const products: Product[] = [
     description: "Lija de agua por pliego color negro. 230x280mm. Grano 2000.",
     shortDescription: "Lija agua pliego negro grano 2000.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE AGUA PLIEGO.jpg",
   },
   {
     id: "nf-pliego-gris-180",
@@ -5300,7 +5300,7 @@ export const products: Product[] = [
     description: "Lija de pliego para lijar a seco color gris. 230x280mm. Grano 180.",
     shortDescription: "Lija pliego seco gris grano 180.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PLIEGO AL SECO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PLIEGO AL SECO.jpg",
   },
   {
     id: "nf-pliego-gris-280",
@@ -5311,7 +5311,7 @@ export const products: Product[] = [
     description: "Lija de pliego para lijar a seco color gris. 230x280mm. Grano 280.",
     shortDescription: "Lija pliego seco gris grano 280.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PLIEGO AL SECO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PLIEGO AL SECO.jpg",
   },
   {
     id: "nf-pliego-gris-320",
@@ -5322,7 +5322,7 @@ export const products: Product[] = [
     description: "Lija de pliego para lijar a seco color gris. 230x280mm. Grano 320.",
     shortDescription: "Lija pliego seco gris grano 320.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PLIEGO AL SECO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PLIEGO AL SECO.jpg",
   },
   {
     id: "nf-pliego-gris-360",
@@ -5333,7 +5333,7 @@ export const products: Product[] = [
     description: "Lija de pliego para lijar a seco color gris. 230x280mm. Grano 360.",
     shortDescription: "Lija pliego seco gris grano 360.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PLIEGO AL SECO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PLIEGO AL SECO.jpg",
   },
   {
     id: "nf-tela-metro-152-40",
@@ -5344,7 +5344,7 @@ export const products: Product[] = [
     description: "Lija de tela marron por metro. Ancho 152mm, largo 50m. Grano 40.",
     shortDescription: "Lija tela marron 152mm grano 40.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.png",
+    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.jpg",
   },
   {
     id: "nf-tela-metro-152-60",
@@ -5355,7 +5355,7 @@ export const products: Product[] = [
     description: "Lija de tela marron por metro. Ancho 152mm, largo 50m. Grano 60.",
     shortDescription: "Lija tela marron 152mm grano 60.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.png",
+    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.jpg",
   },
   {
     id: "nf-tela-metro-152-80",
@@ -5366,7 +5366,7 @@ export const products: Product[] = [
     description: "Lija de tela marron por metro. Ancho 152mm, largo 50m. Grano 80.",
     shortDescription: "Lija tela marron 152mm grano 80.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.png",
+    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.jpg",
   },
   {
     id: "nf-tela-metro-300-24",
@@ -5377,7 +5377,7 @@ export const products: Product[] = [
     description: "Lija de tela marron por metro. Ancho 300mm, largo 50m. Grano 24.",
     shortDescription: "Lija tela marron 300mm grano 24.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.png",
+    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.jpg",
   },
   {
     id: "nf-tela-metro-300-40",
@@ -5388,7 +5388,7 @@ export const products: Product[] = [
     description: "Lija de tela marron por metro. Ancho 300mm, largo 50m. Grano 40.",
     shortDescription: "Lija tela marron 300mm grano 40.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.png",
+    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.jpg",
   },
   {
     id: "nf-tela-metro-300-60",
@@ -5399,7 +5399,7 @@ export const products: Product[] = [
     description: "Lija de tela marron por metro. Ancho 300mm, largo 50m. Grano 60.",
     shortDescription: "Lija tela marron 300mm grano 60.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.png",
+    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.jpg",
   },
   {
     id: "nf-tela-metro-300-80",
@@ -5410,7 +5410,7 @@ export const products: Product[] = [
     description: "Lija de tela marron por metro. Ancho 300mm, largo 50m. Grano 80.",
     shortDescription: "Lija tela marron 300mm grano 80.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.png",
+    image: "/assets/product-images/nastroflex/LIJA MARRON FLEXIBLE.jpg",
   },
   {
     id: "nf-banda-3x18-40",
@@ -5421,7 +5421,7 @@ export const products: Product[] = [
     description: "Banda de lija marron de tela 3\" x 18\" pulgadas. Grano 40.",
     shortDescription: "Banda lija marron 3x18 grano 40.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.png",
+    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.jpg",
   },
   {
     id: "nf-banda-3x18-60",
@@ -5432,7 +5432,7 @@ export const products: Product[] = [
     description: "Banda de lija marron de tela 3\" x 18\" pulgadas. Grano 60.",
     shortDescription: "Banda lija marron 3x18 grano 60.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.png",
+    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.jpg",
   },
   {
     id: "nf-banda-3x18-80",
@@ -5443,7 +5443,7 @@ export const products: Product[] = [
     description: "Banda de lija marron de tela 3\" x 18\" pulgadas. Grano 80.",
     shortDescription: "Banda lija marron 3x18 grano 80.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.png",
+    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.jpg",
   },
   {
     id: "nf-banda-3x21-40",
@@ -5454,7 +5454,7 @@ export const products: Product[] = [
     description: "Banda de lija marron de tela 3\" x 21\" pulgadas. Grano 40.",
     shortDescription: "Banda lija marron 3x21 grano 40.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.png",
+    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.jpg",
   },
   {
     id: "nf-banda-3x21-60",
@@ -5465,7 +5465,7 @@ export const products: Product[] = [
     description: "Banda de lija marron de tela 3\" x 21\" pulgadas. Grano 60.",
     shortDescription: "Banda lija marron 3x21 grano 60.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.png",
+    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.jpg",
   },
   {
     id: "nf-banda-3x21-80",
@@ -5476,7 +5476,7 @@ export const products: Product[] = [
     description: "Banda de lija marron de tela 3\" x 21\" pulgadas. Grano 80.",
     shortDescription: "Banda lija marron 3x21 grano 80.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.png",
+    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.jpg",
   },
   {
     id: "nf-banda-4x24-40",
@@ -5487,7 +5487,7 @@ export const products: Product[] = [
     description: "Banda de lija marron de tela 4\" x 24\" pulgadas. Grano 40.",
     shortDescription: "Banda lija marron 4x24 grano 40.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.png",
+    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.jpg",
   },
   {
     id: "nf-banda-4x24-60",
@@ -5498,7 +5498,7 @@ export const products: Product[] = [
     description: "Banda de lija marron de tela 4\" x 24\" pulgadas. Grano 60.",
     shortDescription: "Banda lija marron 4x24 grano 60.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.png",
+    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.jpg",
   },
   {
     id: "nf-banda-4x24-80",
@@ -5509,7 +5509,7 @@ export const products: Product[] = [
     description: "Banda de lija marron de tela 4\" x 24\" pulgadas. Grano 80.",
     shortDescription: "Banda lija marron 4x24 grano 80.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.png",
+    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.jpg",
   },
   {
     id: "nf-velcro-125-40",
@@ -5520,7 +5520,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 40.",
     shortDescription: "Lija papel velcro 125mm grano 40.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
   {
     id: "nf-velcro-125-60",
@@ -5531,7 +5531,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 60.",
     shortDescription: "Lija papel velcro 125mm grano 60.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
   {
     id: "nf-velcro-125-80",
@@ -5542,7 +5542,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 80.",
     shortDescription: "Lija papel velcro 125mm grano 80.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
   {
     id: "nf-velcro-125-120",
@@ -5553,7 +5553,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 120.",
     shortDescription: "Lija papel velcro 125mm grano 120.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
   {
     id: "nf-velcro-125-150",
@@ -5564,7 +5564,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 150.",
     shortDescription: "Lija papel velcro 125mm grano 150.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
   {
     id: "nf-velcro-125-180",
@@ -5575,7 +5575,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 180.",
     shortDescription: "Lija papel velcro 125mm grano 180.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
   {
     id: "nf-velcro-125-220",
@@ -5586,7 +5586,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 220.",
     shortDescription: "Lija papel velcro 125mm grano 220.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
   {
     id: "nf-velcro-125-240",
@@ -5597,7 +5597,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 240.",
     shortDescription: "Lija papel velcro 125mm grano 240.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
   {
     id: "nf-velcro-125-280",
@@ -5608,7 +5608,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 280.",
     shortDescription: "Lija papel velcro 125mm grano 280.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
   {
     id: "nf-velcro-125-320",
@@ -5619,7 +5619,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 320.",
     shortDescription: "Lija papel velcro 125mm grano 320.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
   {
     id: "nf-velcro-125-360",
@@ -5630,7 +5630,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 360.",
     shortDescription: "Lija papel velcro 125mm grano 360.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
   {
     id: "nf-velcro-125-400",
@@ -5641,7 +5641,7 @@ export const products: Product[] = [
     description: "Lija de papel sobre velcro para lijar a seco. Diametro 125mm, 8 huecos. Grano 400.",
     shortDescription: "Lija papel velcro 125mm grano 400.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.png",
+    image: "/assets/product-images/nastroflex/LIJA DE PAPEL SOBRE VELCRO.jpg",
   },
 // ─── MILESCRAFT ──────────────────────────────────────────
   {
@@ -6178,7 +6178,7 @@ export const products: Product[] = [
     description: "Fibrodisco 7 pulgadas, 8 huecos, grano 16.",
     shortDescription: "Fibrodisco 7\" grano 16.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/FIBRODISCOS.png",
+    image: "/assets/product-images/nastroflex/FIBRODISCOS.jpg",
   },
   {
     id: "nf-fibrodisco-7-24",
@@ -6189,7 +6189,7 @@ export const products: Product[] = [
     description: "Fibrodisco 7 pulgadas, 8 huecos, grano 24.",
     shortDescription: "Fibrodisco 7\" grano 24.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/FIBRODISCOS.png",
+    image: "/assets/product-images/nastroflex/FIBRODISCOS.jpg",
   },
   {
     id: "nf-fibrodisco-7-36",
@@ -6200,7 +6200,7 @@ export const products: Product[] = [
     description: "Fibrodisco 7 pulgadas, 8 huecos, grano 36.",
     shortDescription: "Fibrodisco 7\" grano 36.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/FIBRODISCOS.png",
+    image: "/assets/product-images/nastroflex/FIBRODISCOS.jpg",
   },
   {
     id: "nf-fibrodisco-7-50",
@@ -6211,7 +6211,7 @@ export const products: Product[] = [
     description: "Fibrodisco 7 pulgadas, 8 huecos, grano 50.",
     shortDescription: "Fibrodisco 7\" grano 50.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/FIBRODISCOS.png",
+    image: "/assets/product-images/nastroflex/FIBRODISCOS.jpg",
   },
   {
     id: "nf-fibrodisco-7-60",
@@ -6222,7 +6222,7 @@ export const products: Product[] = [
     description: "Fibrodisco 7 pulgadas, 8 huecos, grano 60.",
     shortDescription: "Fibrodisco 7\" grano 60.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/FIBRODISCOS.png",
+    image: "/assets/product-images/nastroflex/FIBRODISCOS.jpg",
   },
   {
     id: "nf-fibrodisco-7-80",
@@ -6233,7 +6233,7 @@ export const products: Product[] = [
     description: "Fibrodisco 7 pulgadas, 8 huecos, grano 80.",
     shortDescription: "Fibrodisco 7\" grano 80.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/FIBRODISCOS.png",
+    image: "/assets/product-images/nastroflex/FIBRODISCOS.jpg",
   },
   {
     id: "nf-fibrodisco-7-100",
@@ -6244,7 +6244,7 @@ export const products: Product[] = [
     description: "Fibrodisco 7 pulgadas, 8 huecos, grano 100.",
     shortDescription: "Fibrodisco 7\" grano 100.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/FIBRODISCOS.png",
+    image: "/assets/product-images/nastroflex/FIBRODISCOS.jpg",
   },
   {
     id: "nf-fibrodisco-7-120",
@@ -6255,7 +6255,7 @@ export const products: Product[] = [
     description: "Fibrodisco 7 pulgadas, 8 huecos, grano 120.",
     shortDescription: "Fibrodisco 7\" grano 120.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/FIBRODISCOS.png",
+    image: "/assets/product-images/nastroflex/FIBRODISCOS.jpg",
   },
   {
     id: "nf-disco-flap-450-40",
@@ -6266,7 +6266,7 @@ export const products: Product[] = [
     description: "Disco flap 4-1/2 pulgadas, grano 40.",
     shortDescription: "Disco flap 4-1/2\" grano 40.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/DISCOS FLAP.png",
+    image: "/assets/product-images/nastroflex/DISCOS FLAP.jpg",
   },
   {
     id: "nf-disco-flap-450-60",
@@ -6277,7 +6277,7 @@ export const products: Product[] = [
     description: "Disco flap 4-1/2 pulgadas, grano 60.",
     shortDescription: "Disco flap 4-1/2\" grano 60.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/DISCOS FLAP.png",
+    image: "/assets/product-images/nastroflex/DISCOS FLAP.jpg",
   },
   {
     id: "nf-disco-flap-450-80",
@@ -6288,7 +6288,7 @@ export const products: Product[] = [
     description: "Disco flap 4-1/2 pulgadas, grano 80.",
     shortDescription: "Disco flap 4-1/2\" grano 80.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/DISCOS FLAP.png",
+    image: "/assets/product-images/nastroflex/DISCOS FLAP.jpg",
   },
   {
     id: "nf-disco-flap-450-120",
@@ -6299,7 +6299,7 @@ export const products: Product[] = [
     description: "Disco flap 4-1/2 pulgadas, grano 120.",
     shortDescription: "Disco flap 4-1/2\" grano 120.",
     category: "Discos",
-    image: "/assets/product-images/nastroflex/DISCOS FLAP.png",
+    image: "/assets/product-images/nastroflex/DISCOS FLAP.jpg",
   },
   {
     id: "nf-esponja-69x98-36",
@@ -6310,7 +6310,7 @@ export const products: Product[] = [
     description: "Esponja abrasiva 69x98mm, grano 36.",
     shortDescription: "Esponja abrasiva 69x98mm grano 36.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/ESPONJA ABRASIVA.png",
+    image: "/assets/product-images/nastroflex/ESPONJA ABRASIVA.jpg",
   },
   {
     id: "nf-esponja-69x98-60",
@@ -6321,7 +6321,7 @@ export const products: Product[] = [
     description: "Esponja abrasiva 69x98mm, grano 60.",
     shortDescription: "Esponja abrasiva 69x98mm grano 60.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/ESPONJA ABRASIVA.png",
+    image: "/assets/product-images/nastroflex/ESPONJA ABRASIVA.jpg",
   },
   {
     id: "nf-esponja-69x98-100",
@@ -6332,7 +6332,7 @@ export const products: Product[] = [
     description: "Esponja abrasiva 69x98mm, grano 100.",
     shortDescription: "Esponja abrasiva 69x98mm grano 100.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/ESPONJA ABRASIVA.png",
+    image: "/assets/product-images/nastroflex/ESPONJA ABRASIVA.jpg",
   },
   {
     id: "nf-grarto-metro-120",
@@ -6343,7 +6343,7 @@ export const products: Product[] = [
     description: "Grarto por metro 120mm de ancho, tela.",
     shortDescription: "Grarto por metro 120mm tela.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/GRAFITO.png",
+    image: "/assets/product-images/nastroflex/GRAFITO.jpg",
   },
   {
     id: "nf-grarto-metro-150",
@@ -6354,7 +6354,7 @@ export const products: Product[] = [
     description: "Grarto por metro 150mm de ancho, tela.",
     shortDescription: "Grarto por metro 150mm tela.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/GRAFITO.png",
+    image: "/assets/product-images/nastroflex/GRAFITO.jpg",
   },
   {
     id: "nf-banda-115x10",
@@ -6365,7 +6365,7 @@ export const products: Product[] = [
     description: "Banda de lija 115mm de ancho, largo 10m.",
     shortDescription: "Banda lija 115mm x 10m.",
     category: "Accesorios",
-    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.png",
+    image: "/assets/product-images/nastroflex/BANDAS DE LIJA MARRON.jpg",
   },
   {
     id: "unicol-625",
@@ -6376,7 +6376,7 @@ export const products: Product[] = [
     description: "Pega granulada para maquinas pegadoras de canto. Tipo: Granos. Saco 20kg, presentacion 20kg.",
     shortDescription: "Pega granulada Unibord 625, 20kg.",
     category: "Adhesivos y Pegamentos",
-    image: "/assets/product-images/unicol/UNICOL SACO.png",
+    image: "/assets/product-images/unicol/UNICOL SACO.jpg",
   },
   {
     id: "unicol-607m",
@@ -6387,7 +6387,7 @@ export const products: Product[] = [
     description: "Pega granulada para maquinas pegadoras de canto. Tipo: Granos. Saco 25kg, presentacion 25kg.",
     shortDescription: "Pega granulada Unibord 607M, 25kg.",
     category: "Adhesivos y Pegamentos",
-    image: "/assets/product-images/unicol/UNICOL SACO.png",
+    image: "/assets/product-images/unicol/UNICOL SACO.jpg",
   },
   {
     id: "unicol-677",
@@ -6398,7 +6398,7 @@ export const products: Product[] = [
     description: "Pega granulada para maquinas pegadoras de canto. Tipo: Granos. Saco 25kg, presentacion 25kg.",
     shortDescription: "Pega granulada Unibord 677, 25kg.",
     category: "Adhesivos y Pegamentos",
-    image: "/assets/product-images/unicol/UNICOL SACO.png",
+    image: "/assets/product-images/unicol/UNICOL SACO.jpg",
   },
   {
     id: "unicol-669",
@@ -6409,7 +6409,7 @@ export const products: Product[] = [
     description: "Pega granulada para maquinas pegadoras de canto. Tipo: Granos. Saco 25kg, presentacion 25kg.",
     shortDescription: "Pega granulada Unibord 669, 25kg.",
     category: "Adhesivos y Pegamentos",
-    image: "/assets/product-images/unicol/UNICOL SACO.png",
+    image: "/assets/product-images/unicol/UNICOL SACO.jpg",
   },
   {
     id: "unicol-784",
@@ -6420,7 +6420,7 @@ export const products: Product[] = [
     description: "Pega en taco para maquinas pegadoras de canto. Tipo: Taco. 24 piezas, presentacion 8kg.",
     shortDescription: "Pega taco Unibord 784, 24PZ/8kg.",
     category: "Adhesivos y Pegamentos",
-    image: "/assets/product-images/unicol/UNICOL SACO.png",
+    image: "/assets/product-images/unicol/UNICOL SACO.jpg",
   },
   {
     id: "unicol-636",
@@ -6431,7 +6431,7 @@ export const products: Product[] = [
     description: "Pega granulada para maquinas pegadoras de canto. Tipo: Granos. Saco 25kg, presentacion 25kg.",
     shortDescription: "Pega granulada Unibord 636, 25kg.",
     category: "Adhesivos y Pegamentos",
-    image: "/assets/product-images/unicol/UNICOL SACO.png",
+    image: "/assets/product-images/unicol/UNICOL SACO.jpg",
   },
   // ─── TITEBOND ───────────────────────────────────────
   {
@@ -6520,7 +6520,7 @@ export const products: Product[] = [
     description: "Acelerador en aerosol para pegamento Instant Bond. 5.5 oz.",
     shortDescription: "Titebond Instant Bond aerosol 5.5oz.",
     category: "Adhesivos y Pegamentos",
-    image: "/assets/product-images/titebond/titebond instant bond AEROSOL ACELERADOR.png",
+    image: "/assets/product-images/titebond/titebond instant bond AEROSOL ACELERADOR.jpg",
   },
   {
     id: "tb-instant-2oz",
@@ -6575,7 +6575,7 @@ export const products: Product[] = [
     description: "Adhesivo para PVC y molduras. 280ml.",
     shortDescription: "Titebond PVC Trim Adhesive 280ml.",
     category: "Adhesivos y Pegamentos",
-    image: "/assets/product-images/titebond/TITEBOND PVC TRIM ADHESIVE.png",
+    image: "/assets/product-images/titebond/TITEBOND PVC TRIM ADHESIVE.jpg",
   },
   {
     id: "tb-heavy-provantage",
@@ -6707,7 +6707,7 @@ export const products: Product[] = [
     description: "Pegamento multipropósito. Cuñete 4 galones.",
     shortDescription: "Titebond 780 Multipropósito cuñete 4 gal.",
     category: "Adhesivos y Pegamentos",
-    image: "/assets/product-images/titebond/TITEBOND 780 MULTIPROPOSITO.png",
+    image: "/assets/product-images/titebond/TITEBOND 780 MULTIPROPOSITO.jpg",
   },
   {
     id: "tb-tongue-groove",
@@ -6830,7 +6830,7 @@ export const products: Product[] = [
     description: "Brocha ProVantage de alta calidad. Ancho 3 pulgadas.",
     shortDescription: "Brocha ProVantage 3\".",
     category: "Brochas y Rodillos",
-    image: "/assets/product-images/ppg/brocha 3.png",
+    image: "/assets/product-images/ppg/brocha 3.jpg",
   },
   {
     id: "ppg-provantage-15",
@@ -6841,7 +6841,7 @@ export const products: Product[] = [
     description: "Brocha ProVantage de alta calidad. Ancho 1.5 pulgadas.",
     shortDescription: "Brocha ProVantage 1.5\".",
     category: "Brochas y Rodillos",
-    image: "/assets/product-images/ppg/brocha 1-1.2.png",
+    image: "/assets/product-images/ppg/brocha 1-1.2.jpg",
   },
   {
     id: "ppg-wooster-434",
@@ -6852,7 +6852,7 @@ export const products: Product[] = [
     description: "Brocha Wooster de alta calidad. Ancho 4-3/4 pulgadas.",
     shortDescription: "Brocha Wooster 4-3/4\".",
     category: "Brochas y Rodillos",
-    image: "/assets/product-images/ppg/brocha 4-1.2.png",
+    image: "/assets/product-images/ppg/brocha 4-1.2.jpg",
   },
   {
     id: "ppg-wooster-rodillo-9",
@@ -6863,68 +6863,68 @@ export const products: Product[] = [
     description: "Camisa de rodillo Wooster. Ancho 9 pulgadas.",
     shortDescription: "Camisa rodillo Wooster 9\".",
     category: "Brochas y Rodillos",
-    image: "/assets/product-images/ppg/camisa.png",
+    image: "/assets/product-images/ppg/camisa.jpg",
   },
   // ─── BREMAS ───────────────────────────────────────
   // SWITCH 0-1
-  { id: "brm-012-0-1", slug: "bremas-switch-0-1-12amp", name: "Bremas Switch 0-1 12amp", brand: "Bremas", model: "CA0120003PL2", description: "Switch 0-1, 12 amp. Codigo: CA0120003PL2.", shortDescription: "Switch 0-1 12amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.png" },
-  { id: "brm-016-0-1", slug: "bremas-switch-0-1-16amp", name: "Bremas Switch 0-1 16amp", brand: "Bremas", model: "CA0160003PL2", description: "Switch 0-1, 16 amp. Codigo: CA0160003PL2.", shortDescription: "Switch 0-1 16amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.png" },
-  { id: "brm-020-0-1", slug: "bremas-switch-0-1-20amp", name: "Bremas Switch 0-1 20amp", brand: "Bremas", model: "CA0200003PL2", description: "Switch 0-1, 20 amp. Codigo: CA0200003PL2.", shortDescription: "Switch 0-1 20amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.png" },
-  { id: "brm-025-0-1", slug: "bremas-switch-0-1-25amp", name: "Bremas Switch 0-1 25amp", brand: "Bremas", model: "CA0250003PL2", description: "Switch 0-1, 25 amp. Codigo: CA0250003PL2.", shortDescription: "Switch 0-1 25amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.png" },
-  { id: "brm-032-0-1", slug: "bremas-switch-0-1-32amp", name: "Bremas Switch 0-1 32amp", brand: "Bremas", model: "CA0320003PL2", description: "Switch 0-1, 32 amp. Codigo: CA0320003PL2.", shortDescription: "Switch 0-1 32amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.png" },
-  { id: "brm-040-0-1", slug: "bremas-switch-0-1-40amp", name: "Bremas Switch 0-1 40amp", brand: "Bremas", model: "CA0400003PL2", description: "Switch 0-1, 40 amp. Codigo: CA0400003PL2.", shortDescription: "Switch 0-1 40amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.png" },
-  { id: "brm-050-0-1", slug: "bremas-switch-0-1-50amp", name: "Bremas Switch 0-1 50amp", brand: "Bremas", model: "CA0500003PL2", description: "Switch 0-1, 50 amp. Codigo: CA0500003PL2.", shortDescription: "Switch 0-1 50amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.png" },
+  { id: "brm-012-0-1", slug: "bremas-switch-0-1-12amp", name: "Bremas Switch 0-1 12amp", brand: "Bremas", model: "CA0120003PL2", description: "Switch 0-1, 12 amp. Codigo: CA0120003PL2.", shortDescription: "Switch 0-1 12amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
+  { id: "brm-016-0-1", slug: "bremas-switch-0-1-16amp", name: "Bremas Switch 0-1 16amp", brand: "Bremas", model: "CA0160003PL2", description: "Switch 0-1, 16 amp. Codigo: CA0160003PL2.", shortDescription: "Switch 0-1 16amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
+  { id: "brm-020-0-1", slug: "bremas-switch-0-1-20amp", name: "Bremas Switch 0-1 20amp", brand: "Bremas", model: "CA0200003PL2", description: "Switch 0-1, 20 amp. Codigo: CA0200003PL2.", shortDescription: "Switch 0-1 20amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
+  { id: "brm-025-0-1", slug: "bremas-switch-0-1-25amp", name: "Bremas Switch 0-1 25amp", brand: "Bremas", model: "CA0250003PL2", description: "Switch 0-1, 25 amp. Codigo: CA0250003PL2.", shortDescription: "Switch 0-1 25amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
+  { id: "brm-032-0-1", slug: "bremas-switch-0-1-32amp", name: "Bremas Switch 0-1 32amp", brand: "Bremas", model: "CA0320003PL2", description: "Switch 0-1, 32 amp. Codigo: CA0320003PL2.", shortDescription: "Switch 0-1 32amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
+  { id: "brm-040-0-1", slug: "bremas-switch-0-1-40amp", name: "Bremas Switch 0-1 40amp", brand: "Bremas", model: "CA0400003PL2", description: "Switch 0-1, 40 amp. Codigo: CA0400003PL2.", shortDescription: "Switch 0-1 40amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
+  { id: "brm-050-0-1", slug: "bremas-switch-0-1-50amp", name: "Bremas Switch 0-1 50amp", brand: "Bremas", model: "CA0500003PL2", description: "Switch 0-1, 50 amp. Codigo: CA0500003PL2.", shortDescription: "Switch 0-1 50amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
   // SWITCH 2 VELOCIDADES
-  { id: "brm-032-2vel", slug: "bremas-switch-2-velocidades-32amp", name: "Bremas Switch 2 Velocidades 32amp", brand: "Bremas", model: "CA0320009PL2", description: "Switch 1-0-2, 2 velocidades, 32 amp. Codigo: CA0320009PL2.", shortDescription: "Switch 2 velocidades 32amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH INVERSOR DE GIRO.png" },
+  { id: "brm-032-2vel", slug: "bremas-switch-2-velocidades-32amp", name: "Bremas Switch 2 Velocidades 32amp", brand: "Bremas", model: "CA0320009PL2", description: "Switch 1-0-2, 2 velocidades, 32 amp. Codigo: CA0320009PL2.", shortDescription: "Switch 2 velocidades 32amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH INVERSOR DE GIRO.jpg" },
   // SWITCH ESTRELLA-DELTA
-  { id: "brm-025-ed", slug: "bremas-switch-estrella-delta-25amp", name: "Bremas Switch Estrella-Delta 25amp", brand: "Bremas", model: "CA0250010PL2", description: "Switch O y Delta, estrella-delta, 25 amp. Codigo: CA0250010PL2.", shortDescription: "Switch Estrella-Delta 25amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH ESTRELLA TRIANGULO.png" },
-  { id: "brm-032-ed", slug: "bremas-switch-estrella-delta-32amp", name: "Bremas Switch Estrella-Delta 32amp", brand: "Bremas", model: "CA0320010PL2", description: "Switch O y Delta, estrella-delta, 32 amp. Codigo: CA0320010PL2.", shortDescription: "Switch Estrella-Delta 32amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH ESTRELLA TRIANGULO.png" },
+  { id: "brm-025-ed", slug: "bremas-switch-estrella-delta-25amp", name: "Bremas Switch Estrella-Delta 25amp", brand: "Bremas", model: "CA0250010PL2", description: "Switch O y Delta, estrella-delta, 25 amp. Codigo: CA0250010PL2.", shortDescription: "Switch Estrella-Delta 25amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH ESTRELLA TRIANGULO.jpg" },
+  { id: "brm-032-ed", slug: "bremas-switch-estrella-delta-32amp", name: "Bremas Switch Estrella-Delta 32amp", brand: "Bremas", model: "CA0320010PL2", description: "Switch O y Delta, estrella-delta, 32 amp. Codigo: CA0320010PL2.", shortDescription: "Switch Estrella-Delta 32amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH ESTRELLA TRIANGULO.jpg" },
   // SWITCH INVERSOR
-  { id: "brm-025-inv", slug: "bremas-switch-inversor-25amp", name: "Bremas Switch Inversor 25amp", brand: "Bremas", model: "CA0250008PL2", description: "Switch inversor de giro, 1-0-2, 25 amp. Codigo: CA0250008PL2.", shortDescription: "Switch Inversor 25amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH INVERSOR DE GIRO.png" },
+  { id: "brm-025-inv", slug: "bremas-switch-inversor-25amp", name: "Bremas Switch Inversor 25amp", brand: "Bremas", model: "CA0250008PL2", description: "Switch inversor de giro, 1-0-2, 25 amp. Codigo: CA0250008PL2.", shortDescription: "Switch Inversor 25amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH INVERSOR DE GIRO.jpg" },
   // SWITCH INVERSOR c/RETORNO
-  { id: "brm-016-invret", slug: "bremas-switch-inversor-retorno-16amp", name: "Bremas Switch Inversor c/Retorno 16amp", brand: "Bremas", model: "CA0160036PL2", description: "Switch inversor de giro con retorno, 1-0-2, 16 amp. Codigo: CA0160036PL2.", shortDescription: "Switch Inversor c/Retorno 16amp.", category: "Switches",     image: "/assets/product-images/bremas/SWTICH INVERSOR DE GIRO CON RETRORNO.png" },
+  { id: "brm-016-invret", slug: "bremas-switch-inversor-retorno-16amp", name: "Bremas Switch Inversor c/Retorno 16amp", brand: "Bremas", model: "CA0160036PL2", description: "Switch inversor de giro con retorno, 1-0-2, 16 amp. Codigo: CA0160036PL2.", shortDescription: "Switch Inversor c/Retorno 16amp.", category: "Switches",     image: "/assets/product-images/bremas/SWTICH INVERSOR DE GIRO CON RETRORNO.jpg" },
   // ─── CAIMAN ───────────────────────────────────────
   // GRAPAS 8000
-  { id: "caiman-8006", slug: "caiman-grapa-8006-10000", name: "Caiman Grapa 8006 - Caja 10000 Pcs", brand: "Caiman", model: "8006", description: "Grapa 8006. Caja de 10000 piezas.", shortDescription: "Grapa 8006 caja 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-8010", slug: "caiman-grapa-8010-10000", name: "Caiman Grapa 8010 - Caja 10000 Pcs", brand: "Caiman", model: "8010", description: "Grapa 8010. Caja de 10000 piezas.", shortDescription: "Grapa 8010 caja 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-8012", slug: "caiman-grapa-8012-10000", name: "Caiman Grapa 8012 - Caja 10000 Pcs", brand: "Caiman", model: "8012", description: "Grapa 8012. Caja de 10000 piezas.", shortDescription: "Grapa 8012 caja 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-8016", slug: "caiman-grapa-8016-10000", name: "Caiman Grapa 8016 - Caja 10000 Pcs", brand: "Caiman", model: "8016", description: "Grapa 8016. Caja de 10000 piezas.", shortDescription: "Grapa 8016 caja 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
+  { id: "caiman-8006", slug: "caiman-grapa-8006-10000", name: "Caiman Grapa 8006 - Caja 10000 Pcs", brand: "Caiman", model: "8006", description: "Grapa 8006. Caja de 10000 piezas.", shortDescription: "Grapa 8006 caja 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-8010", slug: "caiman-grapa-8010-10000", name: "Caiman Grapa 8010 - Caja 10000 Pcs", brand: "Caiman", model: "8010", description: "Grapa 8010. Caja de 10000 piezas.", shortDescription: "Grapa 8010 caja 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-8012", slug: "caiman-grapa-8012-10000", name: "Caiman Grapa 8012 - Caja 10000 Pcs", brand: "Caiman", model: "8012", description: "Grapa 8012. Caja de 10000 piezas.", shortDescription: "Grapa 8012 caja 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-8016", slug: "caiman-grapa-8016-10000", name: "Caiman Grapa 8016 - Caja 10000 Pcs", brand: "Caiman", model: "8016", description: "Grapa 8016. Caja de 10000 piezas.", shortDescription: "Grapa 8016 caja 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
   // GRAPAS 90
-  { id: "caiman-90-15", slug: "caiman-grapa-90-15-5000", name: "Caiman Grapa 90/15 - Caja 5000 Pcs", brand: "Caiman", model: "90/15", description: "Grapa 90/15. Caja de 5000 piezas.", shortDescription: "Grapa 90/15 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-90-20", slug: "caiman-grapa-90-20-5000", name: "Caiman Grapa 90/20 - Caja 5000 Pcs", brand: "Caiman", model: "90/20", description: "Grapa 90/20. Caja de 5000 piezas.", shortDescription: "Grapa 90/20 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-90-25", slug: "caiman-grapa-90-25-5000", name: "Caiman Grapa 90/25 - Caja 5000 Pcs", brand: "Caiman", model: "90/25", description: "Grapa 90/25. Caja de 5000 piezas.", shortDescription: "Grapa 90/25 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-90-30", slug: "caiman-grapa-90-30-5000", name: "Caiman Grapa 90/30 - Caja 5000 Pcs", brand: "Caiman", model: "90/30", description: "Grapa 90/30. Caja de 5000 piezas.", shortDescription: "Grapa 90/30 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-90-35", slug: "caiman-grapa-90-35-5000", name: "Caiman Grapa 90/35 - Caja 5000 Pcs", brand: "Caiman", model: "90/35", description: "Grapa 90/35. Caja de 5000 piezas.", shortDescription: "Grapa 90/35 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-90-40", slug: "caiman-grapa-90-40-5000", name: "Caiman Grapa 90/40 - Caja 5000 Pcs", brand: "Caiman", model: "90/40", description: "Grapa 90/40. Caja de 5000 piezas.", shortDescription: "Grapa 90/40 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
+  { id: "caiman-90-15", slug: "caiman-grapa-90-15-5000", name: "Caiman Grapa 90/15 - Caja 5000 Pcs", brand: "Caiman", model: "90/15", description: "Grapa 90/15. Caja de 5000 piezas.", shortDescription: "Grapa 90/15 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-90-20", slug: "caiman-grapa-90-20-5000", name: "Caiman Grapa 90/20 - Caja 5000 Pcs", brand: "Caiman", model: "90/20", description: "Grapa 90/20. Caja de 5000 piezas.", shortDescription: "Grapa 90/20 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-90-25", slug: "caiman-grapa-90-25-5000", name: "Caiman Grapa 90/25 - Caja 5000 Pcs", brand: "Caiman", model: "90/25", description: "Grapa 90/25. Caja de 5000 piezas.", shortDescription: "Grapa 90/25 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-90-30", slug: "caiman-grapa-90-30-5000", name: "Caiman Grapa 90/30 - Caja 5000 Pcs", brand: "Caiman", model: "90/30", description: "Grapa 90/30. Caja de 5000 piezas.", shortDescription: "Grapa 90/30 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-90-35", slug: "caiman-grapa-90-35-5000", name: "Caiman Grapa 90/35 - Caja 5000 Pcs", brand: "Caiman", model: "90/35", description: "Grapa 90/35. Caja de 5000 piezas.", shortDescription: "Grapa 90/35 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-90-40", slug: "caiman-grapa-90-40-5000", name: "Caiman Grapa 90/40 - Caja 5000 Pcs", brand: "Caiman", model: "90/40", description: "Grapa 90/40. Caja de 5000 piezas.", shortDescription: "Grapa 90/40 caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
   // GRAPAS N
-  { id: "caiman-n45", slug: "caiman-grapa-n45-10000", name: "Caiman Grapa N45 - Bulto 10000 Und", brand: "Caiman", model: "N45", description: "Grapa N45. Bulto de 10000 unidades.", shortDescription: "Grapa N45 bulto 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-n50", slug: "caiman-grapa-n50-10000", name: "Caiman Grapa N50 - Bulto 10000 Und", brand: "Caiman", model: "N50", description: "Grapa N50. Bulto de 10000 unidades.", shortDescription: "Grapa N50 bulto 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
+  { id: "caiman-n45", slug: "caiman-grapa-n45-10000", name: "Caiman Grapa N45 - Bulto 10000 Und", brand: "Caiman", model: "N45", description: "Grapa N45. Bulto de 10000 unidades.", shortDescription: "Grapa N45 bulto 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-n50", slug: "caiman-grapa-n50-10000", name: "Caiman Grapa N50 - Bulto 10000 Und", brand: "Caiman", model: "N50", description: "Grapa N50. Bulto de 10000 unidades.", shortDescription: "Grapa N50 bulto 10000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
   // GRAPAS J
-  { id: "caiman-1006j", slug: "caiman-grapa-1006j-5000", name: "Caiman Grapa 1006J - Caja 5000 Pcs", brand: "Caiman", model: "1006J", description: "Grapa 1006J. Caja de 5000 piezas.", shortDescription: "Grapa 1006J caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-1010j", slug: "caiman-grapa-1010j-5000", name: "Caiman Grapa 1010J - Caja 5000 Pcs", brand: "Caiman", model: "1010J", description: "Grapa 1010J. Caja de 5000 piezas.", shortDescription: "Grapa 1010J caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-1013j", slug: "caiman-grapa-1013j-5000", name: "Caiman Grapa 1013J - Caja 5000 Pcs", brand: "Caiman", model: "1013J", description: "Grapa 1013J. Caja de 5000 piezas.", shortDescription: "Grapa 1013J caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
-  { id: "caiman-1016j", slug: "caiman-grapa-1016j-5000", name: "Caiman Grapa 1016J - Caja 5000 Pcs", brand: "Caiman", model: "1016J", description: "Grapa 1016J. Caja de 5000 piezas.", shortDescription: "Grapa 1016J caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.png" },
+  { id: "caiman-1006j", slug: "caiman-grapa-1006j-5000", name: "Caiman Grapa 1006J - Caja 5000 Pcs", brand: "Caiman", model: "1006J", description: "Grapa 1006J. Caja de 5000 piezas.", shortDescription: "Grapa 1006J caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-1010j", slug: "caiman-grapa-1010j-5000", name: "Caiman Grapa 1010J - Caja 5000 Pcs", brand: "Caiman", model: "1010J", description: "Grapa 1010J. Caja de 5000 piezas.", shortDescription: "Grapa 1010J caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-1013j", slug: "caiman-grapa-1013j-5000", name: "Caiman Grapa 1013J - Caja 5000 Pcs", brand: "Caiman", model: "1013J", description: "Grapa 1013J. Caja de 5000 piezas.", shortDescription: "Grapa 1013J caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
+  { id: "caiman-1016j", slug: "caiman-grapa-1016j-5000", name: "Caiman Grapa 1016J - Caja 5000 Pcs", brand: "Caiman", model: "1016J", description: "Grapa 1016J. Caja de 5000 piezas.", shortDescription: "Grapa 1016J caja 5000.", category: "Clavos y Grapas", image: "/assets/product-images/caiman/10-06.jpg" },
   // CLAVOS F
-  { id: "caiman-f10", slug: "caiman-clavo-f10-5000", name: "Caiman Clavos F-10", brand: "Caiman", model: "F10", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-10.png" },
-  { id: "caiman-f15", slug: "caiman-clavo-f15-5000", name: "Caiman Clavos F-15", brand: "Caiman", model: "F15", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-15.png" },
-  { id: "caiman-f20", slug: "caiman-clavo-f20-5000", name: "Caiman Clavos F-20", brand: "Caiman", model: "F20", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-20.png" },
-  { id: "caiman-f25", slug: "caiman-clavo-f25-5000", name: "Caiman Clavos F-25", brand: "Caiman", model: "F25", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-25.png" },
-  { id: "caiman-f30", slug: "caiman-clavo-f30-5000", name: "Caiman Clavos F-30", brand: "Caiman", model: "F30", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-30.png" },
-  { id: "caiman-f35", slug: "caiman-clavo-f35-5000", name: "Caiman Clavos F-35", brand: "Caiman", model: "F35", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-35.png" },
-  { id: "caiman-f40", slug: "caiman-clavo-f40-5000", name: "Caiman Clavos F-40", brand: "Caiman", model: "F40", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-40.png" },
-  { id: "caiman-f45", slug: "caiman-clavo-f45-5000", name: "Caiman Clavos F-45", brand: "Caiman", model: "F45", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-45.png" },
-  { id: "caiman-f50", slug: "caiman-clavo-f50-5000", name: "Caiman Clavos F-50", brand: "Caiman", model: "F50", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas",     image: "/assets/product-images/caiman/F-50.png" },
+  { id: "caiman-f10", slug: "caiman-clavo-f10-5000", name: "Caiman Clavos F-10", brand: "Caiman", model: "F10", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-10.jpg" },
+  { id: "caiman-f15", slug: "caiman-clavo-f15-5000", name: "Caiman Clavos F-15", brand: "Caiman", model: "F15", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-15.jpg" },
+  { id: "caiman-f20", slug: "caiman-clavo-f20-5000", name: "Caiman Clavos F-20", brand: "Caiman", model: "F20", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-20.jpg" },
+  { id: "caiman-f25", slug: "caiman-clavo-f25-5000", name: "Caiman Clavos F-25", brand: "Caiman", model: "F25", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-25.jpg" },
+  { id: "caiman-f30", slug: "caiman-clavo-f30-5000", name: "Caiman Clavos F-30", brand: "Caiman", model: "F30", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-30.jpg" },
+  { id: "caiman-f35", slug: "caiman-clavo-f35-5000", name: "Caiman Clavos F-35", brand: "Caiman", model: "F35", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-35.jpg" },
+  { id: "caiman-f40", slug: "caiman-clavo-f40-5000", name: "Caiman Clavos F-40", brand: "Caiman", model: "F40", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-40.jpg" },
+  { id: "caiman-f45", slug: "caiman-clavo-f45-5000", name: "Caiman Clavos F-45", brand: "Caiman", model: "F45", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas", image: "/assets/product-images/caiman/F-45.jpg" },
+  { id: "caiman-f50", slug: "caiman-clavo-f50-5000", name: "Caiman Clavos F-50", brand: "Caiman", model: "F50", description: "Clavo para pistola clavadora neumatica. Caja de 5000 pcs.", shortDescription: "Contenido: 5000 piezas", category: "Clavos y Grapas",     image: "/assets/product-images/caiman/F-50.jpg" },
   // ─── EUROTOOLS DISCOS ───────────────────────────────────────
-  { id: "et-disco-mad-10x24", slug: "eurotools-disco-hm-madera-10x24", name: "Eurocut Disco HM para Madera 10\"X24Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 10\" 24 dientes.", shortDescription: "Disco HM madera 10\" 24Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 10X24.png" },
-  { id: "et-disco-mad-10x40", slug: "eurotools-disco-hm-madera-10x40", name: "Eurocut Disco HM para Madera 10\"X40Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 10\" 40 dientes.", shortDescription: "Disco HM madera 10\" 40Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 10X40.png" },
-  { id: "et-disco-mad-12x48", slug: "eurotools-disco-hm-madera-12x48", name: "Eurocut Disco HM para Madera 12\"X48Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 12\" 48 dientes.", shortDescription: "Disco HM madera 12\" 48Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 12X48.png" },
-  { id: "et-disco-mad-12x60", slug: "eurotools-disco-hm-madera-12x60", name: "Eurocut Disco HM para Madera 12\"X60Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 12\" 60 dientes.", shortDescription: "Disco HM madera 12\" 60Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 12X60.png" },
-  { id: "et-disco-mad-14x36", slug: "eurotools-disco-hm-madera-14x36", name: "Eurocut Disco HM para Madera 14\"X36Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 14\" 36 dientes.", shortDescription: "Disco HM madera 14\" 36Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 14X36.png" },
-  { id: "et-disco-mad-14x54", slug: "eurotools-disco-hm-madera-14x54", name: "Eurocut Disco HM para Madera 14\"X54Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 14\" 54 dientes.", shortDescription: "Disco HM madera 14\" 54Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 14X54.png" },
-  { id: "et-disco-mel-10x80", slug: "eurotools-disco-hm-melamina-10x80", name: "Eurocut Disco HM para Melamina 10\"X80Z+", brand: "EuroTools", model: "Disco HM", description: "Disco HM para melamina 10\" 80 dientes.", shortDescription: "Disco HM melamina 10\" 80Z+.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MELAMINA 10X80.png" },
-  { id: "et-disco-mel-12x96", slug: "eurotools-disco-hm-melamina-12x96", name: "Eurocut Disco HM para Melamina 12\"X96Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para melamina 12\" 96 dientes.", shortDescription: "Disco HM melamina 12\" 96Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MELAMINA 12X96.png" },
-  { id: "et-disco-alu-10x80", slug: "eurotools-disco-hm-aluminio-10x80", name: "Eurocut Disco HM para Aluminio 10\"X80Z-", brand: "EuroTools", model: "Disco HM", description: "Disco HM para aluminio 10\" 80 dientes.", shortDescription: "Disco HM aluminio 10\" 80Z-.", category: "Discos", image: "/assets/product-images/eurotools/DISCO ALUMINIO 10X80.png" },
-  { id: "et-disco-alu-12x96", slug: "eurotools-disco-hm-aluminio-12x96", name: "Eurocut Disco HM para Aluminio 12\"X96Z-", brand: "EuroTools", model: "Disco HM", description: "Disco HM para aluminio 12\" 96 dientes.", shortDescription: "Disco HM aluminio 12\" 96Z-.", category: "Discos", image: "/assets/product-images/eurotools/DISCO ALUMINIO 10X80.png" },
+  { id: "et-disco-mad-10x24", slug: "eurotools-disco-hm-madera-10x24", name: "Eurocut Disco HM para Madera 10\"X24Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 10\" 24 dientes.", shortDescription: "Disco HM madera 10\" 24Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 10X24.jpg" },
+  { id: "et-disco-mad-10x40", slug: "eurotools-disco-hm-madera-10x40", name: "Eurocut Disco HM para Madera 10\"X40Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 10\" 40 dientes.", shortDescription: "Disco HM madera 10\" 40Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 10X40.jpg" },
+  { id: "et-disco-mad-12x48", slug: "eurotools-disco-hm-madera-12x48", name: "Eurocut Disco HM para Madera 12\"X48Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 12\" 48 dientes.", shortDescription: "Disco HM madera 12\" 48Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 12X48.jpg" },
+  { id: "et-disco-mad-12x60", slug: "eurotools-disco-hm-madera-12x60", name: "Eurocut Disco HM para Madera 12\"X60Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 12\" 60 dientes.", shortDescription: "Disco HM madera 12\" 60Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 12X60.jpg" },
+  { id: "et-disco-mad-14x36", slug: "eurotools-disco-hm-madera-14x36", name: "Eurocut Disco HM para Madera 14\"X36Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 14\" 36 dientes.", shortDescription: "Disco HM madera 14\" 36Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 14X36.jpg" },
+  { id: "et-disco-mad-14x54", slug: "eurotools-disco-hm-madera-14x54", name: "Eurocut Disco HM para Madera 14\"X54Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para madera 14\" 54 dientes.", shortDescription: "Disco HM madera 14\" 54Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MADERA 14X54.jpg" },
+  { id: "et-disco-mel-10x80", slug: "eurotools-disco-hm-melamina-10x80", name: "Eurocut Disco HM para Melamina 10\"X80Z+", brand: "EuroTools", model: "Disco HM", description: "Disco HM para melamina 10\" 80 dientes.", shortDescription: "Disco HM melamina 10\" 80Z+.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MELAMINA 10X80.jpg" },
+  { id: "et-disco-mel-12x96", slug: "eurotools-disco-hm-melamina-12x96", name: "Eurocut Disco HM para Melamina 12\"X96Z", brand: "EuroTools", model: "Disco HM", description: "Disco HM para melamina 12\" 96 dientes.", shortDescription: "Disco HM melamina 12\" 96Z.", category: "Discos", image: "/assets/product-images/eurotools/DISCO MELAMINA 12X96.jpg" },
+  { id: "et-disco-alu-10x80", slug: "eurotools-disco-hm-aluminio-10x80", name: "Eurocut Disco HM para Aluminio 10\"X80Z-", brand: "EuroTools", model: "Disco HM", description: "Disco HM para aluminio 10\" 80 dientes.", shortDescription: "Disco HM aluminio 10\" 80Z-.", category: "Discos", image: "/assets/product-images/eurotools/DISCO ALUMINIO 10X80.jpg" },
+  { id: "et-disco-alu-12x96", slug: "eurotools-disco-hm-aluminio-12x96", name: "Eurocut Disco HM para Aluminio 12\"X96Z-", brand: "EuroTools", model: "Disco HM", description: "Disco HM para aluminio 12\" 96 dientes.", shortDescription: "Disco HM aluminio 12\" 96Z-.", category: "Discos", image: "/assets/product-images/eurotools/DISCO ALUMINIO 10X80.jpg" },
 
 { id: "tigra-barra-310x4x2", slug: "tigra-barra-hm-310x4x2", name: "Tigra Barra HM 310x4x2mm", brand: "Tigra", model: "Barra HM", description: "Barra HM. Largo 310mm, ancho 4mm, espesor 2mm.", shortDescription: "Barra HM 310x4x2.", category: "Widias", image: "/assets/product-images/tigra/BARRAS EN HM.jpg" },
   { id: "tigra-barra-310x6x2", slug: "tigra-barra-hm-310x6x2", name: "Tigra Barra HM 310x6x2mm", brand: "Tigra", model: "Barra HM", description: "Barra HM. Largo 310mm, ancho 6mm, espesor 2mm.", shortDescription: "Barra HM 310x6x2.", category: "Widias", image: "/assets/product-images/tigra/BARRAS EN HM.jpg" },
@@ -6943,33 +6943,33 @@ export const products: Product[] = [
   { id: "tigra-barra-310x25x5", slug: "tigra-barra-hm-310x25x5", name: "Tigra Barra HM 310x25x5mm", brand: "Tigra", model: "Barra HM", description: "Barra HM. Largo 310mm, ancho 25mm, espesor 5mm.", shortDescription: "Barra HM 310x25x5.", category: "Widias", image: "/assets/product-images/tigra/BARRAS EN HM.jpg" },
   { id: "tigra-barra-310x30x5", slug: "tigra-barra-hm-310x30x5", name: "Tigra Barra HM 310x30x5mm", brand: "Tigra", model: "Barra HM", description: "Barra HM. Largo 310mm, ancho 30mm, espesor 5mm.", shortDescription: "Barra HM 310x30x5.", category: "Widias", image: "/assets/product-images/tigra/BARRAS EN HM.jpg" },
   { id: "tigra-barra-310x35x5", slug: "tigra-barra-hm-310x35x5", name: "Tigra Barra HM 310x35x5mm", brand: "Tigra", model: "Barra HM", description: "Barra HM. Largo 310mm, ancho 35mm, espesor 5mm.", shortDescription: "Barra HM 310x35x5.", category: "Widias", image: "/assets/product-images/tigra/BARRAS EN HM.jpg" },
-  { id: "tigra-ddisco-8.5x3.3x2.5", slug: "tigra-diente-disco-8.5x3.3x2.5", name: "Tigra Diente para Disco 8.5x3.3x2.5mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 8.5mm, ancho 3.3mm, espesor 2.5mm.", shortDescription: "Diente disco 8.5x3.3x2.5.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.png" },
-  { id: "tigra-ddisco-10.5x3.6x3", slug: "tigra-diente-disco-10.5x3.6x3", name: "Tigra Diente para Disco 10.5x3.6x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 3.6mm, espesor 3mm.", shortDescription: "Diente disco 10.5x3.6x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.png" },
-  { id: "tigra-ddisco-10.5x3.8x3", slug: "tigra-diente-disco-10.5x3.8x3", name: "Tigra Diente para Disco 10.5x3.8x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 3.8mm, espesor 3mm.", shortDescription: "Diente disco 10.5x3.8x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.png" },
-  { id: "tigra-ddisco-10.5x4.1x3", slug: "tigra-diente-disco-10.5x4.1x3", name: "Tigra Diente para Disco 10.5x4.1x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 4.1mm, espesor 3mm.", shortDescription: "Diente disco 10.5x4.1x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.png" },
-  { id: "tigra-ddisco-10.5x4.3x3", slug: "tigra-diente-disco-10.5x4.3x3", name: "Tigra Diente para Disco 10.5x4.3x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 4.3mm, espesor 3mm.", shortDescription: "Diente disco 10.5x4.3x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.png" },
-  { id: "tigra-ddisco-10.5x4.5x3", slug: "tigra-diente-disco-10.5x4.5x3", name: "Tigra Diente para Disco 10.5x4.5x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 4.5mm, espesor 3mm.", shortDescription: "Diente disco 10.5x4.5x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.png" },
-  { id: "tigra-ddisco-10.5x4.8x3", slug: "tigra-diente-disco-10.5x4.8x3", name: "Tigra Diente para Disco 10.5x4.8x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 4.8mm, espesor 3mm.", shortDescription: "Diente disco 10.5x4.8x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.png" },
-  { id: "tigra-ddisco-10.5x5x3", slug: "tigra-diente-disco-10.5x5x3", name: "Tigra Diente para Disco 10.5x5x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 5mm, espesor 3mm.", shortDescription: "Diente disco 10.5x5x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.png" },
-  { id: "tigra-ddisco-10.5x5.5x3", slug: "tigra-diente-disco-10.5x5.5x3", name: "Tigra Diente para Disco 10.5x5.5x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 5.5mm, espesor 3mm.", shortDescription: "Diente disco 10.5x5.5x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.png" },
-  { id: "tigra-ddisco-10.5x6x3", slug: "tigra-diente-disco-10.5x6x3", name: "Tigra Diente para Disco 10.5x6x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 6mm, espesor 3mm.", shortDescription: "Diente disco 10.5x6x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.png" },
-  { id: "tigra-ddisco-10.5x6.5x3", slug: "tigra-diente-disco-10.5x6.5x3", name: "Tigra Diente para Disco 10.5x6.5x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 6.5mm, espesor 3mm.", shortDescription: "Diente disco 10.5x6.5x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.png" },
-  { id: "tigra-dfresa-13x4.5x4", slug: "tigra-diente-fresa-13x4.5x4", name: "Tigra Diente para Fresa 13x4.5x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 4.5mm, espesor 4mm.", shortDescription: "Diente fresa 13x4.5x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-dfresa-13x4.9x4", slug: "tigra-diente-fresa-13x4.9x4", name: "Tigra Diente para Fresa 13x4.9x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 4.9mm, espesor 4mm.", shortDescription: "Diente fresa 13x4.9x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-dfresa-13x5.5x4", slug: "tigra-diente-fresa-13x5.5x4", name: "Tigra Diente para Fresa 13x5.5x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 5.5mm, espesor 4mm.", shortDescription: "Diente fresa 13x5.5x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-dfresa-13x6.5x4", slug: "tigra-diente-fresa-13x6.5x4", name: "Tigra Diente para Fresa 13x6.5x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 6.5mm, espesor 4mm.", shortDescription: "Diente fresa 13x6.5x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-dfresa-13x8.5x4", slug: "tigra-diente-fresa-13x8.5x4", name: "Tigra Diente para Fresa 13x8.5x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 8.5mm, espesor 4mm.", shortDescription: "Diente fresa 13x8.5x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-dfresa-13x11x4", slug: "tigra-diente-fresa-13x11x4", name: "Tigra Diente para Fresa 13x11x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 11mm, espesor 4mm.", shortDescription: "Diente fresa 13x11x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-dfresa-14.5x11x4", slug: "tigra-diente-fresa-14.5x11x4", name: "Tigra Diente para Fresa 14.5x11x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 14.5mm, ancho 11mm, espesor 4mm.", shortDescription: "Diente fresa 14.5x11x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-dfresa-13x13x4", slug: "tigra-diente-fresa-13x13x4", name: "Tigra Diente para Fresa 13x13x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 13mm, espesor 4mm.", shortDescription: "Diente fresa 13x13x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-dfresa-14.5x13x4", slug: "tigra-diente-fresa-14.5x13x4", name: "Tigra Diente para Fresa 14.5x13x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 14.5mm, ancho 13mm, espesor 4mm.", shortDescription: "Diente fresa 14.5x13x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-dfresa-14.5x16x4", slug: "tigra-diente-fresa-14.5x16x4", name: "Tigra Diente para Fresa 14.5x16x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 14.5mm, ancho 16mm, espesor 4mm.", shortDescription: "Diente fresa 14.5x16x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-dfresa-13x17x4", slug: "tigra-diente-fresa-13x17x4", name: "Tigra Diente para Fresa 13x17x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 17mm, espesor 4mm.", shortDescription: "Diente fresa 13x17x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-dfresa-13x21x4", slug: "tigra-diente-fresa-13x21x4", name: "Tigra Diente para Fresa 13x21x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 21mm, espesor 4mm.", shortDescription: "Diente fresa 13x21x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.png" },
-  { id: "tigra-borax-harris", slug: "tigra-borax-harris", name: "Tigra Borax Harris 1/4lbs", brand: "Tigra", model: "Borax Harris 1/4lbs", description: "Borax Harris 1/4lbs. Unidad.", shortDescription: "Borax Harris 1/4lbs.", category: "Widias", image: "/assets/product-images/tigra/BORAX.png" },
-  { id: "tigra-borax-generica", slug: "tigra-borax-generica", name: "Tigra Borax Generica 1/4lbs", brand: "Tigra", model: "Borax Generica 1/4lbs", description: "Borax generica 1/4lbs. Unidad.", shortDescription: "Borax Generica 1/4lbs.", category: "Widias", image: "/assets/product-images/tigra/BORAX.png" },
-  { id: "tigra-varilla-plata", slug: "tigra-varilla-plata", name: "Tigra Varilla Plata GN", brand: "Tigra", model: "Varilla Plata GN", description: "Varilla de plata GN. Unidad.", shortDescription: "Varilla Plata GN.", category: "Widias", image: "/assets/product-images/tigra/VARILLA PLATA.png" },
-  { id: "tigra-electrodo-hc", slug: "tigra-electrodo-hc", name: "Tigra Electrodo H. Colado 1/8\"", brand: "Tigra", model: "Electrodo H. Colado", description: "Electrodo H. Colado 1/8 pulgadas. Unidad.", shortDescription: "Electrodo H. Colado 1/8\".", category: "Widias", image: "/assets/product-images/tigra/ELECTRODO.png" },
+  { id: "tigra-ddisco-8.5x3.3x2.5", slug: "tigra-diente-disco-8.5x3.3x2.5", name: "Tigra Diente para Disco 8.5x3.3x2.5mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 8.5mm, ancho 3.3mm, espesor 2.5mm.", shortDescription: "Diente disco 8.5x3.3x2.5.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.jpg" },
+  { id: "tigra-ddisco-10.5x3.6x3", slug: "tigra-diente-disco-10.5x3.6x3", name: "Tigra Diente para Disco 10.5x3.6x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 3.6mm, espesor 3mm.", shortDescription: "Diente disco 10.5x3.6x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.jpg" },
+  { id: "tigra-ddisco-10.5x3.8x3", slug: "tigra-diente-disco-10.5x3.8x3", name: "Tigra Diente para Disco 10.5x3.8x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 3.8mm, espesor 3mm.", shortDescription: "Diente disco 10.5x3.8x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.jpg" },
+  { id: "tigra-ddisco-10.5x4.1x3", slug: "tigra-diente-disco-10.5x4.1x3", name: "Tigra Diente para Disco 10.5x4.1x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 4.1mm, espesor 3mm.", shortDescription: "Diente disco 10.5x4.1x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.jpg" },
+  { id: "tigra-ddisco-10.5x4.3x3", slug: "tigra-diente-disco-10.5x4.3x3", name: "Tigra Diente para Disco 10.5x4.3x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 4.3mm, espesor 3mm.", shortDescription: "Diente disco 10.5x4.3x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.jpg" },
+  { id: "tigra-ddisco-10.5x4.5x3", slug: "tigra-diente-disco-10.5x4.5x3", name: "Tigra Diente para Disco 10.5x4.5x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 4.5mm, espesor 3mm.", shortDescription: "Diente disco 10.5x4.5x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.jpg" },
+  { id: "tigra-ddisco-10.5x4.8x3", slug: "tigra-diente-disco-10.5x4.8x3", name: "Tigra Diente para Disco 10.5x4.8x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 4.8mm, espesor 3mm.", shortDescription: "Diente disco 10.5x4.8x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.jpg" },
+  { id: "tigra-ddisco-10.5x5x3", slug: "tigra-diente-disco-10.5x5x3", name: "Tigra Diente para Disco 10.5x5x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 5mm, espesor 3mm.", shortDescription: "Diente disco 10.5x5x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.jpg" },
+  { id: "tigra-ddisco-10.5x5.5x3", slug: "tigra-diente-disco-10.5x5.5x3", name: "Tigra Diente para Disco 10.5x5.5x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 5.5mm, espesor 3mm.", shortDescription: "Diente disco 10.5x5.5x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.jpg" },
+  { id: "tigra-ddisco-10.5x6x3", slug: "tigra-diente-disco-10.5x6x3", name: "Tigra Diente para Disco 10.5x6x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 6mm, espesor 3mm.", shortDescription: "Diente disco 10.5x6x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.jpg" },
+  { id: "tigra-ddisco-10.5x6.5x3", slug: "tigra-diente-disco-10.5x6.5x3", name: "Tigra Diente para Disco 10.5x6.5x3mm", brand: "Tigra", model: "Diente Disco", description: "Diente para disco. Largo 10.5mm, ancho 6.5mm, espesor 3mm.", shortDescription: "Diente disco 10.5x6.5x3.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA DISCO.jpg" },
+  { id: "tigra-dfresa-13x4.5x4", slug: "tigra-diente-fresa-13x4.5x4", name: "Tigra Diente para Fresa 13x4.5x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 4.5mm, espesor 4mm.", shortDescription: "Diente fresa 13x4.5x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-dfresa-13x4.9x4", slug: "tigra-diente-fresa-13x4.9x4", name: "Tigra Diente para Fresa 13x4.9x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 4.9mm, espesor 4mm.", shortDescription: "Diente fresa 13x4.9x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-dfresa-13x5.5x4", slug: "tigra-diente-fresa-13x5.5x4", name: "Tigra Diente para Fresa 13x5.5x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 5.5mm, espesor 4mm.", shortDescription: "Diente fresa 13x5.5x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-dfresa-13x6.5x4", slug: "tigra-diente-fresa-13x6.5x4", name: "Tigra Diente para Fresa 13x6.5x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 6.5mm, espesor 4mm.", shortDescription: "Diente fresa 13x6.5x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-dfresa-13x8.5x4", slug: "tigra-diente-fresa-13x8.5x4", name: "Tigra Diente para Fresa 13x8.5x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 8.5mm, espesor 4mm.", shortDescription: "Diente fresa 13x8.5x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-dfresa-13x11x4", slug: "tigra-diente-fresa-13x11x4", name: "Tigra Diente para Fresa 13x11x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 11mm, espesor 4mm.", shortDescription: "Diente fresa 13x11x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-dfresa-14.5x11x4", slug: "tigra-diente-fresa-14.5x11x4", name: "Tigra Diente para Fresa 14.5x11x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 14.5mm, ancho 11mm, espesor 4mm.", shortDescription: "Diente fresa 14.5x11x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-dfresa-13x13x4", slug: "tigra-diente-fresa-13x13x4", name: "Tigra Diente para Fresa 13x13x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 13mm, espesor 4mm.", shortDescription: "Diente fresa 13x13x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-dfresa-14.5x13x4", slug: "tigra-diente-fresa-14.5x13x4", name: "Tigra Diente para Fresa 14.5x13x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 14.5mm, ancho 13mm, espesor 4mm.", shortDescription: "Diente fresa 14.5x13x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-dfresa-14.5x16x4", slug: "tigra-diente-fresa-14.5x16x4", name: "Tigra Diente para Fresa 14.5x16x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 14.5mm, ancho 16mm, espesor 4mm.", shortDescription: "Diente fresa 14.5x16x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-dfresa-13x17x4", slug: "tigra-diente-fresa-13x17x4", name: "Tigra Diente para Fresa 13x17x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 17mm, espesor 4mm.", shortDescription: "Diente fresa 13x17x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-dfresa-13x21x4", slug: "tigra-diente-fresa-13x21x4", name: "Tigra Diente para Fresa 13x21x4mm", brand: "Tigra", model: "Diente Fresa", description: "Diente para fresa. Largo 13mm, ancho 21mm, espesor 4mm.", shortDescription: "Diente fresa 13x21x4.", category: "Widias", image: "/assets/product-images/tigra/DIENTES PARA FRESA.jpg" },
+  { id: "tigra-borax-harris", slug: "tigra-borax-harris", name: "Tigra Borax Harris 1/4lbs", brand: "Tigra", model: "Borax Harris 1/4lbs", description: "Borax Harris 1/4lbs. Unidad.", shortDescription: "Borax Harris 1/4lbs.", category: "Widias", image: "/assets/product-images/tigra/BORAX.jpg" },
+  { id: "tigra-borax-generica", slug: "tigra-borax-generica", name: "Tigra Borax Generica 1/4lbs", brand: "Tigra", model: "Borax Generica 1/4lbs", description: "Borax generica 1/4lbs. Unidad.", shortDescription: "Borax Generica 1/4lbs.", category: "Widias", image: "/assets/product-images/tigra/BORAX.jpg" },
+  { id: "tigra-varilla-plata", slug: "tigra-varilla-plata", name: "Tigra Varilla Plata GN", brand: "Tigra", model: "Varilla Plata GN", description: "Varilla de plata GN. Unidad.", shortDescription: "Varilla Plata GN.", category: "Widias", image: "/assets/product-images/tigra/VARILLA PLATA.jpg" },
+  { id: "tigra-electrodo-hc", slug: "tigra-electrodo-hc", name: "Tigra Electrodo H. Colado 1/8\"", brand: "Tigra", model: "Electrodo H. Colado", description: "Electrodo H. Colado 1/8 pulgadas. Unidad.", shortDescription: "Electrodo H. Colado 1/8\".", category: "Widias", image: "/assets/product-images/tigra/ELECTRODO.jpg" },
 
   // ─── DAKIN CINTAS ACERO SUECO ──────────────────────────────
   { id: "dakin-cas-10", slug: "dakin-cinta-acero-sueco-10mm", name: "Dakin Cinta Acero Sueco 10mm", brand: "Dakin", model: "Acero Sueco 10mm", description: "Cinta de acero sueco de 10mm de ancho por 0.6mm de espesor. Cinta de medición profesional de alta resistencia.", shortDescription: "Cinta acero sueco 10mm x 0.6mm.", category: "Cintas", subcategory: "Cintas Acero Sueco", image: "/assets/product-images/dakin/CINTA ACERO SUECO.jpg", specs: { "Ancho": "10mm", "Espesor": "0.6mm" } },
@@ -7000,15 +7000,15 @@ export const products: Product[] = [
   { id: "dakin-cb-41-4y6", slug: "dakin-cinta-bimetalica-41mm-4y6", name: "Dakin Cinta Bimetálica 41mm (1-5/8\") 4-6 TPI", brand: "Dakin", model: "Bimetálica 41mm 4-6", description: "Cinta bimetálica de 41mm (1-5/8\") con paso de 4 y 6 dientes por pulgada. Ideal para corte de metales y madera.", shortDescription: "Cinta bimetálica 41mm 4-6 TPI.", category: "Cintas", subcategory: "Cintas Bimetálicas", image: "/assets/product-images/dakin/CINTA BIMETALICA.jpg", specs: { "Ancho": "41mm (1-5/8\")", "Paso": "4 y 6 TPI" } },
 
   // ─── ICA PINTURAS ──────────────────────────────────────────
-  { id: "ica-sellador-fp280v", slug: "ica-kit-sellador-pu-fp280v", name: "ICA Kit Sellador P.U FP280V-05", brand: "ICA", model: "FP280V-05", description: "Kit de sellador poliuretano ICA FP280V-05 para madera. Alta penetración y protección contra humedad y manchas. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit sellador P.U FP280V-05.", category: "Pinturas", subcategory: "Selladores", image: "/assets/product-images/ica/ICA KIT SELLADOR P.U.png" },
-  { id: "ica-fondo-blanco-fp1031b", slug: "ica-kit-fondo-blanco-pu-fp1031b", name: "ICA Kit Fondo Blanco P.U FP1031B-05", brand: "ICA", model: "FP1031B-05", description: "Kit de fondo blanco poliuretano ICA FP1031B-05 para madera. Cubrimiento uniforme y adherencia superior. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit fondo blanco P.U FP1031B-05.", category: "Pinturas", subcategory: "Fondos", image: "/assets/product-images/ica/ICA KIT FONDO BLANCO P.U.png" },
-  { id: "ica-tr-satinado-op550g30v", slug: "ica-kit-transparente-satinado-op550g30v", name: "ICA Kit Transparente Satinado OP550G30V-05", brand: "ICA", model: "OP550G30V-05", description: "Kit de transparente satinado ICA OP550G30V-05 para madera. Acabado satinado con alta resistencia al desgaste. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit transparente satinado OP550G30V-05.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA KIT TR SATINADO P.U.png" },
-  { id: "ica-tr-mate-op550g10v", slug: "ica-kit-transparente-mate-op550g10v", name: "ICA Kit Transparente Mate OP550G10V-05", brand: "ICA", model: "OP550G10V-05", description: "Kit de transparente mate ICA OP550G10V-05 para madera. Acabado mate natural con protección duradera. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit transparente mate OP550G10V-05.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA KIT TR MATE P.U.png" },
+  { id: "ica-sellador-fp280v", slug: "ica-kit-sellador-pu-fp280v", name: "ICA Kit Sellador P.U FP280V-05", brand: "ICA", model: "FP280V-05", description: "Kit de sellador poliuretano ICA FP280V-05 para madera. Alta penetración y protección contra humedad y manchas. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit sellador P.U FP280V-05.", category: "Pinturas", subcategory: "Selladores", image: "/assets/product-images/ica/ICA KIT SELLADOR P.U.jpg" },
+  { id: "ica-fondo-blanco-fp1031b", slug: "ica-kit-fondo-blanco-pu-fp1031b", name: "ICA Kit Fondo Blanco P.U FP1031B-05", brand: "ICA", model: "FP1031B-05", description: "Kit de fondo blanco poliuretano ICA FP1031B-05 para madera. Cubrimiento uniforme y adherencia superior. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit fondo blanco P.U FP1031B-05.", category: "Pinturas", subcategory: "Fondos", image: "/assets/product-images/ica/ICA KIT FONDO BLANCO P.U.jpg" },
+  { id: "ica-tr-satinado-op550g30v", slug: "ica-kit-transparente-satinado-op550g30v", name: "ICA Kit Transparente Satinado OP550G30V-05", brand: "ICA", model: "OP550G30V-05", description: "Kit de transparente satinado ICA OP550G30V-05 para madera. Acabado satinado con alta resistencia al desgaste. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit transparente satinado OP550G30V-05.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA KIT TR SATINADO P.U.jpg" },
+  { id: "ica-tr-mate-op550g10v", slug: "ica-kit-transparente-mate-op550g10v", name: "ICA Kit Transparente Mate OP550G10V-05", brand: "ICA", model: "OP550G10V-05", description: "Kit de transparente mate ICA OP550G10V-05 para madera. Acabado mate natural con protección duradera. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit transparente mate OP550G10V-05.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA KIT TR MATE P.U.jpg" },
 
   // ─── ICA PARQUET ACUOSO ────────────────────────────────────
-  { id: "ica-parquet-mate", slug: "ica-parquet-mate-acuoso", name: "ICA Parquet Mate Acuoso VPA823G15-05", brand: "ICA", model: "VPA823G15-05", description: "Es producto poliuretano base agua especialmente para pisos de parquet. Acabado mate. Presentación: Galón de 5 litros.", shortDescription: "Parquet mate acuoso - Galón de 5 litros.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA PARQUET MATE ACUOSO.png" },
-  { id: "ica-parquet-satinado", slug: "ica-parquet-satinado-acuoso", name: "ICA Parquet Satinado Acuoso VPA823G40-05", brand: "ICA", model: "VPA823G40-05", description: "Es producto poliuretano base agua especialmente para pisos de parquet. Acabado satinado. Presentación: Galón de 5 litros.", shortDescription: "Parquet satinado acuoso - Galón de 5 litros.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA PARQUET SATINADO ACUOSO.png" },
-  { id: "ica-parquet-brillante", slug: "ica-parquet-brillante-acuoso", name: "ICA Parquet Brillante Acuoso VPA208G80-05", brand: "ICA", model: "VPA208G80-05", description: "Es producto poliuretano base agua especialmente para pisos de parquet. Acabado brillante. Presentación: Galón de 5 litros.", shortDescription: "Parquet brillante acuoso - Galón de 5 litros.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA PARQUET BRILLANTE ACUOSO.png" },
+  { id: "ica-parquet-mate", slug: "ica-parquet-mate-acuoso", name: "ICA Parquet Mate Acuoso VPA823G15-05", brand: "ICA", model: "VPA823G15-05", description: "Es producto poliuretano base agua especialmente para pisos de parquet. Acabado mate. Presentación: Galón de 5 litros.", shortDescription: "Parquet mate acuoso - Galón de 5 litros.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA PARQUET MATE ACUOSO.jpg" },
+  { id: "ica-parquet-satinado", slug: "ica-parquet-satinado-acuoso", name: "ICA Parquet Satinado Acuoso VPA823G40-05", brand: "ICA", model: "VPA823G40-05", description: "Es producto poliuretano base agua especialmente para pisos de parquet. Acabado satinado. Presentación: Galón de 5 litros.", shortDescription: "Parquet satinado acuoso - Galón de 5 litros.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA PARQUET SATINADO ACUOSO.jpg" },
+  { id: "ica-parquet-brillante", slug: "ica-parquet-brillante-acuoso", name: "ICA Parquet Brillante Acuoso VPA208G80-05", brand: "ICA", model: "VPA208G80-05", description: "Es producto poliuretano base agua especialmente para pisos de parquet. Acabado brillante. Presentación: Galón de 5 litros.", shortDescription: "Parquet brillante acuoso - Galón de 5 litros.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA PARQUET BRILLANTE ACUOSO.jpg" },
 ];
 
 export const productCategories = [

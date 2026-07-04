@@ -15,7 +15,7 @@ export const brands: Brand[] = [
     description: "Herramientas eléctricas profesionales de alta calidad. Líder mundial en herramientas inalámbricas LXT.",
     category: "Herramientas Eléctricas",
     country: "Japón",
-    logo: "/assets/brands/makita_x2.0.png",
+    logo: "/assets/brands/makita_x2.0.jpg",
     website: "https://www.makitatools.com",
   },
   {
@@ -84,7 +84,7 @@ export const brands: Brand[] = [
     description: "Clavos y grapas de alta resistencia para la industria de la madera y construcción.",
     category: "Clavos y Grapas",
     country: "Venezuela",
-    logo: "/assets/brands/caiman.png",
+    logo: "/assets/brands/caiman.jpg",
   },
   {
     id: "ica",
@@ -110,7 +110,7 @@ export const brands: Brand[] = [
     description: "Avellanadores, mechas y herramientas de taladro profesional.",
     category: "Herramientas de Taladro",
     country: "Venezuela",
-    logo: "/assets/brands/eurotools.png",
+    logo: "/assets/brands/eurotools.jpg",
   },
   {
     id: "newco",
@@ -144,7 +144,7 @@ export const brands: Brand[] = [
     description: "Cemento de contacto y adhesivos industriales de alta resistencia.",
     category: "Adhesivos Industriales",
     country: "USA/Venezuela",
-    logo: "/assets/brands/forza.png",
+    logo: "/assets/brands/forza.jpg",
   },
   {
     id: "dakin",
