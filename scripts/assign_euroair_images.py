@@ -44,10 +44,6 @@ IMAGE_MAP = {
     "ea-acop-hemb": "acople-rapido-hembra.jpg",
     "ea-acop-mach": "acople-rapido-macho.jpg",
     "ea-kit-pist": "kit-de-pistolas.jpg",
-    "ea-pist-inf": "kit-de-pistolas.jpg",
-    "ea-pist-sop": "kit-de-pistolas.jpg",
-    "ea-pist-lav": "kit-de-pistolas.jpg",
-    "ea-pist-suc": "kit-de-pistolas.jpg",
     "ea-mang": "manguera-flexible.jpg",
 }
 
@@ -62,6 +58,10 @@ NO_IMAGE = [
     "ea-lub",   # Lubricadores
     "ea-minlub", # Mini lubricador
     "ea-pist-coax", # Piston coaxial
+    "ea-pist-inf",  # Pistola inflar
+    "ea-pist-sop",  # Pistola soplar
+    "ea-pist-lav",  # Pistola lavar
+    "ea-pist-suc",  # Pistola suction
 ]
 
 with open(FILEPATH, "r", encoding="utf-8") as f:
