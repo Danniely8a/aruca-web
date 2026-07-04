@@ -36,7 +36,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/assets/logo.png"
+              src="/assets/logo.jpg"
               alt="ARUCA Maquinarias"
               width={44}
               height={44}

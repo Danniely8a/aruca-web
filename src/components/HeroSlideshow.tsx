@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const images = [
   { src: "/assets/hero-bg.jpg", alt: "Maquinaria industrial" },
-  { src: "/assets/hero-saw.png", alt: "Sierra de mesa profesional" },
+  { src: "/assets/hero-saw.jpg", alt: "Sierra de mesa profesional" },
   { src: "/assets/hero-compressor.webp", alt: "Compresor Euroair" },
   { src: "/assets/hero-test1.jpg", alt: "Engranajes industriales" },
 ];
