@@ -32,7 +32,6 @@ IMAGE_MAP = {
     "ea-pres-bal": "presostato-frente.jpg",
     "ea-pres-trif": "presostato-palanca.jpg",
     "ea-pres-bomb": "presostato-bomba.jpg",
-    "ea-tpres": "presostato-palanca.jpg",
     "ea-red": "reductor-de-presion.jpg",
     "ea-desv": "desvio-manifold.jpg",
     "ea-man-25-rad": "manometro-lateral.jpg",
@@ -40,7 +39,6 @@ IMAGE_MAP = {
     "ea-man-1-post": "manometro-posterior-peq.jpg",
     "ea-conex": "codo-comp.jpg",
     "ea-llp": "codo-comp.jpg",
-    "ea-tub": "codo-comp.jpg",
     "ea-acop-hemb": "acople-rapido-hembra.jpg",
     "ea-acop-mach": "acople-rapido-macho.jpg",
     "ea-kit-pist": "kit-de-pistolas.jpg",
@@ -62,6 +60,8 @@ NO_IMAGE = [
     "ea-pist-sop",  # Pistola soplar
     "ea-pist-lav",  # Pistola lavar
     "ea-pist-suc",  # Pistola suction
+    "ea-tpres",     # Telepresostato
+    "ea-tub",       # Tuberia compresor
 ]
 
 with open(FILEPATH, "r", encoding="utf-8") as f:
