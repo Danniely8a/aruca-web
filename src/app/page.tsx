@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -367,7 +368,7 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.filter(p => p.featured).slice(0, 6).map((product, index) => (
+            {products.filter(p => p.featured).slice(0, 7).map((product, index) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -379,13 +380,21 @@ export default function Home() {
                   href={`/productos/${product.slug}`}
                   className="block bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group"
                 >
-                  <div className="aspect-[4/3] bg-gray-50 flex items-center justify-center p-6 overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-50 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                  <div className="aspect-[4/3] bg-gray-50 flex items-center justify-center overflow-hidden relative">
+                    {product.image ? (
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
                       <div className="text-center">
                         <p className="text-brand font-bold text-lg">{product.brand}</p>
                         <p className="text-gray-400 text-xs mt-1">{product.model}</p>
                       </div>
-                    </div>
+                    )}
                   </div>
                   <div className="p-5">
                     <div className="flex items-center gap-2 mb-2">
