@@ -297,7 +297,7 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
-            {brands.map((brand, index) => (
+            {brands.filter(b => !["Carborundum", "Sambara", "Menequim", "BlueXpress", "Microflex", "PPG", "Pikazo", "REXON", "Stanley", "Sagola"].includes(b.name)).map((brand, index) => (
               <motion.div
                 key={brand.id}
                 initial={{ opacity: 0, scale: 0.9 }}
