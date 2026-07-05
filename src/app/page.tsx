@@ -284,10 +284,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12 lg:mb-16"
           >
-            <span className="inline-block px-4 py-1.5 bg-accent-orange/10 text-accent-orange text-sm font-semibold rounded-full mb-4">
+            <span className="inline-block px-4 py-1.5 bg-accent-orange/10 text-accent-orange text-sm font-semibold rounded-full mb-4 uppercase tracking-wide">
               Marcas Aliadas
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 uppercase">
               Trabajamos con las Mejores Marcas
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto">
