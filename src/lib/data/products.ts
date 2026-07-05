@@ -36,7 +36,6 @@ export const products: Product[] = [
       "Dimensiones (LxAxA)": "686x560x308mm",
       "Peso neto": "17.8-18.9Kg (39.2-41.7lbs)",
     },
-    featured: true,
   },
   {
     id: "2",
@@ -58,7 +57,6 @@ export const products: Product[] = [
       "Peso neto": "27.1-27.6Kg (59.7-60.9lbs)",
     },
     included: "Llave hexagonal, llave de disco, sujetadores magnéticos (2x)",
-    featured: true,
   },
 
   // ─── INGLETADORAS ────────────────────────────────────────
@@ -84,7 +82,6 @@ export const products: Product[] = [
       "Peso neto": "20.6Kg (45.4lbs)",
     },
     included: "Broca con filo de carburo de Tungsteno TCT, tornillo de banco vertical, llave para dados, regla triangular, bolsa para polvo, ensamble de soporte",
-    featured: true,
   },
   {
     id: "4",
@@ -106,7 +103,6 @@ export const products: Product[] = [
       "Peso neto": "12.6Kg (27.8lbs)",
     },
     included: "Llave de tubo, bolsa recolectora, depósitos (2x), escuadra, disco",
-    featured: true,
   },
 
   // ─── SIERRAS ─────────────────────────────────────────────
@@ -132,7 +128,6 @@ export const products: Product[] = [
       "Peso neto": "18.7Kg (41.2lbs)",
     },
     included: "Disco abrasivo",
-    featured: true,
   },
   {
     id: "6",
@@ -155,7 +150,6 @@ export const products: Product[] = [
       "Peso neto": "5Kg (11lbs)",
     },
     included: "Disco de carburo, llave hexagonal, guía de corte",
-    featured: true,
   },
   {
     id: "7",
@@ -445,7 +439,6 @@ export const products: Product[] = [
       "Peso neto": "2.9Kg (6.4lbs)",
     },
     included: "Calibrador de profundidad, empuñadura",
-    featured: true,
   },
   {
     id: "20",
@@ -771,7 +764,6 @@ export const products: Product[] = [
       "Peso neto": "1.89-2.23Kg (4.17-4.91lbs)",
     },
     included: "Disco de desbaste, llave, empuñadura lateral",
-    featured: true,
   },
   {
     id: "36",
@@ -885,7 +877,6 @@ export const products: Product[] = [
       "Atornillador - Peso": "1.3Kg",
     },
     included: "2 Baterías (1.5Ah), Cargador DC18RC",
-    featured: true,
   },
 
   // ─── LXT INALÁMBRICOS ────────────────────────────────────
@@ -3989,6 +3980,7 @@ export const products: Product[] = [
     shortDescription: "Cemento de contacto 9K - Cuñete.",
     category: "Adhesivos y Pegamentos",
         image: "/assets/product-images/forza/FORZA 9K CUNO.jpg",
+    featured: true,
   },
   {
     id: "forza-9k-galon",
@@ -5735,6 +5727,7 @@ export const products: Product[] = [
     brand: "Milescraft", model: "1324", description: "Plantilla de tornillos ocultos. PocketJig 100.",
     shortDescription: "Plantilla de tornillos ocultos.", category: "Accesorios para Carpintero",
     image: "/assets/product-images/milescraft/1324.jpg",
+    featured: true,
   },
   {
     id: "ms-1325", slug: "milescraft-1325-pocketjig-200", name: "1325 - Plantilla de Tornillos Ocultos PocketJig 200",
@@ -6533,6 +6526,7 @@ export const products: Product[] = [
     shortDescription: "Titebond Instant Bond 2oz.",
     category: "Adhesivos y Pegamentos",
     image: "/assets/product-images/titebond/TITEBOND INSTANT BOND.webp",
+    featured: true,
   },
   {
     id: "tb-original-18",
@@ -6871,7 +6865,7 @@ export const products: Product[] = [
   { id: "brm-012-0-1", slug: "bremas-switch-0-1-12amp", name: "Bremas Switch 0-1 12amp", brand: "Bremas", model: "CA0120003PL2", description: "Switch 0-1, 12 amp. Codigo: CA0120003PL2.", shortDescription: "Switch 0-1 12amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
   { id: "brm-016-0-1", slug: "bremas-switch-0-1-16amp", name: "Bremas Switch 0-1 16amp", brand: "Bremas", model: "CA0160003PL2", description: "Switch 0-1, 16 amp. Codigo: CA0160003PL2.", shortDescription: "Switch 0-1 16amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
   { id: "brm-020-0-1", slug: "bremas-switch-0-1-20amp", name: "Bremas Switch 0-1 20amp", brand: "Bremas", model: "CA0200003PL2", description: "Switch 0-1, 20 amp. Codigo: CA0200003PL2.", shortDescription: "Switch 0-1 20amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
-  { id: "brm-025-0-1", slug: "bremas-switch-0-1-25amp", name: "Bremas Switch 0-1 25amp", brand: "Bremas", model: "CA0250003PL2", description: "Switch 0-1, 25 amp. Codigo: CA0250003PL2.", shortDescription: "Switch 0-1 25amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
+  { id: "brm-025-0-1", slug: "bremas-switch-0-1-25amp", name: "Bremas Switch 0-1 25amp", brand: "Bremas", model: "CA0250003PL2", description: "Switch 0-1, 25 amp. Codigo: CA0250003PL2.", shortDescription: "Switch 0-1 25amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" , featured: true},
   { id: "brm-032-0-1", slug: "bremas-switch-0-1-32amp", name: "Bremas Switch 0-1 32amp", brand: "Bremas", model: "CA0320003PL2", description: "Switch 0-1, 32 amp. Codigo: CA0320003PL2.", shortDescription: "Switch 0-1 32amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
   { id: "brm-040-0-1", slug: "bremas-switch-0-1-40amp", name: "Bremas Switch 0-1 40amp", brand: "Bremas", model: "CA0400003PL2", description: "Switch 0-1, 40 amp. Codigo: CA0400003PL2.", shortDescription: "Switch 0-1 40amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
   { id: "brm-050-0-1", slug: "bremas-switch-0-1-50amp", name: "Bremas Switch 0-1 50amp", brand: "Bremas", model: "CA0500003PL2", description: "Switch 0-1, 50 amp. Codigo: CA0500003PL2.", shortDescription: "Switch 0-1 50amp.", category: "Switches", image: "/assets/product-images/bremas/SWITCH 0-1.jpg" },
@@ -7002,7 +6996,7 @@ export const products: Product[] = [
 
   // ─── ICA PINTURAS ──────────────────────────────────────────
   { id: "ica-sellador-fp280v", slug: "ica-kit-sellador-pu-fp280v", name: "ICA Kit Sellador P.U FP280V-05", brand: "ICA", model: "FP280V-05", description: "Kit de sellador poliuretano ICA FP280V-05 para madera. Alta penetración y protección contra humedad y manchas. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit sellador P.U FP280V-05.", category: "Pinturas", subcategory: "Selladores", image: "/assets/product-images/ica/ICA KIT SELLADOR P.U.jpg" },
-  { id: "ica-fondo-blanco-fp1031b", slug: "ica-kit-fondo-blanco-pu-fp1031b", name: "ICA Kit Fondo Blanco P.U FP1031B-05", brand: "ICA", model: "FP1031B-05", description: "Kit de fondo blanco poliuretano ICA FP1031B-05 para madera. Cubrimiento uniforme y adherencia superior. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit fondo blanco P.U FP1031B-05.", category: "Pinturas", subcategory: "Fondos", image: "/assets/product-images/ica/ICA KIT FONDO BLANCO P.U.jpg" },
+  { id: "ica-fondo-blanco-fp1031b", slug: "ica-kit-fondo-blanco-pu-fp1031b", name: "ICA Kit Fondo Blanco P.U FP1031B-05", brand: "ICA", model: "FP1031B-05", description: "Kit de fondo blanco poliuretano ICA FP1031B-05 para madera. Cubrimiento uniforme y adherencia superior. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit fondo blanco P.U FP1031B-05.", category: "Pinturas", subcategory: "Fondos", image: "/assets/product-images/ica/ICA KIT FONDO BLANCO P.U.jpg" , featured: true},
   { id: "ica-tr-satinado-op550g30v", slug: "ica-kit-transparente-satinado-op550g30v", name: "ICA Kit Transparente Satinado OP550G30V-05", brand: "ICA", model: "OP550G30V-05", description: "Kit de transparente satinado ICA OP550G30V-05 para madera. Acabado satinado con alta resistencia al desgaste. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit transparente satinado OP550G30V-05.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA KIT TR SATINADO P.U.jpg" },
   { id: "ica-tr-mate-op550g10v", slug: "ica-kit-transparente-mate-op550g10v", name: "ICA Kit Transparente Mate OP550G10V-05", brand: "ICA", model: "OP550G10V-05", description: "Kit de transparente mate ICA OP550G10V-05 para madera. Acabado mate natural con protección duradera. Presentación: Kit de 7.5 litros que corresponden a: 5 litros de base, 2.5 litros de catalizador (C-265) se usa al 50%.", shortDescription: "Kit transparente mate OP550G10V-05.", category: "Pinturas", subcategory: "Transparentes", image: "/assets/product-images/ica/ICA KIT TR MATE P.U.jpg" },
 
@@ -7298,7 +7292,7 @@ export const products: Product[] = [
   { id: "ea-pist-coax", slug: "euroair-piston-coaxial", name: "Euroair Piston Coaxial", brand: "Euroair", model: "N/A", description: "Piston para compresor coaxial.", shortDescription: "Piston coaxial.", category: "Accesorios para Compresores", subcategory: "Pistones", image: "", specs: { "Tipo": "Coaxial" } },
   { id: "ea-rued-5", slug: "euroair-ruedas-5", name: "Euroair Ruedas 5\"", brand: "Euroair", model: "N/A", description: "Ruedas para compresor de 5\".", shortDescription: "Ruedas 5\".", category: "Accesorios para Compresores", subcategory: "Accesorios", image: "/assets/product-images/ruedas.jpg", specs: { "Medida": "5\"" } },
   { id: "ea-rued-7", slug: "euroair-ruedas-7", name: "Euroair Ruedas 7\"", brand: "Euroair", model: "N/A", description: "Ruedas para compresor de 7\".", shortDescription: "Ruedas 7\".", category: "Accesorios para Compresores", subcategory: "Accesorios", image: "/assets/product-images/ruedas.jpg", specs: { "Medida": "7\"" } },
-  { id: "ea-pres-nema-4v", slug: "euroair-presostato-tipo-nema-monofasico-4v", name: "Euroair Presostato Tipo Nema Monofasico 4V", brand: "Euroair", model: "N/A", description: "Presostato tipo Nema, monofasico, 4 voltios.", shortDescription: "Presostato Nema Mono 4V.", category: "Accesorios para Compresores", subcategory: "Presostatos", image: "/assets/product-images/presostato-4-vias.jpg", specs: { "Tipo": "Nema", "Fase": "Monofasico", "Voltaje": "4V" } },
+  { id: "ea-pres-nema-4v", slug: "euroair-presostato-tipo-nema-monofasico-4v", name: "Euroair Presostato Tipo Nema Monofasico 4V", brand: "Euroair", model: "N/A", description: "Presostato tipo Nema, monofasico, 4 voltios.", shortDescription: "Presostato Nema Mono 4V.", category: "Accesorios para Compresores", subcategory: "Presostatos", image: "/assets/product-images/presostato-4-vias.jpg", specs: { "Tipo": "Nema", "Fase": "Monofasico", "Voltaje": "4V" } , featured: true},
   { id: "ea-pres-nema-1v", slug: "euroair-presostato-tipo-nema-monofasico-1v", name: "Euroair Presostato Tipo Nema Monofasico 1V", brand: "Euroair", model: "N/A", description: "Presostato tipo Nema, monofasico, 1 voltio.", shortDescription: "Presostato Nema Mono 1V.", category: "Accesorios para Compresores", subcategory: "Presostatos", image: "/assets/product-images/presostato-1-via.jpg", specs: { "Tipo": "Nema", "Fase": "Monofasico", "Voltaje": "1V" } },
   { id: "ea-pres-bal-4v", slug: "euroair-presostato-balanca-monofasico-4v", name: "Euroair Presostato Balanca Monofasico 4V", brand: "Euroair", model: "N/A", description: "Presostato tipo Balanca, monofasico, 4 voltios.", shortDescription: "Presostato Balanca Mono 4V.", category: "Accesorios para Compresores", subcategory: "Presostatos", image: "/assets/product-images/presostato-frente.jpg", specs: { "Tipo": "Balanca", "Fase": "Monofasico", "Voltaje": "4V" } },
   { id: "ea-pres-trif", slug: "euroair-presostato-sin-boton-trifasico", name: "Euroair Presostato Sin Boton Trifasico", brand: "Euroair", model: "N/A", description: "Presostato sin boton, trifasico.", shortDescription: "Presostato sin boton trifasico.", category: "Accesorios para Compresores", subcategory: "Presostatos", image: "/assets/product-images/presostato-palanca.jpg", specs: { "Tipo": "Sin Boton", "Fase": "Trifasico" } },
