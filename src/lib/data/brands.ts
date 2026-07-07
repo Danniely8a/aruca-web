@@ -341,6 +341,13 @@ export const brands: Brand[] = [
     category: "Compresores",
     country: "Internacional",
   },
+  {
+    id: "first",
+    name: "FIRST",
+    description: "Discos de corte HM y HSS para múltiple, seccionadora y aluminio.",
+    category: "Discos",
+    country: "Internacional",
+  },
 ];
 
 export const brandCategories = [
