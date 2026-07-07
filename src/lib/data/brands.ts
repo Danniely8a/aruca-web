@@ -334,6 +334,13 @@ export const brands: Brand[] = [
     country: "Internacional",
     logo: "/assets/brands/unicol.jpg",
   },
+  {
+    id: "shamal",
+    name: "Shamal",
+    description: "Compresores a tornillo y secadores de aire industriales.",
+    category: "Compresores",
+    country: "Internacional",
+  },
 ];
 
 export const brandCategories = [
