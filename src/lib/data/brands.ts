@@ -348,6 +348,13 @@ export const brands: Brand[] = [
     category: "Discos",
     country: "Internacional",
   },
+  {
+    id: "gav",
+    name: "GAV",
+    description: "Valvulas de bronce italianas para compresores: seguridad, check y accesorios.",
+    category: "Valvulas",
+    country: "Italia",
+  },
 ];
 
 export const brandCategories = [
