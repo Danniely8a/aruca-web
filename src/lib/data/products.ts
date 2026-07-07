@@ -6528,6 +6528,7 @@ export const products: Product[] = [
     image: "/assets/product-images/titebond/TITEBOND INSTANT BOND.webp",
     featured: true,
   },
+  { id: "tb-771-step-cunete", slug: "titebond-771-step-cunete", name: "Titebond 771 Step Cuñete", brand: "Titebond", model: "771 Step", description: "Adhesivo Titebond 771 Step para pisos en cuñete. Formulado para la instalacion de pisos de madera.", shortDescription: "Titebond 771 Step Cuñete.", category: "Adhesivos y Pegamentos", image: "/assets/product-images/titebond/titebond-771-step-cunete.jpg" },
   {
     id: "tb-original-18",
     slug: "titebond-original-1-8-0-473l",
