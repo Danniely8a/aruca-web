@@ -7614,6 +7614,9 @@ export const products: Product[] = [
   { id: "ea-cab-30100", slug: "euroair-cabezal-compresor-15hp12bar-30100", name: "Euroair Cabezal para Compresor 15HP 12BAR Orientacion W Modelo 30100", brand: "EUROAIR", model: "30100", description: "Cabezal para compresor a correa Euroair 15HP 12BAR. Orientacion W. Modelo 30100.", shortDescription: "Cabezal compresor 15HP 12BAR W.", category: "Compresores", subcategory: "Cabezales Compresor Correa", image: "" },
   { id: "ea-cab-30120", slug: "euroair-cabezal-compresor-20hp8bar-30120", name: "Euroair Cabezal para Compresor 20HP 8BAR Orientacion W Modelo 30120", brand: "EUROAIR", model: "30120", description: "Cabezal para compresor a correa Euroair 20HP 8BAR. Orientacion W. Modelo 30120.", shortDescription: "Cabezal compresor 20HP 8BAR W.", category: "Compresores", subcategory: "Cabezales Compresor Correa", image: "" },
   { id: "ea-cab-2155t", slug: "euroair-cabezal-compresor-25hp12bar-2155t", name: "Euroair Cabezal para Compresor 25HP 12BAR Orientacion V Modelo 2155T", brand: "EUROAIR", model: "2155T", description: "Cabezal para compresor a correa Euroair 25HP 12BAR. Orientacion V. Modelo 2155T.", shortDescription: "Cabezal compresor 25HP 12BAR V.", category: "Compresores", subcategory: "Cabezales Compresor Correa", image: "" },
+  { id: "cmt-con-disco-alu-7-1-4", slug: "cmt-disco-aluminio-7-1-4-z56-p-7056n", name: "CMT DISCO PARA METALES NO FERROSOS (ALUMINIO) 7-1/4\" Z56 P-7056N", brand: "CMT Contractor", model: "P-7056N", description: "Disco CMT Contractor para metales no ferrosos (aluminio). Diametro 7-1/4\". Cuerpo 1,6mm. Espesor 2,21mm. Hueco 5/8\". Z56 dientes. Codigo P-7056N.", shortDescription: "Disco CMT aluminio 7-1/4\" Z56.", category: "Discos", subcategory: "Discos para Aluminio", image: "/assets/product-images/cmt-contractor/P07056N.jpg" },
+  { id: "cmt-con-disco-alu-10", slug: "cmt-disco-aluminio-10-z80-p10080n", name: "CMT DISCO PARA METALES NO FERROSOS (ALUMINIO) 10\" Z80 P10080N", brand: "CMT Contractor", model: "P10080N", description: "Disco CMT Contractor para metales no ferrosos (aluminio). Diametro 10\". Cuerpo 1,6mm. Espesor 2,38mm. Hueco 5/8\". Z80 dientes. Codigo P10080N.", shortDescription: "Disco CMT aluminio 10\" Z80.", category: "Discos", subcategory: "Discos para Aluminio", image: "/assets/product-images/cmt-contractor/P10080N.jpg" },
+  { id: "cmt-con-disco-alu-12", slug: "cmt-disco-aluminio-12-z96-p12096n", name: "CMT DISCO PARA METALES NO FERROSOS (ALUMINIO) 12\" Z96 P12096N", brand: "CMT Contractor", model: "P12096N", description: "Disco CMT Contractor para metales no ferrosos (aluminio). Diametro 12\". Cuerpo 2mm. Espesor 2,79mm. Hueco 1\". Z96 dientes. Codigo P12096N.", shortDescription: "Disco CMT aluminio 12\" Z96.", category: "Discos", subcategory: "Discos para Aluminio", image: "/assets/product-images/cmt-contractor/P12096N.jpg" },
 ];
 
 export const productCategories = [
@@ -7649,6 +7652,7 @@ export const productCategories = [
 export const productSubcategories = [
   "Todos",
   "Discos",
+  "Discos para Aluminio",
   "Cuchillas",
   "Fresas",
   "Mechas",
