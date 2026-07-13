@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -31,6 +31,8 @@ const sortOptions: { value: SortOption; label: string }[] = [
 
 export default function CatalogoPage() {
   const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const debounceTimer = useRef<NodeJS.Timeout | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [selectedSubcategory, setSelectedSubcategory] = useState("Todos");
   const [selectedBrand, setSelectedBrand] = useState("Todos");
@@ -43,10 +45,11 @@ export default function CatalogoPage() {
     return products
       .filter((product) => {
         const matchesSearch =
-          product.name.toLowerCase().includes(search.toLowerCase()) ||
-          product.brand.toLowerCase().includes(search.toLowerCase()) ||
-          product.model.toLowerCase().includes(search.toLowerCase()) ||
-          product.shortDescription.toLowerCase().includes(search.toLowerCase());
+          product.name.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+          product.brand.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+          product.model.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+          product.description.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+          product.shortDescription.toLowerCase().includes(debouncedSearch.toLowerCase());
         const matchesCategory =
           selectedCategory === "Todos" || product.category === selectedCategory;
         const matchesSubcategory =
@@ -65,7 +68,7 @@ export default function CatalogoPage() {
             return a.name.localeCompare(b.name);
         }
       });
-  }, [search, selectedCategory, selectedSubcategory, selectedBrand, sortBy]);
+  }, [debouncedSearch, selectedCategory, selectedSubcategory, selectedBrand, sortBy]);
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
   const paginatedProducts = filteredProducts.slice(
@@ -94,6 +97,10 @@ export default function CatalogoPage() {
   const handleSearchChange = (value: string) => {
     setSearch(value);
     setCurrentPage(1);
+    if (debounceTimer.current) clearTimeout(debounceTimer.current);
+    debounceTimer.current = setTimeout(() => {
+      setDebouncedSearch(value);
+    }, 250);
   };
 
   const getPageNumbers = () => {
