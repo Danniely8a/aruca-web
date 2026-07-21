@@ -55,7 +55,7 @@ export default function CatalogoPage() {
         const matchesSubcategory =
           selectedSubcategory === "Todos" || product.subcategory === selectedSubcategory;
         const matchesBrand =
-          selectedBrand === "Todos" || product.brand === selectedBrand;
+          selectedBrand === "Todos" || product.brand.toLowerCase() === selectedBrand.toLowerCase();
         return matchesSearch && matchesCategory && matchesSubcategory && matchesBrand;
       })
       .sort((a, b) => {
