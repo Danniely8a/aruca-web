@@ -355,6 +355,14 @@ export const brands: Brand[] = [
     category: "Valvulas",
     country: "Italia",
   },
+  {
+    id: "prexiso",
+    name: "Prexiso",
+    description: "Herramientas de medición y marcado profesional de alta precisión.",
+    category: "Herramientas de Medición",
+    country: "Internacional",
+    logo: "",
+  },
 ];
 
 export const brandCategories = [
@@ -375,4 +383,5 @@ export const brandCategories = [
   "Adhesivos y Solventes",
   "Seguridad Industrial",
   "Pistolas de Pintura",
+  "Herramientas de Medición",
 ];
