@@ -8327,6 +8327,7 @@ export const productSubcategories = [
   "Seguridad",
   "Herramientas Manuales",
   "Compresores",
+  "Compresores Dentales",
   "Abrasivos",
   "Clavos y Grapas",
   "Plantillas y GuÃ­as",
