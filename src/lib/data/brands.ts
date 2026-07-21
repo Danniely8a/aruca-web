@@ -363,6 +363,14 @@ export const brands: Brand[] = [
     country: "Internacional",
     logo: "",
   },
+  {
+    id: "kex",
+    name: "KEX",
+    description: "Herramientas y productos profesionales para la industria.",
+    category: "Herramientas Manuales",
+    country: "Internacional",
+    logo: "",
+  },
 ];
 
 export const brandCategories = [
