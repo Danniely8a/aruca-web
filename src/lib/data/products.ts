@@ -6715,6 +6715,7 @@ export const products: Product[] = [
     category: "Adhesivos y Pegamentos",
     image: "/assets/product-images/titebond/TITEBOND TONGUE GROOVE.avif",
   },
+  { id: "tb-771-step-cunete", slug: "titebond-771-step-cunete", name: "Titebond 771 Step Cu\u00f1ete", brand: "Titebond", model: "771 Step", description: "Adhesivo Titebond 771 Step para pisos en cu\u00f1ete. Formulado para la instalacion de pisos de madera.", shortDescription: "Titebond 771 Step Cu\u00f1ete.", category: "Adhesivos y Pegamentos", image: "/assets/product-images/titebond/titebond-771-step-cunete.jpg" },
   {
     id: "tb-771-step",
     slug: "titebond-771-step-flooring-sausage-591ml",
