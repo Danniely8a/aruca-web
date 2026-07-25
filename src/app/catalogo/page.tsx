@@ -36,6 +36,14 @@ export default function CatalogoPage() {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [selectedSubcategory, setSelectedSubcategory] = useState("Todos");
   const [selectedBrand, setSelectedBrand] = useState("Todos");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const brand = params.get("brand");
+    if (brand) {
+      setSelectedBrand(brand);
+    }
+  }, []);
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [sortBy, setSortBy] = useState<SortOption>("name");
   const [showFilters, setShowFilters] = useState(false);
