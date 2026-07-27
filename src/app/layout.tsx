@@ -17,6 +17,10 @@ export const metadata: Metadata = {
     "carpintería",
     "ARUCA",
   ],
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/assets/logo.jpg",
+  },
 };
 
 export default function RootLayout({
