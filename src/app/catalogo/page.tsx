@@ -14,9 +14,11 @@ import {
   Package,
   ChevronLeft,
   ChevronRight,
+  ShoppingCart,
 } from "lucide-react";
 import { products, productCategories, productSubcategories } from "@/lib/data/products";
 import { brands } from "@/lib/data/brands";
+import { useCart } from "@/lib/context/CartContext";
 
 type ViewMode = "grid" | "list";
 type SortOption = "name" | "brand" | "category";
@@ -36,6 +38,7 @@ export default function CatalogoPage() {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [selectedSubcategory, setSelectedSubcategory] = useState("Todos");
   const [selectedBrand, setSelectedBrand] = useState("Todos");
+  const { addItem } = useCart();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -428,9 +431,29 @@ export default function CatalogoPage() {
                       {product.name}
                     </h3>
                     <p className="text-sm text-gray-500 line-clamp-2 mb-3">{product.shortDescription}</p>
-                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent-orange group-hover:gap-2 transition-all">
-                      Ver Detalles<ArrowRight size={14} />
-                    </span>
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent-orange group-hover:gap-2 transition-all">
+                        Ver Detalles<ArrowRight size={14} />
+                      </span>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          addItem({
+                            id: product.id,
+                            slug: product.slug,
+                            name: product.name,
+                            brand: product.brand,
+                            model: product.model,
+                            image: product.image || "",
+                          });
+                        }}
+                        className="p-2 bg-brand/10 text-brand rounded-lg hover:bg-brand hover:text-white transition-colors"
+                        title="Agregar al carrito"
+                      >
+                        <ShoppingCart size={16} />
+                      </button>
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -481,6 +504,24 @@ export default function CatalogoPage() {
                           {product.name}
                         </h3>
                         <p className="text-sm text-gray-500 mb-3">{product.shortDescription}</p>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            addItem({
+                              id: product.id,
+                              slug: product.slug,
+                              name: product.name,
+                              brand: product.brand,
+                              model: product.model,
+                              image: product.image || "",
+                            });
+                          }}
+                          className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 bg-brand/10 text-brand rounded-lg hover:bg-brand hover:text-white transition-colors text-xs font-medium"
+                        >
+                          <ShoppingCart size={12} />
+                          Agregar
+                        </button>
                       </div>
                       <span className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-accent-orange group-hover:gap-2 transition-all whitespace-nowrap">
                         Ver Detalles<ArrowRight size={14} />
@@ -498,6 +539,24 @@ export default function CatalogoPage() {
                     <span className="sm:hidden inline-flex items-center gap-1 text-sm font-semibold text-accent-orange mt-3">
                       Ver Detalles<ArrowRight size={14} />
                     </span>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        addItem({
+                          id: product.id,
+                          slug: product.slug,
+                          name: product.name,
+                          brand: product.brand,
+                          model: product.model,
+                          image: product.image || "",
+                        });
+                      }}
+                      className="mt-3 sm:hidden flex items-center gap-2 px-4 py-2 bg-brand/10 text-brand rounded-lg hover:bg-brand hover:text-white transition-colors text-sm font-medium w-fit"
+                    >
+                      <ShoppingCart size={14} />
+                      Agregar al Carrito
+                    </button>
                   </div>
                 </Link>
               ))}

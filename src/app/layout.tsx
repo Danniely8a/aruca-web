@@ -4,6 +4,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileNav from "@/components/layout/MobileNav";
 import WhatsAppButton from "@/components/whatsapp/WhatsAppButton";
+import CartDrawer from "@/components/cart/CartDrawer";
+import { CartProvider } from "@/lib/context/CartContext";
 
 export const metadata: Metadata = {
   title: "ARUCA Maquinarias | Soluciones para la Industria de la Madera",
@@ -31,11 +33,14 @@ export default function RootLayout({
   return (
     <html lang="es" className="h-full antialiased">
       <body className="min-h-full flex flex-col font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <MobileNav />
-        <WhatsAppButton />
+        <CartProvider>
+          <Header />
+          <CartDrawer />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <MobileNav />
+          <WhatsAppButton />
+        </CartProvider>
       </body>
     </html>
   );

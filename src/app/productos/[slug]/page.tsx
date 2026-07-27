@@ -9,9 +9,11 @@ import {
   ArrowRight,
   MessageCircle,
   Tag,
+  ShoppingCart,
 } from "lucide-react";
 import { products } from "@/lib/data/products";
 import { company } from "@/lib/data/company";
+import { useCart } from "@/lib/context/CartContext";
 
 export default function ProductDetailPage({
   params,
@@ -20,6 +22,7 @@ export default function ProductDetailPage({
 }) {
   const { slug } = use(params);
   const product = products.find((p) => p.slug === slug);
+  const { addItem } = useCart();
 
   if (!product) {
     return (
@@ -154,6 +157,22 @@ export default function ProductDetailPage({
               )}
 
               <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() =>
+                    addItem({
+                      id: product.id,
+                      slug: product.slug,
+                      name: product.name,
+                      brand: product.brand,
+                      model: product.model,
+                      image: product.image || "",
+                    })
+                  }
+                  className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all"
+                >
+                  <ShoppingCart size={18} />
+                  Agregar al Carrito
+                </button>
                 <button
                   onClick={handleWhatsAppQuote}
                   className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all"
