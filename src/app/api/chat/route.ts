@@ -6,8 +6,8 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent';
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
 function buildSystemPrompt(products: any[], knowledgeBase: any[]): string {
   const productContext = products.slice(0, 150).map(p =>
@@ -72,8 +72,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Message and sessionId required' }, { status: 400 });
     }
 
-    if (!GEMINI_API_KEY) {
-      return NextResponse.json({ error: 'Gemini API key not configured' }, { status: 500 });
+    if (!OPENROUTER_API_KEY) {
+      return NextResponse.json({ error: 'OpenRouter API key not configured' }, { status: 500 });
     }
 
     // Get recent chat history for context
@@ -99,58 +99,56 @@ export async function POST(request: NextRequest) {
 
     const systemPrompt = buildSystemPrompt(products || [], knowledgeBase || []);
 
-    // Build conversation history for Gemini
-    const contents: any[] = [];
+    // Build messages array for OpenAI-compatible API
+    const messages: any[] = [
+      { role: 'system', content: systemPrompt },
+    ];
 
     if (recentChats && recentChats.length > 0) {
       for (const chat of recentChats) {
-        contents.push({
-          role: chat.role === 'user' ? 'user' : 'model',
-          parts: [{ text: chat.message }]
+        messages.push({
+          role: chat.role === 'user' ? 'user' : 'assistant',
+          content: chat.message,
         });
       }
     }
 
-    // Add current message
-    contents.push({
-      role: 'user',
-      parts: [{ text: message }]
-    });
+    messages.push({ role: 'user', content: message });
 
-    // Call Gemini API with retry
+    // Call OpenRouter API with retry
     let reply = '';
-    let lastError = '';
     for (let attempt = 0; attempt < 3; attempt++) {
-      if (attempt > 0) await new Promise(r => setTimeout(r, 3000 * attempt));
-      
-      const response = await fetch(`${GEMINI_URL}?key=${GEMINI_API_KEY}`, {
+      if (attempt > 0) await new Promise(r => setTimeout(r, 2000 * attempt));
+
+      const response = await fetch(OPENROUTER_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+          'HTTP-Referer': 'https://arucamaquinarias.com',
+          'X-Title': 'ARUCA Maquinarias Chatbot',
+        },
         body: JSON.stringify({
-          contents,
-          systemInstruction: { parts: [{ text: systemPrompt }] },
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 500,
-            topP: 0.8,
-            topK: 40,
-          },
+          model: 'google/gemma-4-26b-a4b-it:free',
+          messages,
+          temperature: 0.7,
+          max_tokens: 500,
+          top_p: 0.8,
         }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        reply = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        reply = data.choices?.[0]?.message?.content || '';
         if (reply) break;
       } else {
         const error = await response.text();
-        lastError = error;
-        console.error(`Gemini API attempt ${attempt + 1} failed:`, error);
+        console.error(`OpenRouter API attempt ${attempt + 1} failed:`, error);
       }
     }
 
     if (!reply) {
-      reply = 'Lo siento, el servicio de IA no está disponible en este momento. Puedes escribirnos por WhatsApp al +58 412 610 9597 para atención inmediata.';
+      reply = 'Lo siento, el servicio no está disponible en este momento. Puedes escribirnos por WhatsApp al +58 412 610 9597 para atención inmediata.';
     }
 
     // Save user message
