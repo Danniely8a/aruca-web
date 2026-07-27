@@ -6,6 +6,7 @@ import MobileNav from "@/components/layout/MobileNav";
 import WhatsAppButton from "@/components/whatsapp/WhatsAppButton";
 import CartDrawer from "@/components/cart/CartDrawer";
 import ViewTracker from "@/components/ViewTracker";
+import ChatWidget from "@/components/chat/ChatWidget";
 import { CartProvider } from "@/lib/context/CartContext";
 
 export const metadata: Metadata = {
@@ -42,6 +43,7 @@ export default function RootLayout({
           <Footer />
           <MobileNav />
           <WhatsAppButton />
+          <ChatWidget />
         </CartProvider>
       </body>
     </html>

@@ -10,6 +10,7 @@ import {
   FolderTree,
   Building2,
   FileText,
+  MessageCircle,
   LogOut,
   Menu,
   X,
@@ -22,6 +23,7 @@ const navItems = [
   { href: "/admin/categorias", label: "Categorías", icon: FolderTree },
   { href: "/admin/marcas", label: "Marcas", icon: Building2 },
   { href: "/admin/contenido", label: "Contenido", icon: FileText },
+  { href: "/admin/chats", label: "Chats", icon: MessageCircle },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
