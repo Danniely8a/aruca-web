@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import crypto from 'crypto';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -9,59 +10,99 @@ const supabase = createClient(
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
-function buildSystemPrompt(products: any[], knowledgeBase: any[]): string {
-  const productContext = products.slice(0, 80).map(p =>
-    `- ${p.brand} ${p.name} (${p.model}): ${p.category} - ${p.subcategory}`
-  ).join('\n');
+function textToEmbedding(text: string): number[] {
+  const words = text.toLowerCase().match(/\w+/g) || [];
+  const embedding = new Array(384).fill(0);
 
+  for (const word of words) {
+    const h = crypto.createHash('md5').update(word).digest('hex');
+    const idx = parseInt(h, 16) % 384;
+    embedding[idx] += 1.0;
+    embedding[(idx + 1) % 384] += 0.5;
+    embedding[(idx + 383) % 384] += 0.5;
+    embedding[(idx + 7) % 384] += 0.3;
+  }
+
+  const norm = Math.sqrt(embedding.reduce((s, x) => s + x * x, 0));
+  if (norm > 0) {
+    for (let i = 0; i < embedding.length; i++) {
+      embedding[i] /= norm;
+    }
+  }
+
+  return embedding;
+}
+
+async function searchRelevantProducts(query: string): Promise<string> {
+  try {
+    const queryEmbedding = textToEmbedding(query);
+    const embeddingStr = '[' + queryEmbedding.join(',') + ']';
+
+    const { data, error } = await supabase.rpc('search_products', {
+      query_embedding: embeddingStr,
+      match_count: 8,
+    });
+
+    if (error || !data || data.length === 0) {
+      return '';
+    }
+
+    return data.map((p: any) => `- ${p.product_text} (similitud: ${(p.similarity * 100).toFixed(0)}%)`).join('\n');
+  } catch (err) {
+    console.error('Vector search error:', err);
+    return '';
+  }
+}
+
+function buildSystemPrompt(productResults: string, knowledgeBase: any[]): string {
   const kbContext = knowledgeBase.map(kb =>
-    `Pregunta: "${kb.question_pattern}" → Respuesta: "${kb.answer}"`
+    `Pregunta: "${kb.question_pattern}" -> Respuesta: "${kb.answer}"`
   ).join('\n');
 
-  return `Eres el asistente virtual de ARUCA Maquinarias, una empresa venezolana con más de 50 años de experiencia en distribución de maquinaria profesional para la industria de la madera.
+  return `Eres el asistente virtual de ARUCA Maquinarias, una empresa venezolana con mas de 50 anhos de experiencia en distribucion de maquinaria profesional para la industria de la madera.
 
 INSTRUCCIONES:
-- Responde SIEMPRE en español
-- Sé amable, profesional y conciso
-- Si no sabes algo, di "No tengo esa información, pero puedes escribirnos por WhatsApp al +58 412 610 9597 para más detalles"
-- Para cotizaciones, orienta al usuario a usar el formulario de cotización o WhatsApp
-- Usa emojis con moderación (1-2 por mensaje máximo)
-- Responde en máximo 3-4 oraciones a menos que te pidan más detalle
+- Responde SIEMPRE en espanol
+- Se amable, profesional y conciso
+- Si no sabes algo, di "No tengo esa informacion, pero puedes escribirnos por WhatsApp al +58 412 610 9597 para mas detalles"
+- Para cotizaciones, orienta al usuario a usar el formulario de cotizacion o WhatsApp
+- Usa emojis con moderacion (1-2 por mensaje maximo)
+- Responde en maximo 3-4 oraciones a menos que te pidan mas detalle
 - Si el usuario quiere hablar con una persona, ofrece el WhatsApp
+- Cuando menciones productos, incluye el nombre, marca y modelo exactos
+- Si el usuario pregunta por un producto, MENCIONA los productos encontrados por busqueda vectorial
 
-INFORMACIÓN DE LA EMPRESA:
+INFORMACION DE LA EMPRESA:
 - Nombre: ARUCA Maquinarias
-- Ubicación: Carrera Petare - Santa Lucía, Caracas 1073, Miranda, Venezuela
-- Teléfono: (0212) 532-1996
+- Ubicacion: Carrera Petare - Santa Lucia, Caracas 1073, Miranda, Venezuela
+- Telefono: (0212) 532-1996
 - WhatsApp: +58 412 610 9597
 - Email: aruca.maquinarias@gmail.com
-- Horario: Lunes a Viernes 8:00 AM - 5:00 PM, Sábados 8:00 AM - 12:00 PM
+- Horario: Lunes a Viernes 8:00 AM - 5:00 PM, Sabados 8:00 AM - 12:00 PM
 - Instagram: @arucavzla
 - Web: arucamaquinarias.com
 
 MARCAS QUE DISTRIBUIMOS:
-${products.length > 0 ? [...new Set(products.map(p => p.brand))].join(', ') : 'Makita, REXON, CMT, BlueXpress, Euroair, FIRST, GAV, y más'}
+Makita, REXON, CMT Orange Tools, CMT Contractor, BlueXpress, Euroair, FIRST, GAV, Thorex, Titebond, PPG, ICA, Bremas, Caiman, DAKIN, ICA, EuroTools, MORS, Tigra, Shamal, IPL, Nastroflex, Unicol, ISB, Sambara, Microflex
 
-PRODUCTOS DISPONIBLES (muestra representativa):
-${productContext}
-
-BASE DE CONOCIMIENTO (respuestas frecuentes):
-${kbContext}
-
-CATEGORÍAS PRINCIPALES:
+CATEGORIAS PRINCIPALES:
 - Maquinaria para Madera (sierras, ingletadoras, trompos, cepillos, etc.)
-- Herramientas Eléctricas (taladros, lijadoras, esmeriles, etc.)
+- Herramientas Electricas (taladros, lijadoras, esmeriles, etc.)
 - Herramientas de Corte (discos, fresas, cuchillas)
 - Compresores (Euroair, Shamal)
 - Pinturas y Acabados (PPG, ICA, Titebond)
 - Accesorios y Consumibles
 
+PRODUCTOS SIMILARES ENCONTRADOS EN LA BASE DE DATOS:
+${productResults || 'No se encontraron productos especificos para esta consulta.'}
+
 RESPUESTAS ESPECIALES:
-- Si preguntan por precios: "Para precios actualizados, te recomiendo contactar a nuestro equipo por WhatsApp al +58 412 610 9597. Ellos te darán la mejor cotización."
-- Si preguntan por disponibilidad: "Tenemos amplio inventario. Para confirmar disponibilidad de un producto específico, escríbenos por WhatsApp."
-- Si el usuario se enoja o frustra: "Lamento no haber podido ayudarte mejor. Para atención personalizada, puedes llamarnos al (0212) 532-1996 o escribirnos por WhatsApp."
-- Si preguntan por envíos: "Realizamos envíos a toda Venezuela. El costo depende de la ubicación y los productos. Consulta por WhatsApp para cotizar tu envío."
-- Si no entiendes la pregunta: "No estoy seguro de entender tu pregunta. ¿Podrías reformularla? También puedes escribirnos por WhatsApp para atención directa."`;
+- Si preguntan por precios: "Para precios actualizados, te recomiendo contactar a nuestro equipo por WhatsApp al +58 412 610 9597."
+- Si preguntan por disponibilidad: "Tenemos amplio inventario. Para confirmar disponibilidad de un producto especifico, escribenos por WhatsApp."
+- Si preguntan por envios: "Realizamos envios a toda Venezuela. El costo depende de la ubicacion y los productos."
+- Si no entiendes la pregunta: "No estoy seguro de entender tu pregunta. Podrias reformularla? Tambien puedes escribirnos por WhatsApp."
+- Si preguntan por compresores: menciona que somos distribuidores de Euroair y Shamal
+- Si preguntan por pintura: menciona PPG, ICA y Titebond`;
 }
 
 export async function POST(request: NextRequest) {
@@ -76,30 +117,27 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'OpenRouter API key not configured' }, { status: 500 });
     }
 
+    // Vector search for relevant products
+    const productResults = await searchRelevantProducts(message);
+
     // Get recent chat history for context
     const { data: recentChats } = await supabase
       .from('chat_logs')
       .select('role, message')
       .eq('session_id', sessionId)
       .order('created_at', { ascending: true })
-      .limit(20);
+      .limit(10);
 
     // Get knowledge base
     const { data: knowledgeBase } = await supabase
       .from('knowledge_base')
       .select('question_pattern, answer')
       .eq('is_active', true)
-      .limit(50);
+      .limit(20);
 
-    // Get products for context (limit to keep prompt small)
-    const { data: products } = await supabase
-      .from('products')
-      .select('brand, name, model, category, subcategory')
-      .limit(100);
+    const systemPrompt = buildSystemPrompt(productResults, knowledgeBase || []);
 
-    const systemPrompt = buildSystemPrompt(products || [], knowledgeBase || []);
-
-    // Build messages array for OpenAI-compatible API
+    // Build messages array
     const messages: any[] = [
       { role: 'system', content: systemPrompt },
     ];
@@ -154,7 +192,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (!reply) {
-      reply = 'Lo siento, el servicio no está disponible en este momento. Puedes escribirnos por WhatsApp al +58 412 610 9597 para atención inmediata.';
+      reply = 'Lo siento, el servicio no esta disponible en este momento. Puedes escribirnos por WhatsApp al +58 412 610 9597 para atencion inmediata.';
     }
 
     // Save user message
