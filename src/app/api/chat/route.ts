@@ -7,7 +7,7 @@ const supabase = createClient(
 );
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent';
 
 function buildSystemPrompt(products: any[], knowledgeBase: any[]): string {
   const productContext = products.slice(0, 150).map(p =>
@@ -117,30 +117,41 @@ export async function POST(request: NextRequest) {
       parts: [{ text: message }]
     });
 
-    // Call Gemini API
-    const response = await fetch(`${GEMINI_URL}?key=${GEMINI_API_KEY}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents,
-        systemInstruction: { parts: [{ text: systemPrompt }] },
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 500,
-          topP: 0.8,
-          topK: 40,
-        },
-      }),
-    });
+    // Call Gemini API with retry
+    let reply = '';
+    let lastError = '';
+    for (let attempt = 0; attempt < 3; attempt++) {
+      if (attempt > 0) await new Promise(r => setTimeout(r, 3000 * attempt));
+      
+      const response = await fetch(`${GEMINI_URL}?key=${GEMINI_API_KEY}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents,
+          systemInstruction: { parts: [{ text: systemPrompt }] },
+          generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 500,
+            topP: 0.8,
+            topK: 40,
+          },
+        }),
+      });
 
-    if (!response.ok) {
-      const error = await response.text();
-      console.error('Gemini API error:', error);
-      return NextResponse.json({ error: 'AI service error' }, { status: 500 });
+      if (response.ok) {
+        const data = await response.json();
+        reply = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        if (reply) break;
+      } else {
+        const error = await response.text();
+        lastError = error;
+        console.error(`Gemini API attempt ${attempt + 1} failed:`, error);
+      }
     }
 
-    const data = await response.json();
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Lo siento, no pude generar una respuesta. Intenta de nuevo o escríbenos por WhatsApp.';
+    if (!reply) {
+      reply = 'Lo siento, el servicio de IA no está disponible en este momento. Puedes escribirnos por WhatsApp al +58 412 610 9597 para atención inmediata.';
+    }
 
     // Save user message
     await supabase.from('chat_logs').insert({
