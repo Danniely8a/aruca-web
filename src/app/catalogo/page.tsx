@@ -59,8 +59,7 @@ export default function CatalogoPage() {
           product.name.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
           product.brand.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
           product.model.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
-          product.description.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
-          product.shortDescription.toLowerCase().includes(debouncedSearch.toLowerCase());
+          product.description.toLowerCase().includes(debouncedSearch.toLowerCase());
         const matchesCategory =
           selectedCategory === "Todos" || product.category === selectedCategory;
         const matchesSubcategory =
@@ -430,7 +429,7 @@ export default function CatalogoPage() {
                     <h3 className="font-bold text-gray-900 mb-1 group-hover:text-brand transition-colors line-clamp-2">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-gray-500 line-clamp-2 mb-3">{product.shortDescription}</p>
+                    <p className="text-sm text-gray-500 line-clamp-2 mb-3">{product.description}</p>
                     <div className="flex items-center justify-between">
                       <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent-orange group-hover:gap-2 transition-all">
                         Ver Detalles<ArrowRight size={14} />
@@ -503,7 +502,7 @@ export default function CatalogoPage() {
                         <h3 className="font-bold text-gray-900 mb-1 group-hover:text-brand transition-colors">
                           {product.name}
                         </h3>
-                        <p className="text-sm text-gray-500 mb-3">{product.shortDescription}</p>
+                        <p className="text-sm text-gray-500 mb-3">{product.description}</p>
                         <button
                           onClick={(e) => {
                             e.preventDefault();
