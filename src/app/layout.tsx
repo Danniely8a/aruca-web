@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import MobileNav from "@/components/layout/MobileNav";
 import WhatsAppButton from "@/components/whatsapp/WhatsAppButton";
 import CartDrawer from "@/components/cart/CartDrawer";
+import ViewTracker from "@/components/ViewTracker";
 import { CartProvider } from "@/lib/context/CartContext";
 
 export const metadata: Metadata = {
@@ -34,6 +35,7 @@ export default function RootLayout({
     <html lang="es" className="h-full antialiased">
       <body className="min-h-full flex flex-col font-sans">
         <CartProvider>
+          <ViewTracker />
           <Header />
           <CartDrawer />
           <main className="flex-1">{children}</main>

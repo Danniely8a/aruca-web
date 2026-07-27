@@ -33,7 +33,8 @@ export default function AdminProductosPage() {
     const { data } = await supabase
       .from("products")
       .select("id, slug, name, brand, model, category, image, featured")
-      .order("name");
+      .order("name")
+      .range(0, 9999);
     setProducts(data || []);
     setLoading(false);
   }
