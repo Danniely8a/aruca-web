@@ -10,8 +10,8 @@ const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
 function buildSystemPrompt(products: any[], knowledgeBase: any[]): string {
-  const productContext = products.slice(0, 150).map(p =>
-    `- ${p.brand} ${p.name} (${p.model}): ${p.description}. Categoría: ${p.category}, Subcategoría: ${p.subcategory}`
+  const productContext = products.slice(0, 80).map(p =>
+    `- ${p.brand} ${p.name} (${p.model}): ${p.category} - ${p.subcategory}`
   ).join('\n');
 
   const kbContext = knowledgeBase.map(kb =>
@@ -91,11 +91,11 @@ export async function POST(request: NextRequest) {
       .eq('is_active', true)
       .limit(50);
 
-    // Get products for context
+    // Get products for context (limit to keep prompt small)
     const { data: products } = await supabase
       .from('products')
-      .select('brand, name, model, description, category, subcategory')
-      .limit(200);
+      .select('brand, name, model, category, subcategory')
+      .limit(100);
 
     const systemPrompt = buildSystemPrompt(products || [], knowledgeBase || []);
 
@@ -120,8 +120,12 @@ export async function POST(request: NextRequest) {
     for (let attempt = 0; attempt < 3; attempt++) {
       if (attempt > 0) await new Promise(r => setTimeout(r, 2000 * attempt));
 
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 25000);
+
       const response = await fetch(OPENROUTER_URL, {
         method: 'POST',
+        signal: controller.signal,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
@@ -132,10 +136,12 @@ export async function POST(request: NextRequest) {
           model: 'google/gemma-4-26b-a4b-it:free',
           messages,
           temperature: 0.7,
-          max_tokens: 500,
+          max_tokens: 400,
           top_p: 0.8,
         }),
       });
+
+      clearTimeout(timeoutId);
 
       if (response.ok) {
         const data = await response.json();
