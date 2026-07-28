@@ -16,7 +16,6 @@ export const services: Service[] = [
       "Maquinaria nueva y original",
       "Garantía de fábrica",
       "Asesoría en selección",
-      "Financiamiento disponible",
     ],
   },
   {
