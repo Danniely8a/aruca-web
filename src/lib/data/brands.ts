@@ -340,6 +340,7 @@ export const brands: Brand[] = [
     description: "Compresores a tornillo y secadores de aire industriales.",
     category: "Compresores",
     country: "Internacional",
+    logo: "/assets/brands/shamal_logo.jpg",
   },
   {
     id: "first",
@@ -371,6 +372,30 @@ export const brands: Brand[] = [
     country: "Internacional",
     logo: "",
   },
+  {
+    id: "kdt",
+    name: "KDT",
+    description: "Maquinarias profesionales para la industria de la madera y la construcción.",
+    category: "Maquinaria",
+    country: "Internacional",
+    logo: "/assets/brands/kdt_logo.jpg",
+  },
+  {
+    id: "ralm",
+    name: "RALM",
+    description: "Piedras de afilado y esmeril para herramientas de corte y maquinaria.",
+    category: "Abrasivos",
+    country: "Internacional",
+    logo: "/assets/brands/ralm_logo.jpg",
+  },
+  {
+    id: "microtech",
+    name: "Microtech",
+    description: "Discos diamantados, cabezales y mechas de alta precisión para corte y perforación.",
+    category: "Herramientas de Corte",
+    country: "Internacional",
+    logo: "/assets/brands/microtech_logo.jpg",
+  },
 ];
 
 export const brandCategories = [
@@ -392,4 +417,6 @@ export const brandCategories = [
   "Seguridad Industrial",
   "Pistolas de Pintura",
   "Herramientas de Medición",
+  "Maquinaria",
+  "Abrasivos",
 ];
