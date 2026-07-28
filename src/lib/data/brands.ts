@@ -396,6 +396,14 @@ export const brands: Brand[] = [
     country: "Internacional",
     logo: "/assets/brands/microtech_logo.jpg",
   },
+  {
+    id: "aruca",
+    name: "Aruca",
+    description: "Repuestos originales y accesorios para maquinaria, compresores y herramientas eléctricas.",
+    category: "Repuestos",
+    country: "Nacional",
+    logo: "/assets/brands/aruca.jpg",
+  },
 ];
 
 export const brandCategories = [
@@ -419,4 +427,5 @@ export const brandCategories = [
   "Herramientas de Medición",
   "Maquinaria",
   "Abrasivos",
+  "Repuestos",
 ];
