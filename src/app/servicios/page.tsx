@@ -9,6 +9,7 @@ import {
   Settings,
   CheckCircle,
   ArrowRight,
+  Truck,
 } from "lucide-react";
 import { services } from "@/lib/data/services";
 import { company } from "@/lib/data/company";
@@ -19,6 +20,7 @@ const serviceIcons: Record<string, React.ReactNode> = {
   "file-text": <FileText className="w-8 h-8" />,
   scissors: <Scissors className="w-8 h-8" />,
   settings: <Settings className="w-8 h-8" />,
+  truck: <Truck className="w-8 h-8" />,
 };
 
 export default function ServiciosPage() {

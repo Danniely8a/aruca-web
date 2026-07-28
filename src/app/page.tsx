@@ -14,6 +14,7 @@ import {
   Shield,
   Clock,
   Award,
+  Truck,
 } from "lucide-react";
 import { company } from "@/lib/data/company";
 import { services } from "@/lib/data/services";
@@ -27,6 +28,7 @@ const serviceIcons: Record<string, React.ReactNode> = {
   "file-text": <FileText className="w-6 h-6" />,
   scissors: <Scissors className="w-6 h-6" />,
   settings: <Settings className="w-6 h-6" />,
+  truck: <Truck className="w-6 h-6" />,
 };
 
 const stats = [

@@ -66,4 +66,16 @@ export const services: Service[] = [
       "Servicio a domicilio",
     ],
   },
+  {
+    id: "transporte",
+    title: "Transporte de Maquinaria",
+    description: "Traslado de maquinaria industrial con camiones equipados con grúa telescópica. Carga y descarga segura de equipos de cualquier tamaño.",
+    icon: "truck",
+    features: [
+      "Grúa telescópica",
+      "Maquinaria pesada",
+      "Carga y descarga segura",
+      "Cobertura nacional",
+    ],
+  },
 ];
