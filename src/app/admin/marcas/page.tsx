@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Plus, Pencil, Trash2, X, Upload } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Upload, AlertCircle, CheckCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
 interface Brand {
@@ -23,6 +23,9 @@ export default function AdminMarcasPage() {
   const [editBrand, setEditBrand] = useState<Brand | null>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [form, setForm] = useState({ id: "", name: "", description: "", category: "", country: "", logo: "", website: "" });
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+  const [uploadSuccess, setUploadSuccess] = useState(false);
 
   useEffect(() => { loadBrands(); }, []);
 
@@ -69,12 +72,30 @@ export default function AdminMarcasPage() {
   async function handleLogoUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
+    setUploading(true);
+    setUploadError("");
+    setUploadSuccess(false);
+
     const formData = new FormData();
     formData.append("file", file);
     formData.append("folder", "brand-logos");
-    const res = await fetch("/api/upload", { method: "POST", body: formData });
-    const data = await res.json();
-    if (data.url) setForm((prev) => ({ ...prev, logo: data.url }));
+
+    try {
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setUploadError(data.error || "Error al subir logo");
+      } else if (data.url) {
+        setForm((prev) => ({ ...prev, logo: data.url }));
+        setUploadSuccess(true);
+        setTimeout(() => setUploadSuccess(false), 3000);
+      }
+    } catch {
+      setUploadError("Error de conexión al subir logo");
+    }
+    setUploading(false);
+    e.target.value = "";
   }
 
   return (
@@ -156,12 +177,44 @@ export default function AdminMarcasPage() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Logo</label>
                 <div className="flex items-center gap-3">
-                  <label className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm cursor-pointer hover:bg-gray-100">
-                    <Upload size={16} /> Subir logo
-                    <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
+                  <label className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm cursor-pointer transition-all ${
+                    uploading
+                      ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                      : "bg-gray-50 border border-gray-200 hover:bg-gray-100"
+                  }`}>
+                    {uploading ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-gray-300 border-t-brand rounded-full animate-spin" />
+                        Subiendo...
+                      </>
+                    ) : (
+                      <>
+                        <Upload size={16} /> Subir logo
+                      </>
+                    )}
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp,image/gif,image/avif,image/svg+xml,image/heic,image/heif"
+                      onChange={handleLogoUpload}
+                      className="hidden"
+                      disabled={uploading}
+                    />
                   </label>
                   {form.logo && <Image src={form.logo} alt="Logo" width={40} height={40} className="object-contain rounded" />}
                 </div>
+                <p className="text-xs text-gray-400 mt-1">JPG, PNG, WebP, GIF, AVIF, SVG, HEIC (máx. 10MB)</p>
+                {uploadError && (
+                  <div className="flex items-center gap-2 mt-2 text-sm text-red-500">
+                    <AlertCircle size={14} />
+                    {uploadError}
+                  </div>
+                )}
+                {uploadSuccess && (
+                  <div className="flex items-center gap-2 mt-2 text-sm text-green-600">
+                    <CheckCircle size={14} />
+                    Logo subido correctamente
+                  </div>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Website</label>

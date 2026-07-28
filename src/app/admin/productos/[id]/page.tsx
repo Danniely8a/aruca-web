@@ -3,7 +3,7 @@
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { ArrowLeft, Save, Upload, Trash2 } from "lucide-react";
+import { ArrowLeft, Save, Upload, Trash2, AlertCircle, CheckCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
 
@@ -30,6 +30,8 @@ export default function AdminProductEditPage({ params }: { params: Promise<{ id:
   const [loading, setLoading] = useState(!isNew);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+  const [uploadSuccess, setUploadSuccess] = useState(false);
   const [brands, setBrands] = useState<{ id: string; name: string }[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [subcategories, setSubcategories] = useState<string[]>([]);
@@ -97,18 +99,29 @@ export default function AdminProductEditPage({ params }: { params: Promise<{ id:
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
+    setUploadError("");
+    setUploadSuccess(false);
 
     const formData = new FormData();
     formData.append("file", file);
     formData.append("folder", "product-images");
 
-    const res = await fetch("/api/upload", { method: "POST", body: formData });
-    const data = await res.json();
+    try {
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      const data = await res.json();
 
-    if (data.url) {
-      setForm((prev) => ({ ...prev, image: data.url }));
+      if (!res.ok) {
+        setUploadError(data.error || "Error al subir imagen");
+      } else if (data.url) {
+        setForm((prev) => ({ ...prev, image: data.url }));
+        setUploadSuccess(true);
+        setTimeout(() => setUploadSuccess(false), 3000);
+      }
+    } catch {
+      setUploadError("Error de conexión al subir imagen");
     }
     setUploading(false);
+    e.target.value = "";
   }
 
   async function handleSave() {
@@ -173,13 +186,45 @@ export default function AdminProductEditPage({ params }: { params: Promise<{ id:
                 <span className="text-gray-300 text-xs text-center px-2">Sin imagen</span>
               )}
             </div>
-            <div>
-              <label className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium cursor-pointer hover:bg-gray-100 transition-colors">
-                <Upload size={16} />
-                {uploading ? "Subiendo..." : "Subir imagen"}
-                <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+            <div className="flex-1">
+              <label className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium cursor-pointer transition-all ${
+                uploading
+                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  : "bg-gray-50 border border-gray-200 hover:bg-gray-100"
+              }`}>
+                {uploading ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-gray-300 border-t-brand rounded-full animate-spin" />
+                    Subiendo...
+                  </>
+                ) : (
+                  <>
+                    <Upload size={16} />
+                    Subir imagen
+                  </>
+                )}
+                <input
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp,image/gif,image/avif,image/svg+xml,image/heic,image/heif"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                  disabled={uploading}
+                />
               </label>
-              {form.image && (
+              <p className="text-xs text-gray-400 mt-1">JPG, PNG, WebP, GIF, AVIF, SVG, HEIC (máx. 10MB)</p>
+              {uploadError && (
+                <div className="flex items-center gap-2 mt-2 text-sm text-red-500">
+                  <AlertCircle size={14} />
+                  {uploadError}
+                </div>
+              )}
+              {uploadSuccess && (
+                <div className="flex items-center gap-2 mt-2 text-sm text-green-600">
+                  <CheckCircle size={14} />
+                  Imagen subida correctamente
+                </div>
+              )}
+              {form.image && !uploading && (
                 <button
                   onClick={() => setForm((prev) => ({ ...prev, image: "" }))}
                   className="flex items-center gap-2 mt-2 text-sm text-red-500 hover:text-red-600"
