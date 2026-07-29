@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Plus, Pencil, Trash2, Search, Star } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
@@ -99,9 +98,9 @@ export default function AdminProductosPage() {
                 {filtered.map((product) => (
                   <tr key={product.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-4 py-3">
-                      <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden relative border border-gray-100">
+                      <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden border border-gray-100">
                         {product.image ? (
-                          <Image src={product.image} alt={product.name} width={40} height={40} className="object-contain" />
+                          <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
                         ) : (
                           <span className="text-brand text-[8px] font-bold">{product.brand}</span>
                         )}

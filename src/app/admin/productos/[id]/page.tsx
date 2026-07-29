@@ -2,7 +2,6 @@
 
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { ArrowLeft, Save, Upload, Trash2, AlertCircle, CheckCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
@@ -179,9 +178,9 @@ export default function AdminProductEditPage({ params }: { params: Promise<{ id:
         <div className="bg-white rounded-2xl border border-gray-100 p-6">
           <h3 className="font-semibold text-gray-900 mb-4">Imagen del Producto</h3>
           <div className="flex items-start gap-6">
-            <div className="w-32 h-32 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 overflow-hidden relative">
+            <div className="w-32 h-32 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 overflow-hidden">
               {form.image ? (
-                <Image src={form.image} alt={form.name} fill className="object-contain p-2" />
+                <img src={form.image} alt={form.name} className="w-full h-full object-contain p-2" />
               ) : (
                 <span className="text-gray-300 text-xs text-center px-2">Sin imagen</span>
               )}

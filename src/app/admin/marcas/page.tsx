@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Plus, Pencil, Trash2, X, Upload, AlertCircle, CheckCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
@@ -114,9 +113,9 @@ export default function AdminMarcasPage() {
           {brands.map((brand) => (
             <div key={brand.id} className="bg-white rounded-2xl border border-gray-100 p-4 hover:shadow-md transition-all">
               <div className="flex items-start gap-3">
-                <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden relative border border-gray-100 flex-shrink-0">
+                <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden border border-gray-100 flex-shrink-0">
                   {brand.logo ? (
-                    <Image src={brand.logo} alt={brand.name} width={48} height={48} className="object-contain p-1" />
+                    <img src={brand.logo} alt={brand.name} className="w-full h-full object-contain p-1" />
                   ) : (
                     <span className="text-brand font-bold text-sm">{brand.name.charAt(0)}</span>
                   )}
@@ -200,7 +199,7 @@ export default function AdminMarcasPage() {
                       disabled={uploading}
                     />
                   </label>
-                  {form.logo && <Image src={form.logo} alt="Logo" width={40} height={40} className="object-contain rounded" />}
+                  {form.logo && <img src={form.logo} alt="Logo" className="w-10 h-10 object-contain rounded" />}
                 </div>
                 <p className="text-xs text-gray-400 mt-1">JPG, PNG, WebP, GIF, AVIF, SVG, HEIC (máx. 10MB)</p>
                 {uploadError && (
