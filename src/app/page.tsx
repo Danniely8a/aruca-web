@@ -19,7 +19,7 @@ import {
 import { company } from "@/lib/data/company";
 import { services } from "@/lib/data/services";
 import { brands } from "@/lib/data/brands";
-import { products } from "@/lib/data/products";
+import { useProducts } from "@/lib/hooks/useProducts";
 import HeroSlideshow from "@/components/HeroSlideshow";
 
 const serviceIcons: Record<string, React.ReactNode> = {
@@ -48,6 +48,7 @@ const stagger = {
 };
 
 export default function Home() {
+  const { products } = useProducts();
   return (
     <>
       {/* Hero Section */}

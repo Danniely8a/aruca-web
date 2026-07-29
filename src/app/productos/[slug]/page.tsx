@@ -14,6 +14,7 @@ import {
 import { products } from "@/lib/data/products";
 import { company } from "@/lib/data/company";
 import { useCart } from "@/lib/context/CartContext";
+import { useProducts } from "@/lib/hooks/useProducts";
 
 export default function ProductDetailPage({
   params,
@@ -21,7 +22,8 @@ export default function ProductDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
-  const product = products.find((p) => p.slug === slug);
+  const { products: allProducts } = useProducts();
+  const product = allProducts.find((p) => p.slug === slug);
   const { addItem } = useCart();
 
   if (!product) {
