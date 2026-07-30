@@ -15,6 +15,7 @@ import {
   Sparkles,
   Zap,
   HeartHandshake,
+  Heart,
 } from "lucide-react";
 import { company } from "@/lib/data/company";
 
@@ -24,6 +25,7 @@ const valueIcons: Record<string, React.ReactNode> = {
   eye: <Eye size={28} />,
   star: <Star size={28} />,
   clock: <Clock size={28} />,
+  heart: <Heart size={28} />,
 };
 
 const timeline = [
