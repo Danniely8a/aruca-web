@@ -136,6 +136,22 @@ export default function NosotrosPage() {
                 <span className="text-brand">Compromiso</span> y{" "}
                 <span className="text-accent-orange">Transformación</span>
               </h2>
+
+              {/* Imagen */}
+              <div className="relative mb-8 rounded-2xl overflow-hidden shadow-lg group">
+                <img
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
+                  alt="Herramientas de carpintería artesanal"
+                  className="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-white/90 text-sm font-medium">
+                    Herramientas artesanales — la esencia de nuestro oficio desde 1976
+                  </p>
+                </div>
+              </div>
+
               <div className="space-y-5">
                 {company.history.split("\n\n").map((paragraph, i) => (
                   <motion.p
