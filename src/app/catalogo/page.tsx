@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -54,6 +54,13 @@ export default function CatalogoPage() {
   const [sortBy, setSortBy] = useState<SortOption>("name");
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollCarousel = useCallback((dir: "left" | "right") => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: dir === "left" ? -320 : 320, behavior: "smooth" });
+    }
+  }, []);
 
   const filteredProducts = useMemo(() => {
     return products
@@ -362,6 +369,64 @@ export default function CatalogoPage() {
           )}
         </AnimatePresence>
       </section>
+
+      {/* Brand Carousel - shows when a brand is selected */}
+      {selectedBrand !== "Todos" && (() => {
+        const brandData = brands.find(b => b.name.toLowerCase() === selectedBrand.toLowerCase());
+        const brandProducts = filteredProducts.slice(0, 12);
+        return (
+          <section className="py-10 sm:py-14 bg-white border-b border-gray-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-4">
+                  {brandData?.logo && (
+                    <div className="w-14 h-14 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 overflow-hidden flex-shrink-0">
+                      <img src={brandData.logo} alt={brandData.name} className="w-full h-full object-contain p-1" />
+                    </div>
+                  )}
+                  <div>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{selectedBrand}</h2>
+                    <p className="text-sm text-gray-400">{brandProducts.length} producto{brandProducts.length !== 1 ? "s" : ""} destacado{brandProducts.length !== 1 ? "s" : ""}</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <button onClick={() => scrollCarousel("left")} className="p-2.5 bg-gray-100 hover:bg-brand hover:text-white rounded-xl transition-all">
+                    <ChevronLeft size={20} />
+                  </button>
+                  <button onClick={() => scrollCarousel("right")} className="p-2.5 bg-gray-100 hover:bg-brand hover:text-white rounded-xl transition-all">
+                    <ChevronRight size={20} />
+                  </button>
+                </div>
+              </div>
+              <div ref={carouselRef} className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+                {brandProducts.map((product) => (
+                  <Link
+                    key={product.id}
+                    href={`/productos/${product.slug}`}
+                    className="flex-shrink-0 w-72 snap-start bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group"
+                  >
+                    <div className="aspect-[4/3] bg-gray-50 flex items-center justify-center overflow-hidden relative">
+                      {product.image ? (
+                        <Image src={product.image} alt={product.name} fill sizes="288px" className="object-contain p-4 group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                      ) : (
+                        <div className="text-center">
+                          <p className="text-brand font-bold text-lg">{product.brand}</p>
+                          <p className="text-gray-400 text-xs mt-1">{product.model}</p>
+                        </div>
+                      )}
+                      <span className="absolute top-3 right-3 px-2 py-1 bg-brand text-white text-[10px] font-bold rounded-full">{product.model}</span>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-bold text-gray-900 text-sm mb-1 group-hover:text-brand transition-colors line-clamp-2">{product.name}</h3>
+                      <p className="text-xs text-gray-400 line-clamp-1">{product.category}</p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* Products Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 min-h-[60vh]">
