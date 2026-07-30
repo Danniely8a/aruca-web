@@ -145,7 +145,7 @@ export default function NosotrosPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 + i * 0.1 }}
-                    className="text-gray-500 leading-relaxed"
+                    className="text-gray-500 leading-relaxed text-base sm:text-lg"
                   >
                     {paragraph}
                   </motion.p>
@@ -177,11 +177,11 @@ export default function NosotrosPage() {
                     </div>
                     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-all">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-sm font-bold text-brand">{item.year}</span>
+                        <span className="text-base font-bold text-brand">{item.year}</span>
                         <span className="text-gray-300">·</span>
-                        <span className="text-sm font-medium text-gray-700">{item.title}</span>
+                        <span className="text-base font-medium text-gray-700">{item.title}</span>
                       </div>
-                      <p className="text-sm text-gray-500">{item.text}</p>
+                      <p className="text-base text-gray-500">{item.text}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -206,8 +206,8 @@ export default function NosotrosPage() {
                 <div className="w-14 h-14 bg-white/15 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6">
                   <Target size={28} />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Misión</h3>
-                <p className="text-white/80 leading-relaxed">{company.mission}</p>
+                <h3 className="text-3xl font-bold mb-4">Misión</h3>
+                <p className="text-white/80 leading-relaxed text-base sm:text-lg">{company.mission}</p>
               </div>
             </motion.div>
 
@@ -223,8 +223,8 @@ export default function NosotrosPage() {
                 <div className="w-14 h-14 bg-white/15 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6">
                   <TrendingUp size={28} />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Visión</h3>
-                <p className="text-white/80 leading-relaxed">{company.vision}</p>
+                <h3 className="text-3xl font-bold mb-4">Visión</h3>
+                <p className="text-white/80 leading-relaxed text-base sm:text-lg">{company.vision}</p>
               </div>
             </motion.div>
           </div>
@@ -268,8 +268,8 @@ export default function NosotrosPage() {
                 <div className="w-14 h-14 bg-brand/10 text-brand rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand group-hover:text-white transition-all duration-300">
                   {valueIcons[value.icon]}
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2">{value.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <h3 className="font-bold text-gray-900 text-xl mb-2">{value.title}</h3>
+                <p className="text-base text-gray-500 leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>
