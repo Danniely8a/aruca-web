@@ -6,6 +6,7 @@ export interface Brand {
   country: string;
   logo?: string;
   website?: string;
+  active?: boolean;
 }
 
 export const brands: Brand[] = [

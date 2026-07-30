@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Plus, Pencil, Trash2, X, Upload, AlertCircle, CheckCircle } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Upload, AlertCircle, CheckCircle, Eye, EyeOff } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
 interface Brand {
@@ -13,6 +13,7 @@ interface Brand {
   country: string;
   logo: string;
   website: string;
+  active: boolean;
 }
 
 export default function AdminMarcasPage() {
@@ -21,7 +22,7 @@ export default function AdminMarcasPage() {
   const [showModal, setShowModal] = useState(false);
   const [editBrand, setEditBrand] = useState<Brand | null>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
-  const [form, setForm] = useState({ id: "", name: "", description: "", category: "", country: "", logo: "", website: "" });
+  const [form, setForm] = useState({ id: "", name: "", description: "", category: "", country: "", logo: "", website: "", active: true });
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
   const [uploadSuccess, setUploadSuccess] = useState(false);
@@ -31,7 +32,7 @@ export default function AdminMarcasPage() {
   async function loadBrands() {
     const supabase = createClient();
     const { data } = await supabase.from("brands").select("*").order("name");
-    setBrands(data || []);
+    setBrands((data || []).map(b => ({ ...b, active: b.active !== false })));
     setLoading(false);
   }
 
@@ -45,7 +46,13 @@ export default function AdminMarcasPage() {
     }
     setShowModal(false);
     setEditBrand(null);
-    setForm({ id: "", name: "", description: "", category: "", country: "", logo: "", website: "" });
+    setForm({ id: "", name: "", description: "", category: "", country: "", logo: "", website: "", active: true });
+    loadBrands();
+  }
+
+  async function handleToggleActive(brand: Brand) {
+    const supabase = createClient();
+    await supabase.from("brands").update({ active: !brand.active }).eq("id", brand.id);
     loadBrands();
   }
 
@@ -64,7 +71,7 @@ export default function AdminMarcasPage() {
 
   function openNew() {
     setEditBrand(null);
-    setForm({ id: "", name: "", description: "", category: "", country: "", logo: "", website: "" });
+    setForm({ id: "", name: "", description: "", category: "", country: "", logo: "", website: "", active: true });
     setShowModal(true);
   }
 
@@ -97,10 +104,12 @@ export default function AdminMarcasPage() {
     e.target.value = "";
   }
 
+  const activeCount = brands.filter(b => b.active).length;
+
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Marcas ({brands.length})</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Marcas ({activeCount} activas / {brands.length} total)</h1>
         <button onClick={openNew} className="flex items-center gap-2 px-4 py-2.5 bg-brand text-white rounded-xl font-medium hover:bg-brand/90 transition-all text-sm">
           <Plus size={16} /> Nueva Marca
         </button>
@@ -111,7 +120,7 @@ export default function AdminMarcasPage() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {brands.map((brand) => (
-            <div key={brand.id} className="bg-white rounded-2xl border border-gray-100 p-4 hover:shadow-md transition-all">
+            <div key={brand.id} className={`bg-white rounded-2xl border p-4 hover:shadow-md transition-all ${brand.active ? 'border-gray-100' : 'border-gray-200 opacity-60'}`}>
               <div className="flex items-start gap-3">
                 <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden border border-gray-100 flex-shrink-0">
                   {brand.logo ? (
@@ -125,13 +134,26 @@ export default function AdminMarcasPage() {
                   <p className="text-xs text-gray-400">{brand.category} &middot; {brand.country}</p>
                 </div>
               </div>
-              <div className="flex items-center justify-end gap-1 mt-3">
-                <button onClick={() => openEdit(brand)} className="p-2 text-gray-400 hover:text-brand hover:bg-brand/10 rounded-lg transition-colors">
-                  <Pencil size={14} />
+              <div className="flex items-center justify-between mt-3">
+                <button
+                  onClick={() => handleToggleActive(brand)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                    brand.active
+                      ? "bg-green-50 text-green-600 hover:bg-green-100"
+                      : "bg-gray-100 text-gray-400 hover:bg-gray-200"
+                  }`}
+                >
+                  {brand.active ? <Eye size={12} /> : <EyeOff size={12} />}
+                  {brand.active ? "Visible" : "Oculta"}
                 </button>
-                <button onClick={() => setDeleteId(brand.id)} className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors">
-                  <Trash2 size={14} />
-                </button>
+                <div className="flex items-center gap-1">
+                  <button onClick={() => openEdit(brand)} className="p-2 text-gray-400 hover:text-brand hover:bg-brand/10 rounded-lg transition-colors">
+                    <Pencil size={14} />
+                  </button>
+                  <button onClick={() => setDeleteId(brand.id)} className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors">
+                    <Trash2 size={14} />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -219,6 +241,17 @@ export default function AdminMarcasPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">Website</label>
                 <input type="text" value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })}
                   className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand" />
+              </div>
+              <div>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={form.active}
+                    onChange={(e) => setForm({ ...form, active: e.target.checked })}
+                    className="w-4 h-4 text-brand border-gray-300 rounded focus:ring-brand"
+                  />
+                  <span className="text-sm font-medium text-gray-700">Visible en el sitio</span>
+                </label>
               </div>
               <div className="flex gap-3">
                 <button onClick={() => setShowModal(false)} className="flex-1 py-2.5 border border-gray-200 rounded-xl text-sm font-medium hover:bg-gray-50">Cancelar</button>
