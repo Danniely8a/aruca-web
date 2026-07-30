@@ -137,21 +137,6 @@ export default function NosotrosPage() {
                 <span className="text-accent-orange">Transformación</span>
               </h2>
 
-              {/* Imagen */}
-              <div className="relative mb-8 rounded-2xl overflow-hidden shadow-lg group">
-                <img
-                  src="/assets/about-workshop.jpg"
-                  alt="Herramientas de carpintería artesanal"
-                  className="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-white/90 text-sm font-medium">
-                    Herramientas artesanales — la esencia de nuestro oficio desde 1976
-                  </p>
-                </div>
-              </div>
-
               <div className="space-y-5">
                 {company.history.split("\n\n").map((paragraph, i) => (
                   <motion.p
@@ -203,6 +188,26 @@ export default function NosotrosPage() {
               </div>
             </motion.div>
           </div>
+
+          {/* Imagen */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative mt-16 rounded-3xl overflow-hidden shadow-xl group"
+          >
+            <img
+              src="/assets/about-workshop.jpg"
+              alt="Herramientas de carpintería artesanal"
+              className="w-full h-72 sm:h-96 lg:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8">
+              <p className="text-white/90 text-sm sm:text-base font-medium max-w-lg">
+                Herramientas artesanales — la esencia de nuestro oficio desde 1976
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
