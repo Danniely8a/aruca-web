@@ -140,7 +140,7 @@ export default function NosotrosPage() {
               {/* Imagen */}
               <div className="relative mb-8 rounded-2xl overflow-hidden shadow-lg group">
                 <img
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
+                  src="/assets/about-workshop.jpg"
                   alt="Herramientas de carpintería artesanal"
                   className="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                 />
