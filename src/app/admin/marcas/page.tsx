@@ -52,7 +52,11 @@ export default function AdminMarcasPage() {
 
   async function handleToggleActive(brand: Brand) {
     const supabase = createClient();
-    await supabase.from("brands").update({ active: !brand.active }).eq("id", brand.id);
+    const { error } = await supabase.from("brands").update({ active: !brand.active }).eq("id", brand.id);
+    if (error) {
+      alert("Error: " + error.message + "\n\nEjecuta este SQL en Supabase SQL Editor:\nALTER TABLE brands ADD COLUMN IF NOT EXISTS active BOOLEAN DEFAULT true;");
+      return;
+    }
     loadBrands();
   }
 
