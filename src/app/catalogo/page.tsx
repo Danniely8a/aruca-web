@@ -375,7 +375,7 @@ export default function CatalogoPage() {
         const brandData = brands.find(b => b.name.toLowerCase() === selectedBrand.toLowerCase());
         const brandProducts = filteredProducts.slice(0, 12);
         return (
-          <section className="py-10 sm:py-14 bg-white border-b border-gray-100">
+          <section className="py-10 sm:py-14 bg-brand">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center gap-4">
@@ -385,15 +385,15 @@ export default function CatalogoPage() {
                     </div>
                   )}
                   <div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{selectedBrand}</h2>
-                    <p className="text-sm text-gray-400">{brandProducts.length} producto{brandProducts.length !== 1 ? "s" : ""} destacado{brandProducts.length !== 1 ? "s" : ""}</p>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-white">{selectedBrand}</h2>
+                    <p className="text-sm text-white/60">{brandProducts.length} producto{brandProducts.length !== 1 ? "s" : ""} destacado{brandProducts.length !== 1 ? "s" : ""}</p>
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={() => scrollCarousel("left")} className="p-2.5 bg-gray-100 hover:bg-brand hover:text-white rounded-xl transition-all">
+                  <button onClick={() => scrollCarousel("left")} className="p-2.5 bg-white/15 hover:bg-white text-white hover:text-brand rounded-xl transition-all">
                     <ChevronLeft size={20} />
                   </button>
-                  <button onClick={() => scrollCarousel("right")} className="p-2.5 bg-gray-100 hover:bg-brand hover:text-white rounded-xl transition-all">
+                  <button onClick={() => scrollCarousel("right")} className="p-2.5 bg-white/15 hover:bg-white text-white hover:text-brand rounded-xl transition-all">
                     <ChevronRight size={20} />
                   </button>
                 </div>
