@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { company } from "@/lib/data/company";
 import { services } from "@/lib/data/services";
-import { brands } from "@/lib/data/brands";
+import { useBrands } from "@/lib/hooks/useBrands";
 import { useProducts } from "@/lib/hooks/useProducts";
 import HeroSlideshow from "@/components/HeroSlideshow";
 
@@ -49,6 +49,7 @@ const stagger = {
 
 export default function Home() {
   const { products } = useProducts();
+  const { brands } = useBrands();
   return (
     <>
       {/* Hero Section */}

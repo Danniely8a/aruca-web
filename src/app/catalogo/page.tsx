@@ -17,9 +17,9 @@ import {
   ShoppingCart,
 } from "lucide-react";
 import { productCategories, productSubcategories } from "@/lib/data/products";
-import { brands } from "@/lib/data/brands";
 import { useCart } from "@/lib/context/CartContext";
 import { useProducts } from "@/lib/hooks/useProducts";
+import { useBrands } from "@/lib/hooks/useBrands";
 
 type ViewMode = "grid" | "list";
 type SortOption = "name" | "brand" | "category";
@@ -34,6 +34,7 @@ const sortOptions: { value: SortOption; label: string }[] = [
 
 export default function CatalogoPage() {
   const { products } = useProducts();
+  const { brands } = useBrands();
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const debounceTimer = useRef<NodeJS.Timeout | null>(null);
