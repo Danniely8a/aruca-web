@@ -18,6 +18,7 @@ import {
   Heart,
 } from "lucide-react";
 import { company } from "@/lib/data/company";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 const valueIcons: Record<string, React.ReactNode> = {
   users: <Users size={28} />,
@@ -58,6 +59,9 @@ export default function NosotrosPage() {
             transition={{ duration: 0.7 }}
             className="max-w-3xl"
           >
+            <div className="mb-4">
+              <Breadcrumbs dark items={[{ label: "Nosotros" }]} />
+            </div>
             <div className="flex items-center gap-2 mb-6">
               <Sparkles size={16} className="text-accent-orange" />
               <span className="text-white/60 text-sm font-medium tracking-wider uppercase">

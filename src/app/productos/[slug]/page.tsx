@@ -5,16 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
-  ArrowLeft,
   ArrowRight,
   MessageCircle,
   Tag,
   ShoppingCart,
 } from "lucide-react";
-import { products } from "@/lib/data/products";
 import { company } from "@/lib/data/company";
 import { useCart } from "@/lib/context/CartContext";
 import { useProducts } from "@/lib/hooks/useProducts";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 export default function ProductDetailPage({
   params,
@@ -44,9 +43,9 @@ export default function ProductDetailPage({
     );
   }
 
-  const relatedProducts = products
-    .filter((p) => p.brand === product.brand && p.id !== product.id)
-    .slice(0, 3);
+  const relatedProducts = allProducts
+    .filter((p) => p.id !== product.id && (p.brand === product.brand || p.category === product.category))
+    .slice(0, 4);
 
   const handleWhatsAppQuote = () => {
     const message = `Hola, me interesa el producto: ${product.name} (${product.brand} ${product.model}). Solicito información y cotización.`;
@@ -64,13 +63,15 @@ export default function ProductDetailPage({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <Link
-              href="/catalogo"
-              className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm mb-6 transition-colors"
-            >
-              <ArrowLeft size={16} />
-              Volver al Catálogo
-            </Link>
+            <div className="mb-4">
+              <Breadcrumbs
+                dark
+                items={[
+                  { label: "Catálogo", href: "/catalogo" },
+                  { label: product.name },
+                ]}
+              />
+            </div>
             <div className="flex items-center gap-2 mb-2">
               <span className="px-2.5 py-0.5 bg-white/10 text-white/90 text-xs font-semibold rounded-full">
                 {product.brand}

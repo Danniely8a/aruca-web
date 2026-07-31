@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { services } from "@/lib/data/services";
 import { company } from "@/lib/data/company";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 const serviceIcons: Record<string, React.ReactNode> = {
   "shopping-cart": <ShoppingCart className="w-8 h-8" />,
@@ -33,6 +34,9 @@ export default function ServiciosPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
+            <div className="mb-4">
+              <Breadcrumbs dark items={[{ label: "Servicios" }]} />
+            </div>
             <span className="inline-block px-4 py-1.5 bg-white/10 text-white/90 text-sm font-semibold rounded-full mb-4">
               Nuestros Servicios
             </span>

@@ -9,8 +9,10 @@ import { useCart } from "@/lib/context/CartContext";
 
 const navLinks = [
   { href: "/", label: "Inicio" },
-  { href: "/catalogo", label: "Catalogo" },
+  { href: "/catalogo", label: "Catálogo" },
   { href: "/nosotros", label: "Nosotros" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/cotizacion", label: "Cotización" },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -46,8 +48,8 @@ export default function Header() {
               priority
             />
             <div className="hidden sm:block">
-              <p className="font-extrabold text-[#1a2a5e] text-sm lg:text-base leading-tight tracking-tight">ARUCA</p>
-              <p className="text-[#1a2a5e]/60 text-[10px] lg:text-xs font-semibold tracking-[0.2em] uppercase leading-tight">Maquinarias</p>
+              <p className="font-extrabold text-brand text-sm lg:text-base leading-tight tracking-tight">ARUCA</p>
+              <p className="text-brand/60 text-[10px] lg:text-xs font-semibold tracking-[0.2em] uppercase leading-tight">Maquinarias</p>
             </div>
           </Link>
 
@@ -60,8 +62,8 @@ export default function Header() {
                   href={link.href}
                   className={`px-5 py-2 text-sm font-medium rounded-lg transition-all ${
                     isActive
-                      ? "bg-[#1a2a5e] text-white"
-                      : "text-gray-600 hover:text-[#1a2a5e] hover:bg-gray-50"
+                      ? "bg-brand text-white"
+                      : "text-gray-600 hover:text-brand hover:bg-gray-50"
                   }`}
                 >
                   {link.label}
@@ -105,8 +107,8 @@ export default function Header() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`block px-4 py-3 rounded-lg font-medium transition-all ${
                     isActive
-                      ? "bg-[#1a2a5e] text-white"
-                      : "text-gray-700 hover:text-[#1a2a5e] hover:bg-gray-50"
+                      ? "bg-brand text-white"
+                      : "text-gray-700 hover:text-brand hover:bg-gray-50"
                   }`}
                 >
                   {link.label}

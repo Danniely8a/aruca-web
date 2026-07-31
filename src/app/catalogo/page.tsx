@@ -20,6 +20,7 @@ import { productCategories, productSubcategories } from "@/lib/data/products";
 import { useCart } from "@/lib/context/CartContext";
 import { useProducts } from "@/lib/hooks/useProducts";
 import { useBrands } from "@/lib/hooks/useBrands";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 type ViewMode = "grid" | "list";
 type SortOption = "name" | "brand" | "category";
@@ -431,6 +432,9 @@ export default function CatalogoPage() {
       {/* Products Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 min-h-[60vh]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-6">
+            <Breadcrumbs items={[{ label: "Catálogo" }]} />
+          </div>
           <div className="mb-6 flex items-center justify-between">
             <p className="text-gray-500 text-sm">
               <span className="font-semibold text-gray-900">{filteredProducts.length}</span>{" "}

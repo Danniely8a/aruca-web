@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react";
 import { company } from "@/lib/data/company";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 export default function ContactoPage() {
   return (
@@ -14,6 +15,9 @@ export default function ContactoPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
+            <div className="mb-4">
+              <Breadcrumbs dark items={[{ label: "Contacto" }]} />
+            </div>
             <span className="inline-block px-4 py-1.5 bg-white/10 text-white/90 text-sm font-semibold rounded-full mb-4">
               Contacto
             </span>
@@ -156,6 +160,14 @@ Nombre: ${name}
 Email: ${email}
 Teléfono: ${phone}
 Mensaje: ${message}`;
+
+                    // Save to Supabase (fire and forget)
+                    fetch("/api/contact", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ type: "contacto", name, email, phone, message }),
+                    }).catch(() => {});
+
                     window.open(
                       `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(whatsappMessage)}`,
                       "_blank"

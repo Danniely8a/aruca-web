@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle, Phone, Mail, MessageCircle } from "lucide-react";
 import { company } from "@/lib/data/company";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 export default function CotizacionPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -17,8 +18,9 @@ export default function CotizacionPage() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     const whatsappMessage = `Hola, solicito cotización:
 Nombre: ${formData.name}
 Empresa: ${formData.company}
@@ -29,6 +31,20 @@ Cantidad: ${formData.quantity}
 Detalles: ${formData.message}`;
 
     const encodedMessage = encodeURIComponent(whatsappMessage);
+
+    // Save to Supabase (fire and forget)
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type: "cotizacion",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: `Empresa: ${formData.company}\nProducto: ${formData.product}\nCantidad: ${formData.quantity}\n${formData.message}`,
+      }),
+    }).catch(() => {});
+
     window.open(
       `https://wa.me/${company.whatsapp}?text=${encodedMessage}`,
       "_blank"
@@ -53,6 +69,9 @@ Detalles: ${formData.message}`;
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
+            <div className="mb-4">
+              <Breadcrumbs dark items={[{ label: "Cotización" }]} />
+            </div>
             <span className="inline-block px-4 py-1.5 bg-white/10 text-white/90 text-sm font-semibold rounded-full mb-4">
               Cotización
             </span>
