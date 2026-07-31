@@ -24,12 +24,17 @@ export async function GET(request: NextRequest) {
 
   const now = new Date();
   let since: Date;
+  let hourlyGroup = false;
   switch (range) {
     case "24h":
       since = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+      hourlyGroup = true;
       break;
     case "30d":
       since = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+      break;
+    case "90d":
+      since = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000);
       break;
     default:
       since = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
@@ -40,14 +45,9 @@ export async function GET(request: NextRequest) {
     .select("id", { count: "exact", head: true })
     .gte("created_at", since.toISOString());
 
-  const { data: uniquePaths } = await supabase
+  const { data: allViews } = await supabase
     .from("page_views")
-    .select("path")
-    .gte("created_at", since.toISOString());
-
-  const { data: dailyViews } = await supabase
-    .from("page_views")
-    .select("created_at")
+    .select("path, created_at")
     .gte("created_at", since.toISOString())
     .order("created_at");
 
@@ -55,20 +55,47 @@ export async function GET(request: NextRequest) {
     .from("page_views")
     .select("*")
     .order("created_at", { ascending: false })
-    .limit(20);
+    .limit(50);
 
-  const uniquePathsCount = new Set(uniquePaths?.map((v) => v.path)).size;
+  // Path distribution
+  const pathCounts: Record<string, number> = {};
+  allViews?.forEach((v) => {
+    const path = v.path || "/";
+    pathCounts[path] = (pathCounts[path] || 0) + 1;
+  });
 
+  // Daily grouping
   const daily: Record<string, number> = {};
-  dailyViews?.forEach((v) => {
-    const day = v.created_at.split("T")[0];
-    daily[day] = (daily[day] || 0) + 1;
+  allViews?.forEach((v) => {
+    if (hourlyGroup) {
+      const dt = new Date(v.created_at);
+      const hour = `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}-${String(dt.getDate()).padStart(2, "0")} ${String(dt.getHours()).padStart(2, "0")}:00`;
+      daily[hour] = (daily[hour] || 0) + 1;
+    } else {
+      const day = v.created_at.split("T")[0];
+      daily[day] = (daily[day] || 0) + 1;
+    }
+  });
+
+  const uniquePathsCount = Object.keys(pathCounts).length;
+
+  // Weekly trend (last 7 weeks for 90d, otherwise last 12 months)
+  const weekly: Record<string, number> = {};
+  allViews?.forEach((v) => {
+    const d = new Date(v.created_at);
+    const week = `${d.getFullYear()}-W${String(Math.ceil((d.getDate() + new Date(d.getFullYear(), d.getMonth(), 1).getDay()) / 7)).padStart(2, "0")}`;
+    weekly[week] = (weekly[week] || 0) + 1;
   });
 
   return NextResponse.json({
     total: totalViews || 0,
     uniquePaths: uniquePathsCount,
     daily,
+    weekly,
+    pathDistribution: Object.entries(pathCounts)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 10)
+      .map(([path, count]) => ({ path, count })),
     recent: recentViews || [],
   });
 }
