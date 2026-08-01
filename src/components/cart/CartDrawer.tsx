@@ -105,8 +105,14 @@ export default function CartDrawer() {
                           {item.name}
                         </Link>
                         <p className="text-xs text-gray-400 mt-0.5">{item.brand} &middot; {item.model}</p>
-                        {item.price && (
+                        {user && item.price && (
                           <p className="text-sm font-bold text-accent-orange mt-1">{item.price}</p>
+                        )}
+                        {!user && item.price && (
+                          <p className="text-[11px] text-gray-400 mt-1 flex items-center gap-1">
+                            <Lock size={10} />
+                            Inicia sesión para ver precio
+                          </p>
                         )}
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex items-center gap-1">
