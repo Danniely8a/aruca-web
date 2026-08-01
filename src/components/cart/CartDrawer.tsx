@@ -2,13 +2,26 @@
 
 import { useCart } from "@/lib/context/CartContext";
 import { company } from "@/lib/data/company";
+import { useAuth } from "@/lib/context/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Minus, Plus, Trash2, ShoppingBag, MessageCircle } from "lucide-react";
+import { X, Minus, Plus, Trash2, ShoppingBag, MessageCircle, CreditCard } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function CartDrawer() {
   const { items, removeItem, updateQuantity, clearCart, totalItems, isOpen, setIsOpen } = useCart();
+  const { user } = useAuth();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setIsLoggedIn(true);
+    } else {
+      const cached = localStorage.getItem("aruca_auth");
+      setIsLoggedIn(!!cached);
+    }
+  }, [user]);
 
   const handleWhatsApp = () => {
     if (items.length === 0) return;
@@ -126,6 +139,25 @@ export default function CartDrawer() {
                 </div>
 
                 <div className="border-t border-gray-200 px-6 py-4 space-y-3">
+                  {isLoggedIn && (
+                    <Link
+                      href="/checkout"
+                      onClick={() => setIsOpen(false)}
+                      className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all"
+                    >
+                      <CreditCard size={18} />
+                      Ir al Portal de Pago ({totalItems} {totalItems === 1 ? "producto" : "productos"})
+                    </Link>
+                  )}
+                  {!isLoggedIn && (
+                    <Link
+                      href="/login"
+                      onClick={() => setIsOpen(false)}
+                      className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all"
+                    >
+                      Inicia sesion para comprar
+                    </Link>
+                  )}
                   <button
                     onClick={handleWhatsApp}
                     className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-all"

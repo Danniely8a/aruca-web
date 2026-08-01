@@ -8,6 +8,7 @@ import CartDrawer from "@/components/cart/CartDrawer";
 import ViewTracker from "@/components/ViewTracker";
 import ChatWidget from "@/components/chat/ChatWidget";
 import { CartProvider } from "@/lib/context/CartContext";
+import { AuthProvider } from "@/lib/context/AuthContext";
 
 export const metadata: Metadata = {
   title: {
@@ -76,16 +77,18 @@ export default function RootLayout({
   return (
     <html lang="es" className="h-full antialiased">
       <body className="min-h-full flex flex-col font-sans">
-        <CartProvider>
-          <ViewTracker />
-          <Header />
-          <CartDrawer />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <MobileNav />
-          <WhatsAppButton />
-          <ChatWidget />
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <ViewTracker />
+            <Header />
+            <CartDrawer />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <MobileNav />
+            <WhatsAppButton />
+            <ChatWidget />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

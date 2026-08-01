@@ -15,9 +15,11 @@ import {
   ChevronLeft,
   ChevronRight,
   ShoppingCart,
+  Lock,
 } from "lucide-react";
 import { productCategories, productSubcategories } from "@/lib/data/products";
 import { useCart } from "@/lib/context/CartContext";
+import { useAuth } from "@/lib/context/AuthContext";
 import { useProducts } from "@/lib/hooks/useProducts";
 import { useBrands } from "@/lib/hooks/useBrands";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
@@ -36,6 +38,7 @@ const sortOptions: { value: SortOption; label: string }[] = [
 export default function CatalogoPage() {
   const { products } = useProducts();
   const { brands } = useBrands();
+  const { user } = useAuth();
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const debounceTimer = useRef<NodeJS.Timeout | null>(null);
@@ -502,7 +505,7 @@ export default function CatalogoPage() {
                       {product.name}
                     </h3>
                     <p className="text-sm text-gray-500 line-clamp-2 mb-3">{product.description}</p>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between mb-3">
                       <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent-orange group-hover:gap-2 transition-all">
                         Ver Detalles<ArrowRight size={14} />
                       </span>
@@ -525,6 +528,21 @@ export default function CatalogoPage() {
                         <ShoppingCart size={16} />
                       </button>
                     </div>
+
+                    {product.price && (
+                      <div className="pt-3 border-t border-gray-100">
+                        {user ? (
+                          <p className="text-xl font-extrabold text-accent-orange text-center">
+                            {product.price}
+                          </p>
+                        ) : (
+                          <p className="text-xs text-gray-400 flex items-center justify-center gap-1">
+                            <Lock size={12} />
+                            Precio solo visible al iniciar sesión
+                          </p>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </Link>
               ))}

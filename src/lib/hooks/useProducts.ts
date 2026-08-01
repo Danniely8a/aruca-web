@@ -37,10 +37,14 @@ export function useProducts(): { products: Product[]; loading: boolean } {
               specs: p.specs || {},
               features: p.features || [],
               featured: p.featured || false,
+              price: p.price || undefined,
             });
           }
 
-          const merged = staticProducts.map((sp) => dbProducts.get(sp.id) || sp);
+          const merged = staticProducts.map((sp) => {
+            const db = dbProducts.get(sp.id);
+            return db || sp;
+          });
           const newFromDb = data
             .filter((p) => !staticIds.has(p.id))
             .map((p) => ({
@@ -58,6 +62,7 @@ export function useProducts(): { products: Product[]; loading: boolean } {
               specs: p.specs || {},
               features: p.features || [],
               featured: p.featured || false,
+              price: p.price || undefined,
             }));
 
           setAllProducts([...merged, ...newFromDb]);

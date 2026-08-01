@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Plus, Pencil, Trash2, Search, Star } from "lucide-react";
+import { Plus, Pencil, Trash2, Search, Star, Upload } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
 interface Product {
@@ -56,13 +56,22 @@ export default function AdminProductosPage() {
     <div>
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Productos ({products.length})</h1>
-        <Link
-          href="/admin/productos/new"
-          className="flex items-center gap-2 px-4 py-2.5 bg-brand text-white rounded-xl font-medium hover:bg-brand/90 transition-all text-sm"
-        >
-          <Plus size={16} />
-          Nuevo Producto
-        </Link>
+        <div className="flex gap-2">
+          <Link
+            href="/admin/productos/import"
+            className="flex items-center gap-2 px-4 py-2.5 border border-brand text-brand rounded-xl font-medium hover:bg-brand/5 transition-all text-sm"
+          >
+            <Upload size={16} />
+            Importar
+          </Link>
+          <Link
+            href="/admin/productos/new"
+            className="flex items-center gap-2 px-4 py-2.5 bg-brand text-white rounded-xl font-medium hover:bg-brand/90 transition-all text-sm"
+          >
+            <Plus size={16} />
+            Nuevo Producto
+          </Link>
+        </div>
       </div>
 
       <div className="relative mb-4">

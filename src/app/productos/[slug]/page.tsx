@@ -9,9 +9,11 @@ import {
   MessageCircle,
   Tag,
   ShoppingCart,
+  Lock,
 } from "lucide-react";
 import { company } from "@/lib/data/company";
 import { useCart } from "@/lib/context/CartContext";
+import { useAuth } from "@/lib/context/AuthContext";
 import { useProducts } from "@/lib/hooks/useProducts";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
@@ -24,6 +26,7 @@ export default function ProductDetailPage({
   const { products: allProducts } = useProducts();
   const product = allProducts.find((p) => p.slug === slug);
   const { addItem } = useCart();
+  const { user } = useAuth();
 
   if (!product) {
     return (
@@ -137,6 +140,32 @@ export default function ProductDetailPage({
                   {product.description}
                 </p>
               </div>
+
+              {product.price && (
+                <div className="mb-6 p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                  {user ? (
+                    <div className="text-center">
+                      <p className="text-sm text-gray-500 mb-1">Precio</p>
+                      <p className="text-3xl font-extrabold text-accent-orange">{product.price}</p>
+                      <p className="text-xs text-gray-400 mt-1">+ IVA</p>
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <p className="text-sm text-gray-500 mb-3">Precio solo para clientes registrados</p>
+                      <Link
+                        href="/login"
+                        className="inline-flex items-center gap-2 px-6 py-2.5 bg-accent-orange text-white font-semibold rounded-xl hover:bg-accent-orange/90 transition-all"
+                      >
+                        <Lock size={16} />
+                        Inicia sesión para ver precio
+                      </Link>
+                      <p className="text-xs text-gray-400 mt-2">
+                        ¿No tienes cuenta? <Link href="/registro" className="text-brand hover:underline">Regístrate gratis</Link>
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
 
               {product.specs && (
                 <div className="mb-6">

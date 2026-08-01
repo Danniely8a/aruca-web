@@ -11,6 +11,7 @@ import {
   Building2,
   FileText,
   MessageCircle,
+  ShoppingCart,
   LogOut,
   Menu,
   X,
@@ -22,6 +23,7 @@ const navItems = [
   { href: "/admin/productos", label: "Productos", icon: Package },
   { href: "/admin/categorias", label: "Categorías", icon: FolderTree },
   { href: "/admin/marcas", label: "Marcas", icon: Building2 },
+  { href: "/admin/pedidos", label: "Pedidos", icon: ShoppingCart },
   { href: "/admin/contenido", label: "Contenido", icon: FileText },
   { href: "/admin/chats", label: "Chats", icon: MessageCircle },
 ];

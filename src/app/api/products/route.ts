@@ -35,6 +35,7 @@ export async function POST(request: NextRequest) {
     specs: body.specs || {},
     included: body.included || "",
     featured: body.featured || false,
+    price: body.price || "",
   };
 
   const { error } = await supabase.from("products").insert(product);
