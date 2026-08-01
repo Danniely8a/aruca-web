@@ -106,7 +106,17 @@ export default function CartDrawer() {
                         </Link>
                         <p className="text-xs text-gray-400 mt-0.5">{item.brand} &middot; {item.model}</p>
                         {user && item.price && (
-                          <p className="text-sm font-bold text-accent-orange mt-1">{item.price}</p>
+                          <div className="flex items-center justify-between mt-1">
+                            <p className="text-sm font-bold text-accent-orange">{item.price} c/u</p>
+                            {item.quantity > 1 && (
+                              <p className="text-xs font-semibold text-gray-600">
+                                ${(() => {
+                                  const num = parseFloat(item.price!.replace(/[^0-9.]/g, ""));
+                                  return isNaN(num) ? "0.00" : (num * item.quantity).toFixed(2);
+                                })()}
+                              </p>
+                            )}
+                          </div>
                         )}
                         {!user && item.price && (
                           <p className="text-[11px] text-gray-400 mt-1 flex items-center gap-1">
@@ -143,13 +153,13 @@ export default function CartDrawer() {
                 </div>
 
                 <div className="border-t border-gray-200 px-6 py-4 space-y-3">
-                  {subtotal > 0 && (
+                  {user && subtotal > 0 && (
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-500">Subtotal estimado</span>
                       <span className="font-bold text-accent-orange text-lg">${subtotal.toLocaleString("en-US", { minimumFractionDigits: 2 })}</span>
                     </div>
                   )}
-                  {!user && items.some((i) => i.price) && (
+                  {!user && (
                     <p className="text-xs text-gray-400 flex items-center gap-1">
                       <Lock size={12} />
                       Inicia sesión para ver precios y comprar
