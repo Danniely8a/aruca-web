@@ -69,11 +69,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setUser(p);
           authStore.setUser(p);
         });
-      } else {
+      } else if (_event === "SIGNED_OUT") {
         setUser(null);
-        if (_event === "SIGNED_OUT") {
-          authStore.setUser(null);
-        }
+        authStore.setUser(null);
       }
       setLoading(false);
     });

@@ -43,7 +43,11 @@ export function useProducts(): { products: Product[]; loading: boolean } {
 
           const merged = staticProducts.map((sp) => {
             const db = dbProducts.get(sp.id);
-            return db || sp;
+            if (!db) return sp;
+            return {
+              ...db,
+              price: db.price || sp.price,
+            };
           });
           const newFromDb = data
             .filter((p) => !staticIds.has(p.id))
