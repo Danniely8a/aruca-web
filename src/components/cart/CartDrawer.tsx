@@ -4,29 +4,24 @@ import { useCart } from "@/lib/context/CartContext";
 import { company } from "@/lib/data/company";
 import { useAuth } from "@/lib/context/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Minus, Plus, Trash2, ShoppingBag, MessageCircle, CreditCard } from "lucide-react";
+import { X, Minus, Plus, Trash2, ShoppingBag, MessageCircle, CreditCard, Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 
 export default function CartDrawer() {
   const { items, removeItem, updateQuantity, clearCart, totalItems, isOpen, setIsOpen } = useCart();
   const { user } = useAuth();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    if (user) {
-      setIsLoggedIn(true);
-    } else {
-      const cached = localStorage.getItem("aruca_auth");
-      setIsLoggedIn(!!cached);
-    }
-  }, [user]);
+  const subtotal = items.reduce((sum, item) => {
+    if (!item.price) return sum;
+    const num = parseFloat(item.price.replace(/[^0-9.]/g, ""));
+    return sum + (isNaN(num) ? 0 : num * item.quantity);
+  }, 0);
 
   const handleWhatsApp = () => {
     if (items.length === 0) return;
     const lines = items.map(
-      (item) => `- ${item.name} (${item.brand} ${item.model}) x${item.quantity}`
+      (item) => `- ${item.name} (${item.brand} ${item.model}) x${item.quantity}${item.price ? ` — ${item.price}` : ""}`
     );
     const message = `Hola, solicito cotización para los siguientes productos:\n\n${lines.join("\n")}`;
     window.open(
@@ -110,6 +105,9 @@ export default function CartDrawer() {
                           {item.name}
                         </Link>
                         <p className="text-xs text-gray-400 mt-0.5">{item.brand} &middot; {item.model}</p>
+                        {item.price && (
+                          <p className="text-sm font-bold text-accent-orange mt-1">{item.price}</p>
+                        )}
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex items-center gap-1">
                             <button
@@ -139,7 +137,19 @@ export default function CartDrawer() {
                 </div>
 
                 <div className="border-t border-gray-200 px-6 py-4 space-y-3">
-                  {isLoggedIn && (
+                  {subtotal > 0 && (
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-500">Subtotal estimado</span>
+                      <span className="font-bold text-accent-orange text-lg">${subtotal.toLocaleString("en-US", { minimumFractionDigits: 2 })}</span>
+                    </div>
+                  )}
+                  {!user && items.some((i) => i.price) && (
+                    <p className="text-xs text-gray-400 flex items-center gap-1">
+                      <Lock size={12} />
+                      Inicia sesión para ver precios y comprar
+                    </p>
+                  )}
+                  {user && (
                     <Link
                       href="/checkout"
                       onClick={() => setIsOpen(false)}
@@ -149,7 +159,7 @@ export default function CartDrawer() {
                       Ir al Portal de Pago ({totalItems} {totalItems === 1 ? "producto" : "productos"})
                     </Link>
                   )}
-                  {!isLoggedIn && (
+                  {!user && (
                     <Link
                       href="/login"
                       onClick={() => setIsOpen(false)}

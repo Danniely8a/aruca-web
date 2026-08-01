@@ -520,6 +520,7 @@ export default function CatalogoPage() {
                             brand: product.brand,
                             model: product.model,
                             image: product.image || "",
+                            price: product.price,
                           });
                         }}
                         className="p-2 bg-brand/10 text-brand rounded-lg hover:bg-brand hover:text-white transition-colors"
@@ -604,6 +605,7 @@ export default function CatalogoPage() {
                               brand: product.brand,
                               model: product.model,
                               image: product.image || "",
+                              price: product.price,
                             });
                           }}
                           className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 bg-brand/10 text-brand rounded-lg hover:bg-brand hover:text-white transition-colors text-xs font-medium"
@@ -639,6 +641,7 @@ export default function CatalogoPage() {
                           brand: product.brand,
                           model: product.model,
                           image: product.image || "",
+                          price: product.price,
                         });
                       }}
                       className="mt-3 sm:hidden flex items-center gap-2 px-4 py-2 bg-brand/10 text-brand rounded-lg hover:bg-brand hover:text-white transition-colors text-sm font-medium w-fit"

@@ -198,6 +198,7 @@ export default function ProductDetailPage({
                       brand: product.brand,
                       model: product.model,
                       image: product.image || "",
+                      price: product.price,
                     })
                   }
                   className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all"
