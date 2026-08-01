@@ -41,6 +41,30 @@ export async function GET() {
   return NextResponse.json({ orders: ordersWithUsers, deliveries });
 }
 
+export async function POST(request: NextRequest) {
+  const body = await request.json();
+  const supabase = createAdminClient();
+
+  const { data: order, error } = await supabase
+    .from("orders")
+    .insert({
+      user_id: body.user_id || "00000000-0000-0000-0000-000000000000",
+      items: body.items || [],
+      total: body.total || "",
+      status: "pending_payment",
+      customer_name: body.customer_name || "",
+      customer_phone: body.customer_phone || "",
+      customer_email: body.customer_email || "",
+      customer_notes: body.customer_notes || "",
+      source: body.source || "admin",
+    })
+    .select("*")
+    .single();
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  return NextResponse.json(order);
+}
+
 export async function PUT(request: NextRequest) {
   const body = await request.json();
   const { id, ...updates } = body;
