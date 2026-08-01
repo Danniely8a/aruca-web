@@ -108,14 +108,24 @@ export default function CheckoutPage() {
                     <p className="font-medium text-gray-900 text-sm">{item.name}</p>
                     <p className="text-xs text-gray-400">{item.brand} - {item.model} x{item.quantity}</p>
                   </div>
-                  <p className="font-semibold text-accent-orange text-sm">{item.price || "Consultar"}</p>
+                  <p className="font-semibold text-accent-orange text-sm">
+                    {item.price ? (
+                      item.quantity > 1 ? `${item.price} x${item.quantity}` : item.price
+                    ) : "Consultar"}
+                  </p>
                 </div>
               ))}
             </div>
             {total > 0 && (
               <div className="flex justify-between items-center mt-4 pt-3 border-t border-gray-100">
-                <p className="font-bold text-gray-900">Total estimado</p>
+                <p className="font-bold text-gray-900">Total a pagar</p>
                 <p className="font-bold text-xl text-accent-orange">${total.toFixed(2)}</p>
+              </div>
+            )}
+            {total === 0 && (
+              <div className="flex justify-between items-center mt-4 pt-3 border-t border-gray-100">
+                <p className="font-bold text-gray-900">Total a pagar</p>
+                <p className="font-bold text-xl text-gray-400">Consultar</p>
               </div>
             )}
           </div>

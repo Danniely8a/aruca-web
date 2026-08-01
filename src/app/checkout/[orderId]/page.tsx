@@ -342,14 +342,24 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
               {(order.items as unknown as OrderItem[]).map((item) => (
                 <div key={item.id} className="flex justify-between text-sm">
                   <span className="text-gray-600">{item.name} x{item.quantity}</span>
-                  <span className="font-medium">{item.price || "Consultar"}</span>
+                  <span className="font-medium text-accent-orange">
+                    {item.price ? (
+                      item.quantity > 1 ? `${item.price} x${item.quantity}` : item.price
+                    ) : "Consultar"}
+                  </span>
                 </div>
               ))}
             </div>
-            {order.total !== "Consultar" && (
+            {order.total && order.total !== "Consultar" && (
               <div className="flex justify-between mt-4 pt-3 border-t border-gray-100 font-bold text-lg">
-                <span>Total</span>
+                <span>Total a pagar</span>
                 <span className="text-accent-orange">{order.total}</span>
+              </div>
+            )}
+            {(!order.total || order.total === "Consultar") && (
+              <div className="flex justify-between mt-4 pt-3 border-t border-gray-100 font-bold text-lg">
+                <span>Total a pagar</span>
+                <span className="text-gray-400">Consultar</span>
               </div>
             )}
           </div>
