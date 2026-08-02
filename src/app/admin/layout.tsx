@@ -17,7 +17,6 @@ import {
   Menu,
   X,
   ChevronLeft,
-  UserCheck,
 } from "lucide-react";
 
 const navItems = [
@@ -25,7 +24,6 @@ const navItems = [
   { href: "/admin/productos", label: "Productos", icon: Package },
   { href: "/admin/categorias", label: "Categorías", icon: FolderTree },
   { href: "/admin/marcas", label: "Marcas", icon: Building2 },
-  { href: "/admin/vendedores/pedidos", label: "Vendedores", icon: UserCheck },
   { href: "/admin/pedidos", label: "Pedidos", icon: ShoppingCart },
   { href: "/admin/whatsapp", label: "WhatsApp", icon: MessagesSquare },
   { href: "/admin/contenido", label: "Contenido", icon: FileText },

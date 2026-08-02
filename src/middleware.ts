@@ -41,6 +41,19 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // Vendedores routes
+  if (pathname.startsWith("/vendedores")) {
+    const vendorSession = request.cookies.get("vendor-session")?.value;
+
+    if (!vendorSession && pathname !== "/vendedores") {
+      return NextResponse.redirect(new URL("/vendedores", request.url));
+    }
+
+    if (vendorSession && pathname === "/vendedores") {
+      return NextResponse.redirect(new URL("/vendedores/pedidos", request.url));
+    }
+  }
+
   // Profile route - must be logged in
   if (pathname === "/perfil" && !user) {
     return NextResponse.redirect(new URL("/login", request.url));
@@ -55,5 +68,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/perfil", "/login", "/registro"],
+  matcher: ["/admin/:path*", "/vendedores/:path*", "/perfil", "/login", "/registro"],
 };
