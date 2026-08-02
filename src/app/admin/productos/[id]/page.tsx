@@ -20,6 +20,8 @@ interface ProductData {
   specs: Record<string, string>;
   included: string;
   featured: boolean;
+  price: string;
+  stock: number;
 }
 
 export default function AdminProductEditPage({ params }: { params: Promise<{ id: string }> }) {
@@ -50,6 +52,8 @@ export default function AdminProductEditPage({ params }: { params: Promise<{ id:
     specs: {},
     included: "",
     featured: false,
+    price: "",
+    stock: 0,
   });
 
   useEffect(() => {
@@ -268,6 +272,26 @@ export default function AdminProductEditPage({ params }: { params: Promise<{ id:
                 type="text"
                 value={form.model}
                 onChange={(e) => setForm((prev) => ({ ...prev, model: e.target.value }))}
+                className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Precio</label>
+              <input
+                type="text"
+                value={form.price}
+                onChange={(e) => setForm((prev) => ({ ...prev, price: e.target.value }))}
+                placeholder="Ej: $120.00"
+                className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Stock</label>
+              <input
+                type="number"
+                value={form.stock}
+                onChange={(e) => setForm((prev) => ({ ...prev, stock: parseInt(e.target.value) || 0 }))}
+                min="0"
                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
               />
             </div>

@@ -186,6 +186,18 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
         if (res.ok) {
           setMessage("Comprobante cargado con exito. Tu pago esta siendo verificado.");
           setMessageType("success");
+          fetch("/api/notifications", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              type: "comprobante_uploaded",
+              orderId: order.id,
+              orderTotal: order.total,
+              userName: user?.name || "Cliente",
+              userEmail: user?.email || "",
+              comprobanteUrl: publicUrl,
+            }),
+          }).catch(() => {});
           loadOrder();
         }
       } else {
@@ -394,6 +406,42 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                   <ExternalLink size={14} />
                   Pagar con PagoMovil BDV
                 </a>
+              </div>
+
+              {/* MercadoPago Button */}
+              <div className="bg-gradient-to-r from-blue-600 to-blue-500 rounded-xl p-4 border border-blue-400">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-bold text-white text-base">Pagar en linea</p>
+                    <p className="text-blue-100 text-sm">Rapido y seguro con MercadoPago</p>
+                  </div>
+                  <button
+                    onClick={async () => {
+                      try {
+                        const res = await fetch("/api/mercadopago", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ orderId: order.id }),
+                        });
+                        const data = await res.json();
+                        if (data.initPoint) {
+                          window.open(data.initPoint, "_blank");
+                        } else if (data.sandboxInitPoint) {
+                          window.open(data.sandboxInitPoint, "_blank");
+                        } else if (data.bankTransfer) {
+                          setMessage("Pago en linea no disponible. Usa transferencia bancaria.");
+                          setMessageType("error");
+                        }
+                      } catch {
+                        setMessage("Error al conectar con MercadoPago");
+                        setMessageType("error");
+                      }
+                    }}
+                    className="px-6 py-3 bg-white text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition-colors text-sm shadow-sm"
+                  >
+                    Pagar con MercadoPago
+                  </button>
+                </div>
               </div>
 
               <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">

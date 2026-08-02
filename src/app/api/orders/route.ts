@@ -38,6 +38,30 @@ export async function POST(request: NextRequest) {
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+  const items = body.items || [];
+  for (const item of items) {
+    if (item.id) {
+      await adminClient.rpc("decrement_stock", {
+        product_id: item.id,
+        decrement_by: item.quantity || 1,
+      });
+    }
+  }
+
+  fetch(`${request.nextUrl.origin}/api/notifications`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      type: "new_order",
+      orderId: data.id,
+      orderTotal: data.total,
+      userName: body.userName || "Cliente",
+      userEmail: session.user.email,
+      userPhone: body.userPhone || "",
+    }),
+  }).catch(() => {});
+
   return NextResponse.json(data);
 }
 

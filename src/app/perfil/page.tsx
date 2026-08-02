@@ -15,19 +15,18 @@ import {
   Save,
   Loader2,
   Package,
-  Clock,
-  CheckCircle,
-  Truck,
+  Camera,
 } from "lucide-react";
 import { useAuth } from "@/lib/context/AuthContext";
 import { createClient } from "@/lib/supabase/client";
 
 export default function PerfilPage() {
   const router = useRouter();
-  const { user, loading: authLoading, signOut } = useAuth();
+  const { user, loading: authLoading, signOut, refreshUser } = useAuth();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState("");
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState<"success" | "error">("success");
@@ -48,6 +47,7 @@ export default function PerfilPage() {
       setName(user.name);
       setPhone(user.phone);
       setCompany(user.company);
+      setAvatarUrl(user.avatar_url || "");
       fetchOrders();
     }
   }, [user, authLoading, router]);
@@ -70,13 +70,37 @@ export default function PerfilPage() {
     );
   }
 
+  const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !user) return;
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("folder", "avatars");
+    try {
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      const data = await res.json();
+      if (data.url) {
+        setAvatarUrl(data.url);
+        const supabase = createClient();
+        await supabase.from("users").update({ avatar_url: data.url }).eq("id", user.id);
+        await refreshUser();
+        setMessage("Foto de perfil actualizada");
+        setMessageType("success");
+      }
+    } catch {
+      setMessage("Error al subir la imagen");
+      setMessageType("error");
+    }
+    e.target.value = "";
+  };
+
   const handleSave = async () => {
     setSaving(true);
     setMessage("");
     const supabase = createClient();
     const { error } = await supabase
       .from("users")
-      .update({ name, phone, company })
+      .update({ name, phone, company, avatar_url: avatarUrl })
       .eq("id", user.id);
 
     if (error) {
@@ -85,6 +109,7 @@ export default function PerfilPage() {
     } else {
       setMessage("Perfil actualizado con éxito");
       setMessageType("success");
+      await refreshUser();
     }
     setSaving(false);
   };
@@ -119,6 +144,36 @@ export default function PerfilPage() {
               <h2 className="text-lg font-semibold text-gray-900 mb-4">
                 Información Personal
               </h2>
+
+              <div className="flex items-center gap-4 mb-6">
+                <label className="relative cursor-pointer group">
+                  {avatarUrl ? (
+                    <img
+                      src={avatarUrl}
+                      alt="Avatar"
+                      className="w-20 h-20 rounded-full object-cover border-2 border-brand"
+                    />
+                  ) : (
+                    <div className="w-20 h-20 bg-brand/10 rounded-full flex items-center justify-center border-2 border-dashed border-gray-300 group-hover:border-brand transition-colors">
+                      <Camera size={28} className="text-gray-400 group-hover:text-brand" />
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Camera size={20} className="text-white" />
+                  </div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleAvatarUpload}
+                    className="hidden"
+                  />
+                </label>
+                <div>
+                  <p className="font-semibold text-gray-900">{user.name || "Usuario"}</p>
+                  <p className="text-sm text-gray-500">{user.email}</p>
+                </div>
+              </div>
+
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">

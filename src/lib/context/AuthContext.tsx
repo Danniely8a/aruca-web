@@ -12,12 +12,14 @@ interface AuthUser {
   phone: string;
   company: string;
   role: string;
+  avatar_url: string;
 }
 
 interface AuthContextType {
   user: AuthUser | null;
   session: Session | null;
   loading: boolean;
+  refreshUser: () => Promise<void>;
   signUp: (email: string, password: string, name: string) => Promise<{ error?: string }>;
   signIn: (email: string, password: string) => Promise<{ error?: string }>;
   signOut: () => Promise<void>;
@@ -26,7 +28,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<AuthUser | null>(() => authStore.loadFromStorage());
+  const [user, setUser] = useState<AuthUser | null>(authStore.loadFromStorage() as AuthUser | null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -34,7 +36,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const c = createClient();
     const { data: profile } = await c
       .from("users")
-      .select("name, phone, company, role")
+      .select("name, phone, company, role, avatar_url")
       .eq("id", authUser.id)
       .single();
 
@@ -45,6 +47,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       phone: profile?.phone || "",
       company: profile?.company || "",
       role: profile?.role || "customer",
+      avatar_url: profile?.avatar_url || "",
     };
   }, []);
 
@@ -115,8 +118,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     authStore.setUser(null);
   };
 
+  const refreshUser = useCallback(async () => {
+    const supabase = createClient();
+    const { data: { session: s } } = await supabase.auth.getSession();
+    if (s?.user) {
+      const profile = await fetchProfile(s.user);
+      setUser(profile);
+      authStore.setUser(profile);
+      setSession(s);
+    }
+  }, [fetchProfile]);
+
   return (
-    <AuthContext.Provider value={{ user, session, loading, signUp, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, session, loading, refreshUser, signUp, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
