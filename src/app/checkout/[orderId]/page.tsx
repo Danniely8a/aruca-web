@@ -418,14 +418,112 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
               <div className="p-2 bg-brand/10 rounded-lg">
                 <Landmark size={22} className="text-brand" />
               </div>
-              <h2 className="font-semibold text-gray-900">Datos Bancarios</h2>
+              <h2 className="font-semibold text-gray-900">Metodos de Pago</h2>
             </div>
 
             <div className="space-y-4">
+              {/* Stripe */}
+              <div className="bg-gradient-to-r from-[#635BFF] to-[#4F46E5] rounded-xl p-4">
+                <div className="flex items-center justify-between flex-wrap gap-3">
+                  <div>
+                    <p className="font-bold text-white text-base">Tarjeta de Credito/Debito</p>
+                    <p className="text-indigo-200 text-sm">Visa, Mastercard - Pago internacional</p>
+                  </div>
+                  <button
+                    onClick={async () => {
+                      try {
+                        const res = await fetch("/api/stripe", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                            orderId: order.id,
+                            items: order.items,
+                            total: order.total,
+                            userEmail: user?.email,
+                            userName: user?.name,
+                          }),
+                        });
+                        const data = await res.json();
+                        if (data.url) {
+                          window.location.href = data.url;
+                        } else if (data.bankTransfer) {
+                          setMessage("Pago con tarjeta no disponible. Usa transferencia bancaria.");
+                          setMessageType("error");
+                        }
+                      } catch {
+                        setMessage("Error al conectar con Stripe");
+                        setMessageType("error");
+                      }
+                    }}
+                    className="px-6 py-2.5 bg-white text-indigo-600 font-bold rounded-xl hover:bg-indigo-50 transition-colors text-sm shadow-sm"
+                  >
+                    Pagar con Stripe
+                  </button>
+                </div>
+              </div>
+
+              {/* Binance */}
+              <div className="bg-gradient-to-r from-[#1E2026] to-[#2B3139] rounded-xl p-4 border border-gray-700">
+                <div className="flex items-center justify-between flex-wrap gap-3">
+                  <div>
+                    <p className="font-bold text-[#F0B90B] text-base flex items-center gap-2">
+                      <span className="text-lg">₿</span> Binance Pay
+                    </p>
+                    <p className="text-gray-400 text-sm">USDT, BUSD, BTC - Transferencia crypto</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="text-left">
+                      <p className="text-gray-300 text-[11px]">Wallet USDT (BEP20)</p>
+                      <p className="text-[#F0B90B] text-xs font-mono">0x1234...5678</p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setPaymentMethod("binance");
+                        navigator.clipboard.writeText("0x1234567890abcdef1234567890abcdef12345678");
+                        setMessage("Direccion USDT copiada al portapapeles");
+                        setMessageType("success");
+                      }}
+                      className="px-4 py-2 bg-[#F0B90B] text-black font-bold rounded-xl hover:bg-[#FCD535] transition-colors text-sm"
+                    >
+                      Copiar Wallet
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Zelle */}
+              <div className="bg-gradient-to-r from-[#6D28D9] to-[#5B21B6] rounded-xl p-4">
+                <div className="flex items-center justify-between flex-wrap gap-3">
+                  <div>
+                    <p className="font-bold text-white text-base">Zelle</p>
+                    <p className="text-purple-200 text-sm">Transferencia desde EE.UU.</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="text-left">
+                      <p className="text-purple-100 text-[11px]">Email Zelle</p>
+                      <p className="text-white text-xs font-mono">aruca.maquinarias@gmail.com</p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setPaymentMethod("zelle");
+                        navigator.clipboard.writeText("aruca.maquinarias@gmail.com");
+                        setMessage("Email Zelle copiado al portapapeles");
+                        setMessageType("success");
+                      }}
+                      className="px-4 py-2 bg-white text-purple-700 font-bold rounded-xl hover:bg-purple-50 transition-colors text-sm"
+                    >
+                      Copiar Email
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Banco de Venezuela */}
               <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                 <div className="flex items-center gap-2 mb-2">
-                  <Building2 size={18} className="text-gray-600" />
+                  <Building2 size={18} className="text-red-600" />
                   <span className="font-bold text-gray-800">Banco de Venezuela</span>
+                  <span className="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded-full">0102</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 ml-7">
                   <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
@@ -433,76 +531,154 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                   <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
                   <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
                 </div>
-                <a
-                  href="https://www.bancodevenezuela.com/personas/pago-movil"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 ml-7 inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-xl hover:bg-red-700 transition-colors"
-                >
-                  <ExternalLink size={14} />
-                  Pagar con PagoMovil BDV
-                </a>
-              </div>
-
-              {/* MercadoPago Button */}
-              <div className="bg-gradient-to-r from-blue-600 to-blue-500 rounded-xl p-4 border border-blue-400">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-bold text-white text-base">Pagar en linea</p>
-                    <p className="text-blue-100 text-sm">Rapido y seguro con MercadoPago</p>
-                  </div>
+                <div className="mt-2 ml-7 flex flex-wrap gap-2">
                   <button
-                    onClick={async () => {
-                      try {
-                        const res = await fetch("/api/mercadopago", {
-                          method: "POST",
-                          headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify({ orderId: order.id }),
-                        });
-                        const data = await res.json();
-                        if (data.initPoint) {
-                          window.open(data.initPoint, "_blank");
-                        } else if (data.sandboxInitPoint) {
-                          window.open(data.sandboxInitPoint, "_blank");
-                        } else if (data.bankTransfer) {
-                          setMessage("Pago en linea no disponible. Usa transferencia bancaria.");
-                          setMessageType("error");
-                        }
-                      } catch {
-                        setMessage("Error al conectar con MercadoPago");
-                        setMessageType("error");
-                      }
+                    onClick={() => {
+                      setPaymentMethod("pago_movil_bdv");
+                      navigator.clipboard.writeText("0102-XXXX-XXXX-XX-XXXXXXXX");
+                      setMessage("Datos BDV copiados");
+                      setMessageType("success");
                     }}
-                    className="px-6 py-3 bg-white text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition-colors text-sm shadow-sm"
+                    className="text-xs px-3 py-1.5 bg-red-600 text-white rounded-lg hover:bg-red-700"
                   >
-                    Pagar con MercadoPago
+                    Copiar Cuenta BDV
                   </button>
+                  <a
+                    href="https://www.bancodevenezuela.com/personas/pago-movil"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1.5 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 flex items-center gap-1"
+                  >
+                    <ExternalLink size={12} /> PagoMovil BDV
+                  </a>
                 </div>
               </div>
 
+              {/* Banesco */}
               <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                 <div className="flex items-center gap-2 mb-2">
-                  <Building2 size={18} className="text-gray-600" />
-                  <span className="font-bold text-gray-800">Transferencia Bancaria</span>
+                  <Building2 size={18} className="text-blue-800" />
+                  <span className="font-bold text-gray-800">Banesco</span>
+                  <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">0134</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 ml-7">
-                  <p><span className="font-medium">Banco:</span> Banco de Venezuela</p>
                   <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
                   <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
                   <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
+                  <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
                 </div>
+                <button
+                  onClick={() => {
+                    setPaymentMethod("transferencia_banesco");
+                    navigator.clipboard.writeText("0134-XXXX-XXXX-XX-XXXXXXXX");
+                    setMessage("Datos Banesco copiados");
+                    setMessageType("success");
+                  }}
+                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-blue-800 text-white rounded-lg hover:bg-blue-900"
+                >
+                  Copiar Cuenta Banesco
+                </button>
               </div>
 
+              {/* Mercantil */}
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <Building2 size={18} className="text-green-700" />
+                  <span className="font-bold text-gray-800">Mercantil</span>
+                  <span className="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full">0105</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 ml-7">
+                  <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
+                  <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
+                  <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
+                  <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
+                </div>
+                <button
+                  onClick={() => {
+                    setPaymentMethod("transferencia_mercantil");
+                    navigator.clipboard.writeText("0105-XXXX-XXXX-XX-XXXXXXXX");
+                    setMessage("Datos Mercantil copiados");
+                    setMessageType("success");
+                  }}
+                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-green-700 text-white rounded-lg hover:bg-green-800"
+                >
+                  Copiar Cuenta Mercantil
+                </button>
+              </div>
+
+              {/* Provincial */}
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <Building2 size={18} className="text-cyan-600" />
+                  <span className="font-bold text-gray-800">BBVA Provincial</span>
+                  <span className="text-[10px] bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded-full">0108</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 ml-7">
+                  <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
+                  <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
+                  <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
+                  <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
+                </div>
+                <button
+                  onClick={() => {
+                    setPaymentMethod("transferencia_provincial");
+                    navigator.clipboard.writeText("0108-XXXX-XXXX-XX-XXXXXXXX");
+                    setMessage("Datos Provincial copiados");
+                    setMessageType("success");
+                  }}
+                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700"
+                >
+                  Copiar Cuenta Provincial
+                </button>
+              </div>
+
+              {/* BNC */}
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <Building2 size={18} className="text-orange-600" />
+                  <span className="font-bold text-gray-800">BNC</span>
+                  <span className="text-[10px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">0191</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 ml-7">
+                  <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
+                  <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
+                  <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
+                  <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
+                </div>
+                <button
+                  onClick={() => {
+                    setPaymentMethod("transferencia_bnc");
+                    navigator.clipboard.writeText("0191-XXXX-XXXX-XX-XXXXXXXX");
+                    setMessage("Datos BNC copiados");
+                    setMessageType("success");
+                  }}
+                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700"
+                >
+                  Copiar Cuenta BNC
+                </button>
+              </div>
+
+              {/* Pago Movil - multi banco */}
               <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                 <div className="flex items-center gap-2 mb-2">
                   <CreditCard size={18} className="text-gray-600" />
                   <span className="font-bold text-gray-800">Pago Movil</span>
                 </div>
                 <div className="text-sm text-gray-600 ml-7">
-                  <p><span className="font-medium">Banco:</span> 0102 - Banco de Venezuela</p>
-                  <p><span className="font-medium">Telefono:</span> {user?.phone || ""}</p>
-                  <p><span className="font-medium">RIF Destino:</span> J-XXXXXXXX-X</p>
+                  <p><span className="font-medium">Telefono:</span> 0412-6109597</p>
+                  <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
                 </div>
+                <button
+                  onClick={() => {
+                    setPaymentMethod("pago_movil");
+                    navigator.clipboard.writeText("04126109597");
+                    setMessage("Telefono PagoMovil copiado");
+                    setMessageType("success");
+                  }}
+                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-brand text-white rounded-lg hover:bg-brand/90"
+                >
+                  Copiar Telefono
+                </button>
               </div>
             </div>
           </div>
@@ -523,8 +699,16 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                   >
                     <option value="">Seleccionar...</option>
+                    <option value="stripe">Tarjeta (Stripe)</option>
+                    <option value="binance">Binance (USDT/BTC)</option>
+                    <option value="zelle">Zelle</option>
+                    <option value="pago_movil_bdv">Pago Movil BDV</option>
                     <option value="pago_movil">Pago Movil</option>
-                    <option value="transferencia">Transferencia Bancaria</option>
+                    <option value="transferencia_banesco">Transferencia Banesco</option>
+                    <option value="transferencia_mercantil">Transferencia Mercantil</option>
+                    <option value="transferencia_provincial">Transferencia Provincial</option>
+                    <option value="transferencia_bnc">Transferencia BNC</option>
+                    <option value="transferencia_bdv">Transferencia BDV</option>
                     <option value="deposito">Deposito</option>
                     <option value="efectivo">Efectivo</option>
                   </select>
@@ -538,7 +722,7 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                     type="text"
                     value={paymentReference}
                     onChange={(e) => setPaymentReference(e.target.value)}
-                    placeholder="Ej: 12345678"
+                    placeholder="Ej: 12345678 o TXID de Binance"
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                   />
                 </div>

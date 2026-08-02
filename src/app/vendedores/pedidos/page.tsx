@@ -1,16 +1,26 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, Plus, Minus, Trash2, ShoppingCart, User, Phone, Mail,
   FileText, CheckCircle, Loader2, ArrowRight, Package,
-  LogOut, Menu, X,
+  LogOut, Menu, X, UserPlus,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useProducts } from "@/lib/hooks/useProducts";
+
+interface Client {
+  id: number;
+  a2_id?: string;
+  name: string;
+  phone: string;
+  email: string;
+  rif: string;
+  address: string;
+}
 
 interface OrderItem {
   id: string;
@@ -36,6 +46,78 @@ export default function VendedorPedidosPage() {
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState<"success" | "error">("success");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const [clientSearch, setClientSearch] = useState("");
+  const [clients, setClients] = useState<Client[]>([]);
+  const [showClientDropdown, setShowClientDropdown] = useState(false);
+  const [creatingNew, setCreatingNew] = useState(false);
+  const clientTimer = useRef<NodeJS.Timeout | null>(null);
+  const clientDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (clientDropdownRef.current && !clientDropdownRef.current.contains(e.target as Node)) {
+        setShowClientDropdown(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  const searchClients = (q: string) => {
+    setClientSearch(q);
+    if (clientTimer.current) clearTimeout(clientTimer.current);
+
+    if (!q.trim()) {
+      setClients([]);
+      setShowClientDropdown(false);
+      return;
+    }
+
+    clientTimer.current = setTimeout(async () => {
+      const res = await fetch(`/api/clients?q=${encodeURIComponent(q)}`);
+      if (res.ok) {
+        const data = await res.json();
+        setClients(data);
+        setShowClientDropdown(data.length > 0);
+      }
+    }, 200);
+  };
+
+  const selectClient = (client: Client) => {
+    setCustomerName(client.name);
+    setCustomerPhone(client.phone || "");
+    setCustomerEmail(client.email || "");
+    setClientSearch(client.name);
+    setShowClientDropdown(false);
+    setCreatingNew(false);
+  };
+
+  const handleCreateClient = async () => {
+    if (!clientSearch.trim()) return;
+    setCreatingNew(true);
+    try {
+      const res = await fetch("/api/clients", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: clientSearch.trim(),
+          phone: customerPhone,
+          email: customerEmail,
+        }),
+      });
+      if (res.ok) {
+        const newClient = await res.json();
+        selectClient(newClient);
+        setMessage("Cliente creado exitosamente");
+        setMessageType("success");
+      }
+    } catch {
+      setMessage("Error al crear cliente");
+      setMessageType("error");
+    }
+    setCreatingNew(false);
+  };
 
   const filteredProducts = useMemo(() => {
     if (!search.trim()) return [];
@@ -315,20 +397,66 @@ export default function VendedorPedidosPage() {
                 Datos del Cliente
               </h2>
               <div className="space-y-4">
-                <div>
+                <div ref={clientDropdownRef} className="relative">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Nombre <span className="text-red-500">*</span>
+                    Cliente <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
-                    <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input
                       type="text"
-                      value={customerName}
-                      onChange={(e) => setCustomerName(e.target.value)}
-                      placeholder="Nombre del cliente"
+                      value={clientSearch || customerName}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setCustomerName(val);
+                        searchClients(val);
+                      }}
+                      onFocus={() => {
+                        if (clients.length > 0) setShowClientDropdown(true);
+                      }}
+                      placeholder="Buscar cliente por nombre..."
                       className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                     />
                   </div>
+
+                  <AnimatePresence>
+                    {showClientDropdown && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -5 }}
+                        className="absolute z-20 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden"
+                      >
+                        {clients.map((c) => (
+                          <button
+                            key={c.id}
+                            type="button"
+                            onClick={() => selectClient(c)}
+                            className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-left text-sm transition-colors"
+                          >
+                            <div className="w-7 h-7 bg-brand/10 text-brand rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
+                              {c.name.charAt(0).toUpperCase()}
+                            </div>
+                            <div className="min-w-0">
+                              <p className="font-medium text-gray-900 truncate">{c.name}</p>
+                              <p className="text-xs text-gray-400 truncate">
+                                {[c.phone, c.email, c.rif].filter(Boolean).join(" · ")}
+                              </p>
+                            </div>
+                          </button>
+                        ))}
+                        <button
+                          type="button"
+                          onClick={handleCreateClient}
+                          disabled={creatingNew}
+                          className="w-full flex items-center gap-2 px-4 py-2.5 bg-gray-50 hover:bg-brand/5 text-brand text-sm font-medium transition-colors border-t border-gray-100"
+                        >
+                          <UserPlus size={14} />
+                          {creatingNew ? "Creando..." : `Crear "${clientSearch}" como nuevo cliente`}
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Telefono</label>
