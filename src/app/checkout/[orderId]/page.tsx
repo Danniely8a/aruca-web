@@ -347,6 +347,42 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
             {statusInfo.label}
           </div>
 
+          {/* Invoice download */}
+          {["payment_verified", "in_process", "shipped", "delivered"].includes(order.status) && (
+            <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">
+              <h2 className="font-semibold text-gray-900 mb-4">Factura</h2>
+              <p className="text-sm text-gray-500 mb-3">Descarga la factura de tu pedido</p>
+              <button
+                onClick={async () => {
+                  try {
+                    const res = await fetch(`/api/invoices?order_id=${order.id}`);
+                    const data = await res.json();
+                    if (data.invoice_url) {
+                      window.open(data.invoice_url, "_blank");
+                    } else {
+                      const genRes = await fetch("/api/invoices", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ orderId: order.id }),
+                      });
+                      const genData = await genRes.json();
+                      if (genData.invoiceUrl) {
+                        window.open(genData.invoiceUrl, "_blank");
+                      }
+                    }
+                  } catch {
+                    setMessage("Error al generar factura");
+                    setMessageType("error");
+                  }
+                }}
+                className="flex items-center gap-2 px-4 py-3 bg-brand text-white rounded-xl font-medium hover:bg-brand/90 transition-all text-sm"
+              >
+                <FileText size={18} />
+                Ver / Generar Factura
+              </button>
+            </div>
+          )}
+
           {/* Order Summary */}
           <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">
             <h2 className="font-semibold text-gray-900 mb-4">Resumen del Pedido</h2>

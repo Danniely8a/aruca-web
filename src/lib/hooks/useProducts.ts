@@ -4,8 +4,12 @@ import { useState, useEffect } from "react";
 import { products as staticProducts, type Product } from "@/lib/data/products";
 import { createClient } from "@/lib/supabase/client";
 
-export function useProducts(): { products: Product[]; loading: boolean } {
-  const [allProducts, setAllProducts] = useState<Product[]>(staticProducts);
+interface ExtendedProduct extends Product {
+  stock?: number;
+}
+
+export function useProducts(): { products: ExtendedProduct[]; loading: boolean } {
+  const [allProducts, setAllProducts] = useState<ExtendedProduct[]>(staticProducts);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,7 +24,7 @@ export function useProducts(): { products: Product[]; loading: boolean } {
         if (data && data.length > 0) {
           const staticIds = new Set(staticProducts.map((p) => p.id));
 
-          const dbProducts = new Map<string, Product>();
+          const dbProducts = new Map<string, ExtendedProduct>();
           for (const p of data) {
             dbProducts.set(p.id, {
               id: p.id,
@@ -38,6 +42,7 @@ export function useProducts(): { products: Product[]; loading: boolean } {
               features: p.features || [],
               featured: p.featured || false,
               price: p.price || undefined,
+              stock: p.stock ?? undefined,
             });
           }
 
@@ -67,6 +72,7 @@ export function useProducts(): { products: Product[]; loading: boolean } {
               features: p.features || [],
               featured: p.featured || false,
               price: p.price || undefined,
+              stock: p.stock ?? undefined,
             }));
 
           setAllProducts([...merged, ...newFromDb]);
