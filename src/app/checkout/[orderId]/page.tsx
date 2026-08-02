@@ -479,21 +479,38 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="bg-[#0B0E11] rounded-lg px-3 py-1.5 border border-[#2B3139]">
-                      <span className="text-gray-400 text-[10px]">Wallet USDT (BEP20)</span>
-                      <p className="text-[#F0B90B] font-mono text-xs">@1234....5678</p>
+                      <span className="text-gray-400 text-[10px]">Correo</span>
+                      <p className="text-[#F0B90B] font-mono text-xs">Aruca.pagos@gmail.com</p>
                     </div>
                     <button
                       onClick={() => {
                         setPaymentMethod("binance");
                         navigator.clipboard.writeText("Aruca.pagos@gmail.com");
-                        setMessage("Wallet de Binance copiada al portapapeles");
+                        setMessage("Correo de Binance copiado");
                         setMessageType("success");
                       }}
-                      className="px-4 py-2 bg-[#F0B90B] text-black font-bold rounded-lg hover:bg-[#FCD535] transition-colors text-sm"
+                      className="px-3 py-1.5 bg-[#F0B90B] text-black font-bold rounded-lg hover:bg-[#FCD535] transition-colors text-xs"
                     >
-                      Copiar Wallet
+                      Copiar
                     </button>
                   </div>
+                </div>
+                <div className="flex items-center justify-end flex-wrap gap-2 mt-2">
+                  <div className="bg-[#0B0E11] rounded-lg px-3 py-1.5 border border-[#2B3139]">
+                    <span className="text-gray-400 text-[10px]">Binance ID</span>
+                    <p className="text-[#F0B90B] font-mono text-xs">Pendiente</p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setPaymentMethod("binance");
+                      navigator.clipboard.writeText("Pendiente");
+                      setMessage("Binance ID copiado");
+                      setMessageType("success");
+                    }}
+                    className="px-3 py-1.5 bg-[#F0B90B] text-black font-bold rounded-lg hover:bg-[#FCD535] transition-colors text-xs"
+                  >
+                    Copiar
+                  </button>
                 </div>
               </div>
 
