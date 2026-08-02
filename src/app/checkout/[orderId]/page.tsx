@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, useEffect, useCallback } from "react";
+import { use, useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -103,6 +103,7 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
   const [recipientIdNumber, setRecipientIdNumber] = useState("");
   const [address, setAddress] = useState("");
   const [officeDestiny, setOfficeDestiny] = useState("");
+
 
   const loadOrder = useCallback(async () => {
     if (!user) return;
@@ -462,28 +463,33 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                 </div>
               </div>
 
-              {/* Binance */}
-              <div className="bg-gradient-to-r from-[#1E2026] to-[#2B3139] rounded-xl p-4 border border-gray-700">
+              {/* Binance Pay */}
+              <div className="bg-gradient-to-br from-[#0B0E11] to-[#1E2329] rounded-xl p-4 border border-[#2B3139]">
                 <div className="flex items-center justify-between flex-wrap gap-3">
-                  <div>
-                    <p className="font-bold text-[#F0B90B] text-base flex items-center gap-2">
-                      <span className="text-lg">₿</span> Binance Pay
-                    </p>
-                    <p className="text-gray-400 text-sm">USDT, BUSD, BTC - Transferencia crypto</p>
-                  </div>
                   <div className="flex items-center gap-3">
-                    <div className="text-left">
-                      <p className="text-gray-300 text-[11px]">Wallet USDT (BEP20)</p>
-                      <p className="text-[#F0B90B] text-xs font-mono">0x1234...5678</p>
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/5/57/Binance_Logo.png"
+                      alt="Binance"
+                      className="w-9 h-9 object-contain flex-shrink-0"
+                    />
+                    <div>
+                      <p className="font-bold text-white text-base">Binance Pay</p>
+                      <p className="text-gray-400 text-xs">USDT - Transferencia crypto</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="bg-[#0B0E11] rounded-lg px-3 py-1.5 border border-[#2B3139]">
+                      <span className="text-gray-400 text-[10px]">Wallet USDT (BEP20)</span>
+                      <p className="text-[#F0B90B] font-mono text-xs">@1234....5678</p>
                     </div>
                     <button
                       onClick={() => {
                         setPaymentMethod("binance");
-                        navigator.clipboard.writeText("0x1234567890abcdef1234567890abcdef12345678");
-                        setMessage("Direccion USDT copiada al portapapeles");
+                        navigator.clipboard.writeText("Aruca.pagos@gmail.com");
+                        setMessage("Wallet de Binance copiada al portapapeles");
                         setMessageType("success");
                       }}
-                      className="px-4 py-2 bg-[#F0B90B] text-black font-bold rounded-xl hover:bg-[#FCD535] transition-colors text-sm"
+                      className="px-4 py-2 bg-[#F0B90B] text-black font-bold rounded-lg hover:bg-[#FCD535] transition-colors text-sm"
                     >
                       Copiar Wallet
                     </button>
@@ -497,6 +503,9 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                   <div>
                     <p className="font-bold text-white text-base">Zelle</p>
                     <p className="text-purple-200 text-sm">Transferencia desde EE.UU.</p>
+
+(Showing lines 523-632 of 1060. Use offset=633 to continue.)
+
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="text-left">
@@ -515,42 +524,6 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                       Copiar Email
                     </button>
                   </div>
-                </div>
-              </div>
-
-              {/* Banco de Venezuela */}
-              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                <div className="flex items-center gap-2 mb-2">
-                  <Building2 size={18} className="text-red-600" />
-                  <span className="font-bold text-gray-800">Banco de Venezuela</span>
-                  <span className="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded-full">0102</span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 ml-7">
-                  <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
-                  <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
-                  <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
-                  <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
-                </div>
-                <div className="mt-2 ml-7 flex flex-wrap gap-2">
-                  <button
-                    onClick={() => {
-                      setPaymentMethod("pago_movil_bdv");
-                      navigator.clipboard.writeText("0102-XXXX-XXXX-XX-XXXXXXXX");
-                      setMessage("Datos BDV copiados");
-                      setMessageType("success");
-                    }}
-                    className="text-xs px-3 py-1.5 bg-red-600 text-white rounded-lg hover:bg-red-700"
-                  >
-                    Copiar Cuenta BDV
-                  </button>
-                  <a
-                    href="https://www.bancodevenezuela.com/personas/pago-movil"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs px-3 py-1.5 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 flex items-center gap-1"
-                  >
-                    <ExternalLink size={12} /> PagoMovil BDV
-                  </a>
                 </div>
               </div>
 
@@ -577,84 +550,6 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                   className="mt-2 ml-7 text-xs px-3 py-1.5 bg-blue-800 text-white rounded-lg hover:bg-blue-900"
                 >
                   Copiar Cuenta Banesco
-                </button>
-              </div>
-
-              {/* Mercantil */}
-              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                <div className="flex items-center gap-2 mb-2">
-                  <Building2 size={18} className="text-green-700" />
-                  <span className="font-bold text-gray-800">Mercantil</span>
-                  <span className="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full">0105</span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 ml-7">
-                  <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
-                  <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
-                  <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
-                  <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
-                </div>
-                <button
-                  onClick={() => {
-                    setPaymentMethod("transferencia_mercantil");
-                    navigator.clipboard.writeText("0105-XXXX-XXXX-XX-XXXXXXXX");
-                    setMessage("Datos Mercantil copiados");
-                    setMessageType("success");
-                  }}
-                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-green-700 text-white rounded-lg hover:bg-green-800"
-                >
-                  Copiar Cuenta Mercantil
-                </button>
-              </div>
-
-              {/* Provincial */}
-              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                <div className="flex items-center gap-2 mb-2">
-                  <Building2 size={18} className="text-cyan-600" />
-                  <span className="font-bold text-gray-800">BBVA Provincial</span>
-                  <span className="text-[10px] bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded-full">0108</span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 ml-7">
-                  <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
-                  <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
-                  <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
-                  <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
-                </div>
-                <button
-                  onClick={() => {
-                    setPaymentMethod("transferencia_provincial");
-                    navigator.clipboard.writeText("0108-XXXX-XXXX-XX-XXXXXXXX");
-                    setMessage("Datos Provincial copiados");
-                    setMessageType("success");
-                  }}
-                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700"
-                >
-                  Copiar Cuenta Provincial
-                </button>
-              </div>
-
-              {/* BNC */}
-              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                <div className="flex items-center gap-2 mb-2">
-                  <Building2 size={18} className="text-orange-600" />
-                  <span className="font-bold text-gray-800">BNC</span>
-                  <span className="text-[10px] bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">0191</span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 ml-7">
-                  <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
-                  <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
-                  <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
-                  <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
-                </div>
-                <button
-                  onClick={() => {
-                    setPaymentMethod("transferencia_bnc");
-                    navigator.clipboard.writeText("0191-XXXX-XXXX-XX-XXXXXXXX");
-                    setMessage("Datos BNC copiados");
-                    setMessageType("success");
-                  }}
-                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-orange-600 text-white rounded-lg hover:bg-orange-700"
-                >
-                  Copiar Cuenta BNC
                 </button>
               </div>
 
@@ -702,13 +597,8 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                     <option value="stripe">Tarjeta (Stripe)</option>
                     <option value="binance">Binance (USDT/BTC)</option>
                     <option value="zelle">Zelle</option>
-                    <option value="pago_movil_bdv">Pago Movil BDV</option>
                     <option value="pago_movil">Pago Movil</option>
                     <option value="transferencia_banesco">Transferencia Banesco</option>
-                    <option value="transferencia_mercantil">Transferencia Mercantil</option>
-                    <option value="transferencia_provincial">Transferencia Provincial</option>
-                    <option value="transferencia_bnc">Transferencia BNC</option>
-                    <option value="transferencia_bdv">Transferencia BDV</option>
                     <option value="deposito">Deposito</option>
                     <option value="efectivo">Efectivo</option>
                   </select>
