@@ -422,224 +422,325 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
               <h2 className="font-semibold text-gray-900">Metodos de Pago</h2>
             </div>
 
-            <div className="space-y-4">
+            <p className="text-sm text-gray-500 mb-4">Selecciona un metodo de pago para continuar</p>
+
+            <div className="space-y-3">
               {/* Stripe */}
-              <div className="bg-gradient-to-r from-[#635BFF] to-[#4F46E5] rounded-xl p-4">
-                <div className="flex items-center justify-between flex-wrap gap-3">
+              <button
+                onClick={() => setPaymentMethod(paymentMethod === "stripe" ? "" : "stripe")}
+                className={`w-full text-left rounded-xl p-4 border-2 transition-all ${
+                  paymentMethod === "stripe"
+                    ? "border-[#635BFF] bg-[#635BFF]/5"
+                    : "border-transparent bg-gradient-to-r from-[#635BFF] to-[#4F46E5]"
+                }`}
+              >
+                <div className="flex items-center justify-between">
                   <div>
                     <p className="font-bold text-white text-base">Tarjeta de Credito/Debito</p>
                     <p className="text-indigo-200 text-sm">Visa, Mastercard - Pago internacional</p>
                   </div>
-                  <button
-                    onClick={async () => {
-                      try {
-                        const res = await fetch("/api/stripe", {
-                          method: "POST",
-                          headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify({
-                            orderId: order.id,
-                            items: order.items,
-                            total: order.total,
-                            userEmail: user?.email,
-                            userName: user?.name,
-                          }),
-                        });
-                        const data = await res.json();
-                        if (data.url) {
-                          window.location.href = data.url;
-                        } else if (data.bankTransfer) {
-                          setMessage("Pago con tarjeta no disponible. Usa transferencia bancaria.");
-                          setMessageType("error");
-                        }
-                      } catch {
-                        setMessage("Error al conectar con Stripe");
-                        setMessageType("error");
-                      }
-                    }}
-                    className="px-6 py-2.5 bg-white text-indigo-600 font-bold rounded-xl hover:bg-indigo-50 transition-colors text-sm shadow-sm"
-                  >
-                    Pagar con Stripe
-                  </button>
+                  {paymentMethod === "stripe" && (
+                    <CheckCircle size={22} className="text-white" />
+                  )}
                 </div>
-              </div>
+              </button>
 
               {/* Binance Pay */}
-              <div className="bg-gradient-to-br from-[#0B0E11] to-[#1E2329] rounded-xl p-4 border border-[#2B3139]">
-                <div className="flex items-center justify-between flex-wrap gap-3">
+              <button
+                onClick={() => setPaymentMethod(paymentMethod === "binance" ? "" : "binance")}
+                className={`w-full text-left rounded-xl p-4 border-2 transition-all ${
+                  paymentMethod === "binance"
+                    ? "border-[#F0B90B] bg-[#F0B90B]/5"
+                    : "border-transparent bg-gradient-to-br from-[#0B0E11] to-[#1E2329]"
+                }`}
+              >
+                <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/5/57/Binance_Logo.png"
                       alt="Binance"
-                      className="w-9 h-9 object-contain flex-shrink-0"
+                      className="w-7 h-7 object-contain"
                     />
                     <div>
                       <p className="font-bold text-white text-base">Binance Pay</p>
                       <p className="text-gray-400 text-xs">USDT - Transferencia crypto</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="bg-[#1A1F26] rounded-lg px-4 py-2 border border-[#3A3F46]">
-                      <span className="text-gray-300 text-[11px] font-medium">Correo</span>
-                      <p className="text-white text-sm font-semibold">Aruca.pagos@gmail.com</p>
-                    </div>
-                    <button
-                      onClick={() => {
-                        setPaymentMethod("binance");
-                        navigator.clipboard.writeText("Aruca.pagos@gmail.com");
-                        setMessage("Correo de Binance copiado");
-                        setMessageType("success");
-                      }}
-                      className="px-3 py-1.5 bg-[#F0B90B] text-black font-bold rounded-lg hover:bg-[#FCD535] transition-colors text-xs"
-                    >
-                      Copiar
-                    </button>
-                  </div>
+                  {paymentMethod === "binance" && (
+                    <CheckCircle size={22} className="text-[#F0B90B]" />
+                  )}
                 </div>
-                <div className="flex items-center justify-end flex-wrap gap-2 mt-2">
-                  <div className="bg-[#1A1F26] rounded-lg px-4 py-2 border border-[#3A3F46]">
-                    <span className="text-gray-300 text-[11px] font-medium">Binance ID</span>
-                    <p className="text-white text-sm font-semibold">Pendiente</p>
-                  </div>
-                  <button
-                    onClick={() => {
-                      setPaymentMethod("binance");
-                      navigator.clipboard.writeText("Pendiente");
-                      setMessage("Binance ID copiado");
-                      setMessageType("success");
-                    }}
-                    className="px-3 py-1.5 bg-[#F0B90B] text-black font-bold rounded-lg hover:bg-[#FCD535] transition-colors text-xs"
-                  >
-                    Copiar
-                  </button>
-                </div>
-              </div>
+              </button>
 
               {/* Zelle */}
-              <div className="bg-gradient-to-r from-[#6D28D9] to-[#5B21B6] rounded-xl p-4">
-                <div className="flex items-center justify-between flex-wrap gap-3">
+              <button
+                onClick={() => setPaymentMethod(paymentMethod === "zelle" ? "" : "zelle")}
+                className={`w-full text-left rounded-xl p-4 border-2 transition-all ${
+                  paymentMethod === "zelle"
+                    ? "border-[#6D28D9] bg-[#6D28D9]/5"
+                    : "border-transparent bg-gradient-to-r from-[#6D28D9] to-[#5B21B6]"
+                }`}
+              >
+                <div className="flex items-center justify-between">
                   <div>
                     <p className="font-bold text-white text-base">Zelle</p>
                     <p className="text-purple-200 text-sm">Transferencia desde EE.UU.</p>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="bg-white/10 rounded-lg px-4 py-2 border border-white/20">
-                      <span className="text-purple-200 text-[11px] font-medium">Email</span>
-                      <p className="text-white text-sm font-semibold">aruca.maquinarias@gmail.com</p>
-                    </div>
-                    <button
-                      onClick={() => {
-                        setPaymentMethod("zelle");
-                        navigator.clipboard.writeText("aruca.maquinarias@gmail.com");
-                        setMessage("Email Zelle copiado");
-                        setMessageType("success");
-                      }}
-                      className="px-3 py-1.5 bg-white text-purple-700 font-bold rounded-lg hover:bg-purple-50 transition-colors text-xs"
-                    >
-                      Copiar
-                    </button>
-                  </div>
+                  {paymentMethod === "zelle" && (
+                    <CheckCircle size={22} className="text-white" />
+                  )}
                 </div>
-              </div>
-
-              {/* Banesco */}
-              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                <div className="flex items-center gap-2 mb-2">
-                  <Building2 size={18} className="text-blue-800" />
-                  <span className="font-bold text-gray-800">Banesco</span>
-                  <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">0134</span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 ml-7">
-                  <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
-                  <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
-                  <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
-                </div>
-                <button
-                  onClick={() => {
-                    setPaymentMethod("transferencia_banesco");
-                    navigator.clipboard.writeText("0134-XXXX-XXXX-XX-XXXXXXXX");
-                    setMessage("Datos Banesco copiados");
-                    setMessageType("success");
-                  }}
-                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-blue-800 text-white rounded-lg hover:bg-blue-900"
-                >
-                  Copiar Cuenta Banesco
-                </button>
-              </div>
+              </button>
 
               {/* Pago Movil */}
-              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                <div className="flex items-center gap-2 mb-2">
-                  <CreditCard size={18} className="text-blue-800" />
-                  <span className="font-bold text-gray-800">Pago Movil</span>
-                  <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Banesco</span>
+              <button
+                onClick={() => setPaymentMethod(paymentMethod === "pago_movil" ? "" : "pago_movil")}
+                className={`w-full text-left rounded-xl p-4 border-2 transition-all ${
+                  paymentMethod === "pago_movil"
+                    ? "border-brand bg-brand/5"
+                    : "border-gray-200 bg-gray-50"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <CreditCard size={22} className="text-blue-800" />
+                    <div>
+                      <p className="font-bold text-gray-800">Pago Movil</p>
+                      <p className="text-gray-500 text-xs">Banesco - CI: V-6910921</p>
+                    </div>
+                  </div>
+                  {paymentMethod === "pago_movil" && (
+                    <CheckCircle size={22} className="text-brand" />
+                  )}
                 </div>
-                <div className="text-sm text-gray-600 ml-7">
-                  <p><span className="font-medium">CI:</span> V-6910921</p>
-                  <p><span className="font-medium">Telefono:</span> 0412-9547321</p>
+              </button>
+
+              {/* Banesco */}
+              <button
+                onClick={() => setPaymentMethod(paymentMethod === "transferencia_banesco" ? "" : "transferencia_banesco")}
+                className={`w-full text-left rounded-xl p-4 border-2 transition-all ${
+                  paymentMethod === "transferencia_banesco"
+                    ? "border-brand bg-brand/5"
+                    : "border-gray-200 bg-gray-50"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Building2 size={22} className="text-blue-800" />
+                    <div>
+                      <p className="font-bold text-gray-800">Transferencia Banesco</p>
+                      <p className="text-gray-500 text-xs">Cuenta Corriente - ARUCA MAQUINARIAS, C.A.</p>
+                    </div>
+                  </div>
+                  {paymentMethod === "transferencia_banesco" && (
+                    <CheckCircle size={22} className="text-brand" />
+                  )}
                 </div>
+              </button>
+            </div>
+
+            {/* Detalles del metodo seleccionado */}
+            {paymentMethod === "stripe" && (
+              <div className="mt-4 p-4 bg-[#635BFF]/5 rounded-xl border border-[#635BFF]/20">
+                <p className="text-sm text-gray-600 mb-3">Seras redirigido a Stripe para pagar con tarjeta de forma segura.</p>
                 <button
-                  onClick={() => {
-                    setPaymentMethod("pago_movil");
-                    navigator.clipboard.writeText("04129547321");
-                    setMessage("Telefono PagoMovil copiado");
-                    setMessageType("success");
+                  onClick={async () => {
+                    try {
+                      const res = await fetch("/api/stripe", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          orderId: order.id,
+                          items: order.items,
+                          total: order.total,
+                          userEmail: user?.email,
+                          userName: user?.name,
+                        }),
+                      });
+                      const data = await res.json();
+                      if (data.url) {
+                        window.location.href = data.url;
+                      } else {
+                        setMessage("Stripe no disponible. Usa otro metodo de pago.");
+                        setMessageType("error");
+                      }
+                    } catch {
+                      setMessage("Error al conectar con Stripe");
+                      setMessageType("error");
+                    }
                   }}
-                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-blue-800 text-white rounded-lg hover:bg-blue-900"
+                  className="w-full py-3 bg-[#635BFF] text-white font-semibold rounded-xl hover:bg-[#4F46E5] transition-all"
                 >
-                  Copiar Telefono
+                  Pagar con Stripe
                 </button>
               </div>
-            </div>
-          </div>
+            )}
 
-          {/* Payment Registration */}
-          {(!order.payment_method || order.status === "pending_payment") && (
-            <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">
-              <h2 className="font-semibold text-gray-900 mb-4">Registrar Pago</h2>
-
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Metodo de Pago
-                  </label>
-                  <select
-                    value={paymentMethod}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+            {paymentMethod === "binance" && (
+              <div className="mt-4 p-4 bg-[#1E2329] rounded-xl border border-[#2B3139]">
+                <p className="text-sm text-gray-300 mb-3">Transfiere a los siguientes datos y luego sube el comprobante:</p>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <div className="bg-[#0B0E11] rounded-lg px-3 py-2 border border-[#3A3F46]">
+                    <span className="text-gray-400 text-[10px] font-medium">Correo</span>
+                    <p className="text-white text-sm font-semibold">Aruca.pagos@gmail.com</p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText("Aruca.pagos@gmail.com");
+                      setMessage("Correo de Binance copiado");
+                      setMessageType("success");
+                    }}
+                    className="px-3 py-1.5 bg-[#F0B90B] text-black font-bold rounded-lg hover:bg-[#FCD535] transition-colors text-xs self-end"
                   >
-                    <option value="">Seleccionar...</option>
-                    <option value="stripe">Tarjeta (Stripe)</option>
-                    <option value="binance">Binance (USDT/BTC)</option>
-                    <option value="zelle">Zelle</option>
-                    <option value="pago_movil">Pago Movil</option>
-                    <option value="transferencia_banesco">Transferencia Banesco</option>
-                    <option value="deposito">Deposito</option>
-                    <option value="efectivo">Efectivo</option>
-                  </select>
+                    Copiar
+                  </button>
                 </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Numero de Referencia
-                  </label>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <div className="bg-[#0B0E11] rounded-lg px-3 py-2 border border-[#3A3F46]">
+                    <span className="text-gray-400 text-[10px] font-medium">Binance ID</span>
+                    <p className="text-white text-sm font-semibold">Pendiente</p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText("Pendiente");
+                      setMessage("Binance ID copiado");
+                      setMessageType("success");
+                    }}
+                    className="px-3 py-1.5 bg-[#F0B90B] text-black font-bold rounded-lg hover:bg-[#FCD535] transition-colors text-xs self-end"
+                  >
+                    Copiar
+                  </button>
+                </div>
+                <div className="mb-3">
+                  <label className="block text-sm text-gray-300 mb-1">Referencia (TXID o numero de transferencia)</label>
                   <input
                     type="text"
                     value={paymentReference}
                     onChange={(e) => setPaymentReference(e.target.value)}
-                    placeholder="Ej: 12345678 o TXID de Binance"
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                    placeholder="Ej: TXID de Binance"
+                    className="w-full px-4 py-2.5 bg-[#0B0E11] border border-[#2B3139] rounded-lg text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#F0B90B]/50 focus:border-[#F0B90B]"
                   />
                 </div>
-
-                <button
-                  onClick={handlePaymentSubmit}
-                  className="w-full py-3 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all"
-                >
-                  Guardar Informacion de Pago
-                </button>
               </div>
-            </div>
-          )}
+            )}
+
+            {paymentMethod === "zelle" && (
+              <div className="mt-4 p-4 bg-[#6D28D9]/5 rounded-xl border border-[#6D28D9]/20">
+                <p className="text-sm text-gray-600 mb-3">Transfiere al email de Zelle y luego sube el comprobante:</p>
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <div className="bg-white rounded-lg px-3 py-2 border border-gray-200">
+                    <span className="text-gray-500 text-[10px] font-medium">Email</span>
+                    <p className="text-gray-900 text-sm font-semibold">aruca.maquinarias@gmail.com</p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText("aruca.maquinarias@gmail.com");
+                      setMessage("Email Zelle copiado");
+                      setMessageType("success");
+                    }}
+                    className="px-3 py-1.5 bg-[#6D28D9] text-white font-bold rounded-lg hover:bg-[#5B21B6] transition-colors text-xs"
+                  >
+                    Copiar
+                  </button>
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-600 mb-1">Referencia</label>
+                  <input
+                    type="text"
+                    value={paymentReference}
+                    onChange={(e) => setPaymentReference(e.target.value)}
+                    placeholder="Ej: Confirmacion de Zelle"
+                    className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#6D28D9]/20 focus:border-[#6D28D9]"
+                  />
+                </div>
+              </div>
+            )}
+
+            {paymentMethod === "pago_movil" && (
+              <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-200">
+                <p className="text-sm text-gray-600 mb-3">Realiza el pago movil y sube el comprobante:</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 mb-3">
+                  <p><span className="font-medium">CI:</span> V-6910921</p>
+                  <p><span className="font-medium">Telefono:</span> 0412-9547321</p>
+                  <p><span className="font-medium">Banco:</span> Banesco</p>
+                </div>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText("04129547321");
+                      setMessage("Telefono PagoMovil copiado");
+                      setMessageType("success");
+                    }}
+                    className="px-3 py-1.5 bg-blue-800 text-white font-medium rounded-lg hover:bg-blue-900 transition-colors text-xs"
+                  >
+                    Copiar Telefono
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText("V6910921");
+                      setMessage("CI copiado");
+                      setMessageType("success");
+                    }}
+                    className="px-3 py-1.5 bg-blue-800 text-white font-medium rounded-lg hover:bg-blue-900 transition-colors text-xs"
+                  >
+                    Copiar CI
+                  </button>
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-600 mb-1">Referencia</label>
+                  <input
+                    type="text"
+                    value={paymentReference}
+                    onChange={(e) => setPaymentReference(e.target.value)}
+                    placeholder="Ej: Numero de confirmacion"
+                    className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                  />
+                </div>
+              </div>
+            )}
+
+            {paymentMethod === "transferencia_banesco" && (
+              <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-200">
+                <p className="text-sm text-gray-600 mb-3">Transfiere a la cuenta Banesco y sube el comprobante:</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 mb-3">
+                  <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
+                  <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
+                  <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
+                </div>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText("0134-XXXX-XXXX-XX-XXXXXXXX");
+                      setMessage("Datos Banesco copiados");
+                      setMessageType("success");
+                    }}
+                    className="px-3 py-1.5 bg-blue-800 text-white font-medium rounded-lg hover:bg-blue-900 transition-colors text-xs"
+                  >
+                    Copiar Cuenta
+                  </button>
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-600 mb-1">Referencia</label>
+                  <input
+                    type="text"
+                    value={paymentReference}
+                    onChange={(e) => setPaymentReference(e.target.value)}
+                    placeholder="Ej: Numero de transferencia"
+                    className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                  />
+                </div>
+              </div>
+            )}
+
+            {paymentMethod && paymentMethod !== "stripe" && (
+              <button
+                onClick={handlePaymentSubmit}
+                className="w-full mt-4 py-3 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all"
+              >
+                Confirmar Pago
+              </button>
+            )}
+          </div>
 
           {/* Comprobante Upload */}
           <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">
