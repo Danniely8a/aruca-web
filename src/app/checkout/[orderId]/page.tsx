@@ -520,25 +520,22 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                   <div>
                     <p className="font-bold text-white text-base">Zelle</p>
                     <p className="text-purple-200 text-sm">Transferencia desde EE.UU.</p>
-
-(Showing lines 523-632 of 1060. Use offset=633 to continue.)
-
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="text-left">
-                      <p className="text-purple-100 text-[11px]">Email Zelle</p>
-                      <p className="text-white text-xs font-mono">aruca.maquinarias@gmail.com</p>
+                  <div className="flex items-center gap-2">
+                    <div className="bg-white/10 rounded-lg px-4 py-2 border border-white/20">
+                      <span className="text-purple-200 text-[11px] font-medium">Email</span>
+                      <p className="text-white text-sm font-semibold">aruca.maquinarias@gmail.com</p>
                     </div>
                     <button
                       onClick={() => {
                         setPaymentMethod("zelle");
                         navigator.clipboard.writeText("aruca.maquinarias@gmail.com");
-                        setMessage("Email Zelle copiado al portapapeles");
+                        setMessage("Email Zelle copiado");
                         setMessageType("success");
                       }}
-                      className="px-4 py-2 bg-white text-purple-700 font-bold rounded-xl hover:bg-purple-50 transition-colors text-sm"
+                      className="px-3 py-1.5 bg-white text-purple-700 font-bold rounded-lg hover:bg-purple-50 transition-colors text-xs"
                     >
-                      Copiar Email
+                      Copiar
                     </button>
                   </div>
                 </div>
