@@ -553,7 +553,6 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 ml-7">
                   <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
-                  <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
                   <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
                   <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
                 </div>
@@ -580,7 +579,6 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                 <div className="text-sm text-gray-600 ml-7">
                   <p><span className="font-medium">CI:</span> V-6910921</p>
                   <p><span className="font-medium">Telefono:</span> 0412-9547321</p>
-                  <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
                 </div>
                 <button
                   onClick={() => {
