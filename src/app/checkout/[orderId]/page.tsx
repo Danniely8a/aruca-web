@@ -478,9 +478,9 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="bg-[#0B0E11] rounded-lg px-3 py-1.5 border border-[#2B3139]">
-                      <span className="text-gray-400 text-[10px]">Correo</span>
-                      <p className="text-[#F0B90B] font-mono text-xs">Aruca.pagos@gmail.com</p>
+                    <div className="bg-[#1A1F26] rounded-lg px-4 py-2 border border-[#3A3F46]">
+                      <span className="text-gray-300 text-[11px] font-medium">Correo</span>
+                      <p className="text-white text-sm font-semibold">Aruca.pagos@gmail.com</p>
                     </div>
                     <button
                       onClick={() => {
@@ -496,9 +496,9 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                   </div>
                 </div>
                 <div className="flex items-center justify-end flex-wrap gap-2 mt-2">
-                  <div className="bg-[#0B0E11] rounded-lg px-3 py-1.5 border border-[#2B3139]">
-                    <span className="text-gray-400 text-[10px]">Binance ID</span>
-                    <p className="text-[#F0B90B] font-mono text-xs">Pendiente</p>
+                  <div className="bg-[#1A1F26] rounded-lg px-4 py-2 border border-[#3A3F46]">
+                    <span className="text-gray-300 text-[11px] font-medium">Binance ID</span>
+                    <p className="text-white text-sm font-semibold">Pendiente</p>
                   </div>
                   <button
                     onClick={() => {
@@ -570,24 +570,26 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                 </button>
               </div>
 
-              {/* Pago Movil - multi banco */}
+              {/* Pago Movil */}
               <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                 <div className="flex items-center gap-2 mb-2">
-                  <CreditCard size={18} className="text-gray-600" />
+                  <CreditCard size={18} className="text-blue-800" />
                   <span className="font-bold text-gray-800">Pago Movil</span>
+                  <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Banesco</span>
                 </div>
                 <div className="text-sm text-gray-600 ml-7">
-                  <p><span className="font-medium">Telefono:</span> 0412-6109597</p>
+                  <p><span className="font-medium">CI:</span> V-6910921</p>
+                  <p><span className="font-medium">Telefono:</span> 0412-9547321</p>
                   <p><span className="font-medium">RIF:</span> J-XXXXXXXX-X</p>
                 </div>
                 <button
                   onClick={() => {
                     setPaymentMethod("pago_movil");
-                    navigator.clipboard.writeText("04126109597");
+                    navigator.clipboard.writeText("04129547321");
                     setMessage("Telefono PagoMovil copiado");
                     setMessageType("success");
                   }}
-                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-brand text-white rounded-lg hover:bg-brand/90"
+                  className="mt-2 ml-7 text-xs px-3 py-1.5 bg-blue-800 text-white rounded-lg hover:bg-blue-900"
                 >
                   Copiar Telefono
                 </button>
