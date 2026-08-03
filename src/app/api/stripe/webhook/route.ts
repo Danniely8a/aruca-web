@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 export async function POST(request: NextRequest) {
@@ -10,6 +10,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const stripe = getStripe();
     const body = await request.text();
     const event = stripe.webhooks.constructEvent(
       body,
@@ -40,7 +41,3 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: message }, { status: 400 });
   }
 }
-
-export const config = {
-  api: { bodyParser: false },
-};

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Monto invalido" }, { status: 400 });
     }
 
+    const stripe = getStripe();
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
