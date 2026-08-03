@@ -506,7 +506,7 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                     <CreditCard size={22} className="text-blue-800" />
                     <div>
                       <p className="font-bold text-gray-800">Pago Movil</p>
-                      <p className="text-gray-500 text-xs">Banesco - CI: V-6910921</p>
+                      <p className="text-gray-500 text-xs">Banesco - RIF: J-303581455</p>
                     </div>
                   </div>
                   {paymentMethod === "pago_movil" && (
@@ -660,7 +660,7 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
               <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-200">
                 <p className="text-sm text-gray-600 mb-3">Realiza el pago movil y sube el comprobante:</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 mb-3">
-                  <p><span className="font-medium">CI:</span> V-6910921</p>
+                  <p><span className="font-medium">RIF:</span> J-303581455</p>
                   <p><span className="font-medium">Telefono:</span> 0412-9547321</p>
                   <p><span className="font-medium">Banco:</span> Banesco</p>
                 </div>
@@ -677,13 +677,13 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                   </button>
                   <button
                     onClick={() => {
-                      navigator.clipboard.writeText("V6910921");
-                      setMessage("CI copiado");
+                      navigator.clipboard.writeText("J303581455");
+                      setMessage("RIF copiado");
                       setMessageType("success");
                     }}
                     className="px-3 py-1.5 bg-blue-800 text-white font-medium rounded-lg hover:bg-blue-900 transition-colors text-xs"
                   >
-                    Copiar CI
+                    Copiar RIF
                   </button>
                 </div>
                 <div>
@@ -704,14 +704,15 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
                 <p className="text-sm text-gray-600 mb-3">Transfiere a la cuenta Banesco y sube el comprobante:</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600 mb-3">
                   <p><span className="font-medium">Titular:</span> ARUCA MAQUINARIAS, C.A.</p>
-                  <p><span className="font-medium">Cuenta:</span> XXXX-XXXX-XX-XXXXXXXX</p>
+                  <p><span className="font-medium">RIF:</span> J-303581455</p>
+                  <p><span className="font-medium">Cuenta:</span> 0134-0381-3038-1100-5621</p>
                   <p><span className="font-medium">Tipo:</span> Cuenta Corriente</p>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-3">
                   <button
                     onClick={() => {
-                      navigator.clipboard.writeText("0134-XXXX-XXXX-XX-XXXXXXXX");
-                      setMessage("Datos Banesco copiados");
+                      navigator.clipboard.writeText("01340381303811005621");
+                      setMessage("Numero de cuenta Banesco copiado");
                       setMessageType("success");
                     }}
                     className="px-3 py-1.5 bg-blue-800 text-white font-medium rounded-lg hover:bg-blue-900 transition-colors text-xs"
