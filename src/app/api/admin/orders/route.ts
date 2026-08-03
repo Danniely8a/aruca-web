@@ -55,8 +55,12 @@ export async function POST(request: NextRequest) {
       customer_name: body.customer_name || "",
       customer_phone: body.customer_phone || "",
       customer_email: body.customer_email || "",
+      customer_rif: body.customer_rif || "",
+      customer_address: body.customer_address || "",
       customer_notes: body.customer_notes || "",
+      vendor_name: body.vendor_name || "",
       source: body.source || "admin",
+      exported_to_a2: false,
     })
     .select("*")
     .single();
@@ -75,6 +79,21 @@ export async function PUT(request: NextRequest) {
     .from("orders")
     .update(updates)
     .eq("id", id);
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  return NextResponse.json({ success: true });
+}
+
+export async function PATCH(request: NextRequest) {
+  const body = await request.json();
+  const { ids, exported_to_a2 } = body;
+  if (!ids || !Array.isArray(ids)) return NextResponse.json({ error: "Missing ids array" }, { status: 400 });
+
+  const supabase = createAdminClient();
+  const { error } = await supabase
+    .from("orders")
+    .update({ exported_to_a2 })
+    .in("id", ids);
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ success: true });

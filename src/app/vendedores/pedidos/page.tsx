@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, Plus, Minus, Trash2, ShoppingCart, User, Phone, Mail,
   FileText, CheckCircle, Loader2, ArrowRight, Package,
-  LogOut, Menu, X, UserPlus,
+  LogOut, Menu, X, UserPlus, MapPin, CreditCard,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,9 +39,12 @@ export default function VendedorPedidosPage() {
   const [search, setSearch] = useState("");
   const [cart, setCart] = useState<OrderItem[]>([]);
   const [customerName, setCustomerName] = useState("");
+  const [customerRif, setCustomerRif] = useState("");
+  const [customerAddress, setCustomerAddress] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
   const [customerNotes, setCustomerNotes] = useState("");
+  const [vendorName, setVendorName] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState<"success" | "error">("success");
@@ -88,6 +91,8 @@ export default function VendedorPedidosPage() {
     setCustomerName(client.name);
     setCustomerPhone(client.phone || "");
     setCustomerEmail(client.email || "");
+    setCustomerRif(client.rif || "");
+    setCustomerAddress(client.address || "");
     setClientSearch(client.name);
     setShowClientDropdown(false);
     setCreatingNew(false);
@@ -104,6 +109,8 @@ export default function VendedorPedidosPage() {
           name: clientSearch.trim(),
           phone: customerPhone,
           email: customerEmail,
+          rif: customerRif,
+          address: customerAddress,
         }),
       });
       if (res.ok) {
@@ -198,7 +205,10 @@ export default function VendedorPedidosPage() {
           customer_name: customerName.trim(),
           customer_phone: customerPhone.trim(),
           customer_email: customerEmail.trim(),
+          customer_rif: customerRif.trim(),
+          customer_address: customerAddress.trim(),
           customer_notes: customerNotes.trim(),
+          vendor_name: vendorName.trim(),
           source: "vendedor",
         }),
       });
@@ -212,6 +222,8 @@ export default function VendedorPedidosPage() {
       setMessageType("success");
       setCart([]);
       setCustomerName("");
+      setCustomerRif("");
+      setCustomerAddress("");
       setCustomerPhone("");
       setCustomerEmail("");
       setCustomerNotes("");
@@ -480,6 +492,45 @@ export default function VendedorPedidosPage() {
                       value={customerEmail}
                       onChange={(e) => setCustomerEmail(e.target.value)}
                       placeholder="cliente@email.com"
+                      className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">R.I.F. / Cédula</label>
+                  <div className="relative">
+                    <CreditCard size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      value={customerRif}
+                      onChange={(e) => setCustomerRif(e.target.value)}
+                      placeholder="V-12.345.678"
+                      className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Dirección</label>
+                  <div className="relative">
+                    <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      value={customerAddress}
+                      onChange={(e) => setCustomerAddress(e.target.value)}
+                      placeholder="Dirección del cliente"
+                      className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Vendedor</label>
+                  <div className="relative">
+                    <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      value={vendorName}
+                      onChange={(e) => setVendorName(e.target.value)}
+                      placeholder="Tu nombre"
                       className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                     />
                   </div>

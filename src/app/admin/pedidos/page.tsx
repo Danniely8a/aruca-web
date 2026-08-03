@@ -11,7 +11,10 @@ import {
   Loader2,
   Clock,
   RefreshCw,
+  Download,
+  FileSpreadsheet,
 } from "lucide-react";
+import { exportOrdersToA2 } from "@/lib/utils/exportA2";
 
 interface OrderItem {
   id: string;
@@ -37,6 +40,11 @@ interface Order {
   payment_reference: string;
   comprobante_url: string;
   created_at: string;
+  customer_rif?: string;
+  customer_address?: string;
+  vendor_name?: string;
+  source?: string;
+  exported_to_a2?: boolean;
 }
 
 interface Delivery {
@@ -72,6 +80,8 @@ export default function AdminPedidosPage() {
   const [updatingId, setUpdatingId] = useState<number | null>(null);
   const [trackingInput, setTrackingInput] = useState<{ [key: number]: string }>({});
   const [trackingUrlInput, setTrackingUrlInput] = useState<{ [key: number]: string }>({});
+  const [selectedOrders, setSelectedOrders] = useState<Set<number>>(new Set());
+  const [exporting, setExporting] = useState(false);
 
   const loadOrders = useCallback(async () => {
     try {
@@ -140,6 +150,65 @@ export default function AdminPedidosPage() {
     }
   };
 
+  const toggleSelectOrder = (orderId: number) => {
+    setSelectedOrders((prev) => {
+      const next = new Set(prev);
+      if (next.has(orderId)) {
+        next.delete(orderId);
+      } else {
+        next.add(orderId);
+      }
+      return next;
+    });
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedOrders.size === filteredOrders.length) {
+      setSelectedOrders(new Set());
+    } else {
+      setSelectedOrders(new Set(filteredOrders.map((o) => o.id)));
+    }
+  };
+
+  const handleExportA2 = async () => {
+    const idsToExport = selectedOrders.size > 0
+      ? Array.from(selectedOrders)
+      : filteredOrders.filter((o) => !o.exported_to_a2).map((o) => o.id);
+
+    if (idsToExport.length === 0) return;
+
+    setExporting(true);
+    try {
+      const ordersToExport = orders.filter((o) => idsToExport.includes(o.id));
+      exportOrdersToA2(
+        ordersToExport.map((o) => ({
+          id: o.id,
+          items: o.items,
+          total: o.total,
+          customer_name: o.user_name || (o as unknown as { customer_name?: string }).customer_name || "",
+          customer_phone: o.user_phone || (o as unknown as { customer_phone?: string }).customer_phone || "",
+          customer_email: o.user_email || (o as unknown as { customer_email?: string }).customer_email || "",
+          customer_rif: (o as unknown as { customer_rif?: string }).customer_rif || "",
+          customer_address: (o as unknown as { customer_address?: string }).customer_address || "",
+          vendor_name: (o as unknown as { vendor_name?: string }).vendor_name || "",
+          created_at: o.created_at,
+        }))
+      );
+
+      await fetch("/api/admin/orders", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids: idsToExport, exported_to_a2: true }),
+      });
+
+      setSelectedOrders(new Set());
+      await loadOrders();
+    } catch (err) {
+      console.error("Error exporting to A2:", err);
+    }
+    setExporting(false);
+  };
+
   const filteredOrders = orders.filter((order) => {
     if (!searchQuery) return true;
     const q = searchQuery.toLowerCase();
@@ -166,13 +235,23 @@ export default function AdminPedidosPage() {
           <h1 className="text-2xl font-bold text-gray-900">Pedidos</h1>
           <p className="text-sm text-gray-500 mt-1">{orders.length} pedidos totales</p>
         </div>
-        <button
-          onClick={loadOrders}
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors text-sm"
-        >
-          <RefreshCw size={14} />
-          Actualizar
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleExportA2}
+            disabled={exporting || (selectedOrders.size === 0 && filteredOrders.every((o) => o.exported_to_a2))}
+            className="flex items-center gap-2 px-4 py-2 bg-accent-orange text-white hover:bg-accent-orange/90 rounded-xl transition-colors text-sm disabled:opacity-50"
+          >
+            {exporting ? <Loader2 size={14} className="animate-spin" /> : <FileSpreadsheet size={14} />}
+            Exportar a A2 {selectedOrders.size > 0 && `(${selectedOrders.size})`}
+          </button>
+          <button
+            onClick={loadOrders}
+            className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors text-sm"
+          >
+            <RefreshCw size={14} />
+            Actualizar
+          </button>
+        </div>
       </div>
 
       <div className="mb-6">
@@ -201,18 +280,36 @@ export default function AdminPedidosPage() {
             >
               <div className="p-4 sm:p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="font-bold text-gray-900">Pedido #{order.id}</h3>
-                      <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusInfo.color}`}>
-                        {statusInfo.label}
-                      </span>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-3 mt-1 text-xs text-gray-400">
-                      <span>{new Date(order.created_at).toLocaleDateString("es-VE", { year: "numeric", month: "long", day: "numeric" })}</span>
-                      {order.user_email && <span>{order.user_email}</span>}
-                      {order.user_name && <span>{order.user_name}</span>}
-                      {order.user_phone && <span>{order.user_phone}</span>}
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      checked={selectedOrders.has(order.id)}
+                      onChange={() => toggleSelectOrder(order.id)}
+                      className="mt-1 h-4 w-4 rounded border-gray-300 text-brand focus:ring-brand/20"
+                    />
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h3 className="font-bold text-gray-900">Pedido #{order.id}</h3>
+                        <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusInfo.color}`}>
+                          {statusInfo.label}
+                        </span>
+                        {order.exported_to_a2 && (
+                          <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            Exportado A2
+                          </span>
+                        )}
+                        {order.source === "vendedor" && (
+                          <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                            Vendedor
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex flex-wrap items-center gap-3 mt-1 text-xs text-gray-400">
+                        <span>{new Date(order.created_at).toLocaleDateString("es-VE", { year: "numeric", month: "long", day: "numeric" })}</span>
+                        {order.user_email && <span>{order.user_email}</span>}
+                        {order.user_name && <span>{order.user_name}</span>}
+                        {order.user_phone && <span>{order.user_phone}</span>}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -243,6 +340,12 @@ export default function AdminPedidosPage() {
                   )}
                   {order.payment_reference && (
                     <span className="text-gray-600">| <strong>Ref:</strong> {order.payment_reference}</span>
+                  )}
+                  {(order as unknown as { vendor_name?: string }).vendor_name && (
+                    <span className="text-gray-600">| <strong>Vendedor:</strong> {(order as unknown as { vendor_name?: string }).vendor_name}</span>
+                  )}
+                  {(order as unknown as { customer_rif?: string }).customer_rif && (
+                    <span className="text-gray-600">| <strong>RIF:</strong> {(order as unknown as { customer_rif?: string }).customer_rif}</span>
                   )}
                 </div>
 
