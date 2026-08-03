@@ -104,6 +104,48 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
   const [address, setAddress] = useState("");
   const [officeDestiny, setOfficeDestiny] = useState("");
 
+  const [binancePolling, setBinancePolling] = useState(false);
+  const [binanceAttempts, setBinanceAttempts] = useState(0);
+  const pollingRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startBinancePolling = () => {
+    if (pollingRef.current) clearTimeout(pollingRef.current);
+    setBinancePolling(true);
+    setBinanceAttempts(0);
+    let attempts = 0;
+
+    const poll = async () => {
+      if (!order) return;
+      attempts++;
+      setBinanceAttempts(attempts);
+
+      if (attempts > 120) {
+        setBinancePolling(false);
+        setMessage("Tiempo de verificacion agotado. Si ya pagaste, sube el comprobante abajo.");
+        setMessageType("error");
+        return;
+      }
+
+      try {
+        const numericTotal = parseFloat((order.total || "0").replace(/[^0-9,.]/g, "").replace(",", ".")) || 0;
+        const baseUrl = window.location.origin;
+        const res = await fetch(`${baseUrl}/api/binance/verify?order_id=${order.id}&amount=${numericTotal.toFixed(2)}`);
+        const data = await res.json();
+
+        if (data.verified) {
+          setBinancePolling(false);
+          setMessage("Pago verificado automaticamente via Binance!");
+          setMessageType("success");
+          loadOrder();
+          return;
+        }
+      } catch {}
+
+      pollingRef.current = setTimeout(poll, 3000);
+    };
+
+    pollingRef.current = setTimeout(poll, 3000);
+  };
 
   const loadOrder = useCallback(async () => {
     if (!user) return;
@@ -578,40 +620,73 @@ export default function PaymentPortalPage({ params }: { params: Promise<{ orderI
 
             {paymentMethod === "binance" && (
               <div className="mt-4 p-4 bg-[#1E2329] rounded-xl border border-[#2B3139]">
-                <p className="text-sm text-gray-300 mb-3">Transfiere a los siguientes datos y luego sube el comprobante:</p>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <div className="bg-[#0B0E11] rounded-lg px-3 py-2 border border-[#3A3F46]">
-                    <span className="text-gray-400 text-[10px] font-medium">Correo</span>
-                    <p className="text-white text-sm font-semibold">Aruca.pagos@gmail.com</p>
+                <p className="text-sm text-gray-300 mb-3">Paga con Binance Pay o transfiere manualmente:</p>
+
+                <button
+                  onClick={async () => {
+                    try {
+                      const numericTotal = parseFloat((order.total || "0").replace(/[^0-9,.]/g, "").replace(",", ".")) || 0;
+                      const res = await fetch("/api/binance", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          orderId: order.id,
+                          amount: numericTotal.toFixed(2),
+                          currency: "USDT",
+                        }),
+                      });
+                      const data = await res.json();
+                      if (data.checkoutUrl || data.qrcodeLink) {
+                        window.open(data.checkoutUrl || data.qrcodeLink, "_blank");
+                        startBinancePolling();
+                      } else if (data.manualPayment) {
+                        setMessage("Binance Pay no disponible. Usa los datos de transferencia manual abajo.");
+                        setMessageType("error");
+                      } else {
+                        setMessage(data.error || "Error al iniciar Binance Pay");
+                        setMessageType("error");
+                      }
+                    } catch {
+                      setMessage("Error de conexion. Usa la transferencia manual abajo.");
+                      setMessageType("error");
+                    }
+                  }}
+                  className="w-full py-3 bg-[#F0B90B] text-black font-bold rounded-xl hover:bg-[#FCD535] transition-colors text-sm mb-3"
+                >
+                  Pagar con Binance Pay
+                </button>
+
+                {binancePolling && (
+                  <div className="bg-[#F0B90B]/10 border border-[#F0B90B]/20 rounded-lg p-3 mb-3 text-center">
+                    <div className="flex items-center justify-center gap-2 text-[#F0B90B] text-sm font-medium">
+                      <Loader2 size={16} className="animate-spin" />
+                      Verificando pago... ({binanceAttempts}s)
+                    </div>
+                    <p className="text-gray-400 text-xs mt-1">No cierres esta ventana. Se verifica automaticamente.</p>
                   </div>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText("Aruca.pagos@gmail.com");
-                      setMessage("Correo de Binance copiado");
-                      setMessageType("success");
-                    }}
-                    className="px-3 py-1.5 bg-[#F0B90B] text-black font-bold rounded-lg hover:bg-[#FCD535] transition-colors text-xs self-end"
-                  >
-                    Copiar
-                  </button>
-                </div>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <div className="bg-[#0B0E11] rounded-lg px-3 py-2 border border-[#3A3F46]">
-                    <span className="text-gray-400 text-[10px] font-medium">Binance ID</span>
-                    <p className="text-white text-sm font-semibold">Pendiente</p>
+                )}
+
+                <div className="border-t border-[#2B3139] pt-3 mb-3">
+                  <p className="text-gray-500 text-[10px] uppercase tracking-wider mb-2">Transferencia manual USDT</p>
+                  <div className="flex flex-wrap gap-2">
+                    <div className="bg-[#0B0E11] rounded-lg px-3 py-2 border border-[#3A3F46]">
+                      <span className="text-gray-400 text-[10px] font-medium">Correo</span>
+                      <p className="text-white text-sm font-semibold">Aruca.pagos@gmail.com</p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText("Aruca.pagos@gmail.com");
+                        setMessage("Correo de Binance copiado");
+                        setMessageType("success");
+                      }}
+                      className="px-3 py-1.5 bg-[#F0B90B]/20 text-[#F0B90B] font-bold rounded-lg hover:bg-[#F0B90B]/30 transition-colors text-xs self-end"
+                    >
+                      Copiar
+                    </button>
                   </div>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText("Pendiente");
-                      setMessage("Binance ID copiado");
-                      setMessageType("success");
-                    }}
-                    className="px-3 py-1.5 bg-[#F0B90B] text-black font-bold rounded-lg hover:bg-[#FCD535] transition-colors text-xs self-end"
-                  >
-                    Copiar
-                  </button>
                 </div>
-                <div className="mb-3">
+
+                <div>
                   <label className="block text-sm text-gray-300 mb-1">Referencia (TXID o numero de transferencia)</label>
                   <input
                     type="text"
