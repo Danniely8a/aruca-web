@@ -15,6 +15,7 @@ import {
   FileSpreadsheet,
 } from "lucide-react";
 import { exportOrdersToA2 } from "@/lib/utils/exportA2";
+import { VENDORS } from "@/lib/vendors";
 
 interface OrderItem {
   id: string;
@@ -76,6 +77,7 @@ export default function AdminPedidosPage() {
   const [deliveries, setDeliveries] = useState<Map<number, Delivery>>(new Map());
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [vendorFilter, setVendorFilter] = useState("");
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [updatingId, setUpdatingId] = useState<number | null>(null);
   const [trackingInput, setTrackingInput] = useState<{ [key: number]: string }>({});
@@ -209,7 +211,10 @@ export default function AdminPedidosPage() {
     setExporting(false);
   };
 
+  const vendorNames = VENDORS;
+
   const filteredOrders = orders.filter((order) => {
+    if (vendorFilter && order.vendor_name !== vendorFilter) return false;
     if (!searchQuery) return true;
     const q = searchQuery.toLowerCase();
     return (
@@ -254,8 +259,8 @@ export default function AdminPedidosPage() {
         </div>
       </div>
 
-      <div className="mb-6">
-        <div className="relative">
+      <div className="mb-6 flex gap-3">
+        <div className="relative flex-1">
           <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
           <input
             type="text"
@@ -265,6 +270,16 @@ export default function AdminPedidosPage() {
             className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
           />
         </div>
+        <select
+          value={vendorFilter}
+          onChange={(e) => setVendorFilter(e.target.value)}
+          className="px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+        >
+          <option value="">Todos los vendedores</option>
+          {vendorNames.map((v) => (
+            <option key={v} value={v}>{v}</option>
+          ))}
+        </select>
       </div>
 
       <div className="space-y-4">

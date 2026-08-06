@@ -1,16 +1,20 @@
 "use client";
 
-import { useState, useMemo, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, Plus, Minus, Trash2, ShoppingCart, User, Phone, Mail,
   FileText, CheckCircle, Loader2, ArrowRight, Package,
-  LogOut, Menu, X, UserPlus, MapPin, CreditCard,
+  LogOut, Menu, X, UserPlus, MapPin, CreditCard, Hash,
+  Printer, Download, RotateCcw,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useProducts } from "@/lib/hooks/useProducts";
+import { useA2Products, type A2Product } from "@/lib/hooks/useA2Products";
+import PrintableOrder from "@/components/PrintableOrder";
+import { exportOrdersToA2 } from "@/lib/utils/exportA2";
+import { VENDORS } from "@/lib/vendors";
 
 interface Client {
   id: number;
@@ -24,20 +28,40 @@ interface Client {
 
 interface OrderItem {
   id: string;
-  slug: string;
+  code: string;
   name: string;
-  brand: string;
-  model: string;
-  image: string;
   quantity: number;
-  price: string;
+  price: number;
+  stock: number;
+}
+
+interface SubmittedOrder {
+  orderNumber: string;
+  date: string;
+  customerName: string;
+  customerRif: string;
+  customerPhone: string;
+  customerAddress: string;
+  vendorName: string;
+  items: OrderItem[];
+  notes: string;
+}
+
+function generateOrderNumber(): string {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, "0");
+  const d = String(now.getDate()).padStart(2, "0");
+  const rand = Math.floor(Math.random() * 900 + 100);
+  return `PED-${y}${m}${d}-${rand}`;
 }
 
 export default function VendedorPedidosPage() {
   const router = useRouter();
-  const { products, loading: productsLoading } = useProducts();
-  const [search, setSearch] = useState("");
+  const { results, loading: searching, search } = useA2Products();
+  const [searchQuery, setSearchQuery] = useState("");
   const [cart, setCart] = useState<OrderItem[]>([]);
+  const [orderNumber] = useState(generateOrderNumber);
   const [customerName, setCustomerName] = useState("");
   const [customerRif, setCustomerRif] = useState("");
   const [customerAddress, setCustomerAddress] = useState("");
@@ -49,6 +73,8 @@ export default function VendedorPedidosPage() {
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState<"success" | "error">("success");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [orderSubmitted, setOrderSubmitted] = useState(false);
+  const [submittedOrder, setSubmittedOrder] = useState<SubmittedOrder | null>(null);
 
   const [clientSearch, setClientSearch] = useState("");
   const [clients, setClients] = useState<Client[]>([]);
@@ -56,6 +82,7 @@ export default function VendedorPedidosPage() {
   const [creatingNew, setCreatingNew] = useState(false);
   const clientTimer = useRef<NodeJS.Timeout | null>(null);
   const clientDropdownRef = useRef<HTMLDivElement>(null);
+  const searchTimer = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -66,6 +93,12 @@ export default function VendedorPedidosPage() {
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
+
+  const handleSearch = (q: string) => {
+    setSearchQuery(q);
+    if (searchTimer.current) clearTimeout(searchTimer.current);
+    searchTimer.current = setTimeout(() => search(q, 20), 250);
+  };
 
   const searchClients = (q: string) => {
     setClientSearch(q);
@@ -126,63 +159,42 @@ export default function VendedorPedidosPage() {
     setCreatingNew(false);
   };
 
-  const filteredProducts = useMemo(() => {
-    if (!search.trim()) return [];
-    const q = search.toLowerCase();
-    return products
-      .filter(
-        (p) =>
-          p.name.toLowerCase().includes(q) ||
-          p.brand.toLowerCase().includes(q) ||
-          p.model.toLowerCase().includes(q)
-      )
-      .slice(0, 8);
-  }, [products, search]);
-
-  const addToCart = (product: typeof products[0]) => {
+  const addToCart = (product: A2Product) => {
     setCart((prev) => {
-      const existing = prev.find((i) => i.id === product.id);
+      const existing = prev.find((i) => i.code === product.code);
       if (existing) {
         return prev.map((i) =>
-          i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i
+          i.code === product.code ? { ...i, quantity: i.quantity + 1 } : i
         );
       }
       return [
         ...prev,
         {
-          id: product.id,
-          slug: product.slug,
-          name: product.name,
-          brand: product.brand,
-          model: product.model,
-          image: product.image || "",
+          id: product.code,
+          code: product.code,
+          name: product.description,
           quantity: 1,
-          price: product.price || "",
+          price: product.price,
+          stock: product.stock,
         },
       ];
     });
-    setSearch("");
+    setSearchQuery("");
   };
 
-  const updateQty = (id: string, qty: number) => {
+  const updateQty = (code: string, qty: number) => {
     if (qty <= 0) {
-      setCart((prev) => prev.filter((i) => i.id !== id));
+      setCart((prev) => prev.filter((i) => i.code !== code));
       return;
     }
-    setCart((prev) => prev.map((i) => (i.id === id ? { ...i, quantity: qty } : i)));
+    setCart((prev) => prev.map((i) => (i.code === code ? { ...i, quantity: qty } : i)));
   };
 
-  const removeItem = (id: string) => {
-    setCart((prev) => prev.filter((i) => i.id !== id));
+  const removeItem = (code: string) => {
+    setCart((prev) => prev.filter((i) => i.code !== code));
   };
 
-  const total = cart.reduce((sum, item) => {
-    if (item.price) {
-      const num = parseFloat(item.price.replace(/[^0-9.]/g, ""));
-      return sum + (isNaN(num) ? 0 : num * item.quantity);
-    }
-    return sum;
-  }, 0);
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handleSubmit = async () => {
     if (cart.length === 0) return;
@@ -200,7 +212,13 @@ export default function VendedorPedidosPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          items: cart,
+          items: cart.map((item) => ({
+            ...item,
+            brand: "",
+            model: item.code,
+            image: "",
+            price: `$${item.price.toFixed(2)}`,
+          })),
           total: total > 0 ? `$${total.toFixed(2)}` : "Consultar",
           customer_name: customerName.trim(),
           customer_phone: customerPhone.trim(),
@@ -210,6 +228,7 @@ export default function VendedorPedidosPage() {
           customer_notes: customerNotes.trim(),
           vendor_name: vendorName.trim(),
           source: "vendedor",
+          order_number: orderNumber,
         }),
       });
 
@@ -218,15 +237,18 @@ export default function VendedorPedidosPage() {
         throw new Error(err.error || "Error al crear pedido");
       }
 
-      setMessage("Pedido creado exitosamente!");
-      setMessageType("success");
-      setCart([]);
-      setCustomerName("");
-      setCustomerRif("");
-      setCustomerAddress("");
-      setCustomerPhone("");
-      setCustomerEmail("");
-      setCustomerNotes("");
+      setSubmittedOrder({
+        orderNumber,
+        date: new Date().toISOString(),
+        customerName: customerName.trim(),
+        customerRif: customerRif.trim(),
+        customerPhone: customerPhone.trim(),
+        customerAddress: customerAddress.trim(),
+        vendorName: vendorName.trim(),
+        items: [...cart],
+        notes: customerNotes.trim(),
+      });
+      setOrderSubmitted(true);
     } catch (err: unknown) {
       setMessage("Error: " + ((err as Error).message || "Error al crear pedido"));
       setMessageType("error");
@@ -234,14 +256,150 @@ export default function VendedorPedidosPage() {
     setSubmitting(false);
   };
 
+  const handlePrint = useCallback(() => {
+    window.print();
+  }, []);
+
+  const handleExportA2 = useCallback(() => {
+    if (!submittedOrder) return;
+    exportOrdersToA2([
+      {
+        id: parseInt(submittedOrder.orderNumber.replace(/\D/g, "").slice(-8), 10) || 1,
+        items: submittedOrder.items.map((item) => ({
+          id: item.code,
+          slug: "",
+          name: item.name,
+          brand: "",
+          model: item.code,
+          image: "",
+          quantity: item.quantity,
+          price: `$${item.price.toFixed(2)}`,
+        })),
+        total: `$${total.toFixed(2)}`,
+        customer_name: submittedOrder.customerName,
+        customer_phone: submittedOrder.customerPhone,
+        customer_email: "",
+        customer_rif: submittedOrder.customerRif,
+        customer_address: submittedOrder.customerAddress,
+        vendor_name: submittedOrder.vendorName,
+        created_at: submittedOrder.date,
+      },
+    ]);
+  }, [submittedOrder, total]);
+
+  const handleNewOrder = () => {
+    setOrderSubmitted(false);
+    setSubmittedOrder(null);
+    setCart([]);
+    setCustomerName("");
+    setCustomerRif("");
+    setCustomerAddress("");
+    setCustomerPhone("");
+    setCustomerEmail("");
+    setCustomerNotes("");
+    setClientSearch("");
+    setMessage("");
+  };
+
   const handleLogout = async () => {
     await fetch("/api/vendor", { method: "DELETE" });
     router.push("/vendedores");
   };
 
+  // SUCCESS SCREEN
+  if (orderSubmitted && submittedOrder) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <header className="bg-brand text-white sticky top-0 z-30">
+          <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/assets/logo.jpg"
+                alt="ARUCA"
+                width={32}
+                height={32}
+                className="w-8 h-8 object-contain rounded bg-white p-0.5"
+              />
+              <div>
+                <p className="font-bold text-sm">Portal de Ventas</p>
+                <p className="text-white/60 text-[10px]">ARUCA Maquinarias</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-white/80 text-xs font-mono bg-white/10 px-2 py-1 rounded">
+                {submittedOrder.orderNumber}
+              </span>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-1 text-white/70 hover:text-white text-xs"
+              >
+                <LogOut size={14} />
+                Salir
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <div className="max-w-4xl mx-auto px-4 py-6">
+          <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6 flex items-center gap-3">
+            <CheckCircle size={20} className="text-green-600 flex-shrink-0" />
+            <div>
+              <p className="font-semibold text-green-800">
+                Pedido {submittedOrder.orderNumber} creado exitosamente
+              </p>
+              <p className="text-sm text-green-600">
+                El pedido fue guardado. Puede imprimir o exportar a A2.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-3 mb-6 no-print">
+            <button
+              onClick={handlePrint}
+              className="flex items-center gap-2 px-5 py-2.5 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all"
+            >
+              <Printer size={18} />
+              Imprimir Pedido
+            </button>
+            <button
+              onClick={handleExportA2}
+              className="flex items-center gap-2 px-5 py-2.5 bg-accent-orange text-white font-semibold rounded-xl hover:bg-accent-orange/90 transition-all"
+            >
+              <Download size={18} />
+              Exportar a A2
+            </button>
+            <button
+              onClick={handleNewOrder}
+              className="flex items-center gap-2 px-5 py-2.5 bg-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-300 transition-all"
+            >
+              <RotateCcw size={18} />
+              Nuevo Pedido
+            </button>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-gray-100 p-6">
+            <PrintableOrder
+              orderNumber={submittedOrder.orderNumber}
+              date={submittedOrder.date}
+              time={submittedOrder.date}
+              customerName={submittedOrder.customerName}
+              customerRif={submittedOrder.customerRif}
+              customerPhone={submittedOrder.customerPhone}
+              customerAddress={submittedOrder.customerAddress}
+              vendorName={submittedOrder.vendorName}
+              items={submittedOrder.items}
+              notes={submittedOrder.notes}
+              orderType="PRESUPUESTO"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ORDER FORM
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Top bar */}
       <header className="bg-brand text-white sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -264,6 +422,9 @@ export default function VendedorPedidosPage() {
             </div>
           </div>
           <div className="flex items-center gap-3">
+            <span className="text-white/80 text-xs font-mono bg-white/10 px-2 py-1 rounded">
+              {orderNumber}
+            </span>
             <Link
               href="/"
               className="text-white/70 hover:text-white text-xs hidden sm:inline"
@@ -284,7 +445,9 @@ export default function VendedorPedidosPage() {
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-gray-900">Nuevo Pedido</h1>
-          <p className="text-gray-500 text-sm mt-1">Selecciona productos y asigna un cliente</p>
+          <p className="text-gray-500 text-sm mt-1">
+            Busca por código o descripción del producto A2
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -293,50 +456,67 @@ export default function VendedorPedidosPage() {
             <div className="bg-white rounded-2xl border border-gray-100 p-6">
               <h2 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <Package size={18} />
-                Buscar Productos
+                Buscar Productos A2
               </h2>
               <div className="relative">
                 <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                 <input
                   type="text"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Buscar por nombre, marca o modelo..."
+                  value={searchQuery}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  placeholder="Código o descripción del producto..."
                   className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                 />
               </div>
 
-              {productsLoading && (
+              {searching && (
                 <div className="mt-4 flex items-center justify-center py-8">
                   <Loader2 size={20} className="animate-spin text-brand" />
                 </div>
               )}
 
               <AnimatePresence>
-                {filteredProducts.length > 0 && (
+                {results.length > 0 && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     className="mt-3 border border-gray-100 rounded-xl divide-y divide-gray-50 overflow-hidden max-h-[400px] overflow-y-auto"
                   >
-                    {filteredProducts.map((product) => {
-                      const inCart = cart.find((i) => i.id === product.id);
+                    {results.map((product) => {
+                      const inCart = cart.find((i) => i.code === product.code);
                       return (
                         <button
-                          key={product.id}
+                          key={product.code}
                           onClick={() => addToCart(product)}
                           className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-left"
                         >
-                          <div>
-                            <p className="text-sm font-medium text-gray-900">{product.name}</p>
-                            <p className="text-xs text-gray-400">{product.brand} - {product.model}</p>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs font-mono bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
+                                {product.code}
+                              </span>
+                              {product.stock > 0 ? (
+                                <span className="text-xs text-green-600 font-medium">
+                                  Stock: {product.stock}
+                                </span>
+                              ) : (
+                                <span className="text-xs text-red-500 font-medium">
+                                  Sin stock
+                                </span>
+                              )}
+                            </div>
+                            <p className="text-sm font-medium text-gray-900 mt-1 truncate">
+                              {product.description}
+                            </p>
                           </div>
-                          <div className="ml-auto flex items-center gap-2">
-                            {product.price && (
-                              <span className="text-xs font-bold text-accent-orange">{product.price}</span>
+                          <div className="ml-auto flex items-center gap-2 flex-shrink-0">
+                            {product.price > 0 && (
+                              <span className="text-xs font-bold text-accent-orange">
+                                ${product.price.toFixed(2)}
+                              </span>
                             )}
-                            <span className="flex items-center justify-center w-7 h-7 bg-brand text-white rounded-lg flex-shrink-0">
+                            <span className="flex items-center justify-center w-7 h-7 bg-brand text-white rounded-lg">
                               {inCart ? <CheckCircle size={14} /> : <Plus size={14} />}
                             </span>
                           </div>
@@ -346,8 +526,10 @@ export default function VendedorPedidosPage() {
                   </motion.div>
                 )}
 
-                {search && !productsLoading && filteredProducts.length === 0 && (
-                  <p className="text-sm text-gray-400 text-center py-4 mt-3">No se encontraron productos</p>
+                {searchQuery && !searching && results.length === 0 && (
+                  <p className="text-sm text-gray-400 text-center py-4 mt-3">
+                    No se encontraron productos
+                  </p>
                 )}
               </AnimatePresence>
             </div>
@@ -365,31 +547,40 @@ export default function VendedorPedidosPage() {
               ) : (
                 <div className="space-y-3">
                   {cart.map((item) => (
-                    <div key={item.id} className="flex items-center gap-3 bg-gray-50 rounded-xl p-3">
+                    <div key={item.code} className="flex items-center gap-3 bg-gray-50 rounded-xl p-3">
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-900 truncate">{item.name}</p>
-                        <p className="text-xs text-gray-400">{item.brand} - {item.model}</p>
-                        {item.price && (
-                          <p className="text-xs font-semibold text-accent-orange mt-0.5">{item.price}</p>
-                        )}
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-mono bg-gray-200 text-gray-700 px-2 py-0.5 rounded">
+                            {item.code}
+                          </span>
+                          <span className="text-xs text-gray-400">
+                            Stock: {item.stock}
+                          </span>
+                        </div>
+                        <p className="text-sm font-medium text-gray-900 truncate mt-1">
+                          {item.name}
+                        </p>
+                        <p className="text-xs font-semibold text-accent-orange mt-0.5">
+                          ${item.price.toFixed(2)} c/u
+                        </p>
                       </div>
                       <div className="flex items-center gap-1">
                         <button
-                          onClick={() => updateQty(item.id, item.quantity - 1)}
+                          onClick={() => updateQty(item.code, item.quantity - 1)}
                           className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 rounded-lg hover:bg-gray-100"
                         >
                           <Minus size={12} />
                         </button>
                         <span className="w-7 text-center text-sm font-medium">{item.quantity}</span>
                         <button
-                          onClick={() => updateQty(item.id, item.quantity + 1)}
+                          onClick={() => updateQty(item.code, item.quantity + 1)}
                           className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 rounded-lg hover:bg-gray-100"
                         >
                           <Plus size={12} />
                         </button>
                       </div>
                       <button
-                        onClick={() => removeItem(item.id)}
+                        onClick={() => removeItem(item.code)}
                         className="p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg"
                       >
                         <Trash2 size={14} />
@@ -403,6 +594,16 @@ export default function VendedorPedidosPage() {
 
           {/* Right: Customer Info & Submit */}
           <div className="space-y-6">
+            <div className="bg-white rounded-2xl border border-gray-100 p-6">
+              <h2 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <Hash size={18} />
+                Número de Pedido
+              </h2>
+              <div className="bg-gray-50 rounded-xl px-4 py-3 font-mono text-lg font-bold text-brand">
+                {orderNumber}
+              </div>
+            </div>
+
             <div className="bg-white rounded-2xl border border-gray-100 p-6">
               <h2 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <User size={18} />
@@ -497,7 +698,7 @@ export default function VendedorPedidosPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">R.I.F. / Cédula</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">R.I.F. / Cedula</label>
                   <div className="relative">
                     <CreditCard size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input
@@ -510,14 +711,14 @@ export default function VendedorPedidosPage() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Dirección</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Direccion</label>
                   <div className="relative">
                     <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input
                       type="text"
                       value={customerAddress}
                       onChange={(e) => setCustomerAddress(e.target.value)}
-                      placeholder="Dirección del cliente"
+                      placeholder="Direccion del cliente"
                       className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                     />
                   </div>
@@ -526,13 +727,16 @@ export default function VendedorPedidosPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-1">Vendedor</label>
                   <div className="relative">
                     <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="text"
+                    <select
                       value={vendorName}
                       onChange={(e) => setVendorName(e.target.value)}
-                      placeholder="Tu nombre"
-                      className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
-                    />
+                      className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand appearance-none"
+                    >
+                      <option value="">Seleccionar vendedor...</option>
+                      {VENDORS.map((v) => (
+                        <option key={v} value={v}>{v}</option>
+                      ))}
+                    </select>
                   </div>
                 </div>
                 <div>
@@ -556,18 +760,16 @@ export default function VendedorPedidosPage() {
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between text-gray-600">
                   <span>Productos</span>
-                  <span>{cart.reduce((s, i) => s + i.quantity, 0)}</span>
+                  <span>{cart.reduce((s, i) => s + i.quantity, 0)} unidades</span>
+                </div>
+                <div className="flex justify-between text-gray-600">
+                  <span>Articulos</span>
+                  <span>{cart.length}</span>
                 </div>
                 {total > 0 && (
                   <div className="flex justify-between font-bold text-lg pt-2 border-t border-gray-100">
                     <span className="text-gray-900">Total</span>
                     <span className="text-accent-orange">${total.toFixed(2)}</span>
-                  </div>
-                )}
-                {total === 0 && cart.length > 0 && (
-                  <div className="flex justify-between font-bold text-lg pt-2 border-t border-gray-100">
-                    <span className="text-gray-900">Total</span>
-                    <span className="text-gray-400">Consultar</span>
                   </div>
                 )}
               </div>

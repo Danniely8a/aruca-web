@@ -61,6 +61,7 @@ export async function POST(request: NextRequest) {
       vendor_name: body.vendor_name || "",
       source: body.source || "admin",
       exported_to_a2: false,
+      ...(body.order_number ? { order_number: body.order_number } : {}),
     })
     .select("*")
     .single();

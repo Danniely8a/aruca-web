@@ -126,7 +126,7 @@ export function exportOrdersToA2(orders: Order[]): void {
       const precio = parsePrice(item.price);
       const subtotal = precio * item.quantity;
       totalNeto += subtotal;
-      const description = `${item.brand} ${item.name} ${item.model}`.trim();
+      const description = item.name || `${item.brand} ${item.model}`.trim();
       wsData.push([
         item.model || item.id,
         description,
