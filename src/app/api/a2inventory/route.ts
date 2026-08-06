@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readFileSync } from "fs";
-import path from "path";
 
 interface A2Product {
   code: string;
@@ -11,17 +9,10 @@ interface A2Product {
 
 let cachedProducts: A2Product[] | null = null;
 
-function loadProducts(): A2Product[] {
+async function loadProducts(): Promise<A2Product[]> {
   if (cachedProducts) return cachedProducts;
-  const filePath = path.join(
-    process.cwd(),
-    "src",
-    "lib",
-    "data",
-    "a2inventory.json"
-  );
-  const raw = readFileSync(filePath, "utf-8");
-  cachedProducts = JSON.parse(raw);
+  const data = await import("@/lib/data/a2inventory.json");
+  cachedProducts = data.default as unknown as A2Product[];
   return cachedProducts!;
 }
 
@@ -31,7 +22,7 @@ export async function GET(request: NextRequest) {
   const limit = Math.min(parseInt(searchParams.get("limit") || "50", 10), 200);
   const offset = parseInt(searchParams.get("offset") || "0", 10);
 
-  const all = loadProducts();
+  const all = await loadProducts();
 
   let results = all;
   if (q) {
