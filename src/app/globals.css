@@ -241,17 +241,33 @@ body {
     width: 100%;
     max-width: 100%;
     border: 2px solid #000;
-    padding: 10px 16px;
+    padding: 6px 10px;
     margin: 0;
-    font-size: 11px;
+    font-size: 10px;
   }
   .no-print,
   .no-print * {
     display: none !important;
   }
-  .po-spacer { min-height: 60px; }
+  .po-spacer { min-height: 30px; }
+  .po-header { padding-bottom: 5px; margin-bottom: 6px; }
+  .po-company-name { font-size: 22px; }
+  .po-company-subtitle, .po-company-rif { font-size: 10px; }
+  .po-company-address { font-size: 8px; }
+  .po-company-small { font-size: 7px; }
+  .po-info { margin-bottom: 6px; font-size: 10px; }
+  .po-order-type { font-size: 12px; }
+  .po-order-number { font-size: 11px; }
+  .po-table { margin-bottom: 4px; font-size: 9px; }
+  .po-th { padding: 2px 4px; font-size: 8px; }
+  .po-td { padding: 2px 4px; font-size: 9px; }
+  .po-footer { padding: 6px 8px; }
+  .po-son { font-size: 9px; }
+  .po-total-line { font-size: 9px; gap: 8px; }
+  .po-total-final { font-size: 10px; }
+  .po-footer-bottom { font-size: 8px; gap: 12px; padding-top: 4px; }
   @page {
-    margin: 6mm;
-    size: letter landscape;
+    size: 13cm 21cm;
+    margin: 5mm;
   }
 }
