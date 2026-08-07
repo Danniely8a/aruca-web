@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
   const { data: order, error } = await supabase
     .from("orders")
     .insert({
-      user_id: body.user_id || "00000000-0000-0000-0000-000000000000",
+      user_id: body.user_id || null,
       items: body.items || [],
       total: body.total || "",
       status: "pending_payment",
