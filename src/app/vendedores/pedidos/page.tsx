@@ -17,13 +17,21 @@ import { exportOrdersToA2 } from "@/lib/utils/exportA2";
 import { VENDORS } from "@/lib/vendors";
 
 interface Client {
-  id: number;
-  a2_id?: string;
+  a2_code?: string;
   name: string;
   phone: string;
   email: string;
   rif: string;
+  nit: string;
   address: string;
+  contact: string;
+  fax: string;
+  vendor_code: string;
+  classification: string;
+  balance: number;
+  credit_limit: number;
+  credit_days: number;
+  currency: string;
 }
 
 interface OrderItem {
@@ -111,7 +119,8 @@ export default function VendedorPedidosPage() {
     }
 
     clientTimer.current = setTimeout(async () => {
-      const res = await fetch(`/api/clients?q=${encodeURIComponent(q)}`);
+      const vendorParam = vendorName ? `&vendor=` : "";
+      const res = await fetch(`/api/clients?q=${encodeURIComponent(q)}${vendorParam}`);
       if (res.ok) {
         const data = await res.json();
         setClients(data);
@@ -124,7 +133,7 @@ export default function VendedorPedidosPage() {
     setCustomerName(client.name);
     setCustomerPhone(client.phone || "");
     setCustomerEmail(client.email || "");
-    setCustomerRif(client.rif || "");
+    setCustomerRif(client.rif || client.nit || "");
     setCustomerAddress(client.address || "");
     setClientSearch(client.name);
     setShowClientDropdown(false);
@@ -627,7 +636,7 @@ export default function VendedorPedidosPage() {
                       onFocus={() => {
                         if (clients.length > 0) setShowClientDropdown(true);
                       }}
-                      placeholder="Buscar cliente por nombre..."
+                      placeholder="Buscar por nombre, código o RIF..."
                       className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                     />
                   </div>
@@ -642,7 +651,7 @@ export default function VendedorPedidosPage() {
                       >
                         {clients.map((c) => (
                           <button
-                            key={c.id}
+                            key={c.a2_code || c.name}
                             type="button"
                             onClick={() => selectClient(c)}
                             className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 text-left text-sm transition-colors"
@@ -653,7 +662,7 @@ export default function VendedorPedidosPage() {
                             <div className="min-w-0">
                               <p className="font-medium text-gray-900 truncate">{c.name}</p>
                               <p className="text-xs text-gray-400 truncate">
-                                {[c.phone, c.email, c.rif].filter(Boolean).join(" · ")}
+                                {[c.a2_code, c.rif || c.nit, c.phone].filter(Boolean).join(" · ")}
                               </p>
                             </div>
                           </button>
