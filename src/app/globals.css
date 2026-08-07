@@ -63,19 +63,18 @@ body {
 
 /* ========== PRINT ORDER STYLES (A2 PRESUPUESTO) ========== */
 
-/* --- Container --- */
 .print-order-container {
   font-family: "Courier New", Courier, monospace;
   color: #000;
-  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
-  padding: 24px;
+  padding: 20px 28px;
   border: 2px solid #000;
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.4;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 /* --- Header --- */
@@ -84,37 +83,34 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid #000;
-  padding-bottom: 10px;
-  margin-bottom: 14px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
 }
-.po-header-left { flex: 1; }
-.po-header-right {
-  flex: 1;
-  text-align: right;
-}
+.po-header-left { flex: 0 0 45%; }
+.po-header-right { flex: 0 0 55%; text-align: right; }
 .po-company-name {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 900;
   letter-spacing: 2px;
 }
 .po-company-subtitle {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  margin-top: 1px;
+  margin-top: 0;
 }
 .po-company-rif {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  margin-top: 1px;
+  margin-top: 0;
 }
 .po-company-address {
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1.3;
 }
 .po-company-small {
-  font-size: 9px;
+  font-size: 8px;
   color: #555;
-  margin-top: 4px;
+  margin-top: 2px;
   font-style: italic;
 }
 
@@ -122,100 +118,98 @@ body {
 .po-info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 14px;
-  font-size: 13px;
-  line-height: 1.6;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 1.5;
 }
-.po-info-left { flex: 1; }
-.po-info-right { text-align: right; }
-.po-info-line { margin-bottom: 1px; }
+.po-info-left { flex: 0 0 55%; }
+.po-info-right { flex: 0 0 45%; text-align: right; }
+.po-info-line { margin-bottom: 0; }
 .po-order-type {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 900;
   text-transform: uppercase;
 }
 .po-order-number {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 .po-label { font-weight: 700; }
-.po-value { margin-left: 4px; }
-.po-ml-24 { margin-left: 24px; }
-.po-ml-12 { margin-left: 12px; }
+.po-value { margin-left: 3px; }
+.po-ml-24 { margin-left: 20px; }
+.po-ml-12 { margin-left: 10px; }
 
 /* --- Table --- */
 .po-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 16px;
-  font-size: 12px;
+  margin-bottom: 10px;
+  font-size: 11px;
 }
 .po-th {
   background: #b0b0b0;
   color: #000;
-  padding: 5px 8px;
+  padding: 4px 6px;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 10px;
   border-bottom: 2px solid #000;
 }
 .po-th-left { text-align: left; }
 .po-th-right { text-align: right; }
-.po-tr {
-  border-bottom: 1px solid #ddd;
-}
+.po-tr { border-bottom: 1px solid #ddd; }
 .po-td {
-  padding: 4px 8px;
-  font-size: 12px;
+  padding: 3px 6px;
+  font-size: 11px;
   vertical-align: top;
 }
 .po-td-right { text-align: right; }
 
 /* --- Spacer --- */
-.po-spacer { flex: 1; min-height: 200px; }
+.po-spacer { flex: 1; min-height: 80px; }
 
 /* --- Footer --- */
 .po-footer {
   border: 2px solid #000;
-  padding: 12px 14px;
+  padding: 10px 12px;
   margin-top: auto;
 }
 .po-footer-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
-.po-footer-left { flex: 1; }
-.po-footer-right { text-align: right; }
+.po-footer-left { flex: 0 0 50%; }
+.po-footer-right { flex: 0 0 50%; text-align: right; }
 .po-son {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 }
 .po-total-line {
   display: flex;
   justify-content: flex-end;
-  gap: 16px;
-  margin-bottom: 2px;
-  font-size: 12px;
+  gap: 12px;
+  margin-bottom: 1px;
+  font-size: 11px;
 }
 .po-total-label { font-weight: 700; }
-.po-total-value { min-width: 80px; text-align: right; }
+.po-total-value { min-width: 70px; text-align: right; }
 .po-total-final {
   font-weight: 900;
-  font-size: 14px;
+  font-size: 13px;
   border-top: 1px solid #000;
-  padding-top: 4px;
-  margin-top: 4px;
+  padding-top: 3px;
+  margin-top: 3px;
 }
 .po-footer-bottom {
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  font-size: 11px;
+  justify-content: flex-start;
+  gap: 20px;
+  font-size: 10px;
   border-top: 1px solid #999;
-  padding-top: 8px;
-  margin-top: 4px;
+  padding-top: 6px;
+  margin-top: 2px;
 }
 .po-signature-line {
   white-space: nowrap;
@@ -223,10 +217,10 @@ body {
 
 /* --- Notes --- */
 .po-notes {
-  margin-top: 12px;
-  font-size: 11px;
+  margin-top: 10px;
+  font-size: 10px;
   color: #555;
-  padding: 6px 8px;
+  padding: 5px 8px;
   background: #f5f5f5;
   border-radius: 4px;
 }
@@ -247,50 +241,17 @@ body {
     width: 100%;
     max-width: 100%;
     border: 2px solid #000;
-    padding: 12px 20px;
+    padding: 10px 16px;
     margin: 0;
-    font-size: 12px;
+    font-size: 11px;
   }
   .no-print,
   .no-print * {
     display: none !important;
   }
-  .po-spacer { min-height: 100px; }
+  .po-spacer { min-height: 60px; }
   @page {
-    margin: 8mm;
-    size: letter;
-  }
-}
-
-/* ========== MEDIA PRINT ========== */
-@media print {
-  body * {
-    visibility: hidden !important;
-  }
-
-  .print-order-container,
-  .print-order-container * {
-    visibility: visible !important;
-  }
-
-  .print-order-container {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    max-width: 100%;
-    border: none;
-    padding: 10px;
-    margin: 0;
-  }
-
-  .no-print,
-  .no-print * {
-    display: none !important;
-  }
-
-  @page {
-    margin: 10mm;
-    size: letter;
+    margin: 6mm;
+    size: letter landscape;
   }
 }
