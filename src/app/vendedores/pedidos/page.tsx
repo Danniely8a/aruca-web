@@ -91,6 +91,7 @@ export default function VendedorPedidosPage() {
   const clientDropdownRef = useRef<HTMLDivElement>(null);
   const searchTimer = useRef<NodeJS.Timeout | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
+  const [vendorEmail, setVendorEmail] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -101,6 +102,8 @@ export default function VendedorPedidosPage() {
           router.replace("/vendedores");
           return;
         }
+        setVendorName(data.name || "");
+        setVendorEmail(data.email || "");
         setAuthChecked(true);
       } catch {
         router.replace("/vendedores");
@@ -116,21 +119,6 @@ export default function VendedorPedidosPage() {
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
-
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      const res = await fetch("/api/vendor");
-      if (!res.ok) return;
-      const data = await res.json();
-      if (!cancelled && data.authenticated && data.name) {
-        setVendorName(data.name);
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
   const handleSearch = (q: string) => {
@@ -466,7 +454,11 @@ export default function VendedorPedidosPage() {
             />
             <div>
               <p className="font-bold text-sm">Portal de Ventas</p>
-              <p className="text-white/60 text-[10px]">ARUCA Maquinarias</p>
+              {vendorName ? (
+                <p className="text-white/80 text-[10px]">{vendorName} · {vendorEmail}</p>
+              ) : (
+                <p className="text-white/60 text-[10px]">ARUCA Maquinarias</p>
+              )}
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -478,6 +470,12 @@ export default function VendedorPedidosPage() {
               className="text-white/70 hover:text-white text-xs hidden sm:inline"
             >
               Ver Sitio Web
+            </Link>
+            <Link
+              href="/perfil"
+              className="flex items-center gap-1 text-white/70 hover:text-white text-xs hidden sm:inline"
+            >
+              Mi Perfil
             </Link>
             <Link
               href="/vendedores/cambiar-contrasena"
@@ -503,6 +501,12 @@ export default function VendedorPedidosPage() {
               className="flex items-center gap-2 text-white/80 hover:text-white text-sm py-2"
             >
               Ver Sitio Web
+            </Link>
+            <Link
+              href="/perfil"
+              className="flex items-center gap-2 text-white/80 hover:text-white text-sm py-2"
+            >
+              Mi Perfil
             </Link>
             <Link
               href="/vendedores/cambiar-contrasena"
