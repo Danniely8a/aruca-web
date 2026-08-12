@@ -7,14 +7,13 @@ import {
   Search, Plus, Minus, Trash2, ShoppingCart, User, Phone, Mail,
   FileText, CheckCircle, Loader2, ArrowRight, Package,
   LogOut, Menu, X, UserPlus, MapPin, CreditCard, Hash,
-  Printer, Download, RotateCcw,
+  Printer, Download, RotateCcw, Lock,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useA2Products, type A2Product } from "@/lib/hooks/useA2Products";
 import PrintableOrder from "@/components/PrintableOrder";
 import { exportOrdersToA2 } from "@/lib/utils/exportA2";
-import { VENDORS } from "@/lib/vendors";
 
 interface Client {
   a2_code?: string;
@@ -100,6 +99,21 @@ export default function VendedorPedidosPage() {
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const res = await fetch("/api/vendor");
+      if (!res.ok) return;
+      const data = await res.json();
+      if (!cancelled && data.authenticated && data.name) {
+        setVendorName(data.name);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const handleSearch = (q: string) => {
@@ -440,6 +454,13 @@ export default function VendedorPedidosPage() {
             >
               Ver Sitio Web
             </Link>
+            <Link
+              href="/vendedores/cambiar-contrasena"
+              className="flex items-center gap-1 text-white/70 hover:text-white text-xs"
+            >
+              <Lock size={14} />
+              Contraseña
+            </Link>
             <button
               onClick={handleLogout}
               className="flex items-center gap-1 text-white/70 hover:text-white text-xs"
@@ -736,16 +757,13 @@ export default function VendedorPedidosPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-1">Vendedor</label>
                   <div className="relative">
                     <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                    <select
+                    <input
+                      type="text"
                       value={vendorName}
-                      onChange={(e) => setVendorName(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand appearance-none"
-                    >
-                      <option value="">Seleccionar vendedor...</option>
-                      {VENDORS.map((v) => (
-                        <option key={v} value={v}>{v}</option>
-                      ))}
-                    </select>
+                      readOnly
+                      placeholder="Vendedor conectado"
+                      className="w-full pl-10 pr-4 py-2.5 bg-gray-100 border border-gray-200 rounded-xl text-sm text-gray-700 focus:outline-none"
+                    />
                   </div>
                 </div>
                 <div>
