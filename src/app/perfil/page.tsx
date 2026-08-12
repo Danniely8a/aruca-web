@@ -301,6 +301,17 @@ export default function PerfilPage() {
               </div>
             </div>
 
+            {user.role === "vendedor" && (
+              <Link
+                href="/vendedores/pedidos"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-accent-orange text-white font-semibold rounded-xl hover:bg-accent-orange/90 transition-all"
+              >
+                <Package size={18} />
+                Montar Pedido
+                <ArrowRight size={16} />
+              </Link>
+            )}
+
             {/* Mis Pedidos */}
             <div className="bg-white rounded-2xl border border-gray-100 p-6">
               <div className="flex items-center justify-between mb-4">
