@@ -470,6 +470,31 @@ export default function VendedorPedidosPage() {
             </button>
           </div>
         </div>
+
+        {mobileMenuOpen && (
+          <div className="lg:hidden border-t border-white/10 px-4 py-3 space-y-2">
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-white/80 hover:text-white text-sm py-2"
+            >
+              Ver Sitio Web
+            </Link>
+            <Link
+              href="/vendedores/cambiar-contrasena"
+              className="flex items-center gap-2 text-white/80 hover:text-white text-sm py-2"
+            >
+              <Lock size={14} />
+              Cambiar Contraseña
+            </Link>
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 text-white/80 hover:text-white text-sm py-2"
+            >
+              <LogOut size={14} />
+              Salir
+            </button>
+          </div>
+        )}
       </header>
 
       <div className="max-w-7xl mx-auto px-4 py-6">
