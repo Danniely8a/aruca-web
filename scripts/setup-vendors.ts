@@ -39,13 +39,34 @@ async function main() {
       email: v.email,
       password: v.password,
       email_confirm: true,
-      user_metadata: { name: v.name },
+      user_metadata: { name: v.name, role: "vendedor" },
     });
 
     if (error) {
       console.error(`  ERROR ${v.email}: ${error.message}`);
     } else {
       console.log(`  OK ${v.email} → ID: ${data.user?.id}`);
+
+      // 3. Crear perfil en tabla users con role customer (constraint no permite 'vendedor')
+      if (data.user?.id) {
+        const { error: profileError } = await supabase
+          .from("users")
+          .upsert(
+            {
+              id: data.user.id,
+              email: v.email,
+              name: v.name,
+              role: "customer",
+            },
+            { onConflict: "id" }
+          );
+
+        if (profileError) {
+          console.error(`  Perfil ERROR ${v.email}: ${profileError.message}`);
+        } else {
+          console.log(`  Perfil OK ${v.email} → role: vendedor`);
+        }
+      }
     }
   }
 

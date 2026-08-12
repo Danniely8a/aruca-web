@@ -282,6 +282,8 @@ export default function PerfilPage() {
                   <p className="font-medium text-gray-900">
                     {user.role === "admin"
                       ? "Administrador"
+                      : user.role === "vendedor"
+                      ? "Vendedor"
                       : user.role === "staff"
                       ? "Personal"
                       : "Cliente"}
@@ -289,6 +291,8 @@ export default function PerfilPage() {
                   <p className="text-sm text-gray-500">
                     {user.role === "admin"
                       ? "Acceso completo al panel de administración"
+                      : user.role === "vendedor"
+                      ? "Portal de ventas y pedidos"
                       : user.role === "staff"
                       ? "Acceso limitado al panel"
                       : "Acceso a precios y compras"}

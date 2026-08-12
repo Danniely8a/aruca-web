@@ -32,7 +32,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchProfile = useCallback(async (authUser: { id: string; email?: string | null }) => {
+  const fetchProfile = useCallback(async (authUser: { id: string; email?: string | null; user_metadata?: Record<string, unknown> }) => {
     const c = createClient();
     const { data: profile } = await c
       .from("users")
@@ -40,13 +40,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       .eq("id", authUser.id)
       .single();
 
+    const metaRole = (authUser.user_metadata as { role?: string })?.role;
+    const dbRole = profile?.role || "customer";
+    const role = metaRole === "vendedor" && dbRole === "customer" ? "vendedor" : dbRole;
+
     return {
       id: authUser.id,
       email: authUser.email || "",
-      name: profile?.name || "",
+      name: profile?.name || (authUser.user_metadata as { name?: string })?.name || "",
       phone: profile?.phone || "",
       company: profile?.company || "",
-      role: profile?.role || "customer",
+      role,
       avatar_url: profile?.avatar_url || "",
     };
   }, []);
