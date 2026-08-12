@@ -90,6 +90,23 @@ export default function VendedorPedidosPage() {
   const clientTimer = useRef<NodeJS.Timeout | null>(null);
   const clientDropdownRef = useRef<HTMLDivElement>(null);
   const searchTimer = useRef<NodeJS.Timeout | null>(null);
+  const [authChecked, setAuthChecked] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch("/api/vendor");
+        const data = await res.json();
+        if (!data.authenticated) {
+          router.replace("/vendedores");
+          return;
+        }
+        setAuthChecked(true);
+      } catch {
+        router.replace("/vendedores");
+      }
+    })();
+  }, [router]);
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -421,6 +438,14 @@ export default function VendedorPedidosPage() {
   }
 
   // ORDER FORM
+  if (!authChecked) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Loader2 size={32} className="animate-spin text-brand" />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-brand text-white sticky top-0 z-30">
