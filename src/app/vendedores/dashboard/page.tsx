@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import {
   ShoppingCart,
   DollarSign,
+  ClipboardList,
   LogOut,
   Lock,
   Loader2,
@@ -108,7 +109,7 @@ export default function VendedorDashboardPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <Link href="/vendedores/pedidos">
             <motion.div
               whileHover={{ scale: 1.02 }}
@@ -139,6 +140,24 @@ export default function VendedorDashboardPage() {
               </h2>
               <p className="text-sm text-gray-500">
                 Consultar saldos, facturas y notas de tus clientes
+              </p>
+            </motion.div>
+          </Link>
+
+          <Link href="/vendedores/historial">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-white rounded-2xl border border-gray-100 p-8 cursor-pointer hover:shadow-lg transition-shadow"
+            >
+              <div className="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-4">
+                <ClipboardList size={28} />
+              </div>
+              <h2 className="text-lg font-bold text-gray-900 mb-1">
+                Historial de Pedidos
+              </h2>
+              <p className="text-sm text-gray-500">
+                Ver pedidos anteriores, estados y montos
               </p>
             </motion.div>
           </Link>
