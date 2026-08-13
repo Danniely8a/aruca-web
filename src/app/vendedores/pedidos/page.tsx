@@ -466,6 +466,12 @@ export default function VendedorPedidosPage() {
               {orderNumber}
             </span>
             <Link
+              href="/vendedores/dashboard"
+              className="text-white/70 hover:text-white text-xs hidden sm:inline"
+            >
+              Dashboard
+            </Link>
+            <Link
               href="/"
               className="text-white/70 hover:text-white text-xs hidden sm:inline"
             >
@@ -496,6 +502,12 @@ export default function VendedorPedidosPage() {
 
         {mobileMenuOpen && (
           <div className="lg:hidden border-t border-white/10 px-4 py-3 space-y-2">
+            <Link
+              href="/vendedores/dashboard"
+              className="flex items-center gap-2 text-white/80 hover:text-white text-sm py-2"
+            >
+              Dashboard
+            </Link>
             <Link
               href="/"
               className="flex items-center gap-2 text-white/80 hover:text-white text-sm py-2"

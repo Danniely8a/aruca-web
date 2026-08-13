@@ -193,7 +193,7 @@ export default function ChangePasswordPage() {
 
           <div className="mt-6 text-center">
             <Link
-              href="/vendedores/pedidos"
+              href="/vendedores/dashboard"
               className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-brand transition-colors"
             >
               <ArrowLeft size={14} />

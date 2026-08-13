@@ -28,7 +28,7 @@ export default function VendedorLoginPage() {
       });
 
       if (res.ok) {
-        router.push("/vendedores/pedidos");
+        router.push("/vendedores/dashboard");
       } else {
         setError("Credenciales incorrectas");
       }
