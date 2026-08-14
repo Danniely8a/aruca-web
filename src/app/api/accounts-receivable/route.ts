@@ -12,14 +12,28 @@ export async function GET(request: NextRequest) {
   const isAdmin =
     request.cookies.get("admin-session")?.value === "authenticated";
 
+  let vendorClientCodes: string[] = [];
+  if (vendorSession && vendorNameCookie && !isAdmin) {
+    const { data: vcData, error: vcError } = await supabase
+      .from("vendor_clients")
+      .select("client_code")
+      .eq("vendor_name", vendorNameCookie);
+
+    if (vcError) {
+      return NextResponse.json({ error: vcError.message }, { status: 500 });
+    }
+
+    vendorClientCodes = (vcData || []).map((r) => r.client_code);
+  }
+
   let query = supabase
     .from("accounts_receivable")
     .select("*")
     .order("client_name")
     .order("emission_date");
 
-  if (vendorSession && vendorNameCookie && !isAdmin) {
-    query = query.eq("vendor_name", vendorNameCookie);
+  if (vendorClientCodes.length > 0) {
+    query = query.in("client_code", vendorClientCodes);
   }
 
   if (search) {

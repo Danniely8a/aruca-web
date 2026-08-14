@@ -35,7 +35,7 @@ SUPABASE_KEY = os.environ.get('SUPABASE_SERVICE_ROLE_KEY', '')
 
 VENDOR_PDF_MAP = {
     'GUSTAVO ROSALES': 'CUENTASPORCOBRARgustavo.Pdf',
-    'JEPHERSON PEREZ': 'CUENTASPORCOBRARjepherson.Pdf',
+    'JEPHERSON PEREZ': 'CUENTASPORCOBRARJEPHERSON.Pdf',
     'FRANKLIN SEGOVIA': 'CUENTASPORCOBRARfranklin.Pdf',
 }
 
@@ -58,7 +58,7 @@ def extract_clients_from_pdf(pdf_path):
     pdf.close()
 
     clients = re.findall(r'(\d{8})\s+(.+?)(?:\s+Si\s|\s+No\s)', all_text)
-    return [{'code': code, 'name': name.strip()} for code, name in clients]
+    return [{'code': code.lstrip('0') or '0', 'name': name.strip()} for code, name in clients]
 
 
 def find_vendor_pdfs(vendor_filter=None):
