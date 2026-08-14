@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -41,7 +41,16 @@ interface ClientAR {
 }
 
 export default function CuentasCobrarPage() {
+  return (
+    <Suspense fallback={null}>
+      <CuentasCobrarContent />
+    </Suspense>
+  );
+}
+
+function CuentasCobrarContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [vendorName, setVendorName] = useState("");
   const [vendorEmail, setVendorEmail] = useState("");
   const [clients, setClients] = useState<ClientAR[]>([]);
@@ -49,6 +58,8 @@ export default function CuentasCobrarPage() {
   const [search, setSearch] = useState("");
   const [selectedClient, setSelectedClient] = useState<ClientAR | null>(null);
   const [reportDate, setReportDate] = useState("");
+
+  const selectedCode = searchParams.get("cliente");
 
   useEffect(() => {
     (async () => {
@@ -82,6 +93,15 @@ export default function CuentasCobrarPage() {
       .finally(() => setLoading(false));
   }, [vendorName]);
 
+  useEffect(() => {
+    if (selectedCode && clients.length > 0) {
+      const client = clients.find((c) => c.client_code === selectedCode);
+      setSelectedClient(client || null);
+    } else {
+      setSelectedClient(null);
+    }
+  }, [selectedCode, clients]);
+
   const filtered = clients.filter(
     (c) =>
       c.client_name.toUpperCase().includes(search.toUpperCase()) ||
@@ -112,7 +132,7 @@ export default function CuentasCobrarPage() {
           <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <button
-                onClick={() => setSelectedClient(null)}
+                onClick={() => router.back()}
                 className="p-1 hover:bg-white/10 rounded-lg"
               >
                 <ArrowLeft size={20} />
@@ -356,7 +376,7 @@ export default function CuentasCobrarPage() {
                   key={client.client_code}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  onClick={() => setSelectedClient(client)}
+                  onClick={() => router.push(`?cliente=${encodeURIComponent(client.client_code)}`)}
                   className="w-full bg-white rounded-xl border border-gray-100 p-4 flex items-center gap-4 hover:shadow-md transition-shadow text-left"
                 >
                   <div className="w-10 h-10 bg-brand/10 text-brand rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
