@@ -16,7 +16,7 @@ from datetime import datetime
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 XLS_PATH = r'C:\Users\caja.02\Desktop\CuentasporCobrar.xls'
-LOCAL_COPY = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'CUENTASPORCOBRAR.Xls')
+LOCAL_COPY = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'CUENTASPORCOBRAR.Xls')
 
 env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env.local')
 if os.path.exists(env_path):
@@ -34,6 +34,18 @@ SUPABASE_KEY = os.environ.get('SUPABASE_SERVICE_ROLE_KEY', '')
 def get_supabase_client():
     from supabase import create_client
     return create_client(SUPABASE_URL, SUPABASE_KEY)
+
+
+def load_vendor_map(sb):
+    """Load vendor_clients mapping: client_code -> vendor_name"""
+    result = sb.table('vendor_clients').select('client_code, vendor_name').execute()
+    vmap = {}
+    for row in result.data:
+        normalized = row['client_code'].lstrip('0') or '0'
+        vmap[normalized] = row['vendor_name']
+        vmap[row['client_code']] = row['vendor_name']
+    print(f'Vendor mapping cargado: {len(vmap)} clientes asignados')
+    return vmap
 
 
 def parse_date(val):
@@ -172,6 +184,8 @@ def import_to_supabase(clients, dry_run=False):
     sb = get_supabase_client()
     now = datetime.utcnow().isoformat() + 'Z'
 
+    vendor_map = load_vendor_map(sb)
+
     print('\nEliminando registros anteriores...')
     sb.table('accounts_receivable').delete().neq('id', 0).execute()
 
@@ -179,8 +193,12 @@ def import_to_supabase(clients, dry_run=False):
     batch = []
     batch_size = 500
     inserted = 0
+    assigned = 0
 
     for client in clients:
+        vendor_name = vendor_map.get(client['client_code'], '')
+        if vendor_name:
+            assigned += 1
         for doc in client.get('documents', []):
             batch.append({
                 'client_code': client['client_code'],
@@ -198,6 +216,7 @@ def import_to_supabase(clients, dry_run=False):
                 'amount': doc['amount'],
                 'total_documents': client['total_documents'],
                 'total_amount': client['total_amount'],
+                'vendor_name': vendor_name,
                 'report_date': now,
             })
 
@@ -212,6 +231,7 @@ def import_to_supabase(clients, dry_run=False):
         inserted += len(batch)
 
     print(f'\nListo. Total insertados: {inserted}')
+    print(f'Clientes con vendedor asignado: {assigned}/{len(clients)}')
     print(f'Reporte: {now}')
 
 

@@ -70,7 +70,9 @@ export default function CuentasCobrarPage() {
   useEffect(() => {
     if (!vendorName) return;
     setLoading(true);
-    fetch(`/api/accounts-receivable?search=${encodeURIComponent(search)}`)
+    fetch(`/api/accounts-receivable?search=${encodeURIComponent(search)}`, {
+      credentials: "include",
+    })
       .then((r) => r.json())
       .then((data) => {
         setClients(data.clients || []);

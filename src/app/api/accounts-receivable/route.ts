@@ -7,11 +7,20 @@ export async function GET(request: NextRequest) {
 
   const supabase = createAdminClient();
 
+  const vendorNameCookie = request.cookies.get("vendor-name")?.value || "";
+  const vendorSession = request.cookies.get("vendor-session")?.value || "";
+  const isAdmin =
+    request.cookies.get("admin-session")?.value === "authenticated";
+
   let query = supabase
     .from("accounts_receivable")
     .select("*")
     .order("client_name")
     .order("emission_date");
+
+  if (vendorSession && vendorNameCookie && !isAdmin) {
+    query = query.eq("vendor_name", vendorNameCookie);
+  }
 
   if (search) {
     query = query.or(
