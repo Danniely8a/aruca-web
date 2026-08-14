@@ -18,8 +18,8 @@ import argparse
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
-DESKTOP = r'C:\Users\caja.02\Desktop'
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REPORTES_DIR = os.path.join(os.path.dirname(PROJECT_ROOT), 'reportes')
 
 env_path = os.path.join(PROJECT_ROOT, '.env.local')
 if os.path.exists(env_path):
@@ -67,7 +67,7 @@ def find_vendor_pdfs(vendor_filter=None):
     for vendor, filename in VENDOR_PDF_MAP.items():
         if vendor_filter and vendor_filter.upper() not in vendor.upper():
             continue
-        path = os.path.join(DESKTOP, filename)
+        path = os.path.join(REPORTES_DIR, filename)
         if os.path.exists(path):
             found[vendor] = path
         else:

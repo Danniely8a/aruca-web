@@ -15,7 +15,7 @@ from datetime import datetime
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
-XLS_PATH = r'C:\Users\caja.02\Desktop\CuentasporCobrar.xls'
+XLS_PATH = r'\\Arc-dc\a2_hac_aruca\Empre001\REPORTS\CUENTASPORCOBRAR.Xls'
 LOCAL_COPY = r'C:\Users\caja.02\Desktop\CUENTASPORCOBRAR.Xls'
 
 env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env.local')
@@ -144,7 +144,7 @@ def parse_xls(filepath):
                 'document_type': safe_str(c0),
                 'emission_date': parse_date(c2),
                 'due_date': parse_date(c3),
-                'days': safe_int(c5),
+                'days': safe_int(c6),
                 'document_number': str(int(c8)) if isinstance(c8, float) else safe_str(c8),
                 'description': safe_str(c9),
                 'amount': safe_float(c17),
