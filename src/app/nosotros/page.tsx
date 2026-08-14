@@ -138,7 +138,7 @@ export default function NosotrosPage() {
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 leading-tight">
                 Cinco Décadas de{" "}
                 <span className="text-brand">Compromiso</span> y{" "}
-                <span className="text-accent-orange">Transformación</span>
+                <span className="text-brand">Transformación</span>
               </h2>
 
               <div className="space-y-5">
