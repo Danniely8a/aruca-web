@@ -16,7 +16,7 @@ from datetime import datetime
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 XLS_PATH = r'C:\Users\caja.02\Desktop\CuentasporCobrar.xls'
-LOCAL_COPY = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'CUENTASPORCOBRAR.Xls')
+LOCAL_COPY = r'C:\Users\caja.02\Desktop\CUENTASPORCOBRAR.Xls'
 
 env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env.local')
 if os.path.exists(env_path):
