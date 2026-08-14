@@ -538,6 +538,17 @@ export default function VendedorPedidosPage() {
         )}
       </header>
 
+      <div className="max-w-7xl mx-auto px-4 pt-4">
+        <div className="flex items-center gap-1 bg-white rounded-lg px-1 py-0.5 border border-gray-200 w-fit">
+          <Link href="/vendedores/pedidos" className="px-3 py-1.5 rounded-md text-xs font-medium bg-brand text-white">
+            Pedidos
+          </Link>
+          <Link href="/vendedores/cuentas-por-cobrar" className="px-3 py-1.5 rounded-md text-xs font-medium text-gray-500 hover:text-gray-700">
+            Cuentas por Cobrar
+          </Link>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-gray-900">Nuevo Pedido</h1>
