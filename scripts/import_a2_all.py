@@ -180,7 +180,7 @@ def import_inventario_precios(sb, dry_run=False):
     print('Productos con stock en SinvDep:', len(stock_sum))
     conn.close()
 
-    # Construir lista para a2inventory.json
+    # Construir lista de productos
     items = []
     for code, info in inventario.items():
         exist = stock_sum.get(code, 0.0)
@@ -191,9 +191,12 @@ def import_inventario_precios(sb, dry_run=False):
             'description': info['descripcion'],
             'stock': stock_int,
             'price': precio,
+            'brand': info['marca'],
+            'subcategory': info['subcategoria'],
+            'model': info['modelo'],
         })
 
-    print('Total items para a2inventory.json:', len(items))
+    print('Total items:', len(items))
 
     if dry_run:
         print('[DRY RUN] No se escribieron datos.')
@@ -205,45 +208,42 @@ def import_inventario_precios(sb, dry_run=False):
             print('  ', i['code'], '-', i['description'][:40], '| precio:', i['price'], '| stock:', i['stock'])
         return
 
-    # Escribir a2inventory.json (compacto para reducir tamano)
+    # Guardar en tabla a2_products (fuente del buscador)
+    print('Guardando productos en tabla a2_products...')
+    try:
+        batch = []
+        batch_size = 500
+        total_products = 0
+        for i in items:
+            batch.append({
+                'code': i['code'],
+                'description': i['description'],
+                'stock': i['stock'],
+                'price': i['price'],
+                'brand': i['brand'],
+                'subcategory': i['subcategory'],
+                'model': i['model'],
+            })
+            if len(batch) >= batch_size:
+                sb.table('a2_products').upsert(batch, on_conflict='code').execute()
+                total_products += len(batch)
+                batch = []
+        if batch:
+            sb.table('a2_products').upsert(batch, on_conflict='code').execute()
+            total_products += len(batch)
+        print('Productos guardados en a2_products:', total_products)
+    except Exception as e:
+        print('ERROR al guardar en a2_products:', str(e)[:200])
+        print('  -> Ejecuta primero el SQL: supabase/migrations/20260814_create_a2_products_table.sql')
+
+    # Tambien escribir a2inventory.json (compatibilidad, solo code/description/stock/price)
+    json_items = [
+        {'code': i['code'], 'description': i['description'], 'stock': i['stock'], 'price': i['price']}
+        for i in items
+    ]
     with open(A2INVENTORY_JSON, 'w', encoding='utf-8') as fjson:
-        json.dump(items, fjson, ensure_ascii=False, separators=(',', ':'))
-    print('a2inventory.json actualizado:', A2INVENTORY_JSON)
-
-    # Actualizar products.stock y products.price (solo existentes)
-    print('Actualizando products en Supabase...')
-    result = sb.table('products').select('id, model').execute()
-    sb_products = result.data
-    print('Products en Supabase:', len(sb_products))
-
-    # Construir diccionario de codigo->precio/stock para lookup rapido
-    updates = 0
-    no_match = 0
-    for p in sb_products:
-        model = s(p.get('model'))
-        if not model or model == 'N/A':
-            no_match += 1
-            continue
-        # Buscar por model como código A2 exacto
-        code = None
-        if model in precios or model in stock_sum:
-            code = model
-        if not code:
-            no_match += 1
-            continue
-
-        data = {}
-        if code in precios:
-            data['price'] = '$%.2f' % precios[code]
-        if code in stock_sum:
-            data['stock'] = int(stock_sum[code])
-
-        if data:
-            sb.table('products').update(data).eq('id', p['id']).execute()
-            updates += 1
-
-    print('Products actualizados:', updates)
-    print('Products sin match (model no es código A2):', no_match)
+        json.dump(json_items, fjson, ensure_ascii=False, separators=(',', ':'))
+    print('a2inventory.json actualizado (compatibilidad):', A2INVENTORY_JSON)
 
 
 def main():
