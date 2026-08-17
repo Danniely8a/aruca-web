@@ -39,7 +39,7 @@ SUPABASE_KEY = os.environ.get('SUPABASE_SERVICE_ROLE_KEY', '')
 A2_CONN_STR = (
     "DRIVER={DBISAM 4 ODBC Driver};"
     "ConnectionType=Local;"
-    r"CatalogName=\\AR-SERVER-DC\A2_APPS$\A2_HAC_ARUCA\Empre001\Data;"
+    r"CatalogName=\\Arc-dc\a2_hac_aruca\Empre001\Data;"
 )
 
 
@@ -139,17 +139,15 @@ def import_inventario_precios(sb, dry_run=False):
     conn = get_a2_conn()
     cur = conn.cursor()
 
-    # Precios mayor (P03 total extranjero)
+    # Precio de venta P01 extranjero (USD)
     print('=== PRECIOS E INVENTARIO ===')
-    cur.execute("SELECT FIC_CODEITEM, FIC_P03IPRECIOTOTAL, FIC_P03PRECIOTOTALEXT, FIC_P01IPRECIOTOTAL FROM a2InvCostosPrecios")
+    cur.execute("SELECT FIC_CODEITEM, FIC_P01PRECIOTOTALEXT, FIC_P03PRECIOTOTALEXT FROM a2InvCostosPrecios")
     precios = {}
     for r in cur.fetchall():
         code = s(r[0])
-        # Preferir P03 total extranjero (moneda extranjera, es el precio mayor real)
-        p03_ext = f(r[2])
-        p03_int = f(r[1])
-        p01_int = f(r[3])
-        precio = p03_ext if p03_ext > 0 else (p03_int if p03_int > 0 else p01_int)
+        p01_ext = f(r[1])  # precio de venta normal (USD)
+        p03_ext = f(r[2])  # precio mayorista (USD)
+        precio = p01_ext if p01_ext > 0 else p03_ext
         if precio > 0:
             precios[code] = precio
 
