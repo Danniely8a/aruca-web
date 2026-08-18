@@ -305,7 +305,7 @@ export default function NosotrosPage() {
               href="https://wa.me/584126109597"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 px-10 py-4 bg-accent-orange text-white font-semibold rounded-xl hover:bg-accent-orange/90 transition-all shadow-lg shadow-accent-orange/25"
+              className="group inline-flex items-center gap-3 px-10 py-4 bg-white text-brand font-semibold rounded-xl hover:bg-gray-100 transition-all shadow-lg shadow-black/10"
             >
               <Phone size={20} />
               Contáctanos ahora
