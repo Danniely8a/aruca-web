@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
 
   const sinceIso = sinceUtc.toISOString();
 
-  const { data: totalViews } = await supabase
+  const { count: totalViewsCount } = await supabase
     .from("page_views")
     .select("id", { count: "exact", head: true })
     .gte("created_at", sinceIso);
@@ -93,7 +93,7 @@ export async function GET(request: NextRequest) {
   })) || [];
 
   return NextResponse.json({
-    total: totalViews || 0,
+    total: totalViewsCount || 0,
     uniquePaths: Object.keys(pathCounts).length,
     daily,
     pathDistribution: Object.entries(pathCounts)
