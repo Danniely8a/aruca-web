@@ -28,7 +28,7 @@ export default function VendedorLoginPage() {
       });
 
       if (res.ok) {
-        router.push("/vendedores/pedidos");
+        router.push("/vendedores/dashboard");
       } else {
         setError("Credenciales incorrectas");
       }
@@ -68,7 +68,7 @@ export default function VendedorLoginPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="vendedor@aruca.com"
+                  placeholder="nombre@aruca.com"
                   required
                   className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                 />

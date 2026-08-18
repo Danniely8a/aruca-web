@@ -282,6 +282,8 @@ export default function PerfilPage() {
                   <p className="font-medium text-gray-900">
                     {user.role === "admin"
                       ? "Administrador"
+                      : user.role === "vendedor"
+                      ? "Vendedor"
                       : user.role === "staff"
                       ? "Personal"
                       : "Cliente"}
@@ -289,6 +291,8 @@ export default function PerfilPage() {
                   <p className="text-sm text-gray-500">
                     {user.role === "admin"
                       ? "Acceso completo al panel de administración"
+                      : user.role === "vendedor"
+                      ? "Portal de ventas y pedidos"
                       : user.role === "staff"
                       ? "Acceso limitado al panel"
                       : "Acceso a precios y compras"}
@@ -296,6 +300,17 @@ export default function PerfilPage() {
                 </div>
               </div>
             </div>
+
+            {user.role === "vendedor" && (
+              <Link
+                href="/vendedores/pedidos"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-accent-orange text-white font-semibold rounded-xl hover:bg-accent-orange/90 transition-all"
+              >
+                <Package size={18} />
+                Montar Pedido
+                <ArrowRight size={16} />
+              </Link>
+            )}
 
             {/* Mis Pedidos */}
             <div className="bg-white rounded-2xl border border-gray-100 p-6">
