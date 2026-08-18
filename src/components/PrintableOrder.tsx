@@ -12,6 +12,7 @@ interface PrintableOrderProps {
   date: string;
   time: string;
   customerName: string;
+  customerCode?: string;
   customerRif: string;
   customerPhone: string;
   customerAddress: string;
@@ -85,6 +86,7 @@ export default function PrintableOrder({
   date,
   time,
   customerName,
+  customerCode,
   customerRif,
   customerPhone,
   customerAddress,
@@ -121,6 +123,12 @@ export default function PrintableOrder({
             <span className="po-label">Cliente:</span>
             <span className="po-value">{customerName}</span>
           </div>
+          {customerCode && (
+            <div className="po-info-line">
+              <span className="po-label">C&oacute;digo:</span>
+              <span className="po-value">{customerCode}</span>
+            </div>
+          )}
           <div className="po-info-line">
             <span className="po-label">Direcci&oacute;n:</span>
             <span className="po-value">{customerAddress}</span>

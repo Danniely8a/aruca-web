@@ -37,6 +37,14 @@ yarn-error.log*
 scripts/*.json
 scripts/*.cjs
 
+# python
+__pycache__/
+*.pyc
+*.pyo
+
+# logs
+logs/
+
 # vercel
 .vercel
 

@@ -57,6 +57,7 @@ export async function POST(request: NextRequest) {
       customer_email: body.customer_email || "",
       customer_rif: body.customer_rif || "",
       customer_address: body.customer_address || "",
+      customer_code: body.customer_code || "",
       customer_notes: body.customer_notes || "",
       vendor_name: body.vendor_name || "",
       source: body.source || "admin",

@@ -7,13 +7,12 @@ import {
   Search, Plus, Minus, Trash2, ShoppingCart, User, Phone, Mail,
   FileText, CheckCircle, Loader2, ArrowRight, Package,
   LogOut, Menu, X, UserPlus, MapPin, CreditCard, Hash,
-  Printer, Download, RotateCcw, Lock,
+  Printer, RotateCcw, Lock,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useA2Products, type A2Product } from "@/lib/hooks/useA2Products";
 import PrintableOrder from "@/components/PrintableOrder";
-import { exportOrdersToA2 } from "@/lib/utils/exportA2";
 
 interface Client {
   a2_code?: string;
@@ -46,6 +45,7 @@ interface SubmittedOrder {
   orderNumber: string;
   date: string;
   customerName: string;
+  customerCode: string;
   customerRif: string;
   customerPhone: string;
   customerAddress: string;
@@ -70,6 +70,7 @@ export default function VendedorPedidosPage() {
   const [cart, setCart] = useState<OrderItem[]>([]);
   const [orderNumber] = useState(generateOrderNumber);
   const [customerName, setCustomerName] = useState("");
+  const [customerCode, setCustomerCode] = useState("");
   const [customerRif, setCustomerRif] = useState("");
   const [customerAddress, setCustomerAddress] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
@@ -150,6 +151,7 @@ export default function VendedorPedidosPage() {
 
   const selectClient = (client: Client) => {
     setCustomerName(client.name);
+    setCustomerCode(client.a2_code || "");
     setCustomerPhone(client.phone || "");
     setCustomerEmail(client.email || "");
     setCustomerRif(client.rif || client.nit || "");
@@ -257,6 +259,7 @@ export default function VendedorPedidosPage() {
           vendor_name: vendorName.trim(),
           source: "vendedor",
           order_number: orderNumber,
+          customer_code: customerCode.trim(),
         }),
       });
 
@@ -269,6 +272,7 @@ export default function VendedorPedidosPage() {
         orderNumber,
         date: new Date().toISOString(),
         customerName: customerName.trim(),
+        customerCode: customerCode.trim(),
         customerRif: customerRif.trim(),
         customerPhone: customerPhone.trim(),
         customerAddress: customerAddress.trim(),
@@ -288,38 +292,12 @@ export default function VendedorPedidosPage() {
     window.print();
   }, []);
 
-  const handleExportA2 = useCallback(() => {
-    if (!submittedOrder) return;
-    exportOrdersToA2([
-      {
-        id: parseInt(submittedOrder.orderNumber.replace(/\D/g, "").slice(-8), 10) || 1,
-        items: submittedOrder.items.map((item) => ({
-          id: item.code,
-          slug: "",
-          name: item.name,
-          brand: "",
-          model: item.code,
-          image: "",
-          quantity: item.quantity,
-          price: `$${item.price.toFixed(2)}`,
-        })),
-        total: `$${total.toFixed(2)}`,
-        customer_name: submittedOrder.customerName,
-        customer_phone: submittedOrder.customerPhone,
-        customer_email: "",
-        customer_rif: submittedOrder.customerRif,
-        customer_address: submittedOrder.customerAddress,
-        vendor_name: submittedOrder.vendorName,
-        created_at: submittedOrder.date,
-      },
-    ]);
-  }, [submittedOrder, total]);
-
   const handleNewOrder = () => {
     setOrderSubmitted(false);
     setSubmittedOrder(null);
     setCart([]);
     setCustomerName("");
+    setCustomerCode("");
     setCustomerRif("");
     setCustomerAddress("");
     setCustomerPhone("");
@@ -390,13 +368,6 @@ export default function VendedorPedidosPage() {
               Imprimir Pedido
             </button>
             <button
-              onClick={handleExportA2}
-              className="flex items-center gap-2 px-5 py-2.5 bg-accent-orange text-white font-semibold rounded-xl hover:bg-accent-orange/90 transition-all"
-            >
-              <Download size={18} />
-              Exportar a A2
-            </button>
-            <button
               onClick={handleNewOrder}
               className="flex items-center gap-2 px-5 py-2.5 bg-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-300 transition-all"
             >
@@ -411,6 +382,7 @@ export default function VendedorPedidosPage() {
               date={submittedOrder.date}
               time={submittedOrder.date}
               customerName={submittedOrder.customerName}
+              customerCode={submittedOrder.customerCode}
               customerRif={submittedOrder.customerRif}
               customerPhone={submittedOrder.customerPhone}
               customerAddress={submittedOrder.customerAddress}
@@ -777,6 +749,19 @@ export default function VendedorPedidosPage() {
                       </motion.div>
                     )}
                   </AnimatePresence>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Código</label>
+                  <div className="relative">
+                    <Hash size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      value={customerCode}
+                      readOnly
+                      placeholder="Código A2 del cliente"
+                      className="w-full pl-10 pr-4 py-2.5 bg-gray-100 border border-gray-200 rounded-xl text-sm text-gray-700 font-mono focus:outline-none"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Telefono</label>
