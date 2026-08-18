@@ -220,15 +220,15 @@ export default function NosotrosPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="group relative bg-gradient-to-br from-accent-brown to-accent-brown/80 rounded-3xl p-8 sm:p-10 text-white overflow-hidden"
+              className="group relative bg-white rounded-3xl p-8 sm:p-10 text-brand overflow-hidden border border-gray-100 shadow-sm"
             >
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
               <div className="relative z-10">
-                <div className="w-14 h-14 bg-white/15 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-14 h-14 bg-brand/10 text-brand rounded-2xl flex items-center justify-center mb-6">
                   <TrendingUp size={28} />
                 </div>
-                <h3 className="text-3xl font-bold mb-4">Visión</h3>
-                <p className="text-white/80 leading-relaxed text-base sm:text-lg">{company.vision}</p>
+                <h3 className="text-3xl font-bold mb-4 text-gray-900">Visión</h3>
+                <p className="text-gray-500 leading-relaxed text-base sm:text-lg">{company.vision}</p>
               </div>
             </motion.div>
           </div>
