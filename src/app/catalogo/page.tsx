@@ -16,7 +16,6 @@ import {
   ChevronRight,
   ShoppingCart,
 } from "lucide-react";
-import { productCategories, productSubcategories } from "@/lib/data/products";
 import { useCart } from "@/lib/context/CartContext";
 import { useProducts } from "@/lib/hooks/useProducts";
 import { useBrands } from "@/lib/hooks/useBrands";
@@ -43,6 +42,19 @@ export default function CatalogoPage() {
   const [selectedSubcategory, setSelectedSubcategory] = useState("Todos");
   const [selectedBrand, setSelectedBrand] = useState("Todos");
   const { addItem } = useCart();
+
+  const categories = useMemo(() => {
+    const unique = Array.from(new Set(products.map((p) => p.category).filter(Boolean)));
+    return unique.sort((a, b) => a.localeCompare(b, "es"));
+  }, [products]);
+
+  const subcategories = useMemo(() => {
+    const base = selectedCategory === "Todos" ? products : products.filter((p) => p.category === selectedCategory);
+    const unique = Array.from(
+      new Set(base.map((p) => p.subcategory).filter((s): s is string => Boolean(s)))
+    );
+    return unique.sort((a, b) => a.localeCompare(b, "es"));
+  }, [products, selectedCategory]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -112,6 +124,12 @@ export default function CatalogoPage() {
 
   const handleFilterChange = (setter: (v: string) => void) => (value: string) => {
     setter(value);
+    setCurrentPage(1);
+  };
+
+  const handleCategoryChange = (value: string) => {
+    setSelectedCategory(value);
+    setSelectedSubcategory("Todos");
     setCurrentPage(1);
   };
 
@@ -191,19 +209,22 @@ export default function CatalogoPage() {
             <div className="hidden sm:flex gap-3">
               <select
                 value={selectedCategory}
-                onChange={(e) => handleFilterChange(setSelectedCategory)(e.target.value)}
+                onChange={(e) => handleCategoryChange(e.target.value)}
                 className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand cursor-pointer"
               >
-                {productCategories.map((cat) => (
+                <option value="Todos">Todas las Categorías</option>
+                {categories.map((cat) => (
                   <option key={cat} value={cat}>{cat}</option>
                 ))}
               </select>
               <select
                 value={selectedSubcategory}
                 onChange={(e) => handleFilterChange(setSelectedSubcategory)(e.target.value)}
-                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand cursor-pointer"
+                disabled={subcategories.length === 0}
+                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {productSubcategories.map((sub) => (
+                <option value="Todos">Todas las Subcategorías</option>
+                {subcategories.map((sub) => (
                   <option key={sub} value={sub}>{sub}</option>
                 ))}
               </select>
@@ -264,7 +285,7 @@ export default function CatalogoPage() {
               <span className="text-sm text-gray-500">Filtros activos:</span>
               {selectedCategory !== "Todos" && (
                 <button
-                  onClick={() => handleFilterChange(setSelectedCategory)("Todos")}
+                  onClick={() => handleCategoryChange("Todos")}
                   className="inline-flex items-center gap-1 px-3 py-1 bg-brand/10 text-brand text-sm font-medium rounded-full hover:bg-brand/20 transition-colors"
                 >
                   {selectedCategory}<X size={14} />
@@ -306,10 +327,11 @@ export default function CatalogoPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Categoría</label>
                   <select
                     value={selectedCategory}
-                    onChange={(e) => handleFilterChange(setSelectedCategory)(e.target.value)}
+                    onChange={(e) => handleCategoryChange(e.target.value)}
                     className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                   >
-                    {productCategories.map((cat) => (
+                    <option value="Todos">Todas las Categorías</option>
+                    {categories.map((cat) => (
                       <option key={cat} value={cat}>{cat}</option>
                     ))}
                   </select>
@@ -319,9 +341,11 @@ export default function CatalogoPage() {
                   <select
                     value={selectedSubcategory}
                     onChange={(e) => handleFilterChange(setSelectedSubcategory)(e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                    disabled={subcategories.length === 0}
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand disabled:opacity-50"
                   >
-                    {productSubcategories.map((sub) => (
+                    <option value="Todos">Todas las Subcategorías</option>
+                    {subcategories.map((sub) => (
                       <option key={sub} value={sub}>{sub}</option>
                     ))}
                   </select>
