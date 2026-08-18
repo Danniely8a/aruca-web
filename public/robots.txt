@@ -1,3 +1,13 @@
 User-Agent: *
 Allow: /
+
+# Bloquear rutas internas/privadas de indexación
+Disallow: /admin/
+Disallow: /vendedores/
+Disallow: /login
+Disallow: /registro
+Disallow: /perfil
+Disallow: /checkout/
+Disallow: /api/
+
 Sitemap: https://arucamaquinarias.com/sitemap.xml

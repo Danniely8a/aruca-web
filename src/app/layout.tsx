@@ -9,29 +9,40 @@ import ViewTracker from "@/components/ViewTracker";
 import ChatWidget from "@/components/chat/ChatWidget";
 import { CartProvider } from "@/lib/context/CartContext";
 import { AuthProvider } from "@/lib/context/AuthContext";
+import { company } from "@/lib/data/company";
+
+const BASE_URL = "https://arucamaquinarias.com";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "ARUCA Maquinarias | Soluciones para la Industria de la Madera",
     template: "%s | ARUCA Maquinarias",
   },
   description:
-    "Distribuidor profesional de maquinaria, herramientas y compresores para la industria de la madera. Más de 50 años de experiencia. Marcas como Makita, Euro Air, Titebond y más.",
+    "Distribuidor profesional de maquinaria, herramientas, compresores y productos para la industria de la madera en Venezuela. Más de 50 años de experiencia. Marcas como Makita, Euro Air, Titebond y más.",
   keywords: [
     "maquinaria madera",
     "herramientas profesionales",
     "Makita Venezuela",
     "compresores",
     "carpintería",
+    "sierras de banco",
+    "discos de corte",
     "ARUCA",
+    "maquinaria industrial Venezuela",
   ],
   authors: [{ name: "ARUCA Maquinarias" }],
   creator: "ARUCA Maquinarias",
-  metadataBase: new URL("https://arucamaquinarias.com"),
+  publisher: "ARUCA Maquinarias",
+  category: "Maquinaria industrial",
+  alternates: {
+    canonical: BASE_URL,
+  },
   openGraph: {
     type: "website",
     locale: "es_VE",
-    url: "https://arucamaquinarias.com",
+    url: BASE_URL,
     siteName: "ARUCA Maquinarias",
     title: "ARUCA Maquinarias | Soluciones para la Industria de la Madera",
     description:
@@ -46,7 +57,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "ARUCA Maquinarias",
     description:
       "Distribuidor profesional de maquinaria, herramientas y compresores para la industria de la madera.",
@@ -64,9 +75,27 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/assets/logo.jpg",
     apple: "/assets/logo.jpg",
   },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: company.name,
+  description: company.description,
+  url: BASE_URL,
+  logo: `${BASE_URL}/assets/logo.jpg`,
+  email: company.email,
+  telephone: company.phone2.replace(/[()\s-]/g, ""),
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "Miranda",
+    addressCountry: "VE",
+  },
+  sameAs: [`https://instagram.com/${company.instagram.replace("@", "")}`],
+  foundingDate: "1976",
 };
 
 export default function RootLayout({
@@ -76,6 +105,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="h-full antialiased">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-sans">
         <AuthProvider>
           <CartProvider>
