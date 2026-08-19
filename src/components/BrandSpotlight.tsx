@@ -31,6 +31,7 @@ type Brand = {
   tagline: string;
   description: string;
   image: string;
+  imageScale?: string;
   highlights: string[];
   items?: Item[];
 };
@@ -93,12 +94,13 @@ const brands: Brand[] = [
     brandName: "Titebond",
     displayName: "Titebond",
     logo: "/assets/brands/titebond.jpg",
-    color: "#D71920",
+    color: "#D4A017",
     category: "Adhesivos",
     tagline: "El estándar de la industria en pegamentos para madera.",
     description:
       "Pegamentos y adhesivos profesionales para carpintería con uniones duraderas y de máxima resistencia. La elección número uno de carpinteros en todo el mundo.",
     image: "/assets/brands/titebond-hero.jpg",
+    imageScale: "scale-[1.6]",
     highlights: [
       "Adhesivos de alta resistencia",
       "Uniones duraderas y seguras",
@@ -332,7 +334,11 @@ function BrandSection({ brand }: { brand: Brand }) {
                   alt={brand.displayName}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className={brand.image ? "object-cover" : "object-contain p-12"}
+                  className={
+                    brand.image
+                      ? `object-cover ${brand.imageScale || ""}`
+                      : "object-contain p-12"
+                  }
                 />
               </div>
               <div className="absolute -bottom-5 -left-5 bg-white rounded-lg shadow-md border border-gray-100 px-5 py-3 hidden sm:flex items-center gap-3">
