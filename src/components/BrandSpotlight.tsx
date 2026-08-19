@@ -20,7 +20,6 @@ const featuredBrand = {
   logo: "/assets/kdt/kdt_ico.png",
   website: "https://kdtcolombia.com",
   category: "Maquinaria",
-  country: "China / Colombia",
   tagline:
     "Máquinas de gran prestigio, solidez y fiabilidad para la industria del mueble y la madera.",
   description:
@@ -79,120 +78,141 @@ const stagger = {
 export default function BrandSpotlight() {
   return (
     <section id="marca-kdt" className="relative overflow-hidden">
-      {/* ===== Hero KDT ===== */}
-      <div className="relative bg-kdt-dark overflow-hidden">
-        <Image
-          src="/assets/kdt/kdt_hero1.jpg"
-          alt="Maquinaria KDT"
-          fill
-          sizes="100vw"
-          className="object-cover opacity-20"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-kdt-dark via-kdt-dark/90 to-kdt-dark/50" />
+      {/* ===== Hero KDT (claro) ===== */}
+      <div className="relative bg-white border-b border-gray-100">
         <div className="absolute top-0 left-0 w-full h-1 bg-kdt-secondary" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
-            className="max-w-3xl"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
           >
-            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-kdt text-white text-[10px] font-bold uppercase tracking-wider rounded-sm">
-                <Sparkles size={12} />
-                Marca Destacada
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 text-white/90 text-[10px] font-semibold uppercase tracking-wider rounded-sm">
-                <Award size={12} className="text-kdt-secondary" />
-                Distribuidor Oficial
-              </span>
-            </motion.div>
+            <div>
+              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-kdt text-white text-[10px] font-bold uppercase tracking-wider rounded-sm">
+                  <Sparkles size={12} />
+                  Marca Destacada
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-kdt/10 text-kdt text-[10px] font-bold uppercase tracking-wider rounded-sm">
+                  <Award size={12} />
+                  Distribuidor Oficial
+                </span>
+              </motion.div>
 
-            <motion.div variants={fadeUp} className="flex items-center gap-5 mb-8">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-xl flex items-center justify-center shadow-lg shrink-0">
+              <motion.div variants={fadeUp} className="flex items-center gap-5 mb-6">
                 <Image
                   src={featuredBrand.logo}
                   alt={`${featuredBrand.fullName} logo`}
-                  width={80}
-                  height={80}
+                  width={64}
+                  height={64}
                   className="object-contain"
                 />
-              </div>
-              <div>
-                <p className="text-white font-bold text-2xl sm:text-3xl leading-none">
-                  {featuredBrand.fullName}
-                </p>
-                <p className="text-kdt-secondary text-sm font-semibold uppercase tracking-wider mt-1.5">
-                  {featuredBrand.category}
-                </p>
-              </div>
-            </motion.div>
+                <div>
+                  <p className="text-gray-900 font-bold text-2xl sm:text-3xl leading-none">
+                    {featuredBrand.fullName}
+                  </p>
+                  <p className="text-kdt text-sm font-semibold uppercase tracking-wider mt-1.5">
+                    {featuredBrand.category}
+                  </p>
+                </div>
+              </motion.div>
 
-            <motion.h2
-              variants={fadeUp}
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-4"
-            >
-              {featuredBrand.tagline}
-            </motion.h2>
+              <motion.h2
+                variants={fadeUp}
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4"
+              >
+                {featuredBrand.tagline}
+              </motion.h2>
 
-            <motion.p
-              variants={fadeUp}
-              className="text-gray-300 leading-relaxed mb-8 max-w-2xl"
-            >
-              {featuredBrand.description}
-            </motion.p>
+              <motion.p
+                variants={fadeUp}
+                className="text-gray-500 leading-relaxed mb-8 max-w-xl"
+              >
+                {featuredBrand.description}
+              </motion.p>
 
-            <motion.ul variants={fadeUp} className="space-y-3 mb-10">
-              {featuredBrand.highlights.map((item) => (
-                <li key={item} className="flex items-center gap-3 text-gray-200">
-                  <span className="w-6 h-6 shrink-0 bg-kdt/20 text-kdt-secondary rounded-sm flex items-center justify-center">
-                    <ShieldCheck size={14} />
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </motion.ul>
+              <motion.ul variants={fadeUp} className="space-y-3 mb-10">
+                {featuredBrand.highlights.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-gray-600">
+                    <span className="w-6 h-6 shrink-0 bg-kdt/10 text-kdt rounded-sm flex items-center justify-center">
+                      <ShieldCheck size={14} />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </motion.ul>
+
+              <motion.div
+                variants={fadeUp}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <a
+                  href="#maquinaria-kdt"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt-secondary transition-all text-sm"
+                >
+                  Ver Maquinaria KDT
+                  <ArrowRight size={16} />
+                </a>
+                <a
+                  href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+                    `Hola, quiero una cotización de maquinaria ${featuredBrand.name}.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] text-white font-semibold rounded-sm hover:bg-[#20bd5a] transition-all text-sm"
+                >
+                  Cotizar por WhatsApp
+                </a>
+                <a
+                  href={featuredBrand.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-4 text-gray-500 font-semibold hover:text-kdt transition-colors text-sm"
+                >
+                  Sitio oficial
+                  <ExternalLink size={16} />
+                </a>
+              </motion.div>
+            </div>
 
             <motion.div
               variants={fadeUp}
-              className="flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative"
             >
-              <a
-                href="#maquinaria-kdt"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt-secondary transition-all text-sm"
-              >
-                Ver Maquinaria KDT
-                <ArrowRight size={16} />
-              </a>
-              <a
-                href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
-                  `Hola, quiero una cotización de maquinaria ${featuredBrand.name}.`
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-kdt-dark font-semibold rounded-sm hover:bg-gray-100 transition-all text-sm"
-              >
-                Cotizar por WhatsApp
-              </a>
-              <a
-                href={featuredBrand.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 text-white/70 font-semibold hover:text-white transition-colors text-sm"
-              >
-                Sitio oficial
-                <ExternalLink size={16} />
-              </a>
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 shadow-lg">
+                <Image
+                  src="/assets/kdt/kdt_hero1.jpg"
+                  alt="Maquinaria KDT en producción"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-5 -left-5 bg-white rounded-lg shadow-md border border-gray-100 px-5 py-3 hidden sm:flex items-center gap-3">
+                <Factory size={20} className="text-kdt" />
+                <div>
+                  <p className="text-xs font-bold text-gray-900 uppercase tracking-wide">
+                    {featuredBrand.category}
+                  </p>
+                  <p className="text-[10px] text-gray-500">
+                    Distribuidor oficial ARUCA
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </div>
 
       {/* ===== Maquinaria KDT ===== */}
-      <div id="maquinaria-kdt" className="bg-white border-b border-gray-100 py-16 sm:py-20 lg:py-24">
+      <div id="maquinaria-kdt" className="bg-gray-50 py-16 sm:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
