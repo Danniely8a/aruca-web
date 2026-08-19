@@ -181,6 +181,9 @@ export default function BrandSpotlight() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="relative"
             >
+              <p className="text-kdt font-bold text-lg sm:text-xl mb-3">
+                ¡La Tecnología que impulsa tu negocio!
+              </p>
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 shadow-lg">
                 <Image
                   src="/assets/kdt/kdt_hero1.jpg"
