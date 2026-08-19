@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Award,
-  ExternalLink,
   Factory,
   ShieldCheck,
   Sparkles,
@@ -165,15 +164,6 @@ export default function BrandSpotlight() {
                   className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] text-white font-semibold rounded-sm hover:bg-[#20bd5a] transition-all text-sm"
                 >
                   Cotizar por WhatsApp
-                </a>
-                <a
-                  href={featuredBrand.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-4 text-gray-500 font-semibold hover:text-kdt transition-colors text-sm"
-                >
-                  Sitio oficial
-                  <ExternalLink size={16} />
                 </a>
               </motion.div>
             </div>
