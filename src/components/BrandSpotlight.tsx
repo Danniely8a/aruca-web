@@ -17,7 +17,7 @@ const featuredBrand = {
   id: "kdt",
   name: "KDT",
   fullName: "KDT Machinery",
-  logo: "/assets/kdt/kdt_logo.png",
+  logo: "/assets/kdt/kdt_ico.png",
   website: "https://kdtcolombia.com",
   category: "Maquinaria",
   country: "China / Colombia",
@@ -86,11 +86,11 @@ export default function BrandSpotlight() {
           alt="Maquinaria KDT"
           fill
           sizes="100vw"
-          className="object-cover opacity-30"
+          className="object-cover opacity-20"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-kdt-dark via-kdt-dark/85 to-kdt-dark/40" />
-        <div className="absolute top-0 left-0 w-full h-1 bg-kdt" />
+        <div className="absolute inset-0 bg-gradient-to-r from-kdt-dark via-kdt-dark/90 to-kdt-dark/50" />
+        <div className="absolute top-0 left-0 w-full h-1 bg-kdt-secondary" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
           <motion.div
@@ -106,19 +106,29 @@ export default function BrandSpotlight() {
                 Marca Destacada
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 text-white/90 text-[10px] font-semibold uppercase tracking-wider rounded-sm">
-                <Award size={12} className="text-kdt" />
+                <Award size={12} className="text-kdt-secondary" />
                 Distribuidor Oficial
               </span>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="mb-6">
-              <Image
-                src={featuredBrand.logo}
-                alt={`${featuredBrand.fullName} logo`}
-                width={220}
-                height={64}
-                className="h-12 sm:h-16 w-auto object-contain"
-              />
+            <motion.div variants={fadeUp} className="flex items-center gap-5 mb-8">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-xl flex items-center justify-center shadow-lg shrink-0">
+                <Image
+                  src={featuredBrand.logo}
+                  alt={`${featuredBrand.fullName} logo`}
+                  width={80}
+                  height={80}
+                  className="object-contain"
+                />
+              </div>
+              <div>
+                <p className="text-white font-bold text-2xl sm:text-3xl leading-none">
+                  {featuredBrand.fullName}
+                </p>
+                <p className="text-kdt-secondary text-sm font-semibold uppercase tracking-wider mt-1.5">
+                  {featuredBrand.category}
+                </p>
+              </div>
             </motion.div>
 
             <motion.h2
@@ -138,7 +148,7 @@ export default function BrandSpotlight() {
             <motion.ul variants={fadeUp} className="space-y-3 mb-10">
               {featuredBrand.highlights.map((item) => (
                 <li key={item} className="flex items-center gap-3 text-gray-200">
-                  <span className="w-6 h-6 shrink-0 bg-kdt/20 text-kdt rounded-sm flex items-center justify-center">
+                  <span className="w-6 h-6 shrink-0 bg-kdt/20 text-kdt-secondary rounded-sm flex items-center justify-center">
                     <ShieldCheck size={14} />
                   </span>
                   {item}
@@ -152,7 +162,7 @@ export default function BrandSpotlight() {
             >
               <a
                 href="#maquinaria-kdt"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt/90 transition-all text-sm"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt-secondary transition-all text-sm"
               >
                 Ver Maquinaria KDT
                 <ArrowRight size={16} />
@@ -250,7 +260,7 @@ export default function BrandSpotlight() {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt/90 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt-secondary transition-all"
             >
               <Wrench size={16} />
               Solicitar Asesoría Técnica
