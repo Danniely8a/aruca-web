@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { useState, useMemo, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -40,7 +40,13 @@ export default function CatalogoPage() {
   const debounceTimer = useRef<NodeJS.Timeout | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [selectedSubcategory, setSelectedSubcategory] = useState("Todos");
-  const [selectedBrand, setSelectedBrand] = useState("Todos");
+  const [selectedBrand, setSelectedBrand] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const brand = new URLSearchParams(window.location.search).get("brand");
+      if (brand) return brand;
+    }
+    return "Todos";
+  });
   const { addItem } = useCart();
 
   const categories = useMemo(() => {
@@ -56,13 +62,6 @@ export default function CatalogoPage() {
     return unique.sort((a, b) => a.localeCompare(b, "es"));
   }, [products, selectedCategory]);
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const brand = params.get("brand");
-    if (brand) {
-      setSelectedBrand(brand);
-    }
-  }, []);
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [sortBy, setSortBy] = useState<SortOption>("name");
   const [showFilters, setShowFilters] = useState(false);
