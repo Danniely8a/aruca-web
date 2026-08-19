@@ -397,28 +397,36 @@ export default function CatalogoPage() {
 
       {/* Brand Carousel - shows when a brand is selected */}
       {selectedBrand !== "Todos" && (() => {
+        const isKdt = selectedBrand.toLowerCase() === "kdt";
         const brandData = brands.find(b => b.name.toLowerCase() === selectedBrand.toLowerCase());
         const brandProducts = filteredProducts.slice(0, 12);
+        const logo = isKdt ? "/assets/kdt/kdt_ico.png" : brandData?.logo;
         return (
-          <section className="py-10 sm:py-14 bg-brand">
+          <section className={`py-10 sm:py-14 ${isKdt ? "bg-kdt-dark" : "bg-brand"}`}>
+            {isKdt && <div className="h-1 w-full bg-kdt-secondary" />}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center gap-4">
-                  {brandData?.logo && (
-                    <div className="w-14 h-14 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 overflow-hidden flex-shrink-0">
-                      <img src={brandData.logo} alt={brandData.name} className="w-full h-full object-contain p-1" />
+                  {logo && (
+                    <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center border border-gray-100 overflow-hidden flex-shrink-0">
+                      <img src={logo} alt={selectedBrand} className="w-full h-full object-contain p-1" />
                     </div>
                   )}
                   <div>
+                    {isKdt && (
+                      <span className="inline-block px-2 py-0.5 bg-kdt text-white text-[10px] font-bold uppercase tracking-wide rounded-sm mb-1">
+                        Distribuidor Oficial
+                      </span>
+                    )}
                     <h2 className="text-2xl sm:text-3xl font-bold text-white">{selectedBrand}</h2>
                     <p className="text-sm text-white/60">{brandProducts.length} producto{brandProducts.length !== 1 ? "s" : ""} destacado{brandProducts.length !== 1 ? "s" : ""}</p>
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={() => scrollCarousel("left")} className="p-2.5 bg-white/15 hover:bg-white text-white hover:text-brand rounded-xl transition-all">
+                  <button onClick={() => scrollCarousel("left")} className={`p-2.5 bg-white/15 hover:bg-white text-white rounded-xl transition-all ${isKdt ? "hover:text-kdt" : "hover:text-brand"}`}>
                     <ChevronLeft size={20} />
                   </button>
-                  <button onClick={() => scrollCarousel("right")} className="p-2.5 bg-white/15 hover:bg-white text-white hover:text-brand rounded-xl transition-all">
+                  <button onClick={() => scrollCarousel("right")} className={`p-2.5 bg-white/15 hover:bg-white text-white rounded-xl transition-all ${isKdt ? "hover:text-kdt" : "hover:text-brand"}`}>
                     <ChevronRight size={20} />
                   </button>
                 </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -81,13 +82,13 @@ export default function BrandSpotlight() {
       <div className="relative bg-white border-b border-gray-100">
         <div className="absolute top-0 left-0 w-full h-1 bg-kdt-secondary" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-16">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center"
           >
             <div>
               <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
@@ -101,41 +102,46 @@ export default function BrandSpotlight() {
                 </span>
               </motion.div>
 
-              <motion.div variants={fadeUp} className="flex items-center gap-5 mb-6">
-                <Image
-                  src={featuredBrand.logo}
-                  alt={`${featuredBrand.fullName} logo`}
-                  width={64}
-                  height={64}
-                  className="object-contain"
-                />
-                <div>
-                  <p className="text-gray-900 font-bold text-2xl sm:text-3xl leading-none">
-                    {featuredBrand.fullName}
-                  </p>
-                  <p className="text-kdt text-sm font-semibold uppercase tracking-wider mt-1.5">
-                    {featuredBrand.category}
-                  </p>
-                </div>
+              <motion.div variants={fadeUp} className="flex items-center gap-5 mb-5">
+                <Link
+                  href="/catalogo?brand=KDT"
+                  className="group/brand flex items-center gap-5"
+                >
+                  <Image
+                    src={featuredBrand.logo}
+                    alt={`${featuredBrand.fullName} logo`}
+                    width={56}
+                    height={56}
+                    className="object-contain"
+                  />
+                  <div>
+                    <p className="text-gray-900 font-bold text-xl sm:text-2xl leading-none group-hover/brand:text-kdt transition-colors">
+                      {featuredBrand.fullName}
+                    </p>
+                    <p className="text-kdt text-xs font-semibold uppercase tracking-wider mt-1.5">
+                      {featuredBrand.category}
+                    </p>
+                  </div>
+                </Link>
               </motion.div>
 
               <motion.h2
                 variants={fadeUp}
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4"
+                className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight mb-3"
               >
                 {featuredBrand.tagline}
               </motion.h2>
 
               <motion.p
                 variants={fadeUp}
-                className="text-gray-500 leading-relaxed mb-8 max-w-xl"
+                className="text-gray-500 leading-relaxed mb-6 max-w-xl text-sm sm:text-base"
               >
                 {featuredBrand.description}
               </motion.p>
 
-              <motion.ul variants={fadeUp} className="space-y-3 mb-10">
+              <motion.ul variants={fadeUp} className="space-y-2.5 mb-7">
                 {featuredBrand.highlights.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-gray-600">
+                  <li key={item} className="flex items-center gap-3 text-gray-600 text-sm">
                     <span className="w-6 h-6 shrink-0 bg-kdt/10 text-kdt rounded-sm flex items-center justify-center">
                       <ShieldCheck size={14} />
                     </span>
@@ -146,22 +152,22 @@ export default function BrandSpotlight() {
 
               <motion.div
                 variants={fadeUp}
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-3"
               >
-                <a
-                  href="#maquinaria-kdt"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt-secondary transition-all text-sm"
+                <Link
+                  href="/catalogo?brand=KDT"
+                  className="inline-flex items-center justify-center gap-3 px-7 py-3.5 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt-secondary transition-all text-sm"
                 >
                   Ver Maquinaria KDT
                   <ArrowRight size={16} />
-                </a>
+                </Link>
                 <a
                   href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
                     `Hola, quiero una cotización de maquinaria ${featuredBrand.name}.`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] text-white font-semibold rounded-sm hover:bg-[#20bd5a] transition-all text-sm"
+                  className="inline-flex items-center justify-center gap-3 px-7 py-3.5 bg-[#25D366] text-white font-semibold rounded-sm hover:bg-[#20bd5a] transition-all text-sm"
                 >
                   Cotizar por WhatsApp
                 </a>
@@ -202,27 +208,27 @@ export default function BrandSpotlight() {
       </div>
 
       {/* ===== Maquinaria KDT ===== */}
-      <div id="maquinaria-kdt" className="bg-gray-50 py-16 sm:py-20 lg:py-24">
+      <div id="maquinaria-kdt" className="bg-gray-50 py-10 sm:py-14 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12 lg:mb-16"
+            className="text-center mb-10 lg:mb-12"
           >
-            <span className="inline-block px-4 py-1.5 bg-kdt/10 text-kdt text-sm font-semibold rounded-full mb-4 uppercase tracking-wide">
+            <span className="inline-block px-4 py-1.5 bg-kdt/10 text-kdt text-sm font-semibold rounded-full mb-3 uppercase tracking-wide">
               Catálogo KDT
             </span>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 uppercase">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 uppercase">
               Maquinaria de Precisión
             </h3>
-            <p className="text-gray-500 max-w-2xl mx-auto">
+            <p className="text-gray-500 max-w-2xl mx-auto text-sm">
               Líneas completas para corte, enchape, perforado y mecanizado CNC
               de madera y láminas.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {machines.map((machine, index) => (
               <motion.div
                 key={machine.id}
@@ -230,30 +236,36 @@ export default function BrandSpotlight() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className="group bg-white rounded-xl border border-gray-200 hover:border-kdt/40 hover:shadow-lg transition-all overflow-hidden"
               >
-                <div className="aspect-square bg-white flex items-center justify-center overflow-hidden relative border-b border-gray-100">
-                  <Image
-                    src={machine.image}
-                    alt={machine.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-contain p-6 group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Factory size={14} className="text-kdt shrink-0" />
-                    <span className="text-[10px] font-bold text-kdt uppercase tracking-wide">
-                      {machine.model}
-                    </span>
+                <Link
+                  href="/catalogo?brand=KDT"
+                  className="group block bg-white rounded-xl border border-gray-200 hover:border-kdt/40 hover:shadow-lg transition-all overflow-hidden h-full"
+                >
+                  <div className="aspect-square bg-white flex items-center justify-center overflow-hidden relative border-b border-gray-100">
+                    <Image
+                      src={machine.image}
+                      alt={machine.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-contain p-6 group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
                   </div>
-                  <h4 className="font-bold text-gray-900 mb-1">{machine.name}</h4>
-                  <p className="text-sm text-gray-500 leading-relaxed">
-                    {machine.description}
-                  </p>
-                </div>
+                  <div className="p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Factory size={14} className="text-kdt shrink-0" />
+                      <span className="text-[10px] font-bold text-kdt uppercase tracking-wide">
+                        {machine.model}
+                      </span>
+                    </div>
+                    <h4 className="font-bold text-gray-900 mb-1 group-hover:text-kdt transition-colors">
+                      {machine.name}
+                    </h4>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      {machine.description}
+                    </p>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -262,20 +274,16 @@ export default function BrandSpotlight() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center mt-10"
+            className="text-center mt-8"
           >
-            <a
-              href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
-                `Hola, quiero información de la maquinaria ${featuredBrand.name}.`
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt-secondary transition-all"
+            <Link
+              href="/catalogo?brand=KDT"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt-secondary transition-all"
             >
               <Wrench size={16} />
               Solicitar Asesoría Técnica
               <ArrowRight size={16} />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>
