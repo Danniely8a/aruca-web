@@ -105,6 +105,38 @@ const brands: Brand[] = [
       "Adhesivos de alta resistencia",
       "Uniones duraderas y seguras",
     ],
+    items: [
+      {
+        name: "Titebond Original",
+        model: "Cola para madera",
+        image: "/assets/product-images/titebond/TITEBOND ORIGINAL 1.8.png",
+        description:
+          "Pegamento para madera de secado rápido, el estándar de la industria.",
+        href: "/productos/titebond-original-1-8-0-473l",
+      },
+      {
+        name: "Titebond Heavy Duty",
+        model: "Construcción",
+        image: "/assets/product-images/titebond/TITEBOND HEAVY DUTY A BASE DE AGUA.avif",
+        description:
+          "Adhesivo de construcción de alta resistencia para múltiples superficies.",
+        href: "/productos/titebond-heavy-duty-base-agua-295ml",
+      },
+      {
+        name: "Titebond TiteGrab",
+        model: "Construcción",
+        image: "/assets/product-images/titebond/TITEBOND TITEGRAB.jpg",
+        description: "Adhesivo de construcción con agarre instantáneo.",
+        href: "/productos/titebond-titegrab-295ml",
+      },
+      {
+        name: "Titebond Instant Grab",
+        model: "Agarre rápido",
+        image: "/assets/product-images/titebond/TITEBOND INSTANT BOND.webp",
+        description: "Adhesivo de agarre inmediato para proyectos rápidos.",
+        href: "/catalogo?brand=Titebond",
+      },
+    ],
   },
   {
     id: "ica",
