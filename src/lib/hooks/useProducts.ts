@@ -8,6 +8,25 @@ interface ExtendedProduct extends Product {
   stock?: number;
 }
 
+interface ProductRow {
+  id: string;
+  slug: string;
+  name: string;
+  brand: string;
+  model?: string;
+  description?: string;
+  short_description?: string;
+  category?: string;
+  subcategory?: string;
+  image?: string;
+  images?: string[];
+  specs?: { [key: string]: string };
+  features?: string[];
+  featured?: boolean;
+  price?: string;
+  stock?: number;
+}
+
 export function useProducts(): { products: ExtendedProduct[]; loading: boolean } {
   const [allProducts, setAllProducts] = useState<ExtendedProduct[]>(staticProducts);
   const [loading, setLoading] = useState(true);
@@ -16,10 +35,24 @@ export function useProducts(): { products: ExtendedProduct[]; loading: boolean }
     async function load() {
       try {
         const supabase = createClient();
-        const { data } = await supabase
-          .from("products")
-          .select("*")
-          .order("name");
+
+        const PAGE_SIZE = 1000;
+        let from = 0;
+        const rows: ProductRow[] = [];
+        while (true) {
+          const { data, error } = await supabase
+            .from("products")
+            .select("*")
+            .order("name")
+            .range(from, from + PAGE_SIZE - 1);
+
+          if (error || !data || data.length === 0) break;
+          rows.push(...(data as ProductRow[]));
+          if (data.length < PAGE_SIZE) break;
+          from += PAGE_SIZE;
+        }
+
+        const data = rows;
 
         if (data && data.length > 0) {
           const staticIds = new Set(staticProducts.map((p) => p.id));
