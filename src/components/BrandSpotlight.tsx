@@ -130,11 +130,11 @@ const brands: Brand[] = [
         href: "/productos/titebond-titegrab-295ml",
       },
       {
-        name: "Titebond Instant Grab",
+        name: "Titebond Instant Bond",
         model: "Agarre rápido",
         image: "/assets/product-images/titebond/TITEBOND INSTANT BOND.webp",
         description: "Adhesivo de agarre inmediato para proyectos rápidos.",
-        href: "/catalogo?brand=Titebond",
+        href: "/productos/titebond-instant-bond-2oz-1-64",
       },
     ],
   },
