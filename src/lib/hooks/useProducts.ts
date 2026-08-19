@@ -37,22 +37,28 @@ export function useProducts(): { products: ExtendedProduct[]; loading: boolean }
         const supabase = createClient();
 
         const PAGE_SIZE = 1000;
-        let from = 0;
-        const rows: ProductRow[] = [];
-        while (true) {
-          const { data, error } = await supabase
-            .from("products")
-            .select("*")
-            .order("name")
-            .range(from, from + PAGE_SIZE - 1);
+        const { count } = await supabase
+          .from("products")
+          .select("id", { count: "exact", head: true });
 
-          if (error || !data || data.length === 0) break;
-          rows.push(...(data as ProductRow[]));
-          if (data.length < PAGE_SIZE) break;
-          from += PAGE_SIZE;
+        const total = count ?? 0;
+        const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+        const pagePromises = [];
+        for (let i = 0; i < pageCount; i++) {
+          pagePromises.push(
+            supabase
+              .from("products")
+              .select("*")
+              .order("name")
+              .range(i * PAGE_SIZE, (i + 1) * PAGE_SIZE - 1)
+          );
         }
 
-        const data = rows;
+        const results = await Promise.all(pagePromises);
+        const data: ProductRow[] = results.flatMap(
+          (r) => (r.data || []) as ProductRow[]
+        );
 
         if (data && data.length > 0) {
           const staticIds = new Set(staticProducts.map((p) => p.id));

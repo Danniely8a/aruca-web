@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef, useCallback } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -33,21 +33,23 @@ const sortOptions: { value: SortOption; label: string }[] = [
 ];
 
 export default function CatalogoPage() {
-  const { products } = useProducts();
+  const { products, loading: productsLoading } = useProducts();
   const { brands } = useBrands();
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const debounceTimer = useRef<NodeJS.Timeout | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [selectedSubcategory, setSelectedSubcategory] = useState("Todos");
-  const [selectedBrand, setSelectedBrand] = useState<string>(() => {
-    if (typeof window !== "undefined") {
-      const brand = new URLSearchParams(window.location.search).get("brand");
-      if (brand) return brand;
-    }
-    return "Todos";
-  });
+  const [selectedBrand, setSelectedBrand] = useState("Todos");
   const { addItem } = useCart();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const brand = params.get("brand");
+    if (brand) {
+      setSelectedBrand(brand);
+    }
+  }, []);
 
   const categories = useMemo(() => {
     const unique = Array.from(new Set(products.map((p) => p.category).filter(Boolean)));
@@ -478,7 +480,12 @@ export default function CatalogoPage() {
             </p>
           </div>
 
-          {filteredProducts.length === 0 ? (
+          {productsLoading ? (
+            <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
+              <div className="w-10 h-10 border-4 border-brand/20 border-t-brand rounded-full animate-spin mx-auto mb-4" />
+              <p className="text-gray-500">Cargando productos...</p>
+            </div>
+          ) : filteredProducts.length === 0 ? (
             <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
               <Package size={64} className="text-gray-300 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">No se encontraron productos</h3>
