@@ -6,6 +6,8 @@
   --brand-dark: #1E2D5C;
   --accent-brown: #A67C52;
   --accent-orange: #D4892A;
+  --kdt: #A7144C;
+  --kdt-dark: #222529;
   --gray-50: #F8F7F6;
   --gray-100: #E8E4E0;
   --gray-200: #D1CCC7;
@@ -28,6 +30,8 @@
   --color-brand-dark: var(--brand-dark);
   --color-accent-brown: var(--accent-brown);
   --color-accent-orange: var(--accent-orange);
+  --color-kdt: var(--kdt);
+  --color-kdt-dark: var(--kdt-dark);
   --color-gray-50: var(--gray-50);
   --color-gray-100: var(--gray-100);
   --color-gray-200: var(--gray-200);

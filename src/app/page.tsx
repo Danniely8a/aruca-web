@@ -21,6 +21,7 @@ import { services } from "@/lib/data/services";
 import { useBrands } from "@/lib/hooks/useBrands";
 import { useProducts } from "@/lib/hooks/useProducts";
 import HeroSlideshow from "@/components/HeroSlideshow";
+import BrandSpotlight from "@/components/BrandSpotlight";
 
 const serviceIcons: Record<string, React.ReactNode> = {
   "shopping-cart": <ShoppingCart className="w-6 h-6" />,
@@ -192,6 +193,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Featured Brand Spotlight */}
+      <BrandSpotlight />
 
       {/* Stats Section */}
       <section className="bg-white border-b border-gray-100">
