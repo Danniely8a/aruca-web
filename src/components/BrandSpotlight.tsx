@@ -99,7 +99,7 @@ const brands: Brand[] = [
     tagline: "El estándar de la industria en pegamentos para madera.",
     description:
       "Pegamentos y adhesivos profesionales para carpintería con uniones duraderas y de máxima resistencia. La elección número uno de carpinteros en todo el mundo.",
-    image: "/assets/brands/titebond-hero.jpg",
+    image: "/assets/brands/titebond1.jpg",
     imageScale: "scale-[1.6]",
     highlights: [
       "Adhesivos de alta resistencia",
