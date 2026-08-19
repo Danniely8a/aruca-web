@@ -49,6 +49,50 @@ const featuredBrands = [
       "Sierras, fresas y accesorios de corte profesional para carpintería y ebanistería.",
     image: "/assets/product-images/cmt-orange-tools/290.200.24M.jpg",
   },
+  {
+    brandName: "Milescraft",
+    displayName: "Milescraft",
+    logo: "/assets/brands/milescraft.jpg",
+    color: "#0057B8",
+    category: "Accesorios",
+    tagline: "Accesorios y plantillas para carpintería.",
+    description:
+      "Plantillas, accesorios y guías especializadas para carpintería y trabajos de madera.",
+    image: "/assets/product-images/milescraft/1097.jpg",
+  },
+  {
+    brandName: "Sicar",
+    displayName: "Sicar",
+    logo: "/assets/brands/sicar.jpg",
+    color: "#C8102E",
+    category: "Herramientas Manuales",
+    tagline: "Herramientas especializadas para la madera.",
+    description:
+      "Herramientas y productos especializados para la industria de la madera.",
+    image: "",
+  },
+  {
+    brandName: "Pony Jorgensen",
+    displayName: "Pony Jorgensen",
+    logo: "/assets/brands/pony.jpg",
+    color: "#003865",
+    category: "Herramientas Manuales",
+    tagline: "Abrazaderas profesionales de alta calidad.",
+    description:
+      "Abrazaderas y herramientas manuales de alta calidad para carpintería profesional.",
+    image: "",
+  },
+  {
+    brandName: "Shamal",
+    displayName: "Shamal",
+    logo: "/assets/brands/shamal_logo.jpg",
+    color: "#0E7C66",
+    category: "Compresores",
+    tagline: "Compresores a tornillo industriales.",
+    description:
+      "Compresores a tornillo y secadores de aire industriales de alta eficiencia.",
+    image: "/assets/product-images/shamal/compresor-tornillo-sin-tanque.jpg",
+  },
 ];
 
 export default function BrandSpotlight() {
@@ -108,14 +152,25 @@ export default function BrandSpotlight() {
               </div>
 
               <div className="aspect-[16/10] bg-gray-50 flex items-center justify-center overflow-hidden relative">
-                <Image
-                  src={brand.image}
-                  alt={brand.displayName}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
+                {brand.image ? (
+                  <Image
+                    src={brand.image}
+                    alt={brand.displayName}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                ) : (
+                  <Image
+                    src={brand.logo}
+                    alt={brand.displayName}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="object-contain p-8 group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                )}
               </div>
 
               <div className="p-5 flex flex-col flex-1">
