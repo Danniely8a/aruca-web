@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -103,7 +102,7 @@ export default function BrandSpotlight() {
               </motion.div>
 
               <motion.div variants={fadeUp} className="flex items-center gap-5 mb-5">
-                <Link
+                <a
                   href="/catalogo?brand=KDT"
                   className="group/brand flex items-center gap-5"
                 >
@@ -122,7 +121,7 @@ export default function BrandSpotlight() {
                       {featuredBrand.category}
                     </p>
                   </div>
-                </Link>
+                </a>
               </motion.div>
 
               <motion.h2
@@ -154,13 +153,13 @@ export default function BrandSpotlight() {
                 variants={fadeUp}
                 className="flex flex-col sm:flex-row gap-3"
               >
-                <Link
+                <a
                   href="/catalogo?brand=KDT"
                   className="inline-flex items-center justify-center gap-3 px-7 py-3.5 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt-secondary transition-all text-sm"
                 >
                   Ver Maquinaria KDT
                   <ArrowRight size={16} />
-                </Link>
+                </a>
                 <a
                   href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
                     `Hola, quiero una cotización de maquinaria ${featuredBrand.name}.`
@@ -237,7 +236,7 @@ export default function BrandSpotlight() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
               >
-                <Link
+                <a
                   href="/catalogo?brand=KDT"
                   className="group block bg-white rounded-xl border border-gray-200 hover:border-kdt/40 hover:shadow-lg transition-all overflow-hidden h-full"
                 >
@@ -265,7 +264,7 @@ export default function BrandSpotlight() {
                       {machine.description}
                     </p>
                   </div>
-                </Link>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -276,14 +275,18 @@ export default function BrandSpotlight() {
             viewport={{ once: true }}
             className="text-center mt-8"
           >
-            <Link
-              href="/catalogo?brand=KDT"
+            <a
+              href={`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+                `Hola, quiero información de la maquinaria ${featuredBrand.name}.`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-kdt text-white font-semibold rounded-sm hover:bg-kdt-secondary transition-all"
             >
               <Wrench size={16} />
               Solicitar Asesoría Técnica
               <ArrowRight size={16} />
-            </Link>
+            </a>
           </motion.div>
         </div>
       </div>
