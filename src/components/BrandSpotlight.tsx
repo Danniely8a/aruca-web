@@ -35,7 +35,7 @@ const machines = [
   {
     id: "maquinas-de-corte",
     name: "Máquinas de Corte",
-    model: "KS-132PV · KS-828D",
+    model: "KS-832D",
     image: "/assets/kdt/kdt_ks132pv.png",
     description:
       "Seccionadoras y sierras escuadradoras CNC de alta precisión para corte de paneles.",
@@ -51,7 +51,7 @@ const machines = [
   {
     id: "taladros-cnc",
     name: "Taladros CNC",
-    model: "KD-610Z · KD-612G",
+    model: "KD-610HR",
     image: "/assets/kdt/kdt_kd610z.png",
     description:
       "Centros de perforado y ranurado de alta velocidad para producción en serie.",
