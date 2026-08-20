@@ -32,6 +32,7 @@ type Brand = {
   description: string;
   image: string;
   imageScale?: string;
+  imageContain?: boolean;
   highlights: string[];
   items?: Item[];
 };
@@ -149,7 +150,42 @@ const brands: Brand[] = [
     description:
       "Selladores, fondos, transparentes y acabados poliuretano para un acabado perfecto de la madera. Calidad italiana para cada superficie.",
     image: "/assets/product-images/ica/ICA KIT SELLADOR P.U.jpg",
+    imageContain: true,
     highlights: ["Acabados poliuretano", "Calidad italiana"],
+    items: [
+      {
+        name: "ICA Kit Fondo Blanco",
+        model: "Fondo",
+        image: "/assets/product-images/ica/ICA KIT FONDO BLANCO P.U.jpg",
+        description:
+          "Kit de fondo blanco poliuretano para un acabado base perfecto.",
+        href: "/productos/ica-kit-fondo-blanco-pu-fp1031b",
+      },
+      {
+        name: "ICA Topdeck",
+        model: "Topdeck",
+        image: "/assets/product-images/ica/topdeck.jpg",
+        description:
+          "Recubrimiento Topdeck de alta resistencia para superficies de madera.",
+        href: "/productos/ica-topdeck-05",
+      },
+      {
+        name: "ICA Parquet VPA823G40-05",
+        model: "Parquet",
+        image: "/assets/product-images/ica/ICA PARQUET SATINADO ACUOSO.jpg",
+        description:
+          "Parquet satinado acuoso para acabados de alta calidad.",
+        href: "/productos/ica-parquet-satinado-acuoso",
+      },
+      {
+        name: "ICA Solvente",
+        model: "Solvente",
+        image: "/assets/product-images/ica/solvente-pu-u1010-05.png",
+        description:
+          "Solvente poliuretano para dilución y limpieza de herramientas.",
+        href: "/productos/ica-solvente-pu-u1010-05",
+      },
+    ],
   },
   {
     id: "cmt-orange-tools",
@@ -367,9 +403,11 @@ function BrandSection({ brand }: { brand: Brand }) {
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className={
-                    brand.image
-                      ? `object-cover ${brand.imageScale || ""}`
-                      : "object-contain p-12"
+                    !brand.image
+                      ? "object-contain p-12"
+                      : brand.imageContain
+                        ? "object-contain p-4"
+                        : `object-cover ${brand.imageScale || ""}`
                   }
                 />
               </div>
