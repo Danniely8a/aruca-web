@@ -228,6 +228,13 @@ const brands: Brand[] = [
         description: "Rematador doble de cantos para acabados perfectos.",
         href: "/productos/cmt-rematador-de-cantos-doble-det-001",
       },
+      {
+        name: "Fresa para Juntas",
+        model: "800.606.11",
+        image: "/assets/product-images/cmt-orange-tools/800-606-11.png",
+        description: "Fresa para juntas de 1-7/8 para uniones precisas.",
+        href: "/productos/cmt-fresa-juntas-1-7-8-800-606-11",
+      },
     ],
   },
   {
@@ -482,7 +489,7 @@ function BrandSection({ brand }: { brand: Brand }) {
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {items.slice(0, 4).map((item, index) => (
+              {items.slice(0, 5).map((item, index) => (
                 <motion.div
                   key={item.name}
                   initial={{ opacity: 0, y: 20 }}
