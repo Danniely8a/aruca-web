@@ -321,7 +321,7 @@ const brands: Brand[] = [
     brandName: "Shamal",
     displayName: "Shamal",
     logo: "/assets/brands/shamal_logo.jpg",
-    color: "#0E7C66",
+    color: "#D71920",
     category: "Compresores",
     tagline: "Compresores a tornillo industriales.",
     description:
