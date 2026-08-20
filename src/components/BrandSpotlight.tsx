@@ -250,8 +250,45 @@ const brands: Brand[] = [
     tagline: "Accesorios y plantillas para carpintería.",
     description:
       "Plantillas, accesorios y guías especializadas para carpintería y trabajos de madera. Soluciones que simplifican tu trabajo.",
-    image: "/assets/product-images/milescraft/1097.jpg",
+    image: "/assets/brands/milescraft1.jpg",
     highlights: ["Plantillas especializadas", "Accesorios para carpintería"],
+    items: [
+      {
+        name: "Base Ind. Dremel/Taladro",
+        model: "1097",
+        image: "/assets/product-images/milescraft/1097.jpg",
+        description: "Base industrial para Dremel o taladro.",
+        href: "/productos/milescraft-1097-toolstand",
+      },
+      {
+        name: "Kit de Plantillas p/ Cerradura",
+        model: "1213",
+        image: "/assets/product-images/milescraft/1213.jpg",
+        description: "Kit de plantillas para instalación de cerraduras.",
+        href: "/productos/milescraft-1213-door-mortise-kit",
+      },
+      {
+        name: "Plantilla para Cola de Milano",
+        model: "1218",
+        image: "/assets/product-images/milescraft/1218.jpg",
+        description: "Plantilla para uniones de cola de milano.",
+        href: "/productos/milescraft-1218-dovetail-template",
+      },
+      {
+        name: "Plantilla de Círculos",
+        model: "1219",
+        image: "/assets/product-images/milescraft/1219.jpg",
+        description: "Plantilla para cortar círculos perfectos.",
+        href: "/productos/milescraft-1219-circleguide-kit",
+      },
+      {
+        name: "Plantilla de Tornillos Ocultos PocketJig 200",
+        model: "1325",
+        image: "/assets/product-images/milescraft/1325.jpg",
+        description: "Plantilla PocketJig 200 para tornillos ocultos.",
+        href: "/productos/milescraft-1325-pocketjig-200",
+      },
+    ],
   },
   {
     id: "sicar",
