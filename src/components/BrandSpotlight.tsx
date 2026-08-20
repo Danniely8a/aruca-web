@@ -326,7 +326,7 @@ const brands: Brand[] = [
     tagline: "Compresores a tornillo industriales.",
     description:
       "Compresores a tornillo y secadores de aire industriales de alta eficiencia. Potencia y confiabilidad para la industria.",
-    image: "/assets/product-images/shamal/compresor-tornillo-sin-tanque.jpg",
+    image: "/assets/brands/shamal1.jpg",
     highlights: ["Compresores a tornillo", "Uso industrial"],
   },
 ];
