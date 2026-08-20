@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
   Award,
+  ChevronLeft,
+  ChevronRight,
   Factory,
   ShieldCheck,
   Sparkles,
@@ -305,6 +308,16 @@ function BrandSection({ brand }: { brand: Brand }) {
     brand.items ||
     [];
   const hasItems = items.length > 0;
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollCarousel = (dir: "left" | "right") => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({
+        left: dir === "left" ? -300 : 300,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <section id={`marca-${brand.id}`} className="relative overflow-hidden">
@@ -488,14 +501,42 @@ function BrandSection({ brand }: { brand: Brand }) {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {items.slice(0, 5).map((item, index) => (
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-sm text-gray-500">
+                Desliza para ver más productos de {brand.displayName}.
+              </p>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => scrollCarousel("left")}
+                  aria-label="Anterior"
+                  className="p-2.5 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
+                >
+                  <ChevronLeft size={20} style={{ color: brand.color }} />
+                </button>
+                <button
+                  onClick={() => scrollCarousel("right")}
+                  aria-label="Siguiente"
+                  className="p-2.5 text-white rounded-lg transition-opacity hover:opacity-90"
+                  style={{ backgroundColor: brand.color }}
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            </div>
+
+            <div
+              ref={carouselRef}
+              className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {items.map((item, index) => (
                 <motion.div
                   key={item.name}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
+                  className="flex-shrink-0 w-64 sm:w-72 snap-start"
                 >
                   <a
                     href={item.href}
@@ -506,7 +547,7 @@ function BrandSection({ brand }: { brand: Brand }) {
                         src={item.image}
                         alt={item.name}
                         fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        sizes="288px"
                         className="object-contain p-6 group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                       />
