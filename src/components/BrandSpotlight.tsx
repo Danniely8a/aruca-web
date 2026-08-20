@@ -300,7 +300,7 @@ const brands: Brand[] = [
     tagline: "Herramientas especializadas para la madera.",
     description:
       "Herramientas y productos especializados para la industria de la madera. Calidad y durabilidad para el trabajo diario.",
-    image: "",
+    image: "/assets/brands/sicar1.jpg",
     highlights: ["Herramientas manuales", "Para la industria de la madera"],
   },
   {
