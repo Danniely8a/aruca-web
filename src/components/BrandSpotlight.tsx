@@ -197,8 +197,38 @@ const brands: Brand[] = [
     tagline: "Precisión italiana para el corte de madera.",
     description:
       "Sierras, fresas y accesorios de corte profesional para carpintería y ebanistería. Herramientas de precisión de la más alta calidad.",
-    image: "/assets/product-images/cmt-orange-tools/290.200.24M.jpg",
+    image: "/assets/brands/cmt123.jpg",
     highlights: ["Herramientas de precisión", "Corte profesional"],
+    items: [
+      {
+        name: "Kit de Discos para Ranurar",
+        model: "230.012.08",
+        image: "/assets/product-images/cmt-orange-tools/230.012.08.jpg",
+        description: "Kit de discos para ranurar con precisión milimétrica.",
+        href: "/productos/cmt-kit-de-discos-para-ranurar-230.012.08",
+      },
+      {
+        name: "Disco Especial Melamina",
+        model: "283.080.10M",
+        image: "/assets/product-images/cmt-orange-tools/283-080-10M.jpg",
+        description: "Disco de 250mm Z80 para cortes limpios en melamina.",
+        href: "/productos/cmt-disco-melamina-250mm-z80-283-080-10M",
+      },
+      {
+        name: "Mecha Recta para Ranurar",
+        model: "811.627.11",
+        image: "/assets/product-images/cmt-orange-tools/foto-811-812.jpg",
+        description: "Mecha recta de 1/2 para ranurado preciso.",
+        href: "/productos/cmt-mecha-recta-ranurar-1-2-eje-1-2-811-627-11",
+      },
+      {
+        name: "Rematador de Cantos Doble",
+        model: "DET-001",
+        image: "/assets/product-images/cmt-orange-tools/DET-001.jpg",
+        description: "Rematador doble de cantos para acabados perfectos.",
+        href: "/productos/cmt-rematador-de-cantos-doble-det-001",
+      },
+    ],
   },
   {
     id: "milescraft",
