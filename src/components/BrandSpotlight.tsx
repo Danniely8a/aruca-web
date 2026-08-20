@@ -245,7 +245,7 @@ const brands: Brand[] = [
     brandName: "Milescraft",
     displayName: "Milescraft",
     logo: "/assets/brands/milescraft.jpg",
-    color: "#0057B8",
+    color: "#800020",
     category: "Accesorios",
     tagline: "Accesorios y plantillas para carpintería.",
     description:
