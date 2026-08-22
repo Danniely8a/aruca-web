@@ -313,7 +313,7 @@ const brands: Brand[] = [
     tagline: "Abrazaderas profesionales de alta calidad.",
     description:
       "Abrazaderas y herramientas manuales de alta calidad para carpintería profesional. Sujeción firme y confiable para cada proyecto.",
-    image: "",
+    image: "/assets/brands/pony1.jpg",
     highlights: ["Abrazaderas profesionales", "Alta resistencia"],
   },
   {
