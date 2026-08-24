@@ -308,7 +308,7 @@ const brands: Brand[] = [
     brandName: "Pony Jorgensen",
     displayName: "Pony Jorgensen",
     logo: "/assets/brands/pony.jpg",
-    color: "#003865",
+    color: "#D4892A",
     category: "Accesorios para Carpinteria",
     tagline: "Abrazaderas y herramientas profesionales de alta calidad.",
     description:
