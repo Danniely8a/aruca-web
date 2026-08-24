@@ -429,6 +429,23 @@ const brands: Brand[] = [
       "Compresores a tornillo y secadores de aire industriales de alta eficiencia. Potencia y confiabilidad para la industria.",
     image: "/assets/brands/shamal1.jpg",
     highlights: ["Compresores a tornillo", "Uso industrial"],
+    items: [
+      {
+        name: "Compresor a Gasolina 7.5HP",
+        model: "7.5HP",
+        image:
+          "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/product-images/1787578997399-8q4zm3.jpg",
+        description: "Compresor a gasolina de 7.5HP con tanque de 270 litros.",
+        href: "/productos/shamal-compresor-a-gasolina-7-5hp-270l",
+      },
+      {
+        name: "Compresor a Tornillo con Tanque + Secador",
+        model: "15HP",
+        image: "/assets/product-images/shamal/compresor-tornillo-tanque-secador.jpg",
+        description: "Compresor a tornillo con tanque y secador de 15HP.",
+        href: "/productos/shamal-compresor-tornillo-tanque-secador-15HP",
+      },
+    ],
   },
 ];
 
