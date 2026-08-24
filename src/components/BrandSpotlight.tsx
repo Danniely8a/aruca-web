@@ -445,6 +445,13 @@ const brands: Brand[] = [
         description: "Compresor a tornillo con tanque y secador de 15HP.",
         href: "/productos/shamal-compresor-tornillo-tanque-secador-15HP",
       },
+      {
+        name: "Compresor a Tornillo sin Tanque",
+        model: "15HP",
+        image: "/assets/product-images/shamal/compresor-tornillo-sin-tanque.jpg",
+        description: "Compresor a tornillo sin tanque de 15HP.",
+        href: "/productos/shamal-compresor-tornillo-sin-tanque-15HP",
+      },
     ],
   },
 ];
