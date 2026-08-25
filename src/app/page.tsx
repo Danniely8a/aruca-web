@@ -149,47 +149,6 @@ export default function Home() {
                 </div>
               </motion.div>
             </motion.div>
-
-            {/* Right side - Feature cards */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="hidden lg:grid grid-cols-2 gap-4"
-            >
-              <div className="space-y-4">
-                <div className="bg-white/[0.07] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.1] transition-all">
-                  <div className="w-10 h-10 bg-accent-orange/15 rounded-lg flex items-center justify-center mb-4">
-                    <Wrench size={20} className="text-accent-orange" />
-                  </div>
-                  <h3 className="text-white font-semibold text-sm mb-1">Herramientas</h3>
-                  <p className="text-gray-400 text-xs leading-relaxed">Profesionales de las mejores marcas</p>
-                </div>
-                <div className="bg-white/[0.07] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.1] transition-all">
-                  <div className="w-10 h-10 bg-brand/15 rounded-lg flex items-center justify-center mb-4">
-                    <Settings size={20} className="text-brand-light" />
-                  </div>
-                  <h3 className="text-white font-semibold text-sm mb-1">Compresores</h3>
-                  <p className="text-gray-400 text-xs leading-relaxed">Industriales y de alta potencia</p>
-                </div>
-              </div>
-              <div className="space-y-4 mt-8">
-                <div className="bg-white/[0.07] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.1] transition-all">
-                  <div className="w-10 h-10 bg-green-500/15 rounded-lg flex items-center justify-center mb-4">
-                    <Scissors size={20} className="text-green-400" />
-                  </div>
-                  <h3 className="text-white font-semibold text-sm mb-1">Corte</h3>
-                  <p className="text-gray-400 text-xs leading-relaxed">Sierras, cortadoras y discos</p>
-                </div>
-                <div className="bg-white/[0.07] backdrop-blur-sm border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.1] transition-all">
-                  <div className="w-10 h-10 bg-purple-500/15 rounded-lg flex items-center justify-center mb-4">
-                    <Shield size={20} className="text-purple-400" />
-                  </div>
-                  <h3 className="text-white font-semibold text-sm mb-1">Garantía</h3>
-                  <p className="text-gray-400 text-xs leading-relaxed">Soporte técnico especializado</p>
-                </div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
