@@ -8,6 +8,8 @@ const images = [
   { src: "/assets/hero-saw.jpg", alt: "Sierra de mesa profesional" },
   { src: "/assets/hero-compressor.webp", alt: "Compresor Euroair" },
   { src: "/assets/hero-test1.jpg", alt: "Engranajes industriales" },
+  { src: "/assets/hero-euro.png", alt: "Compresores Euro Air" },
+  { src: "/assets/hero-forza.png", alt: "Compresores Forza" },
 ];
 
 export default function HeroSlideshow() {
