@@ -168,23 +168,21 @@ export default function CatalogoPage() {
     <>
       {/* Hero Section */}
       {selectedBrand !== "Todos" && brandHeroes[selectedBrand] ? (
-        <section className="relative pt-28 pb-12 sm:pt-32 sm:pb-16" style={{ backgroundColor: brandHeroes[selectedBrand].color }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row items-center gap-8">
-              <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="flex-1 text-white">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{selectedBrand}</h1>
-                <p className="text-xl sm:text-2xl font-semibold mb-2">{brandHeroes[selectedBrand].tagline}</p>
-                <p className="text-white/80 text-lg mb-6">{brandHeroes[selectedBrand].description}</p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {brandHeroes[selectedBrand].categories.map((cat) => (
-                    <span key={cat} className="px-3 py-1 bg-white/20 text-white text-sm font-medium rounded-full">{cat}</span>
-                  ))}
-                </div>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="flex-1 w-full">
-                <img src={brandHeroes[selectedBrand].banner} alt={selectedBrand} className="w-full h-auto rounded-xl" />
-              </motion.div>
-            </div>
+        <section className="relative pt-28 pb-0 sm:pt-32 min-h-[420px] flex items-end" style={{ backgroundColor: brandHeroes[selectedBrand].color }}>
+          <div className="absolute inset-0">
+            <img src={brandHeroes[selectedBrand].banner} alt={selectedBrand} className="w-full h-full object-cover" />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14 w-full">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 drop-shadow-lg">{selectedBrand}</h1>
+              <p className="text-xl sm:text-2xl font-semibold text-white mb-2 drop-shadow-lg">{brandHeroes[selectedBrand].tagline}</p>
+              <p className="text-white/90 text-lg mb-4 drop-shadow-lg max-w-2xl">{brandHeroes[selectedBrand].description}</p>
+              <div className="flex flex-wrap gap-2">
+                {brandHeroes[selectedBrand].categories.map((cat) => (
+                  <span key={cat} className="px-3 py-1 bg-white/20 text-white text-sm font-medium rounded-full backdrop-blur-sm">{cat}</span>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </section>
       ) : (
