@@ -38,6 +38,7 @@ type Brand = {
   imageContain?: boolean;
   highlights: string[];
   items?: Item[];
+  dedicatedPage?: string;
 };
 
 const brands: Brand[] = [
@@ -202,6 +203,7 @@ const brands: Brand[] = [
       "Sierras, fresas y accesorios de corte profesional para carpintería y ebanistería. Herramientas de precisión de la más alta calidad.",
     image: "/assets/brands/cmt123.jpg",
     highlights: ["Herramientas de precisión", "Corte profesional"],
+    dedicatedPage: "/catalogo/cmt",
     items: [
       {
         name: "Kit de Discos para Ranurar",
@@ -748,7 +750,7 @@ function BrandSection({ brand }: { brand: Brand }) {
               className="text-center mt-8"
             >
               <a
-                href={`/catalogo?brand=${encodeURIComponent(brand.brandName)}`}
+                href={brand.dedicatedPage || `/catalogo?brand=${encodeURIComponent(brand.brandName)}`}
                 className="inline-flex items-center gap-2 px-8 py-3.5 text-white font-semibold rounded-sm transition-opacity hover:opacity-90"
                 style={{ backgroundColor: brand.color }}
               >
