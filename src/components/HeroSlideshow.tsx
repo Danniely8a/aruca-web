@@ -9,6 +9,7 @@ const images = [
   { src: "/assets/hero-caiman.png", alt: "Compresores Caiman" },
   { src: "/assets/hero-eurot.png", alt: "Compresores Eurot" },
   { src: "/assets/hero-fini.png", alt: "Fini" },
+  { src: "/assets/hero-cmt.png", alt: "CMT Orange Tools" },
 ];
 
 export default function HeroSlideshow() {
