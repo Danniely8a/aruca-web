@@ -110,7 +110,7 @@ export default function Home() {
               >
                 <Link
                   href="/catalogo"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent-orange text-white font-semibold rounded-lg hover:bg-accent-orange/90 transition-all text-sm"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-brand text-white font-semibold rounded-lg hover:bg-brand/90 transition-all text-sm"
                 >
                   Ver Productos
                   <ArrowRight size={16} />
