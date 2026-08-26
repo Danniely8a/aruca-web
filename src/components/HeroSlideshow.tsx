@@ -10,6 +10,8 @@ const images = [
   { src: "/assets/hero-test1.jpg", alt: "Engranajes industriales" },
   { src: "/assets/hero-euro.png", alt: "Compresores Euro Air" },
   { src: "/assets/hero-forza.png", alt: "Compresores Forza" },
+  { src: "/assets/hero-caiman.png", alt: "Compresores Caiman" },
+  { src: "/assets/hero-eurot.png", alt: "Compresores Eurot" },
 ];
 
 export default function HeroSlideshow() {
