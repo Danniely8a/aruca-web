@@ -168,7 +168,7 @@ export default function CatalogoPage() {
     <>
       {/* Hero Section */}
       {selectedBrand !== "Todos" && brandHeroes[selectedBrand] ? (
-        <section className="relative pt-28 pb-12 sm:pt-32 sm:pb-16 overflow-hidden" style={{ backgroundColor: brandHeroes[selectedBrand].color }}>
+        <section className="relative pt-28 pb-12 sm:pt-32 sm:pb-16" style={{ backgroundColor: brandHeroes[selectedBrand].color }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-8">
               <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="flex-1 text-white">
@@ -181,8 +181,8 @@ export default function CatalogoPage() {
                   ))}
                 </div>
               </motion.div>
-              <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="flex-1">
-                <img src={brandHeroes[selectedBrand].banner} alt={selectedBrand} className="w-full h-auto max-h-80 object-contain" />
+              <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="flex-1 w-full">
+                <img src={brandHeroes[selectedBrand].banner} alt={selectedBrand} className="w-full h-auto rounded-xl" />
               </motion.div>
             </div>
           </div>
