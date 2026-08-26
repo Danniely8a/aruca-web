@@ -378,7 +378,7 @@ const brands: Brand[] = [
       {
         name: "Medidor Distancia Laser",
         model: "P15P",
-        image: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/prexiso/P15P.jpg",
+image: "/assets/brands/prexiso-hero.jpg",
         description: "15Mts con botón.",
         href: "/productos/prexiso-p15p-medidor-distancia-laser",
       },
