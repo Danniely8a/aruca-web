@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -25,6 +25,17 @@ type ViewMode = "grid" | "list";
 type SortOption = "name" | "brand" | "category";
 
 const ITEMS_PER_PAGE = 24;
+
+const brandHeroes: Record<string, { banner: string; color: string; tagline: string; description: string; categories: string[] }> = {
+  Caiman: { banner: "/assets/brands/heroes/CAIMAN.png", color: "#E87722", tagline: "Fijaciones firmes, resultados impecables", description: "Clavos, grapas y fijaciones neumáticas para trabajos profesionales en madera.", categories: ["Clavos", "Grapas", "Medidas"] },
+  "CMT Orange Tools": { banner: "/assets/brands/heroes/CMT.png", color: "#E87722", tagline: "Precisión Italiana", description: "Sierras y herramientas de corte de alta precisión para carpintería profesional.", categories: ["Sierras", "Fresas", "Herramientas"] },
+  Euroair: { banner: "/assets/brands/heroes/EUROAIR.png", color: "#1E40AF", tagline: "Compresores de alto rendimiento", description: "Compresores y sistemas de aire comprimido para la industria.", categories: ["Compresores", "Aire comprimido"] },
+  Fini: { banner: "/assets/brands/heroes/FINI.png", color: "#DC2626", tagline: "Compresores profesionales", description: "Compresores de pistón y tornillo para uso profesional e industrial.", categories: ["Compresores", "Accesorios"] },
+  Forza: { banner: "/assets/brands/heroes/FORZA.png", color: "#2563EB", tagline: "Herramientas de alto rendimiento", description: "Herramientas neumáticas y eléctricas para profesionales.", categories: ["Herramientas neumáticas", "Herramientas eléctricas"] },
+  ICA: { banner: "/assets/brands/heroes/ICA.png", color: "#16A34A", tagline: "Acabados profesionales", description: "Pinturas, barnices y acabados para madera y superficies.", categories: ["Pinturas", "Barnices", "Solventes"] },
+  Makita: { banner: "/assets/brands/heroes/MAKITA.png", color: "#0066CC", tagline: "Herramientas profesionales", description: "Herramientas eléctricas y motorizadas de alto rendimiento.", categories: ["Herramientas eléctricas", "Accesorios"] },
+  Titebond: { banner: "/assets/brands/heroes/TITEBOND.png", color: "#D4A017", tagline: "La marca líder en adhesivos", description: "Adhesivos y selladores profesionales para carpintería y construcción.", categories: ["Adhesivos", "Selladores", "Accesorios"] },
+};
 
 const sortOptions: { value: SortOption; label: string }[] = [
   { value: "name", label: "Nombre A-Z" },
@@ -68,13 +79,6 @@ export default function CatalogoPage() {
   const [sortBy, setSortBy] = useState<SortOption>("name");
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  const scrollCarousel = useCallback((dir: "left" | "right") => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: dir === "left" ? -320 : 320, behavior: "smooth" });
-    }
-  }, []);
 
   const filteredProducts = useMemo(() => {
     return products
@@ -163,26 +167,37 @@ export default function CatalogoPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-brand pt-28 pb-12 sm:pt-32 sm:pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
-          >
-            <span className="inline-block px-4 py-1.5 bg-white/10 text-white/90 text-sm font-semibold rounded-full mb-4">
-              Catálogo
-            </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Nuestros Productos
-            </h1>
-            <p className="text-white/80 text-lg">
-              Explora nuestro catálogo completo de maquinaria y herramientas
-              profesionales.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      {selectedBrand !== "Todos" && brandHeroes[selectedBrand] ? (
+        <section className="relative pt-28 pb-12 sm:pt-32 sm:pb-16 overflow-hidden" style={{ backgroundColor: brandHeroes[selectedBrand].color }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+              <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="flex-1 text-white">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{selectedBrand}</h1>
+                <p className="text-xl sm:text-2xl font-semibold mb-2">{brandHeroes[selectedBrand].tagline}</p>
+                <p className="text-white/80 text-lg mb-6">{brandHeroes[selectedBrand].description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {brandHeroes[selectedBrand].categories.map((cat) => (
+                    <span key={cat} className="px-3 py-1 bg-white/20 text-white text-sm font-medium rounded-full">{cat}</span>
+                  ))}
+                </div>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="flex-1">
+                <img src={brandHeroes[selectedBrand].banner} alt={selectedBrand} className="w-full h-auto max-h-80 object-contain" />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section className="bg-brand pt-28 pb-12 sm:pt-32 sm:pb-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
+              <span className="inline-block px-4 py-1.5 bg-white/10 text-white/90 text-sm font-semibold rounded-full mb-4">Catálogo</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">Nuestros Productos</h1>
+              <p className="text-white/80 text-lg">Explora nuestro catálogo completo de maquinaria y herramientas profesionales.</p>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Filters Bar */}
       <section className="bg-white border-b border-gray-100 sticky top-16 lg:top-20 z-30">
@@ -395,72 +410,6 @@ export default function CatalogoPage() {
           )}
         </AnimatePresence>
       </section>
-
-      {/* Brand Carousel - shows when a brand is selected */}
-      {selectedBrand !== "Todos" && (() => {
-        const isKdt = selectedBrand.toLowerCase() === "kdt";
-        const brandData = brands.find(b => b.name.toLowerCase() === selectedBrand.toLowerCase());
-        const brandProducts = filteredProducts.slice(0, 12);
-        const logo = isKdt ? "/assets/kdt/kdt_ico.png" : brandData?.logo;
-        return (
-          <section className={`py-10 sm:py-14 ${isKdt ? "bg-kdt-dark" : "bg-brand"}`}>
-            {isKdt && <div className="h-1 w-full bg-kdt-secondary" />}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex items-center gap-4">
-                  {logo && (
-                    <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center border border-gray-100 overflow-hidden flex-shrink-0">
-                      <img src={logo} alt={selectedBrand} className="w-full h-full object-contain p-1" />
-                    </div>
-                  )}
-                  <div>
-                    {isKdt && (
-                      <span className="inline-block px-2 py-0.5 bg-kdt text-white text-[10px] font-bold uppercase tracking-wide rounded-sm mb-1">
-                        Distribuidor Oficial
-                      </span>
-                    )}
-                    <h2 className="text-2xl sm:text-3xl font-bold text-white">{selectedBrand}</h2>
-                    <p className="text-sm text-white/60">{brandProducts.length} producto{brandProducts.length !== 1 ? "s" : ""} destacado{brandProducts.length !== 1 ? "s" : ""}</p>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <button onClick={() => scrollCarousel("left")} className={`p-2.5 bg-white/15 hover:bg-white text-white rounded-xl transition-all ${isKdt ? "hover:text-kdt" : "hover:text-brand"}`}>
-                    <ChevronLeft size={20} />
-                  </button>
-                  <button onClick={() => scrollCarousel("right")} className={`p-2.5 bg-white/15 hover:bg-white text-white rounded-xl transition-all ${isKdt ? "hover:text-kdt" : "hover:text-brand"}`}>
-                    <ChevronRight size={20} />
-                  </button>
-                </div>
-              </div>
-              <div ref={carouselRef} className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-                {brandProducts.map((product) => (
-                  <Link
-                    key={product.id}
-                    href={`/productos/${product.slug}`}
-                    className="flex-shrink-0 w-72 snap-start bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group"
-                  >
-                    <div className="aspect-[4/3] bg-gray-50 flex items-center justify-center overflow-hidden relative">
-                      {product.image ? (
-                        <Image src={product.image} alt={product.name} fill sizes="288px" className="object-contain p-4 group-hover:scale-105 transition-transform duration-300" loading="lazy" />
-                      ) : (
-                        <div className="text-center">
-                          <p className="text-brand font-bold text-lg">{product.brand}</p>
-                          <p className="text-gray-400 text-xs mt-1">{product.model}</p>
-                        </div>
-                      )}
-                      <span className="absolute top-3 right-3 px-2 py-1 bg-brand text-white text-[10px] font-bold rounded-full">{product.model}</span>
-                    </div>
-                    <div className="p-4">
-                      <h3 className="font-bold text-gray-900 text-sm mb-1 group-hover:text-brand transition-colors line-clamp-2">{product.name}</h3>
-                      <p className="text-xs text-gray-400 line-clamp-1">{product.category}</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        );
-      })()}
 
       {/* Products Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 min-h-[60vh]">
