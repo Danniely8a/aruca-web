@@ -112,19 +112,6 @@ export default function HeroSlideshow() {
       {/* Overlay más sutil - gradiente de izquierda a derecha */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0c1829]/85 via-[#0c1829]/50 to-transparent" />
 
-      {/* Brand logo watermark */}
-      <div className="absolute top-1/2 -translate-y-1/2 right-16 hidden lg:flex flex-col items-center gap-4 z-10 opacity-20">
-        {slide.logo && (
-          <Image
-            src={slide.logo}
-            alt={slide.brand}
-            width={180}
-            height={180}
-            className="object-contain"
-          />
-        )}
-      </div>
-
       {/* Arrow controls */}
       <button
         onClick={prev}
