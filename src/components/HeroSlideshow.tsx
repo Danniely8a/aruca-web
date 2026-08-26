@@ -4,10 +4,6 @@ import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const images = [
-  { src: "/assets/hero-bg.jpg", alt: "Maquinaria industrial" },
-  { src: "/assets/hero-saw.jpg", alt: "Sierra de mesa profesional" },
-  { src: "/assets/hero-compressor.webp", alt: "Compresor Euroair" },
-  { src: "/assets/hero-test1.jpg", alt: "Engranajes industriales" },
   { src: "/assets/hero-euro.png", alt: "Compresores Euro Air" },
   { src: "/assets/hero-forza.png", alt: "Compresores Forza" },
   { src: "/assets/hero-caiman.png", alt: "Compresores Caiman" },
