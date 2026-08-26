@@ -8,6 +8,7 @@ const images = [
   { src: "/assets/hero-forza.png", alt: "Compresores Forza" },
   { src: "/assets/hero-caiman.png", alt: "Compresores Caiman" },
   { src: "/assets/hero-eurot.png", alt: "Compresores Eurot" },
+  { src: "/assets/hero-fini.png", alt: "Fini" },
 ];
 
 export default function HeroSlideshow() {
