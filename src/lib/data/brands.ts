@@ -26,6 +26,7 @@ export const brands: Brand[] = [
     category: "Compresores",
     country: "Internacional",
     logo: "/assets/brands/euroair_x2.0.jpeg",
+    active: false,
   },
   {
     id: "cmt-orange-tools",
