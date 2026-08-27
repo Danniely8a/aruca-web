@@ -36,7 +36,11 @@ export function useBrands(showAll = false): { brands: Brand[]; loading: boolean 
             dbBrandMap.set(b.id, b);
           }
 
-          const merged = staticBrands.map((sb) => dbBrandMap.get(sb.id) || { ...sb, active: true });
+          const merged = staticBrands.map((sb) => {
+            const dbVersion = dbBrandMap.get(sb.id);
+            if (dbVersion) return dbVersion;
+            return sb;
+          });
           const newFromDb = dbBrands.filter((b) => !staticIds.has(b.id));
 
           setAllBrands([...merged, ...newFromDb]);
