@@ -34,6 +34,15 @@ const brandHeroes: Record<string, { banner: string; color: string; tagline: stri
   ICA: { banner: "/assets/brands/heroes/ICA.png", color: "#16A34A", tagline: "Acabados profesionales", description: "Pinturas, barnices y acabados para madera y superficies.", categories: ["Pinturas", "Barnices", "Solventes"] },
   Makita: { banner: "/assets/brands/heroes/MAKITA.png", color: "#0066CC", tagline: "Herramientas profesionales", description: "Herramientas eléctricas y motorizadas de alto rendimiento.", categories: ["Herramientas eléctricas", "Accesorios"] },
   Titebond: { banner: "/assets/brands/heroes/TITEBOND.png", color: "#D4A017", tagline: "La marca líder en adhesivos", description: "Adhesivos y selladores profesionales para carpintería y construcción.", categories: ["Adhesivos", "Selladores", "Accesorios"] },
+  Bremas: { banner: "/assets/brands/heroes/bremas.png", color: "#1E40AF", tagline: "Herramientas eléctricas profesionales", description: "Herramientas eléctricas y de mano para la industria.", categories: ["Herramientas Eléctricas", "Accesorios"] },
+  "CMT Contractor": { banner: "/assets/brands/heroes/cmt contractor.png", color: "#E87722", tagline: "Herramientas de corte profesional", description: "Línea profesional de herramientas de corte para contratistas.", categories: ["Sierras", "Fresas", "Herramientas"] },
+  Dakin: { banner: "/assets/brands/heroes/dakin.png", color: "#DC2626", tagline: "Cintas de alta resistencia", description: "Cintas de acero sueco y bimetálicas para sierra de cinta.", categories: ["Cintas", "Sierras"] },
+  Menequim: { banner: "/assets/brands/heroes/menequim.png", color: "#16A34A", tagline: "Pegamentos y acabados", description: "Pegamentos, solventes y acabados para carpintería.", categories: ["Adhesivos", "Solventes", "Acabados"] },
+  Milescraft: { banner: "/assets/brands/heroes/milescraft.png", color: "#7C3AED", tagline: "Accesorios para carpintería", description: "Plantillas y accesorios especializados para carpintería.", categories: ["Plantillas", "Accesorios", "Herramientas"] },
+  Newco: { banner: "/assets/brands/heroes/newco.png", color: "#2563EB", tagline: "Compresores industriales", description: "Compresores de alta eficiencia para múltiples aplicaciones.", categories: ["Compresores", "Industria"] },
+  "Pony Jorgensen": { banner: "/assets/brands/heroes/pony jorgensen.png", color: "#F59E0B", tagline: "Prensas y herramientas manuales", description: "Prensas, sargentos y herramientas manuales de alta calidad.", categories: ["Prensas", "Sargentos", "Herramientas"] },
+  Sambara: { banner: "/assets/brands/heroes/sambara.png", color: "#0891B2", tagline: "Tratamiento de madera", description: "Productos para el tratamiento y acabado decorativo de madera.", categories: ["Tratamiento", "Acabados"] },
+  Sicar: { banner: "/assets/brands/heroes/sicar.png", color: "#4F46E5", tagline: "Herramientas especializadas", description: "Herramientas y productos para la industria de la madera.", categories: ["Herramientas", "Accesorios"] },
 };
 
 const sortOptions: { value: SortOption; label: string }[] = [
