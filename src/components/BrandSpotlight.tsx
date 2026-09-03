@@ -468,7 +468,7 @@ image: "/assets/brands/prexiso-hero.jpg",
     brandName: "Makita",
     displayName: "Makita",
     logo: "/assets/brands/makita_x2.0.jpg",
-    color: "#0066CC",
+    color: "#0098B6",
     category: "Herramientas Eléctricas",
     tagline: "Herramientas profesionales de alto rendimiento.",
     description:
