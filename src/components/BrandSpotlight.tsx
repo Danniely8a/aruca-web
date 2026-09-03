@@ -372,13 +372,13 @@ const brands: Brand[] = [
     tagline: "Herramientas de medición y marcado profesional de alta precisión.",
     description:
       "Medidores de distancia láser, niveles, escuadras y detectores profesionales de alta precisión. Instrumentos confiables para construcción y carpintería.",
-    image: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/prexiso/P15P.jpg",
+    image: "/assets/brands/prexiso-hero.png",
     highlights: ["Medición láser de alta precisión", "Instrumentos profesionales"],
     items: [
       {
         name: "Medidor Distancia Laser",
         model: "P15P",
-image: "/assets/brands/prexiso-hero.jpg",
+        image: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/prexiso/P15P.jpg",
         description: "15Mts con botón.",
         href: "/productos/prexiso-p15p-medidor-distancia-laser",
       },
@@ -399,7 +399,7 @@ image: "/assets/brands/prexiso-hero.jpg",
       {
         name: "Nivel Laser 360°",
         model: "PLC3-360G",
-        image: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/prexiso/PLC3-360G.jpg",
+        image: "/assets/brands/prexiso-hero.png",
         description: "Tripos recargable.",
         href: "/productos/prexiso-plc3-360g-nivel-laser-360",
       },
