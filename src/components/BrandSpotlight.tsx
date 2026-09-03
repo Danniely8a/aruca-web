@@ -473,7 +473,7 @@ image: "/assets/brands/prexiso-hero.jpg",
     tagline: "Herramientas profesionales de alto rendimiento.",
     description:
       "Líder mundial en herramientas eléctricas inalámbricas LXT. Taladros, sierras, lijadoras, rotomartillos y más para profesionales.",
-    image: "/assets/product-images/makita/DHP484Z.jpg",
+    image: "/assets/brands/makita-hero.png",
     highlights: ["Herramientas inalámbricas LXT", "Calidad profesional japonesa"],
     items: [
       {
