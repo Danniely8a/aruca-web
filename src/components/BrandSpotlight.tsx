@@ -399,7 +399,7 @@ const brands: Brand[] = [
       {
         name: "Nivel Laser 360°",
         model: "PLC3-360G",
-        image: "/assets/brands/prexiso-hero.png",
+        image: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/prexiso/PLC3-360G.jpg",
         description: "Tripos recargable.",
         href: "/productos/prexiso-plc3-360g-nivel-laser-360",
       },
