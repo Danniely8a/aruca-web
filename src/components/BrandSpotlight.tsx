@@ -367,7 +367,7 @@ const brands: Brand[] = [
     brandName: "Prexiso",
     displayName: "Prexiso",
     logo: "/assets/brands/prexiso-logo.png",
-    color: "#2E86C1",
+    color: "#F4D03F",
     category: "Herramientas de Medición",
     tagline: "Herramientas de medición y marcado profesional de alta precisión.",
     description:
