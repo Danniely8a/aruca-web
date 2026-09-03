@@ -105,6 +105,10 @@ export default function CatalogoPage() {
         return matchesSearch && matchesCategory && matchesSubcategory && matchesBrand;
       })
       .sort((a, b) => {
+        const subA = (a.subcategory || "").toLowerCase();
+        const subB = (b.subcategory || "").toLowerCase();
+        if (subA.includes("pegadora") && !subB.includes("pegadora")) return -1;
+        if (!subA.includes("pegadora") && subB.includes("pegadora")) return 1;
         switch (sortBy) {
           case "brand":
             return a.brand.localeCompare(b.brand);
