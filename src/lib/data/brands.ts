@@ -364,7 +364,7 @@ export const brands: Brand[] = [
     description: "Herramientas de medición y marcado profesional de alta precisión.",
     category: "Herramientas de Medición",
     country: "Internacional",
-    logo: "",
+    logo: "/assets/brands/prexiso-logo.png",
   },
   {
     id: "kex",
