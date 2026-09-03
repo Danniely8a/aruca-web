@@ -463,6 +463,56 @@ image: "/assets/brands/prexiso-hero.jpg",
       },
     ],
   },
+  {
+    id: "makita",
+    brandName: "Makita",
+    displayName: "Makita",
+    logo: "/assets/brands/makita_x2.0.jpg",
+    color: "#0066CC",
+    category: "Herramientas Eléctricas",
+    tagline: "Herramientas profesionales de alto rendimiento.",
+    description:
+      "Líder mundial en herramientas eléctricas inalámbricas LXT. Taladros, sierras, lijadoras, rotomartillos y más para profesionales.",
+    image: "/assets/product-images/makita/DHP484Z.jpg",
+    highlights: ["Herramientas inalámbricas LXT", "Calidad profesional japonesa"],
+    items: [
+      {
+        name: "Rotomartillo HR2470",
+        model: "HR2470",
+        image: "/assets/product-images/makita/HR2470.jpg",
+        description: "Rotomartillo SDS-Plus de 780W para perforación y maciceo.",
+        href: "/catalogo?brand=Makita",
+      },
+      {
+        name: "Sierra Circular 5007N",
+        model: "5007N",
+        image: "/assets/product-images/makita/5007N.jpg",
+        description: "Sierra circular de 7-1/4\" con base de magnesio.",
+        href: "/catalogo?brand=Makita",
+      },
+      {
+        name: "Lijadora BO5030",
+        model: "BO5030",
+        image: "/assets/product-images/makita/BO5030.jpg",
+        description: "Lijadora orbital de 5\" con aspiración para acabados perfectos.",
+        href: "/catalogo?brand=Makita",
+      },
+      {
+        name: "Cepillo KP0800",
+        model: "KP0800",
+        image: "/assets/product-images/makita/KP0800.jpg",
+        description: "Cepillo eléctrico de 3-1/4\" para acabados de madera.",
+        href: "/catalogo?brand=Makita",
+      },
+      {
+        name: "Ingletadora LS1040F",
+        model: "LS1040F",
+        image: "/assets/product-images/makita/LS1040F.jpg",
+        description: "Ingletadora de 10\" con corte inclinado de alta precisión.",
+        href: "/catalogo?brand=Makita",
+      },
+    ],
+  },
 ];
 
 const fadeUp = {
