@@ -480,17 +480,7 @@ export default function CatalogoPage() {
                       {product.brand}
                     </span>
                     <span className="text-[10px] text-gray-400">{product.category}</span>
-                    {(product as { stock?: number }).stock != null && (product as { stock?: number }).stock !== undefined && (
-                      <span className={`text-[10px] ml-auto px-1.5 py-0.5 rounded-full font-medium ${
-                        (product as { stock: number }).stock > 10 ? "bg-green-100 text-green-700" :
-                        (product as { stock: number }).stock > 0 ? "bg-yellow-100 text-yellow-700" :
-                        "bg-red-100 text-red-700"
-                      }`}>
-                        {(product as { stock: number }).stock > 0
-                          ? `${(product as { stock: number }).stock} disponibles`
-                          : "Agotado"}
-                      </span>
-                    )}
+
                   </div>
                     <h3 className="font-bold text-gray-900 mb-1 group-hover:text-brand transition-colors line-clamp-2">
                       {product.name}
