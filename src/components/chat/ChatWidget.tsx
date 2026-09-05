@@ -1,303 +1,162 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
-import { MessageCircle, X, Send, ThumbsUp, ThumbsDown, Bot, User } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Loader2, MessageCircle, Send, X } from "lucide-react";
 
-interface Message {
-  id?: string;
+interface ChatMessage {
   role: "user" | "assistant";
-  text: string;
-  timestamp: Date;
-  feedback?: number;
+  content: string;
+}
+
+const N8N_URL =
+  process.env.NEXT_PUBLIC_N8N_CHAT_URL || "/api/chat";
+
+const WELCOME_MESSAGE =
+  "Hola, soy el asistente de ARUCA Maquinarias. Puedo ayudarte a encontrar productos de nuestro catálogo. ¿Qué estás buscando?";
+
+function getSessionId(): string {
+  if (typeof window === "undefined") return "";
+  let id = window.localStorage.getItem("aruca_chat_session");
+  if (!id) {
+    id =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : Math.random().toString(36).slice(2);
+    window.localStorage.setItem("aruca_chat_session", id);
+  }
+  return id;
 }
 
 export default function ChatWidget() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [open, setOpen] = useState(false);
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    { role: "assistant", content: WELCOME_MESSAGE },
+  ]);
   const [input, setInput] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
-  const [sessionId] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("chat_session_id") || (() => {
-        const id = `chat_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-        localStorage.setItem("chat_session_id", id);
-        return id;
-      })();
-    }
-    return "";
-  });
-
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  const [loading, setLoading] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages, isTyping]);
+    const el = scrollRef.current;
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+  }, [messages, loading, open]);
 
-  useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [isOpen]);
+  const send = useCallback(async () => {
+    const text = input.trim();
+    if (!text || loading) return;
 
-  const sendMessage = useCallback(async () => {
-    if (!input.trim() || isTyping) return;
-
-    const userMessage: Message = {
-      role: "user",
-      text: input.trim(),
-      timestamp: new Date(),
-    };
-
-    setMessages((prev) => [...prev, userMessage]);
     setInput("");
-    setIsTyping(true);
+    setMessages((prev) => [...prev, { role: "user", content: text }]);
+    setLoading(true);
 
     try {
-      const response = await fetch("/api/chat", {
+      const res = await fetch(N8N_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMessage.text, sessionId }),
+        body: JSON.stringify({ message: text, sessionId: getSessionId() }),
       });
-
-      const data = await response.json();
-
-      if (data.reply) {
-        const assistantMessage: Message = {
-          role: "assistant",
-          text: data.reply,
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, assistantMessage]);
-      }
+      const data = await res.json();
+      const reply =
+        data.reply ||
+        data.output ||
+        "Lo siento, no pude procesar tu solicitud. Escríbenos por WhatsApp al +58 412 610 9597.";
+      setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch {
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          text: "Error de conexión. Por favor intenta de nuevo o escríbenos por WhatsApp.",
-          timestamp: new Date(),
+          content:
+            "Lo siento, hubo un error de conexión. Escríbenos por WhatsApp al +58 412 610 9597.",
         },
       ]);
     } finally {
-      setIsTyping(false);
+      setLoading(false);
     }
-  }, [input, isTyping, sessionId]);
-
-  const handleFeedback = async (messageIndex: number, feedback: number) => {
-    const msg = messages[messageIndex];
-    if (!msg || msg.role !== "assistant") return;
-
-    setMessages((prev) =>
-      prev.map((m, i) => (i === messageIndex ? { ...m, feedback } : m))
-    );
-
-    try {
-      await fetch("/api/chat/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messageId: msg.id, feedback, sessionId }),
-      });
-    } catch {
-      // Silent fail
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
-  };
+  }, [input, loading]);
 
   return (
     <>
-      {/* Chat Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 ${
-          isOpen ? "bg-red-500 hover:bg-red-600" : "bg-brand hover:bg-brand/90"
-        }`}
-        aria-label={isOpen ? "Cerrar chat" : "Abrir chat"}
-      >
-        {isOpen ? (
-          <X size={24} className="text-white" />
-        ) : (
-          <MessageCircle size={24} className="text-white" />
-        )}
-        {!isOpen && (
-          <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse" />
-        )}
-      </button>
-
-      {/* Chat Window */}
-      {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-8rem)] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
-          {/* Header */}
-          <div className="bg-brand text-white px-5 py-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-              <Bot size={22} />
+      {open && (
+        <div className="fixed bottom-40 right-4 z-50 flex h-[520px] w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl sm:right-6">
+          <div className="flex items-center justify-between bg-brand px-4 py-3 text-white">
+            <div>
+              <p className="text-sm font-semibold">Asistente ARUCA</p>
+              <p className="text-xs text-white/80">Catálogo en línea</p>
             </div>
-            <div className="flex-1">
-              <h3 className="font-bold text-sm">ARUCA Asistente</h3>
-              <p className="text-xs text-white/70">Siempre disponible para ayudarte</p>
-            </div>
-            <div className="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse" />
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Cerrar chat"
+              className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10"
+            >
+              <X size={18} />
+            </button>
           </div>
 
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
-            {messages.length === 0 && (
-              <div className="text-center py-8">
-                <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-brand/10 flex items-center justify-center">
-                  <Bot size={32} className="text-brand" />
-                </div>
-                <p className="font-semibold text-gray-800 mb-1">¡Hola! Soy el asistente de ARUCA</p>
-                <p className="text-sm text-gray-500 mb-4">Puedo ayudarte con información sobre productos, cotizaciones y más.</p>
-                <div className="space-y-2">
-                  {["¿Qué marcas manejan?", "Necesito una cotización", "¿Dónde están ubicados?"].map((q) => (
-                    <button
-                      key={q}
-                      onClick={() => { setInput(q); }}
-                      className="block w-full text-left px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg hover:border-brand hover:text-brand transition-colors"
-                    >
-                      {q}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {messages.map((msg, i) => (
-              <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[85%] ${msg.role === "user" ? "order-2" : ""}`}>
-                  <div
-                    className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
-                      msg.role === "user"
-                        ? "bg-brand text-white rounded-br-md"
-                        : "bg-white text-gray-800 border border-gray-100 shadow-sm rounded-bl-md"
-                    }`}
-                  >
-                    {msg.role === "assistant" && (
-                      <div className="flex items-center gap-1.5 mb-1.5">
-                        <Bot size={12} className="text-brand" />
-                        <span className="text-[10px] font-semibold text-brand uppercase tracking-wide">ARUCA Bot</span>
-                      </div>
-                    )}
-                    <p className="whitespace-pre-wrap">{msg.text}</p>
-                  </div>
-
-                  {/* Feedback buttons for assistant messages */}
-                  {msg.role === "assistant" && (
-                    <div className="flex items-center gap-1.5 mt-1 ml-1">
-                      <button
-                        onClick={() => handleFeedback(i, msg.feedback === 1 ? 0 : 1)}
-                        className={`p-1 rounded transition-colors ${
-                          msg.feedback === 1
-                            ? "text-green-600 bg-green-50"
-                            : "text-gray-400 hover:text-green-600"
-                        }`}
-                        title="Buena respuesta"
-                      >
-                        <ThumbsUp size={12} />
-                      </button>
-                      <button
-                        onClick={() => handleFeedback(i, msg.feedback === -1 ? 0 : -1)}
-                        className={`p-1 rounded transition-colors ${
-                          msg.feedback === -1
-                            ? "text-red-500 bg-red-50"
-                            : "text-gray-400 hover:text-red-500"
-                        }`}
-                        title="Mala respuesta"
-                      >
-                        <ThumbsDown size={12} />
-                      </button>
-                      <span className="text-[10px] text-gray-400">
-                        {new Date(msg.timestamp).toLocaleTimeString("es-VE", { hour: "2-digit", minute: "2-digit" })}
-                      </span>
-                    </div>
-                  )}
+          <div
+            ref={scrollRef}
+            className="flex-1 space-y-3 overflow-y-auto p-4"
+          >
+            {messages.map((m, i) => (
+              <div
+                key={i}
+                className={`flex ${
+                  m.role === "user" ? "justify-end" : "justify-start"
+                }`}
+              >
+                <div
+                  className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3 py-2 text-sm ${
+                    m.role === "user"
+                      ? "bg-brand text-white"
+                      : "bg-gray-100 text-gray-900"
+                  }`}
+                >
+                  {m.content}
                 </div>
               </div>
             ))}
-
-            {isTyping && (
+            {loading && (
               <div className="flex justify-start">
-                <div className="bg-white border border-gray-100 shadow-sm px-4 py-3 rounded-2xl rounded-bl-md">
-                  <div className="flex items-center gap-1.5">
-                    <Bot size={12} className="text-brand" />
-                    <div className="flex gap-1">
-                      <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                      <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                      <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
-                    </div>
-                  </div>
+                <div className="flex items-center gap-2 rounded-2xl bg-gray-100 px-3 py-2 text-sm text-gray-500">
+                  <Loader2 size={16} className="animate-spin" />
+                  Escribiendo…
                 </div>
               </div>
             )}
-
-            <div ref={messagesEndRef} />
           </div>
 
-          {/* Quick Actions */}
-          {messages.length > 0 && (
-            <div className="px-4 py-2 border-t border-gray-100 bg-white">
-              <div className="flex gap-2 overflow-x-auto">
-                <a
-                  href={`https://wa.me/584126109597?text=${encodeURIComponent("Hola, vengo del chat de ARUCA Maquinarias")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-shrink-0 px-3 py-1.5 text-xs font-medium bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors"
-                >
-                  WhatsApp
-                </a>
-                <a
-                  href="/cotizacion"
-                  className="flex-shrink-0 px-3 py-1.5 text-xs font-medium bg-brand/10 text-brand rounded-full hover:bg-brand/20 transition-colors"
-                >
-                  Cotización
-                </a>
-                <a
-                  href="/catalogo"
-                  className="flex-shrink-0 px-3 py-1.5 text-xs font-medium bg-orange-100 text-accent-orange rounded-full hover:bg-orange-200 transition-colors"
-                >
-                  Catálogo
-                </a>
-              </div>
-            </div>
-          )}
-
-          {/* Input */}
-          <div className="px-4 py-3 border-t border-gray-100 bg-white">
-            <div className="flex items-end gap-2">
-              <textarea
-                ref={inputRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Escribe tu pregunta..."
-                rows={1}
-                className="flex-1 resize-none border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-all"
-                style={{ minHeight: "42px", maxHeight: "100px" }}
-              />
-              <button
-                onClick={sendMessage}
-                disabled={!input.trim() || isTyping}
-                className="w-10 h-10 rounded-xl bg-brand text-white flex items-center justify-center hover:bg-brand/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex-shrink-0"
-              >
-                <Send size={16} />
-              </button>
-            </div>
-            <p className="text-[10px] text-gray-400 mt-1.5 text-center">
-              Powered by AI — ARUCA Maquinarias © {new Date().getFullYear()}
-            </p>
-          </div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              send();
+            }}
+            className="flex items-center gap-2 border-t border-gray-200 p-3"
+          >
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Busca un producto, marca o modelo…"
+              className="flex-1 rounded-full border border-gray-300 px-4 py-2 text-sm outline-none focus:border-brand"
+            />
+            <button
+              type="submit"
+              disabled={loading || !input.trim()}
+              aria-label="Enviar"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-orange text-white transition-colors hover:brightness-110 disabled:opacity-50"
+            >
+              <Send size={18} />
+            </button>
+          </form>
         </div>
       )}
+
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-label="Abrir chat"
+        className="fixed bottom-24 right-20 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white shadow-lg transition-all hover:scale-110"
+      >
+        {open ? <X size={22} /> : <MessageCircle size={22} />}
+      </button>
     </>
   );
 }
