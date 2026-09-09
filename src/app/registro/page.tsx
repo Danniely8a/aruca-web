@@ -42,7 +42,7 @@ export default function RegistroPage() {
 
     setLoading(true);
 
-    const { error: signUpError } = await signUp(email, password, name);
+    const { error: signUpError } = await signUp(email, password, name, phone, company || undefined);
     if (signUpError) {
       setError(signUpError);
     } else {

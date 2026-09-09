@@ -96,12 +96,13 @@ CREATE TRIGGER on_whatsapp_conversation_updated
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO public.users (id, email, name, phone, avatar_url, role)
+  INSERT INTO public.users (id, email, name, phone, company, avatar_url, role)
   VALUES (
     NEW.id,
     NEW.email,
     COALESCE(NEW.raw_user_meta_data->>'name', ''),
     COALESCE(NEW.raw_user_meta_data->>'phone', ''),
+    COALESCE(NEW.raw_user_meta_data->>'company', ''),
     COALESCE(NEW.raw_user_meta_data->>'avatar_url', ''),
     'customer'
   );

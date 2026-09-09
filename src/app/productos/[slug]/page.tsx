@@ -3,8 +3,10 @@
 import { use } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
+  ArrowLeft,
   ArrowRight,
   MessageCircle,
   Tag,
@@ -21,6 +23,7 @@ export default function ProductDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
+  const router = useRouter();
   const { products: allProducts } = useProducts();
   const product = allProducts.find((p) => p.slug === slug);
   const { addItem } = useCart();
@@ -64,6 +67,13 @@ export default function ProductDetailPage({
             animate={{ opacity: 1, y: 0 }}
           >
             <div className="mb-4">
+              <button
+                onClick={() => router.back()}
+                className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-medium mb-3 transition-colors"
+              >
+                <ArrowLeft size={16} />
+                Volver
+              </button>
               <Breadcrumbs
                 dark
                 items={[
