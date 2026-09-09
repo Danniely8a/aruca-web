@@ -396,7 +396,7 @@ export const brands: Brand[] = [
     description: "Piedras de afilado, esmeril y corte para herramientas y maquinaria.",
     category: "Abrasivos",
     country: "Internacional",
-    logo: "/assets/brands/aro_logo.jpg",
+    logo: "/assets/brands/aro_logo.webp",
   },
   {
     id: "microtech",
