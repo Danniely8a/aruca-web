@@ -3,6 +3,7 @@
 
 -- 1. Agregar avatar_url a users
 ALTER TABLE public.users ADD COLUMN IF NOT EXISTS avatar_url TEXT DEFAULT '';
+ALTER TABLE public.users ADD COLUMN IF NOT EXISTS rif TEXT DEFAULT '';
 
 -- 2. Agregar stock y price a products  
 ALTER TABLE products ADD COLUMN IF NOT EXISTS stock INTEGER DEFAULT 0;
@@ -96,13 +97,14 @@ CREATE TRIGGER on_whatsapp_conversation_updated
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO public.users (id, email, name, phone, company, avatar_url, role)
+  INSERT INTO public.users (id, email, name, phone, company, rif, avatar_url, role)
   VALUES (
     NEW.id,
     NEW.email,
     COALESCE(NEW.raw_user_meta_data->>'name', ''),
     COALESCE(NEW.raw_user_meta_data->>'phone', ''),
     COALESCE(NEW.raw_user_meta_data->>'company', ''),
+    COALESCE(NEW.raw_user_meta_data->>'rif', ''),
     COALESCE(NEW.raw_user_meta_data->>'avatar_url', ''),
     'customer'
   );

@@ -16,6 +16,7 @@ import {
   Loader2,
   Package,
   Camera,
+  CreditCard,
 } from "lucide-react";
 import { useAuth } from "@/lib/context/AuthContext";
 import { createClient } from "@/lib/supabase/client";
@@ -26,6 +27,7 @@ export default function PerfilPage() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
+  const [rif, setRif] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
@@ -47,6 +49,7 @@ export default function PerfilPage() {
       setName(user.name);
       setPhone(user.phone);
       setCompany(user.company);
+      setRif(user.rif || "");
       setAvatarUrl(user.avatar_url || "");
       fetchOrders();
     }
@@ -100,7 +103,7 @@ export default function PerfilPage() {
     const supabase = createClient();
     const { error } = await supabase
       .from("users")
-      .update({ name, phone, company, avatar_url: avatarUrl })
+      .update({ name, phone, company, rif, avatar_url: avatarUrl })
       .eq("id", user.id);
 
     if (error) {
@@ -232,6 +235,22 @@ export default function PerfilPage() {
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
                       placeholder="Nombre de tu empresa"
+                      className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    RIF / Cédula
+                  </label>
+                  <div className="relative">
+                    <CreditCard size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      value={rif}
+                      onChange={(e) => setRif(e.target.value)}
+                      placeholder="V-12345678 o J-12345678-9"
                       className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                     />
                   </div>

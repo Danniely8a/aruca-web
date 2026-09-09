@@ -11,6 +11,7 @@ interface AuthUser {
   name: string;
   phone: string;
   company: string;
+  rif: string;
   role: string;
   avatar_url: string;
 }
@@ -20,7 +21,7 @@ interface AuthContextType {
   session: Session | null;
   loading: boolean;
   refreshUser: () => Promise<void>;
-  signUp: (email: string, password: string, name: string, phone?: string, company?: string) => Promise<{ error?: string }>;
+  signUp: (email: string, password: string, name: string, phone?: string, company?: string, rif?: string) => Promise<{ error?: string }>;
   signIn: (email: string, password: string) => Promise<{ error?: string }>;
   signOut: () => Promise<void>;
 }
@@ -36,7 +37,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const c = createClient();
     const { data: profile } = await c
       .from("users")
-      .select("name, phone, company, role, avatar_url")
+      .select("name, phone, company, rif, role, avatar_url")
       .eq("id", authUser.id)
       .single();
 
@@ -50,6 +51,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       name: profile?.name || (authUser.user_metadata as { name?: string })?.name || "",
       phone: profile?.phone || "",
       company: profile?.company || "",
+      rif: profile?.rif || "",
       role,
       avatar_url: profile?.avatar_url || "",
     };
@@ -100,13 +102,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return {};
   };
 
-  const signUp = async (email: string, password: string, name: string, phone?: string, company?: string) => {
+  const signUp = async (email: string, password: string, name: string, phone?: string, company?: string, rif?: string) => {
     const supabase = createClient();
     const { error } = await supabase.auth.signUp({
       email,
       password,
       options: {
-        data: { name, phone, company },
+        data: { name, phone, company, rif },
         emailRedirectTo: `${window.location.origin}/login`,
       },
     });

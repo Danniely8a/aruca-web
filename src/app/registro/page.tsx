@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Mail, Lock, User, Eye, EyeOff, ArrowRight, Phone, Building2 } from "lucide-react";
+import { Mail, Lock, User, Eye, EyeOff, ArrowRight, Phone, Building2, CreditCard } from "lucide-react";
 import { useAuth } from "@/lib/context/AuthContext";
 
 export default function RegistroPage() {
@@ -16,6 +16,7 @@ export default function RegistroPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
+  const [rif, setRif] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
@@ -42,7 +43,7 @@ export default function RegistroPage() {
 
     setLoading(true);
 
-    const { error: signUpError } = await signUp(email, password, name, phone, company || undefined);
+    const { error: signUpError } = await signUp(email, password, name, phone, company || undefined, rif || undefined);
     if (signUpError) {
       setError(signUpError);
     } else {
@@ -155,6 +156,22 @@ export default function RegistroPage() {
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
                   placeholder="Nombre de tu empresa"
+                  className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                RIF / Cédula (opcional)
+              </label>
+              <div className="relative">
+                <CreditCard size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <input
+                  type="text"
+                  value={rif}
+                  onChange={(e) => setRif(e.target.value)}
+                  placeholder="V-12345678 o J-12345678-9"
                   className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                 />
               </div>
