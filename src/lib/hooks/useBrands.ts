@@ -54,5 +54,6 @@ export function useBrands(showAll = false): { brands: Brand[]; loading: boolean 
   }, []);
 
   const filtered = showAll ? allBrands : allBrands.filter((b) => b.active !== false);
+  filtered.sort((a, b) => a.name.localeCompare(b.name, "es"));
   return { brands: filtered, loading };
 }
