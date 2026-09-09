@@ -391,6 +391,14 @@ export const brands: Brand[] = [
     logo: "/assets/brands/ralm_logo.jpg",
   },
   {
+    id: "aro",
+    name: "ARO",
+    description: "Piedras de afilado, esmeril y corte para herramientas y maquinaria.",
+    category: "Abrasivos",
+    country: "Internacional",
+    logo: "/assets/brands/aro_logo.jpg",
+  },
+  {
     id: "microtech",
     name: "Microtech",
     description: "Discos diamantados, cabezales y mechas de alta precisión para corte y perforación.",
