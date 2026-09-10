@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -52,7 +53,16 @@ const sortOptions: { value: SortOption; label: string }[] = [
   { value: "category", label: "Categoría" },
 ];
 
-export default function CatalogoPage() {
+export default function CatalogoPageWrapper() {
+  return (
+    <Suspense>
+      <CatalogoPage />
+    </Suspense>
+  );
+}
+
+function CatalogoPage() {
+  const searchParams = useSearchParams();
   const { products, loading: productsLoading } = useProducts();
   const { brands } = useBrands();
   const [search, setSearch] = useState("");
@@ -64,12 +74,13 @@ export default function CatalogoPage() {
   const { addItem } = useCart();
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const brand = params.get("brand");
+    const brand = searchParams.get("brand");
     if (brand) {
       setSelectedBrand(brand);
+    } else {
+      setSelectedBrand("Todos");
     }
-  }, []);
+  }, [searchParams]);
 
   const categories = useMemo(() => {
     const unique = Array.from(new Set(products.map((p) => p.category).filter(Boolean)));
