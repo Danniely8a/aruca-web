@@ -8,7 +8,14 @@ interface BrandSliderProps {
 }
 
 export default function BrandSlider({ brands }: BrandSliderProps) {
-  const displayBrands = brands.filter((b) => b.logo && b.active !== false);
+  const seen = new Set<string>();
+  const displayBrands = brands.filter((b) => {
+    if (!b.logo || b.active === false) return false;
+    const key = b.name.toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 
   if (displayBrands.length === 0) return null;
 
