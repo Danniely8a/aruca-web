@@ -18,11 +18,14 @@ export function useBrands(showAll = false): { brands: Brand[]; loading: boolean 
           .order("name");
 
         if (data && data.length > 0) {
-          const staticIds = new Set(staticBrands.map((b) => b.id));
+          const staticIdMap = new Map<string, string>();
+          for (const sb of staticBrands) {
+            staticIdMap.set(sb.id.toLowerCase(), sb.id);
+          }
 
           const dbBrands: Brand[] = data.map((b) => ({
             id: b.id,
-            name: b.name,
+            name: b.name.toUpperCase(),
             description: b.description || "",
             category: b.category || "",
             country: b.country || "",
@@ -33,15 +36,16 @@ export function useBrands(showAll = false): { brands: Brand[]; loading: boolean 
 
           const dbBrandMap = new Map<string, Brand>();
           for (const b of dbBrands) {
-            dbBrandMap.set(b.id, b);
+            dbBrandMap.set(b.id.toLowerCase(), b);
           }
 
           const merged = staticBrands.map((sb) => {
-            const dbVersion = dbBrandMap.get(sb.id);
+            const dbVersion = dbBrandMap.get(sb.id.toLowerCase());
             if (dbVersion) return dbVersion;
-            return sb;
+            return { ...sb, name: sb.name.toUpperCase() };
           });
-          const newFromDb = dbBrands.filter((b) => !staticIds.has(b.id));
+
+          const newFromDb = dbBrands.filter((b) => !staticIdMap.has(b.id.toLowerCase()));
 
           setAllBrands([...merged, ...newFromDb]);
         }
