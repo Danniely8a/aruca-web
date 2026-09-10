@@ -277,3 +277,20 @@ body {
     margin: 0;
   }
 }
+
+/* ========== BRAND SLIDER ========== */
+.brand-slider-track {
+  animation: scroll-brands 30s linear infinite;
+  width: max-content;
+}
+.brand-slider-track:hover {
+  animation-play-state: paused;
+}
+@keyframes scroll-brands {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
