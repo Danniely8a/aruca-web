@@ -20,6 +20,7 @@ import { useCart } from "@/lib/context/CartContext";
 import { useProducts } from "@/lib/hooks/useProducts";
 import { useBrands } from "@/lib/hooks/useBrands";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import BrandSlider from "@/components/ui/BrandSlider";
 
 type ViewMode = "grid" | "list";
 type SortOption = "name" | "brand" | "category";
@@ -197,6 +198,11 @@ export default function CatalogoPage() {
             </motion.div>
           </div>
         </section>
+      )}
+
+      {/* Brand Slider */}
+      {selectedBrand === "Todos" && (
+        <BrandSlider brands={brands} />
       )}
 
       {/* Filters Bar */}
