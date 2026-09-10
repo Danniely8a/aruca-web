@@ -7,6 +7,7 @@ export interface Brand {
   logo?: string;
   website?: string;
   active?: boolean;
+  proprietary?: boolean;
 }
 
 export const brands: Brand[] = [
@@ -95,6 +96,7 @@ export const brands: Brand[] = [
     category: "Accesorios para Compresores",
     country: "Venezuela",
     logo: "",
+    proprietary: true,
   },
   {
     id: "caiman",
@@ -103,6 +105,7 @@ export const brands: Brand[] = [
     category: "Clavos y Grapas",
     country: "Venezuela",
     logo: "/assets/brands/caiman.jpg",
+    proprietary: true,
   },
   {
     id: "ica",
@@ -129,6 +132,7 @@ export const brands: Brand[] = [
     category: "Herramientas de Taladro",
     country: "Venezuela",
     logo: "/assets/brands/eurotools.jpg",
+    proprietary: true,
   },
   {
     id: "newco",
@@ -251,6 +255,7 @@ export const brands: Brand[] = [
     category: "Compresores",
     country: "Internacional",
     logo: "/assets/brands/euro_x2.0.jpeg",
+    proprietary: true,
   },
   {
     id: "ipl",
@@ -413,6 +418,7 @@ export const brands: Brand[] = [
     category: "Repuestos",
     country: "Nacional",
     logo: "/assets/brands/aruca.jpg",
+    proprietary: true,
   },
 ];
 

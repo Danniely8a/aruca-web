@@ -32,6 +32,7 @@ export function useBrands(showAll = false): { brands: Brand[]; loading: boolean 
             logo: b.logo || "",
             website: b.website || "",
             active: b.active !== false,
+            proprietary: b.proprietary || false,
           }));
 
           const dbBrandMap = new Map<string, Brand>();

@@ -4,6 +4,7 @@
 -- 1. Agregar avatar_url a users
 ALTER TABLE public.users ADD COLUMN IF NOT EXISTS avatar_url TEXT DEFAULT '';
 ALTER TABLE public.users ADD COLUMN IF NOT EXISTS rif TEXT DEFAULT '';
+ALTER TABLE public.brands ADD COLUMN IF NOT EXISTS proprietary BOOLEAN DEFAULT false;
 
 -- 2. Agregar stock y price a products  
 ALTER TABLE products ADD COLUMN IF NOT EXISTS stock INTEGER DEFAULT 0;

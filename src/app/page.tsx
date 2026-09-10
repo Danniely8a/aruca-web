@@ -291,6 +291,11 @@ export default function Home() {
                 <p className="text-[10px] text-gray-400 mt-0.5">
                   {brand.country}
                 </p>
+                {brand.proprietary && (
+                  <span className="mt-1.5 inline-block px-2 py-0.5 bg-brand/10 text-brand text-[9px] font-bold rounded-full uppercase">
+                    Marca Propia
+                  </span>
+                )}
               </motion.div>
             ))}
           </div>
