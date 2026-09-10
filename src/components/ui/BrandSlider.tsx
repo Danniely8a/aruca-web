@@ -15,20 +15,20 @@ export default function BrandSlider({ brands }: BrandSliderProps) {
   const doubled = [...displayBrands, ...displayBrands];
 
   return (
-    <section className="bg-white border-b border-gray-100 overflow-hidden">
-      <div className="py-3">
+    <section className="bg-white overflow-hidden">
+      <div className="py-3 border-b border-gray-100">
         <div className="relative">
           <div className="brand-slider-track flex">
             {doubled.map((brand, index) => (
               <Link
                 key={`${brand.id}-${index}`}
                 href={`/catalogo?brand=${encodeURIComponent(brand.name)}`}
-                className="flex-shrink-0 flex items-center justify-center w-[80px] h-[50px] bg-gray-50 rounded-lg border border-gray-100 hover:border-brand/30 hover:bg-brand/5 transition-all group mx-1.5"
+                className="flex-shrink-0 flex items-center justify-center w-[90px] h-[50px] hover:scale-110 transition-transform opacity-60 hover:opacity-100 mx-2"
               >
                 <img
                   src={brand.logo}
                   alt={brand.name}
-                  className="max-w-[50px] max-h-[35px] object-contain group-hover:scale-110 transition-transform"
+                  className="max-w-[70px] max-h-[40px] object-contain"
                 />
               </Link>
             ))}
