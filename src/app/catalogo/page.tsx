@@ -163,20 +163,20 @@ export default function CatalogoPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-brand pt-28 pb-12 sm:pt-32 sm:pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-brand pt-[60px] pb-10 sm:pt-32 sm:pb-16">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <span className="inline-block px-4 py-1.5 bg-white/10 text-white/90 text-sm font-semibold rounded-full mb-4">
+            <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-white/10 text-white/90 text-xs sm:text-sm font-semibold rounded-full mb-3 sm:mb-4">
               Catálogo
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
               Nuestros Productos
             </h1>
-            <p className="text-white/80 text-lg">
+            <p className="text-white/80 text-sm sm:text-lg">
               Explora nuestro catálogo completo de maquinaria y herramientas
               profesionales.
             </p>
@@ -185,9 +185,9 @@ export default function CatalogoPage() {
       </section>
 
       {/* Filters Bar */}
-      <section className="bg-white border-b border-gray-100 sticky top-16 lg:top-20 z-30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="py-4 flex flex-col sm:flex-row gap-4">
+      <section className="bg-white border-b border-gray-100 sticky top-14 lg:top-20 z-30">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="py-3 sm:py-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
             <div className="relative flex-1">
               <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
@@ -200,7 +200,7 @@ export default function CatalogoPage() {
               {search && (
                 <button
                   onClick={() => handleSearchChange("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1"
                 >
                   <X size={16} />
                 </button>
@@ -269,7 +269,7 @@ export default function CatalogoPage() {
 
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="sm:hidden flex items-center justify-center gap-2 px-4 py-3 bg-brand text-white rounded-xl text-sm font-medium"
+              className="sm:hidden flex items-center justify-center gap-2 px-5 py-3 bg-brand text-white rounded-xl text-sm font-medium active:scale-[0.98] transition-all"
             >
               <SlidersHorizontal size={18} />
               Filtros
@@ -325,11 +325,11 @@ export default function CatalogoPage() {
             >
               <div className="p-4 space-y-4 bg-gray-50">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Categoría</label>
+                  <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">Categoría</label>
                   <select
                     value={selectedCategory}
                     onChange={(e) => handleCategoryChange(e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                    className="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                   >
                     <option value="Todos">Todas las Categorías</option>
                     {categories.map((cat) => (
@@ -338,12 +338,12 @@ export default function CatalogoPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Subcategoría</label>
+                  <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">Subcategoría</label>
                   <select
                     value={selectedSubcategory}
                     onChange={(e) => handleFilterChange(setSelectedSubcategory)(e.target.value)}
                     disabled={subcategories.length === 0}
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand disabled:opacity-50"
+                    className="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand disabled:opacity-50"
                   >
                     <option value="Todos">Todas las Subcategorías</option>
                     {subcategories.map((sub) => (
@@ -352,11 +352,11 @@ export default function CatalogoPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Marca</label>
+                  <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">Marca</label>
                   <select
                     value={selectedBrand}
                     onChange={(e) => handleFilterChange(setSelectedBrand)(e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                    className="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                   >
                     <option value="Todos">Todas las Marcas</option>
                     {brands.map((brand) => (
@@ -365,27 +365,27 @@ export default function CatalogoPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Ordenar por</label>
+                  <label className="block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">Ordenar por</label>
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as SortOption)}
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                    className="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                   >
                     {sortOptions.map((opt) => (
                       <option key={opt.value} value={opt.value}>{opt.label}</option>
                     ))}
                   </select>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-3 pt-2">
                   <button
                     onClick={() => setViewMode("grid")}
-                    className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium transition-colors ${viewMode === "grid" ? "bg-brand text-white" : "bg-white text-gray-700 border border-gray-200"}`}
+                    className={`flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-medium transition-colors active:scale-[0.98] ${viewMode === "grid" ? "bg-brand text-white" : "bg-white text-gray-700 border border-gray-200"}`}
                   >
                     <Grid3X3 size={18} />Cuadrícula
                   </button>
                   <button
                     onClick={() => setViewMode("list")}
-                    className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium transition-colors ${viewMode === "list" ? "bg-brand text-white" : "bg-white text-gray-700 border border-gray-200"}`}
+                    className={`flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-medium transition-colors active:scale-[0.98] ${viewMode === "list" ? "bg-brand text-white" : "bg-white text-gray-700 border border-gray-200"}`}
                   >
                     <List size={18} />Lista
                   </button>
@@ -439,7 +439,7 @@ export default function CatalogoPage() {
                     href={`/productos/${product.slug}`}
                     className="flex-shrink-0 w-72 snap-start bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group"
                   >
-                    <div className="aspect-[4/3] bg-gray-50 flex items-center justify-center overflow-hidden relative">
+                    <div className="aspect-square bg-gray-50 flex items-center justify-center overflow-hidden relative">
                       {product.image ? (
                         <Image src={product.image} alt={product.name} fill sizes="288px" className="object-contain p-4 group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                       ) : (
@@ -463,13 +463,13 @@ export default function CatalogoPage() {
       })()}
 
       {/* Products Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 min-h-[60vh]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-6">
+      <section className="py-8 sm:py-16 lg:py-20 bg-gray-50 min-h-[60vh]">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="mb-4 sm:mb-6">
             <Breadcrumbs items={[{ label: "Catálogo" }]} />
           </div>
-          <div className="mb-6 flex items-center justify-between">
-            <p className="text-gray-500 text-sm">
+          <div className="mb-4 sm:mb-6 flex items-center justify-between">
+            <p className="text-gray-500 text-xs sm:text-sm">
               <span className="font-semibold text-gray-900">{filteredProducts.length}</span>{" "}
               producto{filteredProducts.length !== 1 ? "s" : ""} encontrado{filteredProducts.length !== 1 ? "s" : ""}
               {totalPages > 1 && (
@@ -497,63 +497,52 @@ export default function CatalogoPage() {
               </button>
             </div>
           ) : viewMode === "grid" ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
               {paginatedProducts.map((product) => (
                 <Link
                   key={product.id}
                   href={`/productos/${product.slug}`}
                   className="block bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group h-full"
                 >
-                  <div className="aspect-[4/3] bg-gray-50 flex items-center justify-center overflow-hidden relative">
+                  <div className="aspect-square bg-gray-50 flex items-center justify-center overflow-hidden relative">
                     {product.image ? (
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-contain p-3 sm:p-4 group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                       />
                     ) : (
                       <div className="text-center">
-                        <p className="text-brand font-bold text-lg">{product.brand}</p>
-                        <p className="text-gray-400 text-xs mt-1">{product.model}</p>
+                        <p className="text-brand font-bold text-sm sm:text-lg">{product.brand}</p>
+                        <p className="text-gray-400 text-[10px] sm:text-xs mt-1">{product.model}</p>
                       </div>
                     )}
-                    <span className="absolute top-3 right-3 px-2 py-1 bg-brand text-white text-[10px] font-bold rounded-full">
+                    <span className="absolute top-2 right-2 sm:top-3 sm:right-3 px-1.5 sm:px-2 py-0.5 sm:py-1 bg-brand text-white text-[8px] sm:text-[10px] font-bold rounded-full">
                       {product.model}
                     </span>
                     {product.featured && (
-                      <span className="absolute top-3 left-3 px-2 py-1 bg-accent-orange text-white text-[10px] font-bold rounded-full uppercase">
+                      <span className="absolute top-2 left-2 sm:top-3 sm:left-3 px-1.5 sm:px-2 py-0.5 sm:py-1 bg-accent-orange text-white text-[8px] sm:text-[10px] font-bold rounded-full uppercase">
                         Destacado
                       </span>
                     )}
                   </div>
-                  <div className="p-5">
-                    <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[10px] font-bold text-brand bg-brand/10 px-2 py-0.5 rounded-full uppercase tracking-wide">
+                  <div className="p-3 sm:p-5">
+                    <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+                    <span className="text-[8px] sm:text-[10px] font-bold text-brand bg-brand/10 px-1.5 sm:px-2 py-0.5 rounded-full uppercase tracking-wide">
                       {product.brand}
                     </span>
-                    <span className="text-[10px] text-gray-400">{product.category}</span>
-                    {(product as { stock?: number }).stock != null && (product as { stock?: number }).stock !== undefined && (
-                      <span className={`text-[10px] ml-auto px-1.5 py-0.5 rounded-full font-medium ${
-                        (product as { stock: number }).stock > 10 ? "bg-green-100 text-green-700" :
-                        (product as { stock: number }).stock > 0 ? "bg-yellow-100 text-yellow-700" :
-                        "bg-red-100 text-red-700"
-                      }`}>
-                        {(product as { stock: number }).stock > 0
-                          ? `${(product as { stock: number }).stock} disponibles`
-                          : "Agotado"}
-                      </span>
-                    )}
+                    <span className="text-[8px] sm:text-[10px] text-gray-400 hidden sm:inline">{product.category}</span>
                   </div>
-                    <h3 className="font-bold text-gray-900 mb-1 group-hover:text-brand transition-colors line-clamp-2">
+                    <h3 className="font-bold text-gray-900 text-xs sm:text-sm mb-0.5 sm:mb-1 group-hover:text-brand transition-colors line-clamp-2">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-gray-500 line-clamp-2 mb-3">{product.description}</p>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent-orange group-hover:gap-2 transition-all">
-                        Ver Detalles<ArrowRight size={14} />
+                    <p className="text-[10px] sm:text-sm text-gray-500 line-clamp-2 mb-2 sm:mb-3">{product.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-accent-orange group-hover:gap-2 transition-all">
+                        Ver<ArrowRight size={12} className="sm:w-3.5 sm:h-3.5" />
                       </span>
                       <button
                         onClick={(e) => {
@@ -569,10 +558,10 @@ export default function CatalogoPage() {
                             price: product.price,
                           });
                         }}
-                        className="p-2 bg-brand/10 text-brand rounded-lg hover:bg-brand hover:text-white transition-colors"
+                        className="p-1.5 sm:p-2 bg-brand/10 text-brand rounded-lg hover:bg-brand hover:text-white active:scale-95 transition-all"
                         title="Agregar al carrito"
                       >
-                        <ShoppingCart size={16} />
+                        <ShoppingCart size={14} className="sm:w-4 sm:h-4" />
                       </button>
                     </div>
                   </div>

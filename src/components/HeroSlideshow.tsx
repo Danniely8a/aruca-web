@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
@@ -55,6 +54,8 @@ export default function HeroSlideshow() {
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
   const progressRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const slide = slides[current];
 
@@ -87,14 +88,36 @@ export default function HeroSlideshow() {
     return () => clearInterval(interval);
   }, [isPaused]);
 
-  const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    setIsPaused(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50;
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        next();
+      } else {
+        prev();
+      }
+    }
+
+    setIsPaused(false);
+  };
 
   return (
     <div
       className="absolute inset-0"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <AnimatePresence mode="wait">
         <motion.img
@@ -109,27 +132,27 @@ export default function HeroSlideshow() {
         />
       </AnimatePresence>
 
-      {/* Overlay más sutil - gradiente de izquierda a derecha */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0c1829]/85 via-[#0c1829]/50 to-transparent" />
 
-      {/* Arrow controls */}
+      {/* Arrow controls - hidden on mobile, shown on desktop */}
       <button
         onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full border border-white/20 transition-all group"
+        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full border border-white/20 transition-all group"
         aria-label="Anterior"
       >
         <ChevronLeft size={24} className="text-white group-hover:text-white" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full border border-white/20 transition-all group"
+        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full border border-white/20 transition-all group"
         aria-label="Siguiente"
       >
         <ChevronRight size={24} className="text-white group-hover:text-white" />
       </button>
 
-      {/* Bottom controls: brand indicator + progress */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3">
+      {/* Bottom controls */}
+      <div className="absolute bottom-20 sm:bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 sm:gap-3">
         {/* Brand name indicator */}
         <div className="flex items-center gap-3">
           <span className="text-white font-bold text-sm tracking-wider uppercase">
@@ -141,7 +164,7 @@ export default function HeroSlideshow() {
         </div>
 
         {/* Progress bar */}
-        <div className="w-48 h-1 bg-white/20 rounded-full overflow-hidden">
+        <div className="w-40 sm:w-48 h-1 bg-white/20 rounded-full overflow-hidden">
           <motion.div
             className="h-full rounded-full"
             style={{ backgroundColor: slide.color }}
@@ -151,17 +174,17 @@ export default function HeroSlideshow() {
         </div>
 
         {/* Dot indicators */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           {slides.map((s, index) => (
             <button
               key={index}
               onClick={() => goTo(index)}
-              className="transition-all duration-300"
+              className="transition-all duration-300 p-1"
               aria-label={s.brand}
             >
               <div
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  index === current ? "w-8" : "w-2 bg-white/30 hover:bg-white/50"
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  index === current ? "w-6 sm:w-8" : "w-1.5 bg-white/30 hover:bg-white/50"
                 }`}
                 style={
                   index === current

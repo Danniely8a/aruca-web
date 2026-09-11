@@ -366,7 +366,7 @@ const brands: Brand[] = [
     id: "prexiso",
     brandName: "Prexiso",
     displayName: "Prexiso",
-    logo: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/prexiso/P15P.jpg",
+    logo: "/assets/brands/prexiso-logo.png",
     color: "#2E86C1",
     category: "Herramientas de Medición",
     tagline: "Herramientas de medición y marcado profesional de alta precisión.",
@@ -473,7 +473,7 @@ const brands: Brand[] = [
     tagline: "Herramientas eléctricas profesionales de alta calidad.",
     description:
       "Líder mundial en herramientas inalámbricas LXT. Sierras, taladros, lijas y herramientas eléctricas profesionales con la mejor tecnología y durabilidad.",
-    image: "/assets/brands/makita_x2.0.jpg",
+    image: "/assets/makita/makita-hero.webp",
     imageContain: true,
     highlights: [
       "Líder mundial en herramientas inalámbricas LXT",
@@ -680,7 +680,7 @@ function BrandSection({ brand }: { brand: Brand }) {
               <p className="font-bold text-lg sm:text-xl mb-3" style={{ color: brand.color }}>
                 ¡La Tecnología que impulsa tu negocio!
               </p>
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 shadow-lg bg-gray-50 flex items-center justify-center">
+              <div className="relative aspect-square rounded-xl overflow-hidden border border-gray-200 shadow-lg bg-gray-50 flex items-center justify-center">
                 <Image
                   src={brand.image || brand.logo}
                   alt={brand.displayName}
