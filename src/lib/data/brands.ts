@@ -178,9 +178,9 @@ export const brands: Brand[] = [
   },
   {
     id: "first",
-    name: "First",
-    description: "Herramientas y accesorios de calidad para profesionales de la madera.",
-    category: "Accesorios",
+    name: "FIRST",
+    description: "Discos de corte HM y HSS para múltiple, seccionadora y aluminio.",
+    category: "Discos",
     country: "Internacional",
     logo: "/assets/brands/first_x2.0.jpeg",
   },
@@ -348,13 +348,6 @@ export const brands: Brand[] = [
     category: "Compresores",
     country: "Internacional",
     logo: "/assets/brands/shamal_logo.jpg",
-  },
-  {
-    id: "first",
-    name: "FIRST",
-    description: "Discos de corte HM y HSS para múltiple, seccionadora y aluminio.",
-    category: "Discos",
-    country: "Internacional",
   },
   {
     id: "gav",
