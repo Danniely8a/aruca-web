@@ -3,7 +3,7 @@
 import { useState, useMemo, useEffect, useRef, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -63,24 +63,30 @@ export default function CatalogoPageWrapper() {
 
 function CatalogoPage() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const { products, loading: productsLoading } = useProducts();
   const { brands } = useBrands();
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const debounceTimer = useRef<NodeJS.Timeout | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState("Todos");
-  const [selectedSubcategory, setSelectedSubcategory] = useState("Todos");
-  const [selectedBrand, setSelectedBrand] = useState("Todos");
+  const [selectedCategory, setSelectedCategory] = useState(() => searchParams.get("category") || "Todos");
+  const [selectedSubcategory, setSelectedSubcategory] = useState(() => searchParams.get("subcategory") || "Todos");
+  const [selectedBrand, setSelectedBrand] = useState(() => searchParams.get("brand") || "Todos");
   const { addItem } = useCart();
 
-  useEffect(() => {
-    const brand = searchParams.get("brand");
-    if (brand) {
-      setSelectedBrand(brand);
-    } else {
-      setSelectedBrand("Todos");
-    }
-  }, [searchParams]);
+  const updateURL = (params: Record<string, string>) => {
+    const sp = new URLSearchParams(searchParams.toString());
+    Object.entries(params).forEach(([k, v]) => {
+      if (v && v !== "Todos") {
+        sp.set(k, v);
+      } else {
+        sp.delete(k);
+      }
+    });
+    sp.delete("page");
+    router.push(`${pathname}?${sp.toString()}`, { scroll: false });
+  };
 
   const categories = useMemo(() => {
     const unique = Array.from(new Set(products.map((p) => p.category).filter(Boolean)));
@@ -157,17 +163,20 @@ function CatalogoPage() {
     setSelectedBrand("Todos");
     setSearch("");
     setCurrentPage(1);
+    router.push(pathname, { scroll: false });
   };
 
-  const handleFilterChange = (setter: (v: string) => void) => (value: string) => {
+  const handleFilterChange = (setter: (v: string) => void, urlKey?: string) => (value: string) => {
     setter(value);
     setCurrentPage(1);
+    if (urlKey) updateURL({ [urlKey]: value });
   };
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
     setSelectedSubcategory("Todos");
     setCurrentPage(1);
+    updateURL({ category: value, subcategory: "Todos" });
   };
 
   const handleSearchChange = (value: string) => {
@@ -267,7 +276,7 @@ function CatalogoPage() {
               </select>
               <select
                 value={selectedBrand}
-                onChange={(e) => handleFilterChange(setSelectedBrand)(e.target.value)}
+                onChange={(e) => handleFilterChange(setSelectedBrand, "brand")(e.target.value)}
                 className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand cursor-pointer"
               >
                 <option value="Todos">Todas las Marcas</option>
@@ -338,7 +347,7 @@ function CatalogoPage() {
               )}
               {selectedBrand !== "Todos" && (
                 <button
-                  onClick={() => handleFilterChange(setSelectedBrand)("Todos")}
+                  onClick={() => handleFilterChange(setSelectedBrand, "brand")("Todos")}
                   className="inline-flex items-center gap-1 px-3 py-1 bg-brand/10 text-brand text-sm font-medium rounded-full hover:bg-brand/20 transition-colors"
                 >
                   {selectedBrand}<X size={14} />
@@ -391,7 +400,7 @@ function CatalogoPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Marca</label>
                   <select
                     value={selectedBrand}
-                    onChange={(e) => handleFilterChange(setSelectedBrand)(e.target.value)}
+                    onChange={(e) => handleFilterChange(setSelectedBrand, "brand")(e.target.value)}
                     className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
                   >
                     <option value="Todos">Todas las Marcas</option>
