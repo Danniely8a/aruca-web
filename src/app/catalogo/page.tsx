@@ -123,6 +123,10 @@ function CatalogoPage() {
       .sort((a, b) => {
         const subA = (a.subcategory || "").toLowerCase();
         const subB = (b.subcategory || "").toLowerCase();
+        const piedrasA = subA.includes("piedra");
+        const piedrasB = subB.includes("piedra");
+        if (piedrasA && !piedrasB) return -1;
+        if (!piedrasA && piedrasB) return 1;
         if (subA.includes("pegadora") && !subB.includes("pegadora")) return -1;
         if (!subA.includes("pegadora") && subB.includes("pegadora")) return 1;
         switch (sortBy) {
