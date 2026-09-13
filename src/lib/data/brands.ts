@@ -363,7 +363,7 @@ export const brands: Brand[] = [
     description: "Herramientas de medición y marcado profesional de alta precisión.",
     category: "Herramientas de Medición",
     country: "Internacional",
-    logo: "",
+    logo: "/assets/brands/prexiso-logo.png",
   },
   {
     id: "kex",
@@ -372,14 +372,6 @@ export const brands: Brand[] = [
     category: "Herramientas Manuales",
     country: "Internacional",
     logo: "",
-  },
-  {
-    id: "kdt",
-    name: "KDT",
-    description: "Maquinarias profesionales para la industria de la madera y la construcción.",
-    category: "Maquinaria",
-    country: "Internacional",
-    logo: "/assets/brands/kdt_logo.jpg",
   },
   {
     id: "ralm",
@@ -405,6 +397,13 @@ export const brands: Brand[] = [
     country: "Nacional",
     logo: "/assets/brands/aruca.jpg",
   },
+  {
+    id: "wd-40",
+    name: "WD-40",
+    description: "Lubricantes, penetrantes, desengrasantes y productos multiusos de alta calidad para el mantenimiento industrial y doméstico.",
+    category: "Lubricantes",
+    country: "Internacional",
+  },
 ];
 
 export const brandCategories = [
@@ -429,4 +428,5 @@ export const brandCategories = [
   "Maquinaria",
   "Abrasivos",
   "Repuestos",
+  "Lubricantes",
 ];
