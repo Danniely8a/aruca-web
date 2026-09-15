@@ -413,14 +413,6 @@ export const brands: Brand[] = [
     logo: "/assets/brands/aruca.jpg",
     proprietary: true,
   },
-  {
-    id: "tek-bond",
-    name: "TEK-BOND",
-    description": "Adhesivos, lubricantes y productos de mantenimiento profesional para la industria.",
-    category: "Adhesivos",
-    country: "Internacional",
-    logo: "",
-  },
 ];
 
 export const brandCategories = [
