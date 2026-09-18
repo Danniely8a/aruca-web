@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { requireAdmin } from "@/lib/auth";
 
 // Venezuela: UTC-4 (no observa horario de verano)
 function getVenezuelaNow(): Date {
@@ -27,6 +28,9 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const { searchParams } = new URL(request.url);
   const range = searchParams.get("range") || "7d";
   const supabase = createAdminClient();

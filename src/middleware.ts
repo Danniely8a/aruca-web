@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { unsignSession } from "@/lib/auth";
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -30,32 +31,39 @@ export async function middleware(request: NextRequest) {
 
   // Admin routes
   if (pathname.startsWith("/admin")) {
-    const adminSession = request.cookies.get("admin-session")?.value;
+    const adminToken = request.cookies.get("admin-session")?.value;
+    const isValidAdmin = adminToken ? unsignSession(adminToken) !== null : false;
 
-    if (!adminSession && pathname !== "/admin") {
+    if (!isValidAdmin && pathname !== "/admin") {
       return NextResponse.redirect(new URL("/admin", request.url));
     }
 
-    if (adminSession && pathname === "/admin") {
+    if (isValidAdmin && pathname === "/admin") {
       return NextResponse.redirect(new URL("/admin/dashboard", request.url));
     }
   }
 
   // Vendedores routes
   if (pathname.startsWith("/vendedores")) {
-    const vendorSession = request.cookies.get("vendor-session")?.value;
+    const vendorToken = request.cookies.get("vendor-session")?.value;
+    const isValidVendor = vendorToken ? unsignSession(vendorToken) !== null : false;
 
-    if (!vendorSession && pathname !== "/vendedores") {
+    if (!isValidVendor && pathname !== "/vendedores") {
       return NextResponse.redirect(new URL("/vendedores", request.url));
     }
 
-    if (vendorSession && pathname === "/vendedores") {
+    if (isValidVendor && pathname === "/vendedores") {
       return NextResponse.redirect(new URL("/vendedores/pedidos", request.url));
     }
   }
 
   // Profile route - must be logged in
   if (pathname === "/perfil" && !user) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  // Checkout route - must be logged in
+  if (pathname === "/checkout" && !user) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
@@ -68,5 +76,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/vendedores/:path*", "/perfil", "/login", "/registro"],
+  matcher: ["/admin/:path*", "/vendedores/:path*", "/perfil", "/checkout", "/login", "/registro"],
 };

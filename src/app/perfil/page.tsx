@@ -127,8 +127,8 @@ export default function PerfilPage() {
               <p className="text-gray-500 text-sm mt-1">Gestiona tu cuenta</p>
             </div>
             <button
-              onClick={() => {
-                signOut();
+              onClick={async () => {
+                await signOut();
                 router.push("/");
               }}
               className="flex items-center gap-2 px-4 py-2 text-sm text-red-600 bg-red-50 rounded-xl hover:bg-red-100 transition-colors"

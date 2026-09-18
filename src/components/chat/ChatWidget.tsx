@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { MessageCircle, X, Send, ThumbsUp, ThumbsDown, Bot, User } from "lucide-react";
+import { MessageCircle, X, Send, ThumbsUp, ThumbsDown, Bot, User, Loader2 } from "lucide-react";
 
 interface Message {
   id?: string;
@@ -16,6 +16,12 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [contactName, setContactName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
+  const [contactSaved, setContactSaved] = useState(false);
+  const [contactLoading, setContactLoading] = useState(false);
   const [sessionId] = useState(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("chat_session_id") || (() => {
@@ -244,7 +250,7 @@ export default function ChatWidget() {
           </div>
 
           {/* Quick Actions */}
-          {messages.length > 0 && (
+          {messages.length > 0 && !showContactForm && (
             <div className="px-4 py-2 border-t border-gray-100 bg-white">
               <div className="flex gap-2 overflow-x-auto">
                 <a
@@ -267,7 +273,86 @@ export default function ChatWidget() {
                 >
                   Catálogo
                 </a>
+                {!contactSaved && (
+                  <button
+                    onClick={() => setShowContactForm(true)}
+                    className="flex-shrink-0 px-3 py-1.5 text-xs font-medium bg-purple-100 text-purple-700 rounded-full hover:bg-purple-200 transition-colors"
+                  >
+                    Dejar contacto
+                  </button>
+                )}
               </div>
+            </div>
+          )}
+
+          {/* Contact Form */}
+          {showContactForm && !contactSaved && (
+            <div className="px-4 py-3 border-t border-gray-100 bg-white">
+              <p className="text-xs font-medium text-gray-700 mb-2">Déjanos tu contacto y te llamamos</p>
+              <div className="space-y-2">
+                <input
+                  type="text"
+                  value={contactName}
+                  onChange={(e) => setContactName(e.target.value)}
+                  placeholder="Tu nombre"
+                  className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                />
+                <input
+                  type="tel"
+                  value={contactPhone}
+                  onChange={(e) => setContactPhone(e.target.value)}
+                  placeholder="Teléfono"
+                  className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                />
+                <input
+                  type="email"
+                  value={contactEmail}
+                  onChange={(e) => setContactEmail(e.target.value)}
+                  placeholder="Email (opcional)"
+                  className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand"
+                />
+                <div className="flex gap-2">
+                  <button
+                    onClick={async () => {
+                      if (!contactName.trim() || !contactPhone.trim()) return;
+                      setContactLoading(true);
+                      const lastMessages = messages.slice(-4).map(m => `${m.role}: ${m.text}`).join("\n");
+                      await fetch("/api/leads", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          name: contactName,
+                          email: contactEmail,
+                          phone: contactPhone,
+                          type: "chat",
+                          source: "chat",
+                          message: `Conversación del chat:\n${lastMessages}`,
+                        }),
+                      });
+                      setContactSaved(true);
+                      setShowContactForm(false);
+                      setContactLoading(false);
+                    }}
+                    disabled={contactLoading || !contactName.trim() || !contactPhone.trim()}
+                    className="flex items-center gap-1.5 px-4 py-2 text-xs font-medium bg-brand text-white rounded-lg hover:bg-brand/90 transition-colors disabled:opacity-50"
+                  >
+                    {contactLoading ? <Loader2 size={12} className="animate-spin" /> : null}
+                    Guardar
+                  </button>
+                  <button
+                    onClick={() => setShowContactForm(false)}
+                    className="px-4 py-2 text-xs font-medium text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {contactSaved && (
+            <div className="px-4 py-2 border-t border-gray-100 bg-green-50">
+              <p className="text-xs text-green-700 text-center">Contacto guardado. Te contactaremos pronto.</p>
             </div>
           )}
 

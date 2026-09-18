@@ -130,8 +130,8 @@ export default function Header() {
                             <ChevronRight size={14} className="text-gray-300 ml-auto" />
                           </Link>
                           <button
-                            onClick={() => {
-                              signOut();
+                            onClick={async () => {
+                              await signOut();
                               setShowUserMenu(false);
                             }}
                             className="flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 w-full text-left transition-colors"
@@ -248,8 +248,8 @@ export default function Header() {
                       <span className="text-[15px] font-medium">Mi Perfil</span>
                     </Link>
                     <button
-                      onClick={() => {
-                        signOut();
+                      onClick={async () => {
+                        await signOut();
                         setIsMobileMenuOpen(false);
                       }}
                       className="flex items-center gap-4 px-5 py-3.5 text-red-600 hover:bg-red-50 w-full text-left transition-all"

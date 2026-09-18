@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import crypto from 'crypto';
+import { rateLimitByIp } from '@/lib/auth';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -106,6 +107,10 @@ RESPUESTAS ESPECIALES:
 }
 
 export async function POST(request: NextRequest) {
+  if (!rateLimitByIp(request, 10, 60 * 1000)) {
+    return NextResponse.json({ error: 'Demasiadas solicitudes. Intente de nuevo en un minuto.' }, { status: 429 });
+  }
+
   try {
     const { message, sessionId } = await request.json();
 

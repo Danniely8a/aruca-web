@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@/lib/supabase/client";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { verifyVendorSession } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
-  const vendorEmail = request.cookies.get("vendor-email")?.value || "";
-  const session = request.cookies.get("vendor-session")?.value || "";
-
-  if (session !== "authenticated" || !vendorEmail) {
+  const vendor = verifyVendorSession(request);
+  if (!vendor) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
+
+  const vendorEmail = vendor.email;
 
   const { currentPassword, newPassword } = await request.json();
 
@@ -17,6 +19,16 @@ export async function POST(request: NextRequest) {
 
   if (newPassword.length < 8) {
     return NextResponse.json({ error: "La contraseña debe tener al menos 8 caracteres" }, { status: 400 });
+  }
+
+  const supabaseAuth = createClient();
+  const { error: signInError } = await supabaseAuth.auth.signInWithPassword({
+    email: vendorEmail,
+    password: currentPassword,
+  });
+
+  if (signInError) {
+    return NextResponse.json({ error: "La contraseña actual es incorrecta" }, { status: 400 });
   }
 
   const supabase = createAdminClient();

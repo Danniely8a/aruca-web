@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Mail, Lock, User, Eye, EyeOff, ArrowRight, Phone, Building2 } from "lucide-react";
+import { Mail, Lock, User, Eye, EyeOff, ArrowRight, Phone, Building2, Loader2 } from "lucide-react";
 import { useAuth } from "@/lib/context/AuthContext";
 
 export default function RegistroPage() {
   const router = useRouter();
-  const { signUp, user } = useAuth();
+  const { signUp, user, loading: authLoading } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,9 +20,18 @@ export default function RegistroPage() {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
-  if (user) {
-    router.push("/perfil");
-    return null;
+  useEffect(() => {
+    if (!authLoading && user) {
+      router.push("/perfil");
+    }
+  }, [user, authLoading, router]);
+
+  if (authLoading || user) {
+    return (
+      <div className="min-h-screen pt-32 pb-16 bg-gray-50 flex items-center justify-center">
+        <Loader2 size={32} className="text-brand animate-spin" />
+      </div>
+    );
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -42,12 +51,11 @@ export default function RegistroPage() {
 
     setLoading(true);
 
-    const { error: signUpError } = await signUp(email, password, name);
+    const { error: signUpError } = await signUp(email, password, name, phone, company);
     if (signUpError) {
       setError(signUpError);
     } else {
-      setSuccess("Cuenta creada con éxito. Revisa tu correo electrónico para confirmar tu registro.");
-      setTimeout(() => router.push("/login"), 3000);
+      setSuccess("Cuenta creada. Revisa tu correo para confirmar tu registro.");
     }
     setLoading(false);
   };
@@ -175,9 +183,9 @@ export default function RegistroPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-2 py-3 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all disabled:opacity-50"
             >
-              {loading ? "Creando cuenta..." : "Crear Cuenta"}
+              {loading ? <Loader2 size={18} className="animate-spin" /> : "Crear Cuenta"}
             </button>
           </form>
 

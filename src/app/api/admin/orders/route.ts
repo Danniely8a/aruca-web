@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { requireAdmin } from "@/lib/auth";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const supabase = createAdminClient();
 
   const { data: orders, error } = await supabase
@@ -42,6 +46,9 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const body = await request.json();
   const supabase = createAdminClient();
 
@@ -72,6 +79,9 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const body = await request.json();
   const { id, ...updates } = body;
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
@@ -87,6 +97,9 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function PATCH(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const body = await request.json();
   const { ids, exported_to_a2 } = body;
   if (!ids || !Array.isArray(ids)) return NextResponse.json({ error: "Missing ids array" }, { status: 400 });

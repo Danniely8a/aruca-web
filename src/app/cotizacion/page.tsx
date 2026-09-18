@@ -45,6 +45,22 @@ Detalles: ${formData.message}`;
       }),
     }).catch(() => {});
 
+    // Save lead
+    fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        type: "cotizacion",
+        source: "form",
+        product: formData.product,
+        message: `Cantidad: ${formData.quantity}\n${formData.message}`,
+      }),
+    }).catch(() => {});
+
     window.open(
       `https://wa.me/${company.whatsapp}?text=${encodedMessage}`,
       "_blank"

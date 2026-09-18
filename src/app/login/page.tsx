@@ -18,7 +18,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (!authLoading && user) {
-      router.push("/catalogo");
+      router.push("/perfil");
     }
   }, [user, authLoading, router]);
 
@@ -34,7 +34,7 @@ export default function LoginPage() {
     setLoading(false);
   };
 
-  if (authLoading) {
+  if (authLoading || user) {
     return (
       <div className="min-h-screen pt-32 pb-16 bg-gray-50 flex items-center justify-center">
         <Loader2 size={32} className="animate-spin text-brand" />
@@ -95,6 +95,12 @@ export default function LoginPage() {
               </div>
             </div>
 
+            <div className="text-right">
+              <Link href="/olvido-contrasena" className="text-sm text-brand hover:underline">
+                ¿Olvidaste tu contraseña?
+              </Link>
+            </div>
+
             {error && (
               <p className="text-red-500 text-sm text-center bg-red-50 py-2 rounded-lg">{error}</p>
             )}
@@ -102,13 +108,13 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-2 py-3 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all disabled:opacity-50"
             >
-              {loading ? "Ingresando..." : "Iniciar Sesión"}
+              {loading ? <Loader2 size={18} className="animate-spin" /> : "Iniciar Sesión"}
             </button>
           </form>
 
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center space-y-2">
             <p className="text-sm text-gray-500">
               ¿No tienes cuenta?{" "}
               <Link href="/registro" className="text-brand font-semibold hover:underline">

@@ -1,13 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { unsignSession } from "@/lib/auth";
 
 export async function GET(request: NextRequest) {
   const session = request.cookies.get("vendor-session")?.value;
-  if (session !== "authenticated") {
+  if (!session || unsignSession(session) === null) {
     return NextResponse.json({ error: "No autenticado" }, { status: 401 });
   }
 
-  const vendorName = request.cookies.get("vendor-name")?.value || "";
+  const sessionData = unsignSession(session);
+  if (!sessionData) {
+    return NextResponse.json({ error: "Sesión inválida" }, { status: 401 });
+  }
+
+  let vendorName = "";
+  try {
+    const parsed = JSON.parse(sessionData);
+    vendorName = parsed.name || "";
+  } catch {
+    return NextResponse.json({ error: "Sesión inválida" }, { status: 401 });
+  }
+
   if (!vendorName) {
     return NextResponse.json({ error: "Vendedor no identificado" }, { status: 400 });
   }

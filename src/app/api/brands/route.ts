@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { requireAdmin } from "@/lib/auth";
 
 export async function GET() {
   const supabase = createAdminClient();
@@ -9,6 +10,9 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const body = await request.json();
   const supabase = createAdminClient();
   const { error } = await supabase.from("brands").insert(body);
@@ -17,6 +21,9 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const body = await request.json();
   const supabase = createAdminClient();
   const { id, ...updates } = body;
@@ -26,6 +33,9 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });

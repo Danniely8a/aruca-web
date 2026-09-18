@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import crypto from "crypto";
 
 const BINANCE_API_KEY = process.env.BINANCE_API_KEY || "";
 const BINANCE_SECRET_KEY = process.env.BINANCE_SECRET_KEY || "";
 const BINANCE_MERCHANT_ID = process.env.BINANCE_MERCHANT_ID || "";
 
 function buildSignature(payload: string, secret: string): string {
-  const crypto = require("crypto");
   return crypto.createHmac("sha512", secret).update(payload).digest("hex");
 }
 

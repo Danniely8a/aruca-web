@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { requireAdmin } from "@/lib/auth";
 
 const WHATSAPP_TOKEN = process.env.WHATSAPP_CLOUD_API_TOKEN || "";
 const WHATSAPP_PHONE_ID = process.env.WHATSAPP_PHONE_ID || "";
 
 export async function GET(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const supabase = createAdminClient();
   const conversationId = request.nextUrl.searchParams.get("conversation_id");
 
@@ -27,6 +31,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   try {
     const body = await request.json();
     const supabase = createAdminClient();
@@ -82,6 +89,9 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   try {
     const supabase = createAdminClient();
     const { id, status } = await request.json();

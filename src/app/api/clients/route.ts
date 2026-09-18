@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { requireAdmin } from "@/lib/auth";
 
 const A2_API = process.env.A2_API_URL;
 
@@ -40,6 +41,9 @@ async function fetchFromSupabase(q: string, vendor: string) {
 }
 
 export async function GET(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const { searchParams } = new URL(request.url);
   const q = searchParams.get("q") || "";
   const vendor = searchParams.get("vendor") || "";
@@ -69,6 +73,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const body = await request.json();
   const supabase = createAdminClient();
 

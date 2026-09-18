@@ -168,6 +168,13 @@ Mensaje: ${message}`;
                       body: JSON.stringify({ type: "contacto", name, email, phone, message }),
                     }).catch(() => {});
 
+                    // Save lead
+                    fetch("/api/leads", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ name, email, phone, type: "contacto", source: "form", message }),
+                    }).catch(() => {});
+
                     window.open(
                       `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(whatsappMessage)}`,
                       "_blank"

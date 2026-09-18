@@ -3,17 +3,25 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowRight, ShoppingBag } from "lucide-react";
+import { ArrowRight, ShoppingBag, Loader2 } from "lucide-react";
 import { useAuth } from "@/lib/context/AuthContext";
 import { useCart } from "@/lib/context/CartContext";
 import { createClient } from "@/lib/supabase/client";
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const { items, clearCart } = useCart();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen pt-32 pb-16 bg-gray-50 flex items-center justify-center">
+        <Loader2 size={32} className="text-brand animate-spin" />
+      </div>
+    );
+  }
 
   if (!user) {
     router.push("/login");

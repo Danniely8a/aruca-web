@@ -2,10 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { company } from "@/lib/data/company";
-import { brands } from "@/lib/data/brands";
+import { createAdminClient } from "@/lib/supabase/admin";
 
-export default function Footer() {
-  const featuredBrands = brands.slice(0, 8);
+export default async function Footer() {
+  const supabase = createAdminClient();
+  const { data: brands } = await supabase
+    .from("brands")
+    .select("id, name, active")
+    .order("name");
+
+  const featuredBrands = (brands || []).filter(b => b.active !== false).slice(0, 8);
 
   return (
     <footer className="bg-gray-900 text-white pb-[80px] lg:pb-0">

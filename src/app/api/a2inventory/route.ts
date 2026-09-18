@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { requireAdmin } from "@/lib/auth";
 
 interface A2Product {
   code: string;
@@ -9,6 +10,9 @@ interface A2Product {
 }
 
 export async function GET(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const { searchParams } = new URL(request.url);
   const q = searchParams.get("q")?.trim() || "";
   const limit = Math.min(parseInt(searchParams.get("limit") || "50", 10), 200);

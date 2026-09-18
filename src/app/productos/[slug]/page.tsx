@@ -57,6 +57,29 @@ export default function ProductDetailPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: product.name,
+            description: product.description || product.shortDescription,
+            image: product.image
+              ? product.image.startsWith("http")
+                ? product.image
+                : `https://arucamaquinarias.com${product.image}`
+              : `https://arucamaquinarias.com/assets/logo.jpg`,
+            brand: {
+              "@type": "Brand",
+              name: product.brand,
+            },
+            model: product.model,
+            sku: product.id,
+            category: product.category,
+          }),
+        }}
+      />
       <section className="bg-brand pt-28 pb-12 sm:pt-32 sm:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div

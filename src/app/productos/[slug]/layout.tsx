@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
-import { products } from "@/lib/data/products";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 const BASE_URL = "https://arucamaquinarias.com";
 
 export async function generateStaticParams() {
-  return products.map((product) => ({ slug: product.slug }));
+  const supabase = createAdminClient();
+  const { data: products } = await supabase
+    .from("products")
+    .select("slug");
+
+  return (products || []).map((product) => ({ slug: product.slug }));
 }
 
 export async function generateMetadata({
@@ -13,7 +18,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const product = products.find((p) => p.slug === slug);
+  const supabase = createAdminClient();
+
+  const { data: product } = await supabase
+    .from("products")
+    .select("*")
+    .eq("slug", slug)
+    .single();
 
   if (!product) {
     return {
@@ -24,10 +35,12 @@ export async function generateMetadata({
 
   const title = `${product.name} (${product.brand} ${product.model})`;
   const description =
-    product.shortDescription ||
+    product.short_description ||
     `${product.name} de ${product.brand}. ${product.description?.slice(0, 150)}`;
   const image = product.image
-    ? `${BASE_URL}${product.image}`
+    ? product.image.startsWith("http")
+      ? product.image
+      : `${BASE_URL}${product.image}`
     : `${BASE_URL}/assets/logo.jpg`;
 
   return {

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { requireAdmin } from "@/lib/auth";
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "aruca.maquinarias@gmail.com";
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
@@ -32,6 +33,9 @@ async function sendEmail(to: string, subject: string, html: string) {
 }
 
 export async function POST(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   try {
     const body = await request.json();
     const { type, orderId, orderTotal, userName, userEmail, userPhone, comprobanteUrl } = body;

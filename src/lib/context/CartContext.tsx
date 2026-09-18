@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 export interface CartItem {
   id: string;
@@ -26,26 +27,106 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+function getCartKey(userId?: string | null): string {
+  return userId ? `aruca-cart-${userId}` : "aruca-cart";
+}
+
+async function saveCartToSupabase(userId: string, items: CartItem[]) {
+  try {
+    const supabase = createClient();
+    const { error } = await supabase
+      .from("user_carts")
+      .upsert(
+        { user_id: userId, items, updated_at: new Date().toISOString() },
+        { onConflict: "user_id" }
+      );
+    if (error) {
+      console.warn("Error guardando carrito en Supabase:", error.message);
+    }
+  } catch {
+    // Silently fail - localStorage is the fallback
+  }
+}
+
+async function loadCartFromSupabase(userId: string): Promise<CartItem[] | null> {
+  try {
+    const supabase = createClient();
+    const { data, error } = await supabase
+      .from("user_carts")
+      .select("items")
+      .eq("user_id", userId)
+      .single();
+
+    if (error || !data) return null;
+    return Array.isArray(data.items) ? data.items : null;
+  } catch {
+    return null;
+  }
+}
+
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem("aruca-cart");
-    if (saved) {
-      try {
-        setItems(JSON.parse(saved));
-      } catch {}
-    }
+    const supabase = createClient();
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      const uid = session?.user?.id || null;
+      setUserId(uid);
+
+      const key = getCartKey(uid);
+      const saved = localStorage.getItem(key);
+      if (saved) {
+        try {
+          setItems(JSON.parse(saved));
+        } catch {
+          setItems([]);
+        }
+      }
+
+      if (uid) {
+        loadCartFromSupabase(uid).then((serverCart) => {
+          if (serverCart && serverCart.length > 0) {
+            setItems((prev) => {
+              if (prev.length === 0) return serverCart;
+              const merged = [...prev];
+              for (const serverItem of serverCart) {
+                const existing = merged.find((i) => i.id === serverItem.id);
+                if (existing) {
+                  existing.quantity = Math.max(existing.quantity, serverItem.quantity);
+                } else {
+                  merged.push(serverItem);
+                }
+              }
+              return merged;
+            });
+          }
+        });
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      const uid = session?.user?.id || null;
+      setUserId(uid);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   useEffect(() => {
     if (mounted) {
-      localStorage.setItem("aruca-cart", JSON.stringify(items));
+      const key = getCartKey(userId);
+      localStorage.setItem(key, JSON.stringify(items));
+
+      if (userId && items.length > 0) {
+        saveCartToSupabase(userId, items);
+      }
     }
-  }, [items, mounted]);
+  }, [items, mounted, userId]);
 
   const addItem = useCallback((product: Omit<CartItem, "quantity">) => {
     setItems((prev) => {

@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { products } from "@/lib/data/products";
-import { brands } from "@/lib/data/brands";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 const BASE_URL = "https://arucamaquinarias.com";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
+  const supabase = createAdminClient();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: now, changeFrequency: "weekly", priority: 1 },
@@ -16,19 +16,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/contacto`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
   ];
 
-  const productRoutes: MetadataRoute.Sitemap = products.map((product) => ({
+  const { data: products } = await supabase
+    .from("products")
+    .select("slug")
+    .order("name");
+
+  const productRoutes: MetadataRoute.Sitemap = (products || []).map((product) => ({
     url: `${BASE_URL}/productos/${product.slug}`,
     lastModified: now,
-    changeFrequency: "weekly",
+    changeFrequency: "weekly" as const,
     priority: 0.6,
   }));
 
-  const brandRoutes: MetadataRoute.Sitemap = brands
+  const { data: brands } = await supabase
+    .from("brands")
+    .select("name, active")
+    .order("name");
+
+  const brandRoutes: MetadataRoute.Sitemap = (brands || [])
     .filter((brand) => brand.active !== false)
     .map((brand) => ({
       url: `${BASE_URL}/catalogo?marca=${encodeURIComponent(brand.name.toLowerCase())}`,
       lastModified: now,
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
       priority: 0.5,
     }));
 

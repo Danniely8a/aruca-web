@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { requireAdmin } from "@/lib/auth";
 
 const VENDORS = [
   { email: "jepherson@aruca.com", name: "JEPHERSON PEREZ", password: "Cambiar123!" },
@@ -7,7 +8,10 @@ const VENDORS = [
   { email: "franklin@aruca.com", name: "FRANKLIN SEGOVIA", password: "Cambiar123!" },
 ];
 
-export async function POST() {
+export async function POST(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const supabase = createAdminClient();
   const results: { email: string; status: string; message: string }[] = [];
 

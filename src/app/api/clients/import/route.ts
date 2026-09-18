@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import clientsData from "@/lib/data/a2clients.json";
+import { requireAdmin } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const body = await request.json().catch(() => ({}));
   if (body.secret !== "aruca-import-2026") {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

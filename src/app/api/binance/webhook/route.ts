@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import crypto from "crypto";
 
 function buildSignature(payload: string, secret: string): string {
-  const crypto = require("crypto");
   return crypto.createHmac("sha512", secret).update(payload).digest("hex");
 }
 
