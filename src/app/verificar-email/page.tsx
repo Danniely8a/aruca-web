@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { CheckCircle, Mail, ArrowRight, Loader2 } from "lucide-react";
 import { useAuth } from "@/lib/context/AuthContext";
 
-export default function VerificarEmailPage() {
+function VerificarEmailContent() {
   const searchParams = useSearchParams();
   const { resendVerification } = useAuth();
   const [email, setEmail] = useState("");
@@ -115,5 +115,17 @@ export default function VerificarEmailPage() {
         </motion.div>
       </div>
     </div>
+  );
+}
+
+export default function VerificarEmailPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen pt-32 pb-16 bg-gray-50 flex items-center justify-center">
+        <Loader2 size={32} className="animate-spin text-brand" />
+      </div>
+    }>
+      <VerificarEmailContent />
+    </Suspense>
   );
 }

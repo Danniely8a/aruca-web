@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
   LOGIN_ATTEMPTS.delete(ip);
 
   const sessionId = crypto.randomUUID();
-  const token = signSession(sessionId);
+  const token = await signSession(sessionId);
 
   const response = NextResponse.json({ success: true });
   response.cookies.set("admin-session", token, {
@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   const token = request.cookies.get("admin-session")?.value;
-  if (!token || !unsignSession(token)) {
+  if (!token || !(await unsignSession(token))) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
 

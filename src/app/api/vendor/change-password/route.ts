@@ -4,7 +4,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { verifyVendorSession } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
-  const vendor = verifyVendorSession(request);
+  const vendor = await verifyVendorSession(request);
   if (!vendor) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }

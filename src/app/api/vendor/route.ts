@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
   LOGIN_ATTEMPTS.delete(ip);
 
   const sessionData = JSON.stringify({ email: vendorEmail, name: vendorName });
-  const token = signSession(sessionData);
+  const token = await signSession(sessionData);
 
   response.cookies.set("vendor-session", token, {
     httpOnly: true,
@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   const token = request.cookies.get("vendor-session")?.value || "";
 
-  const sessionData = unsignSession(token);
+  const sessionData = await unsignSession(token);
   if (!sessionData) {
     return NextResponse.json({ authenticated: false }, { status: 401 });
   }
@@ -105,7 +105,7 @@ export async function GET(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   const token = request.cookies.get("vendor-session")?.value;
-  if (!token || !unsignSession(token)) {
+  if (!token || !(await unsignSession(token))) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
 

@@ -4,11 +4,11 @@ import { unsignSession } from "@/lib/auth";
 
 export async function GET(request: NextRequest) {
   const session = request.cookies.get("vendor-session")?.value;
-  if (!session || unsignSession(session) === null) {
+  if (!session || (await unsignSession(session)) === null) {
     return NextResponse.json({ error: "No autenticado" }, { status: 401 });
   }
 
-  const sessionData = unsignSession(session);
+  const sessionData = await unsignSession(session);
   if (!sessionData) {
     return NextResponse.json({ error: "Sesión inválida" }, { status: 401 });
   }

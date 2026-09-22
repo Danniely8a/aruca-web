@@ -32,7 +32,7 @@ export async function middleware(request: NextRequest) {
   // Admin routes
   if (pathname.startsWith("/admin")) {
     const adminToken = request.cookies.get("admin-session")?.value;
-    const isValidAdmin = adminToken ? unsignSession(adminToken) !== null : false;
+    const isValidAdmin = adminToken ? (await unsignSession(adminToken)) !== null : false;
 
     if (!isValidAdmin && pathname !== "/admin") {
       return NextResponse.redirect(new URL("/admin", request.url));
@@ -46,7 +46,7 @@ export async function middleware(request: NextRequest) {
   // Vendedores routes
   if (pathname.startsWith("/vendedores")) {
     const vendorToken = request.cookies.get("vendor-session")?.value;
-    const isValidVendor = vendorToken ? unsignSession(vendorToken) !== null : false;
+    const isValidVendor = vendorToken ? (await unsignSession(vendorToken)) !== null : false;
 
     if (!isValidVendor && pathname !== "/vendedores") {
       return NextResponse.redirect(new URL("/vendedores", request.url));

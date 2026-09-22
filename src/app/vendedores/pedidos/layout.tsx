@@ -10,7 +10,7 @@ export default async function PedidosLayout({
   const cookieStore = await cookies();
   const session = cookieStore.get("vendor-session")?.value;
 
-  if (!session || unsignSession(session) === null) {
+  if (!session || (await unsignSession(session)) === null) {
     redirect("/vendedores");
   }
 
