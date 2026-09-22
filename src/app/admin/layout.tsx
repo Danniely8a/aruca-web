@@ -29,7 +29,7 @@ const navItems = [
   { href: "/admin/leads", label: "Leads", icon: Users },
   { href: "/admin/whatsapp", label: "WhatsApp", icon: MessagesSquare },
   { href: "/admin/contenido", label: "Contenido", icon: FileText },
-  { href: "/admin/chats", label: "Chats", icon: MessageCircle },
+  { href: "/admin/chats", label: "Chats AI", icon: MessageCircle },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
