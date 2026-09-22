@@ -102,7 +102,7 @@ export default function CatalogoPage() {
             return a.name.localeCompare(b.name);
         }
       });
-  }, [debouncedSearch, selectedCategory, selectedSubcategory, selectedBrand, sortBy]);
+  }, [products, debouncedSearch, selectedCategory, selectedSubcategory, selectedBrand, sortBy]);
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
   const paginatedProducts = filteredProducts.slice(
