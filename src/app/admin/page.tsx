@@ -29,7 +29,8 @@ export default function AdminLoginPage() {
       if (res.ok) {
         router.push("/admin/dashboard");
       } else {
-        setError("Credenciales incorrectas");
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || "Credenciales incorrectas");
       }
     } catch {
       setError("Error de conexión");
