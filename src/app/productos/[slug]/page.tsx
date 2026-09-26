@@ -2,7 +2,6 @@
 
 import { use } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -14,6 +13,7 @@ import { company } from "@/lib/data/company";
 import { useCart } from "@/lib/context/CartContext";
 import { useProducts } from "@/lib/hooks/useProducts";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import ProductImage from "@/components/ProductImage";
 
 export default function ProductDetailPage({
   params,
@@ -126,21 +126,15 @@ export default function ProductDetailPage({
               animate={{ opacity: 1, x: 0 }}
             >
               <div className="aspect-square bg-gray-50 rounded-2xl flex items-center justify-center border border-gray-100 overflow-hidden relative">
-                {product.image ? (
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-contain p-8"
-                    priority
-                  />
-                ) : (
-                  <div className="text-center">
-                    <p className="text-brand font-bold text-3xl">{product.brand}</p>
-                    <p className="text-gray-400 text-lg mt-2">{product.model}</p>
-                  </div>
-                )}
+                <ProductImage
+                  src={product.image}
+                  alt={product.name}
+                  brand={product.brand}
+                  model={product.model}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="p-8"
+                />
                 <span className="absolute top-4 right-4 px-3 py-1.5 bg-brand text-white text-sm font-bold rounded-full z-10">
                   {product.model}
                 </span>
@@ -234,21 +228,15 @@ export default function ProductDetailPage({
                   className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all"
                 >
                   <div className="aspect-[4/3] bg-gray-50 flex items-center justify-center p-4 overflow-hidden relative">
-                    {p.image ? (
-                      <Image
-                        src={p.image}
-                        alt={p.name}
-                        width={256}
-                        height={192}
-                        className="object-contain"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="text-center">
-                        <p className="text-brand font-bold">{p.brand}</p>
-                        <p className="text-gray-400 text-xs mt-1">{p.model}</p>
-                      </div>
-                    )}
+                    <ProductImage
+                      src={p.image}
+                      alt={p.name}
+                      brand={p.brand}
+                      model={p.model}
+                      width={256}
+                      height={192}
+                      className="object-contain"
+                    />
                     <span className="absolute top-2 right-2 px-2 py-1 bg-brand text-white text-[10px] font-bold rounded-full">
                       {p.model}
                     </span>

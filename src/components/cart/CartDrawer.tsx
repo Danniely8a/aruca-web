@@ -5,8 +5,8 @@ import { company } from "@/lib/data/company";
 import { useAuth } from "@/lib/context/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Minus, Plus, Trash2, ShoppingBag, MessageCircle, CreditCard } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import ProductImage from "@/components/ProductImage";
 
 export default function CartDrawer() {
   const { items, removeItem, updateQuantity, clearCart, totalItems, isOpen, setIsOpen } = useCart();
@@ -78,17 +78,15 @@ export default function CartDrawer() {
                       className="flex gap-4 bg-gray-50 rounded-xl p-3"
                     >
                       <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center flex-shrink-0 border border-gray-100 overflow-hidden relative">
-                        {item.image ? (
-                          <Image
-                            src={item.image}
-                            alt={item.name}
-                            width={64}
-                            height={64}
-                            className="object-contain p-1"
-                          />
-                        ) : (
-                          <span className="text-brand font-bold text-xs text-center px-1">{item.brand}</span>
-                        )}
+                        <ProductImage
+                          src={item.image}
+                          alt={item.name}
+                          brand={item.brand}
+                          model={item.model}
+                          width={64}
+                          height={64}
+                          className="p-1"
+                        />
                       </div>
                       <div className="flex-1 min-w-0">
                         <Link

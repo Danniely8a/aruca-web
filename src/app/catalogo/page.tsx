@@ -2,7 +2,6 @@
 
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -20,6 +19,7 @@ import { useCart } from "@/lib/context/CartContext";
 import { useProducts } from "@/lib/hooks/useProducts";
 import { useBrands } from "@/lib/hooks/useBrands";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import ProductImage from "@/components/ProductImage";
 
 type ViewMode = "grid" | "list";
 type SortOption = "name" | "brand" | "category";
@@ -440,14 +440,7 @@ export default function CatalogoPage() {
                     className="flex-shrink-0 w-72 snap-start bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group"
                   >
                     <div className="aspect-square bg-gray-50 flex items-center justify-center overflow-hidden relative">
-                      {product.image ? (
-                        <Image src={product.image} alt={product.name} fill sizes="288px" className="object-contain p-4 group-hover:scale-105 transition-transform duration-300" loading="lazy" />
-                      ) : (
-                        <div className="text-center">
-                          <p className="text-brand font-bold text-lg">{product.brand}</p>
-                          <p className="text-gray-400 text-xs mt-1">{product.model}</p>
-                        </div>
-                      )}
+                      <ProductImage src={product.image} alt={product.name} brand={product.brand} model={product.model} fill sizes="288px" className="group-hover:scale-105 transition-transform duration-300" />
                       <span className="absolute top-3 right-3 px-2 py-1 bg-brand text-white text-[10px] font-bold rounded-full">{product.model}</span>
                     </div>
                     <div className="p-4">
@@ -505,21 +498,15 @@ export default function CatalogoPage() {
                   className="block bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group h-full"
                 >
                   <div className="aspect-square bg-gray-50 flex items-center justify-center overflow-hidden relative">
-                    {product.image ? (
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-contain p-3 sm:p-4 group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="text-center">
-                        <p className="text-brand font-bold text-sm sm:text-lg">{product.brand}</p>
-                        <p className="text-gray-400 text-[10px] sm:text-xs mt-1">{product.model}</p>
-                      </div>
-                    )}
+                    <ProductImage
+                      src={product.image}
+                      alt={product.name}
+                      brand={product.brand}
+                      model={product.model}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+                      className="p-3 sm:p-4 group-hover:scale-105 transition-transform duration-300"
+                    />
                     <span className="absolute top-2 right-2 sm:top-3 sm:right-3 px-1.5 sm:px-2 py-0.5 sm:py-1 bg-brand text-white text-[8px] sm:text-[10px] font-bold rounded-full">
                       {product.model}
                     </span>
@@ -577,21 +564,15 @@ export default function CatalogoPage() {
                   className="flex flex-col sm:flex-row bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all group"
                 >
                   <div className="sm:w-48 lg:w-64 bg-gray-50 flex items-center justify-center p-4 flex-shrink-0 relative">
-                    {product.image ? (
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        width={256}
-                        height={128}
-                        className="object-contain group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="text-center">
-                        <p className="text-brand font-bold text-lg">{product.brand}</p>
-                        <p className="text-gray-400 text-xs mt-1">{product.model}</p>
-                      </div>
-                    )}
+                    <ProductImage
+                      src={product.image}
+                      alt={product.name}
+                      brand={product.brand}
+                      model={product.model}
+                      width={256}
+                      height={128}
+                      className="group-hover:scale-105 transition-transform duration-300"
+                    />
                     <span className="absolute top-3 right-3 px-2 py-1 bg-brand text-white text-[10px] font-bold rounded-full">
                       {product.model}
                     </span>

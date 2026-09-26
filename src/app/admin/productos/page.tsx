@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Plus, Pencil, Trash2, Search, Star, Upload } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
+import ProductImage from "@/components/ProductImage";
 
 interface Product {
   id: string;
@@ -23,10 +24,6 @@ export default function AdminProductosPage() {
   const [search, setSearch] = useState("");
   const [deleteId, setDeleteId] = useState<string | null>(null);
 
-  useEffect(() => {
-    loadProducts();
-  }, []);
-
   async function loadProducts() {
     const supabase = createClient();
     const { data } = await supabase
@@ -37,6 +34,10 @@ export default function AdminProductosPage() {
     setProducts(data || []);
     setLoading(false);
   }
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
 
   async function handleDelete(id: string) {
     const supabase = createClient();
@@ -108,11 +109,7 @@ export default function AdminProductosPage() {
                   <tr key={product.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-4 py-3">
                       <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden border border-gray-100">
-                        {product.image ? (
-                          <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
-                        ) : (
-                          <span className="text-brand text-[8px] font-bold">{product.brand}</span>
-                        )}
+                        <ProductImage src={product.image} alt={product.name} brand={product.brand} model={product.model} width={40} height={40} className="w-full h-full" />
                       </div>
                     </td>
                     <td className="px-4 py-3">

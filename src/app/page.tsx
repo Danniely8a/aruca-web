@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -22,6 +21,7 @@ import { useBrands } from "@/lib/hooks/useBrands";
 import { useProducts } from "@/lib/hooks/useProducts";
 import HeroSlideshow from "@/components/HeroSlideshow";
 import BrandSpotlight from "@/components/BrandSpotlight";
+import ProductImage from "@/components/ProductImage";
 
 const serviceIcons: Record<string, React.ReactNode> = {
   "shopping-cart": <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" />,
@@ -345,20 +345,15 @@ export default function Home() {
                   className="block bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group"
                 >
                   <div className="aspect-square bg-gray-50 flex items-center justify-center overflow-hidden relative">
-                    {product.image ? (
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="text-center">
-                        <p className="text-brand font-bold text-base sm:text-lg">{product.brand}</p>
-                        <p className="text-gray-400 text-[10px] sm:text-xs mt-1">{product.model}</p>
-                      </div>
-                    )}
+                    <ProductImage
+                      src={product.image}
+                      alt={product.name}
+                      brand={product.brand}
+                      model={product.model}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="p-4 group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
                   <div className="p-4 sm:p-5">
                     <div className="flex items-center gap-2 mb-1.5 sm:mb-2">

@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useCart } from "@/lib/context/CartContext";
 import { useProducts } from "@/lib/hooks/useProducts";
+import ProductImage from "@/components/ProductImage";
 
 const brandConfig = {
   name: "CMT Orange Tools",
@@ -230,25 +231,15 @@ export default function CMTBrandPage() {
                   className="block bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all overflow-hidden h-full group"
                 >
                   <div className="aspect-square bg-white flex items-center justify-center overflow-hidden relative border-b border-gray-100 p-4">
-                    {product.image ? (
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        sizes="288px"
-                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="text-center">
-                        <p className="text-[#E87722] font-bold text-lg">
-                          {product.brand}
-                        </p>
-                        <p className="text-gray-400 text-xs mt-1">
-                          {product.model}
-                        </p>
-                      </div>
-                    )}
+                    <ProductImage
+                      src={product.image}
+                      alt={product.name}
+                      brand={product.brand}
+                      model={product.model}
+                      fill
+                      sizes="288px"
+                      className="p-4 group-hover:scale-105 transition-transform duration-300"
+                    />
                     <span className="absolute top-3 right-3 bg-[#E87722] text-white text-[10px] font-bold px-2 py-1 rounded-full">
                       {product.model}
                     </span>
