@@ -113,7 +113,7 @@ export default async function Footer() {
             <div className="grid grid-cols-2 gap-2">
               {featuredBrands.map((brand) => (
                 <div key={brand.id} className="text-gray-400 text-xs py-1">
-                  {brand.name}
+                  {brand.name.toUpperCase()}
                 </div>
               ))}
             </div>

@@ -97,7 +97,7 @@ export default function ProductImage({
   if (stage === "text" || (!src && !brandLogo)) {
     return (
       <div className="text-center">
-        <p className="text-brand font-bold text-lg">{brand}</p>
+        <p className="text-brand font-bold text-lg">{brand?.toUpperCase()}</p>
         <p className="text-gray-400 text-xs mt-1">{model}</p>
       </div>
     );

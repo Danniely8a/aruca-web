@@ -279,12 +279,12 @@ export default function Home() {
                     />
                   ) : (
                     <span className="text-brand font-bold text-[10px] sm:text-xs text-center leading-tight px-1">
-                      {brand.name.split(" ")[0]}
+                      {brand.name.split(" ")[0].toUpperCase()}
                     </span>
                   )}
                 </div>
                 <p className="text-[10px] sm:text-xs font-medium text-gray-700 leading-tight">
-                  {brand.name}
+                  {brand.name.toUpperCase()}
                 </p>
                 <p className="text-[9px] sm:text-[10px] text-gray-400 mt-0.5">
                   {brand.country}

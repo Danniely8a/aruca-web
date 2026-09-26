@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -42,14 +43,7 @@ export default function CatalogoPage() {
   const [selectedSubcategory, setSelectedSubcategory] = useState("Todos");
   const [selectedBrand, setSelectedBrand] = useState("Todos");
   const { addItem } = useCart();
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const brand = params.get("brand");
-    if (brand) {
-      setSelectedBrand(brand);
-    }
-  }, []);
+  const router = useRouter();
 
   const categories = useMemo(() => {
     const unique = Array.from(new Set(products.map((p) => p.category).filter(Boolean)));
@@ -105,9 +99,10 @@ export default function CatalogoPage() {
   }, [products, debouncedSearch, selectedCategory, selectedSubcategory, selectedBrand, sortBy]);
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  const effectivePage = totalPages > 0 ? Math.min(currentPage, totalPages) : currentPage;
   const paginatedProducts = filteredProducts.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    (effectivePage - 1) * ITEMS_PER_PAGE,
+    effectivePage * ITEMS_PER_PAGE
   );
 
   const activeFilters =
@@ -123,9 +118,90 @@ export default function CatalogoPage() {
     setCurrentPage(1);
   };
 
+  const [hydrated, setHydrated] = useState(false);
+  const productsRef = useRef<HTMLElement>(null);
+  const restoredRef = useRef(false);
+
+  // Restaurar filtros y página desde la URL (al volver de un producto o con enlace)
+  // La URL es un sistema externo a React; Next.js no permite useSearchParams sin <Suspense>
+  // en esta ruta estática, por lo que se lee window.location en el montaje.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const brand = params.get("brand");
+    const category = params.get("category");
+    const subcategory = params.get("subcategory");
+    const page = parseInt(params.get("page") || "", 10);
+    const sort = params.get("sort");
+    const q = params.get("q");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (brand) setSelectedBrand(brand);
+    if (category) setSelectedCategory(category);
+    if (subcategory) setSelectedSubcategory(subcategory);
+    if (Number.isFinite(page) && page > 1) setCurrentPage(page);
+    if (sort === "brand" || sort === "category") setSortBy(sort);
+    if (q) {
+      setSearch(q);
+      setDebouncedSearch(q);
+    }
+    setHydrated(true);
+  }, []);
+
+  // Guardar la posición actual en sessionStorage al abrir un producto
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement | null)?.closest?.('a[href^="/productos/"]');
+      if (anchor) {
+        sessionStorage.setItem(
+          "catalog-scroll",
+          `${window.location.pathname}${window.location.search}|${window.scrollY}`
+        );
+      }
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
+  // Sincronizar filtros con la URL para que "Volver" conserve el estado
+  useEffect(() => {
+    if (!hydrated) return;
+    const params = new URLSearchParams();
+    if (selectedBrand !== "Todos") params.set("brand", selectedBrand);
+    if (selectedCategory !== "Todos") params.set("category", selectedCategory);
+    if (selectedSubcategory !== "Todos") params.set("subcategory", selectedSubcategory);
+    if (effectivePage > 1) params.set("page", String(effectivePage));
+    if (sortBy !== "name") params.set("sort", sortBy);
+    if (debouncedSearch) params.set("q", debouncedSearch);
+    const qs = params.toString();
+    router.replace(qs ? `${window.location.pathname}?${qs}` : window.location.pathname, {
+      scroll: false,
+    });
+  }, [hydrated, selectedBrand, selectedCategory, selectedSubcategory, effectivePage, sortBy, debouncedSearch, router]);
+
+  // Al volver de un producto: restaurar la posición de scroll guardada
+  useEffect(() => {
+    if (productsLoading || !hydrated) return;
+    if (restoredRef.current) return;
+    restoredRef.current = true;
+    const key = `${window.location.pathname}${window.location.search}`;
+    const saved = sessionStorage.getItem("catalog-scroll");
+    if (saved && saved.startsWith(`${key}|`)) {
+      sessionStorage.removeItem("catalog-scroll");
+      const y = parseInt(saved.slice(key.length + 1), 10);
+      if (y > 0) window.scrollTo(0, y);
+    }
+  }, [productsLoading, hydrated]);
+
   const handleFilterChange = (setter: (v: string) => void) => (value: string) => {
     setter(value);
     setCurrentPage(1);
+  };
+
+  // Cambiar de página y volver al inicio de la lista de productos
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    requestAnimationFrame(() => {
+      productsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   };
 
   const handleCategoryChange = (value: string) => {
@@ -150,11 +226,11 @@ export default function CatalogoPage() {
       for (let i = 1; i <= totalPages; i++) pages.push(i);
     } else {
       pages.push(1);
-      if (currentPage > 3) pages.push("...");
-      const start = Math.max(2, currentPage - 1);
-      const end = Math.min(totalPages - 1, currentPage + 1);
+      if (effectivePage > 3) pages.push("...");
+      const start = Math.max(2, effectivePage - 1);
+      const end = Math.min(totalPages - 1, effectivePage + 1);
       for (let i = start; i <= end; i++) pages.push(i);
-      if (currentPage < totalPages - 2) pages.push("...");
+      if (effectivePage < totalPages - 2) pages.push("...");
       pages.push(totalPages);
     }
     return pages;
@@ -236,7 +312,7 @@ export default function CatalogoPage() {
               >
                 <option value="Todos">Todas las Marcas</option>
                 {brands.map((brand) => (
-                  <option key={brand.id} value={brand.name}>{brand.name}</option>
+                  <option key={brand.id} value={brand.name}>{brand.name.toUpperCase()}</option>
                 ))}
               </select>
             </div>
@@ -305,7 +381,7 @@ export default function CatalogoPage() {
                   onClick={() => handleFilterChange(setSelectedBrand)("Todos")}
                   className="inline-flex items-center gap-1 px-3 py-1 bg-brand/10 text-brand text-sm font-medium rounded-full hover:bg-brand/20 transition-colors"
                 >
-                  {selectedBrand}<X size={14} />
+                  {selectedBrand.toUpperCase()}<X size={14} />
                 </button>
               )}
               <button onClick={clearFilters} className="text-sm text-gray-500 hover:text-red-500 underline">
@@ -360,7 +436,7 @@ export default function CatalogoPage() {
                   >
                     <option value="Todos">Todas las Marcas</option>
                     {brands.map((brand) => (
-                      <option key={brand.id} value={brand.name}>{brand.name}</option>
+                      <option key={brand.id} value={brand.name}>{brand.name.toUpperCase()}</option>
                     ))}
                   </select>
                 </div>
@@ -419,7 +495,7 @@ export default function CatalogoPage() {
                         Distribuidor Oficial
                       </span>
                     )}
-                    <h2 className="text-2xl sm:text-3xl font-bold text-white">{selectedBrand}</h2>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-white">{selectedBrand.toUpperCase()}</h2>
                     <p className="text-sm text-white/60">{brandProducts.length} producto{brandProducts.length !== 1 ? "s" : ""} destacado{brandProducts.length !== 1 ? "s" : ""}</p>
                   </div>
                 </div>
@@ -456,7 +532,7 @@ export default function CatalogoPage() {
       })()}
 
       {/* Products Section */}
-      <section className="py-8 sm:py-16 lg:py-20 bg-gray-50 min-h-[60vh]">
+      <section ref={productsRef} className="py-8 sm:py-16 lg:py-20 bg-gray-50 min-h-[60vh] scroll-mt-32">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="mb-4 sm:mb-6">
             <Breadcrumbs items={[{ label: "Catálogo" }]} />
@@ -467,7 +543,7 @@ export default function CatalogoPage() {
               producto{filteredProducts.length !== 1 ? "s" : ""} encontrado{filteredProducts.length !== 1 ? "s" : ""}
               {totalPages > 1 && (
                 <span className="text-gray-400">
-                  {" "}&middot; Página {currentPage} de {totalPages}
+                  {" "}&middot; Página {effectivePage} de {totalPages}
                 </span>
               )}
             </p>
@@ -660,8 +736,8 @@ export default function CatalogoPage() {
           {totalPages > 1 && (
             <div className="mt-10 flex items-center justify-center gap-2">
               <button
-                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                disabled={currentPage === 1}
+                onClick={() => goToPage(Math.max(1, effectivePage - 1))}
+                disabled={effectivePage === 1}
                 className="p-2 rounded-lg border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 <ChevronLeft size={18} />
@@ -672,9 +748,9 @@ export default function CatalogoPage() {
                 ) : (
                   <button
                     key={page}
-                    onClick={() => setCurrentPage(page as number)}
+                    onClick={() => goToPage(page as number)}
                     className={`min-w-[36px] h-9 rounded-lg text-sm font-medium transition-colors ${
-                      currentPage === page
+                      effectivePage === page
                         ? "bg-brand text-white shadow-sm"
                         : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50"
                     }`}
@@ -684,8 +760,8 @@ export default function CatalogoPage() {
                 )
               )}
               <button
-                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                disabled={currentPage === totalPages}
+                onClick={() => goToPage(Math.min(totalPages, effectivePage + 1))}
+                disabled={effectivePage === totalPages}
                 className="p-2 rounded-lg border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 <ChevronRight size={18} />

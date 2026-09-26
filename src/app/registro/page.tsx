@@ -55,7 +55,7 @@ export default function RegistroPage() {
     if (signUpError) {
       setError(signUpError);
     } else {
-      setSuccess("Cuenta creada. Revisa tu correo para confirmar tu registro.");
+      setSuccess("Cuenta creada correctamente. Ya puedes iniciar sesión.");
     }
     setLoading(false);
   };

@@ -834,7 +834,9 @@ export default function BrandSpotlight() {
 
   return (
     <>
-      {brands.map((brand) => {
+      {[...brands]
+        .sort((a, b) => a.displayName.localeCompare(b.displayName, "es"))
+        .map((brand) => {
         const resolvedItems: Item[] =
           brand.items && brand.items.length > 0
             ? brand.items

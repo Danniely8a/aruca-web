@@ -116,28 +116,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const signUp = async (email: string, password: string, name: string, phone?: string, company?: string) => {
-    const supabase = createClient();
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { name },
-        emailRedirectTo: `${window.location.origin}/verificar-email`,
-      },
-    });
-    if (error) return { error: translateError(error.message) };
-
-    if (data.user) {
-      const updateData: Record<string, string> = { name };
-      if (phone) updateData.phone = phone;
-      if (company) updateData.company = company;
-
-      await supabase.from("users").upsert({
-        id: data.user.id,
-        email: data.user.email,
-        ...updateData,
-      }, { onConflict: "id" });
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, name, phone, company }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.error) {
+        return { error: translateError(data.error || "No se pudo crear la cuenta") };
+      }
+    } catch {
+      return { error: "No se pudo crear la cuenta. Intenta de nuevo." };
     }
+
+    await signIn(email, password);
     return {};
   };
 

@@ -96,7 +96,7 @@ export default function CartDrawer() {
                         >
                           {item.name}
                         </Link>
-                        <p className="text-xs text-gray-400 mt-0.5">{item.brand} &middot; {item.model}</p>
+                        <p className="text-xs text-gray-400 mt-0.5">{item.brand.toUpperCase()} &middot; {item.model}</p>
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex items-center gap-1">
                             <button

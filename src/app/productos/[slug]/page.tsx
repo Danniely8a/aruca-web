@@ -2,8 +2,10 @@
 
 import { use } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
+  ArrowLeft,
   ArrowRight,
   MessageCircle,
   Tag,
@@ -21,6 +23,7 @@ export default function ProductDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
+  const router = useRouter();
   const { products: allProducts } = useProducts();
   const product = allProducts.find((p) => p.slug === slug);
   const { addItem } = useCart();
@@ -87,6 +90,16 @@ export default function ProductDetailPage({
             animate={{ opacity: 1, y: 0 }}
           >
             <div className="mb-4">
+              <button
+                type="button"
+                onClick={() =>
+                  window.history.length > 1 ? router.back() : router.push("/catalogo")
+                }
+                className="inline-flex items-center gap-1.5 text-white/70 hover:text-white text-sm font-medium mb-3 transition-colors cursor-pointer"
+              >
+                <ArrowLeft size={16} />
+                Volver
+              </button>
               <Breadcrumbs
                 dark
                 items={[
@@ -97,7 +110,7 @@ export default function ProductDetailPage({
             </div>
             <div className="flex items-center gap-2 mb-2">
               <span className="px-2.5 py-0.5 bg-white/10 text-white/90 text-xs font-semibold rounded-full">
-                {product.brand}
+                {product.brand.toUpperCase()}
               </span>
               <span className="px-2.5 py-0.5 bg-white/10 text-white/90 text-xs font-semibold rounded-full">
                 {product.category}
