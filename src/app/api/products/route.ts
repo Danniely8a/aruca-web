@@ -19,7 +19,7 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   const body = await request.json();
@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   const body = await request.json();
@@ -63,7 +63,7 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   const { searchParams } = new URL(request.url);

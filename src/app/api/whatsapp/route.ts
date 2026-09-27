@@ -6,7 +6,7 @@ const WHATSAPP_TOKEN = process.env.WHATSAPP_CLOUD_API_TOKEN || "";
 const WHATSAPP_PHONE_ID = process.env.WHATSAPP_PHONE_ID || "";
 
 export async function GET(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   const supabase = createAdminClient();
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   try {
@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   try {

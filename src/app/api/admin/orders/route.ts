@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { requireAdmin } from "@/lib/auth";
+import { requireAdmin, requireAdminOrVendor } from "@/lib/auth";
 
 export async function GET(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   const supabase = createAdminClient();
@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdminOrVendor(request);
   if (authError) return authError;
 
   const body = await request.json();
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   const body = await request.json();
@@ -97,7 +97,7 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function PATCH(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   const body = await request.json();

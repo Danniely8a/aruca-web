@@ -17,7 +17,7 @@ const ALLOWED_TYPES: Record<string, string> = {
 const MAX_SIZE = 10 * 1024 * 1024; // 10MB
 
 export async function POST(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   try {

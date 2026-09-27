@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  const adminCheck = requireAdmin(request);
+  const adminCheck = await requireAdmin(request);
   if (adminCheck) return adminCheck;
 
   const supabase = createClient();
@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-  const adminCheck = requireAdmin(request);
+  const adminCheck = await requireAdmin(request);
   if (adminCheck) return adminCheck;
 
   const { id, status, notes } = await request.json();
@@ -83,7 +83,7 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-  const adminCheck = requireAdmin(request);
+  const adminCheck = await requireAdmin(request);
   if (adminCheck) return adminCheck;
 
   const { id } = await request.json();

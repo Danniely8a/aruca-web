@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { requireAdmin } from "@/lib/auth";
+import { requireAdminOrVendor } from "@/lib/auth";
 
 interface A2Product {
   code: string;
@@ -10,7 +10,7 @@ interface A2Product {
 }
 
 export async function GET(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdminOrVendor(request);
   if (authError) return authError;
 
   const { searchParams } = new URL(request.url);

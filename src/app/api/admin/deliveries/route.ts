@@ -3,7 +3,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { requireAdmin } from "@/lib/auth";
 
 export async function PUT(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   const body = await request.json();

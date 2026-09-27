@@ -30,7 +30,8 @@ export default function VendedorLoginPage() {
       if (res.ok) {
         router.push("/vendedores/dashboard");
       } else {
-        setError("Credenciales incorrectas");
+        const data = await res.json().catch(() => null);
+        setError(data?.error || "Credenciales incorrectas");
       }
     } catch {
       setError("Error de conexion");

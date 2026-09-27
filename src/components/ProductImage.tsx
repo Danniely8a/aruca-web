@@ -46,7 +46,6 @@ const BRAND_LOGOS: Record<string, string> = {
   "prexiso": "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/brand-logos/1785242549745-bpqvcu.png",
   kdt: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/brand-logos/1785243576535-4x7bfa.webp",
   ralm: "/assets/brands/ralm_logo.jpg",
-  aro: "/assets/brands/aro_logo.webp",
   eurotools: "/assets/brands/eurotools.jpg",
   "wd-40": "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/brand-logos/wd-40-logo.png",
   shamal: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/brand-logos/1785155246070-x9blre.jpg",

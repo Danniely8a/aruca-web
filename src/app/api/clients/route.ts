@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { requireAdmin } from "@/lib/auth";
+import { requireAdminOrVendor } from "@/lib/auth";
 
 const A2_API = process.env.A2_API_URL;
 
@@ -41,7 +41,7 @@ async function fetchFromSupabase(q: string, vendor: string) {
 }
 
 export async function GET(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdminOrVendor(request);
   if (authError) return authError;
 
   const { searchParams } = new URL(request.url);
@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdminOrVendor(request);
   if (authError) return authError;
 
   const body = await request.json();

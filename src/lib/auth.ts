@@ -47,21 +47,41 @@ export async function signSession(value: string): Promise<string> {
 
 export async function unsignSession(token: string): Promise<string | null> {
   try {
-    const parts = token.split(".");
-    if (parts.length !== 3) return null;
+    // El valor puede contener puntos (email en el JSON) y percent-encoding
+    // al serializarse en Set-Cookie: se separa por los dos ultimos puntos.
+    const idx2 = token.lastIndexOf(".");
+    if (idx2 <= 0) return null;
+    const idx1 = token.lastIndexOf(".", idx2 - 1);
+    if (idx1 <= 0) return null;
 
-    const [value, timestamp, signature] = parts;
-    const payload = `${value}.${timestamp}`;
-    const expected = await hmacSha256(payload);
+    const rawValue = token.slice(0, idx1);
+    const timestamp = token.slice(idx1 + 1, idx2);
+    const signature = token.slice(idx2 + 1);
+    if (!/^\d+$/.test(timestamp) || !/^[0-9a-f]+$/i.test(signature)) return null;
 
-    if (!timingSafeEqual(signature, expected)) {
-      return null;
+    const candidates = [rawValue];
+    try {
+      const decoded = decodeURIComponent(rawValue);
+      if (decoded !== rawValue) candidates.push(decoded);
+    } catch {
+      // valor crudo, sin decoding
     }
+
+    let matched: string | null = null;
+    for (const value of candidates) {
+      const payload = `${value}.${timestamp}`;
+      const expected = await hmacSha256(payload);
+      if (timingSafeEqual(signature, expected)) {
+        matched = value;
+        break;
+      }
+    }
+    if (matched === null) return null;
 
     const age = Date.now() - parseInt(timestamp);
     if (age > 7 * 24 * 60 * 60 * 1000) return null;
 
-    return value;
+    return matched;
   } catch {
     return null;
   }
@@ -108,6 +128,15 @@ export async function requireVendor(request: NextRequest): Promise<NextResponse 
     );
   }
   return undefined;
+}
+
+export async function requireAdminOrVendor(request: NextRequest): Promise<NextResponse | undefined> {
+  if (await verifyAdminSession(request)) return undefined;
+  if (await verifyVendorSession(request)) return undefined;
+  return NextResponse.json(
+    { error: "No autorizado. Inicie sesión como administrador o vendedor." },
+    { status: 401 }
+  );
 }
 
 export function rateLimit(key: string, limit: number, windowMs: number): boolean {

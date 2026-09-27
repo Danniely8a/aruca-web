@@ -9,7 +9,7 @@ const VENDORS = [
 ];
 
 export async function POST(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   const supabase = createAdminClient();

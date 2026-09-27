@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/client";
+import { createServerClient } from "@supabase/ssr";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { verifyVendorSession } from "@/lib/auth";
 
@@ -21,7 +21,20 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "La contraseña debe tener al menos 8 caracteres" }, { status: 400 });
   }
 
-  const supabaseAuth = createClient();
+  const supabaseAuth = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll();
+        },
+        setAll() {
+          // Solo se verifica la contraseña; no se persiste sesión.
+        },
+      },
+    }
+  );
   const { error: signInError } = await supabaseAuth.auth.signInWithPassword({
     email: vendorEmail,
     password: currentPassword,

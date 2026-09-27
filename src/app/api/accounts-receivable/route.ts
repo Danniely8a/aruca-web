@@ -1,15 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { verifyVendorSession } from "@/lib/auth";
 
 export async function GET(request: NextRequest) {
-  const session = request.cookies.get("vendor-session")?.value;
-  if (session !== "authenticated") {
+  const vendor = await verifyVendorSession(request);
+  if (!vendor) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
 
   const { searchParams } = new URL(request.url);
-  const q = searchParams.get("q") || "";
+  const q = searchParams.get("q") || searchParams.get("search") || "";
   const clientCode = searchParams.get("client") || "";
+  const reportDate = new Date().toISOString();
 
   const supabase = createAdminClient();
 
@@ -35,7 +37,7 @@ export async function GET(request: NextRequest) {
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
     const uniqueClients = deduplicateClients(data || []);
-    return NextResponse.json({ clients: uniqueClients });
+    return NextResponse.json({ clients: uniqueClients, report_date: reportDate });
   }
 
   const { data, error } = await supabase
@@ -47,7 +49,7 @@ export async function GET(request: NextRequest) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   const uniqueClients = deduplicateClients(data || []);
-  return NextResponse.json({ clients: uniqueClients });
+  return NextResponse.json({ clients: uniqueClients, report_date: reportDate });
 }
 
 function deduplicateClients(clients: Record<string, unknown>[]) {

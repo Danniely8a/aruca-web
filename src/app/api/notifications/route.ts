@@ -33,7 +33,7 @@ async function sendEmail(to: string, subject: string, html: string) {
 }
 
 export async function POST(request: NextRequest) {
-  const authError = requireAdmin(request);
+  const authError = await requireAdmin(request);
   if (authError) return authError;
 
   try {
