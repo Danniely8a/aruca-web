@@ -323,14 +323,14 @@ const brands: Brand[] = [
         model: "60400",
         image: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/pony-jorgensen/60400.png",
         description: "Sujeción de piezas.",
-        href: "/productos/pj-60400-burros-con-prensas",
+        href: "/productos/pony-jorgensen-60400",
       },
       {
         name: "Multiherramienta",
         model: "70800",
         image: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/pony-jorgensen/70800.png",
         description: "4AMP cortes y lijados.",
-        href: "/productos/pj-70800-multiherramienta",
+        href: "/productos/pony-jorgensen-70800",
       },
       {
         name: "Prensa Rápida",
@@ -344,14 +344,14 @@ const brands: Brand[] = [
         model: "70931",
         image: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/pony-jorgensen/70931.jpg",
         description: "51 accesorios.",
-        href: "/productos/pj-70931-kit-tipo-dremel-de-51pcs",
+        href: "/productos/pony-jorgensen-70931",
       },
       {
         name: "Prensa de Banco",
         model: "29050",
         image: "https://ocuafmydwitrhxhtuole.supabase.co/storage/v1/object/public/product-images/pony-jorgensen/PRENSA_DE_BANCO_INDUSTRIAL.jpg",
         description: "Industrial 5\".",
-        href: "/productos/pj-29050-prensa-de-banco-industrial",
+        href: "/productos/pony-jorgensen-29050",
       },
       {
         name: "Prensa con Cincha",

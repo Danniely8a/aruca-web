@@ -50,13 +50,42 @@ export default function CatalogoPage() {
     return unique.sort((a, b) => a.localeCompare(b, "es"));
   }, [products]);
 
+  // Euroair: compresores, cabezales y capacitores primero en el listado
+  const euroairProductPriority = (p: { category: string; subcategory?: string; name: string }) => {
+    const sub = (p.subcategory || "").toLowerCase();
+    const name = p.name.toLowerCase();
+    if (sub.startsWith("compresores")) return 0;
+    if (sub.includes("cabezal")) return 1;
+    if (sub === "capacitores") return 2;
+    if (name.includes("cabezal")) return 1;
+    if (name.includes("capacitor")) return 2;
+    if (p.category === "Compresores") return 0;
+    return 3;
+  };
+
+  const euroairListPriority = (sub: string) => {
+    const s = sub.toLowerCase();
+    if (s.startsWith("compresores")) return 0;
+    if (s.includes("cabezal")) return 1;
+    if (s === "capacitores") return 2;
+    return 3;
+  };
+
   const subcategories = useMemo(() => {
     const base = selectedCategory === "Todos" ? products : products.filter((p) => p.category === selectedCategory);
     const unique = Array.from(
       new Set(base.map((p) => p.subcategory).filter((s): s is string => Boolean(s)))
     );
-    return unique.sort((a, b) => a.localeCompare(b, "es"));
-  }, [products, selectedCategory]);
+    const isEuroair = selectedBrand.toLowerCase() === "euroair";
+    return unique.sort((a, b) => {
+      if (isEuroair) {
+        const pa = euroairListPriority(a);
+        const pb = euroairListPriority(b);
+        if (pa !== pb) return pa - pb;
+      }
+      return a.localeCompare(b, "es");
+    });
+  }, [products, selectedCategory, selectedBrand]);
 
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [sortBy, setSortBy] = useState<SortOption>("name");
@@ -87,6 +116,11 @@ export default function CatalogoPage() {
         return matchesSearch && matchesCategory && matchesSubcategory && matchesBrand;
       })
       .sort((a, b) => {
+        if (selectedBrand.toLowerCase() === "euroair") {
+          const pa = euroairProductPriority(a);
+          const pb = euroairProductPriority(b);
+          if (pa !== pb) return pa - pb;
+        }
         switch (sortBy) {
           case "brand":
             return a.brand.localeCompare(b.brand);

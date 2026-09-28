@@ -1,21 +1,194 @@
 "use client";
 
-import { use } from "react";
+import { use, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
+  Loader2,
   MessageCircle,
+  RefreshCw,
+  Search,
+  SearchX,
   Tag,
   ShoppingCart,
 } from "lucide-react";
 import { company } from "@/lib/data/company";
 import { useCart } from "@/lib/context/CartContext";
-import { useProducts } from "@/lib/hooks/useProducts";
+import { useProducts, type Product } from "@/lib/hooks/useProducts";
+import { LEGACY_SLUGS } from "@/lib/legacySlugs";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import ProductImage from "@/components/ProductImage";
+
+function decodeSlug(raw: string): string {
+  try {
+    return decodeURIComponent(raw);
+  } catch {
+    return raw;
+  }
+}
+
+function ProductSkeleton() {
+  return (
+    <section className="pt-32 pb-20">
+      <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center gap-4 py-24">
+        <Loader2 size={40} className="animate-spin text-brand" />
+        <p className="text-gray-500 font-medium">Cargando producto…</p>
+      </div>
+    </section>
+  );
+}
+
+function CatalogError({ onRetry }: { onRetry: () => void }) {
+  return (
+    <section className="pt-32 pb-20">
+      <div className="max-w-xl mx-auto px-4 text-center py-24">
+        <h1 className="text-2xl font-bold text-gray-900 mb-3">
+          No pudimos cargar el catálogo
+        </h1>
+        <p className="text-gray-500 mb-6">
+          Hubo un problema de conexión. Vuelve a intentarlo.
+        </p>
+        <div className="flex items-center justify-center gap-3">
+          <button
+            onClick={onRetry}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-brand text-white font-semibold rounded-xl hover:bg-brand/90 transition-all cursor-pointer"
+          >
+            <RefreshCw size={16} />
+            Reintentar
+          </button>
+          <Link
+            href="/catalogo"
+            className="px-6 py-3 text-brand font-semibold hover:text-brand-dark transition-colors"
+          >
+            Volver al catálogo
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProductNotFound({
+  rawSlug,
+  products,
+}: {
+  rawSlug: string;
+  products: Product[];
+}) {
+  const router = useRouter();
+  const [query, setQuery] = useState(() =>
+    rawSlug.replace(/[-_]+/g, " ").trim()
+  );
+
+  const suggestions = useMemo(() => {
+    const tokens = [
+      ...new Set(
+        rawSlug
+          .toLowerCase()
+          .split(/[^a-z0-9]+/)
+          .filter(
+            (t) =>
+              t.length >= 3 &&
+              t !== "gav" &&
+              !/^\d+$/.test(t) &&
+              !/^\d+mm$/.test(t)
+          )
+      ),
+    ];
+    if (!tokens.length || !products.length) return [];
+    const scored = products
+      .map((p) => {
+        const hay = `${p.name} ${p.slug} ${p.brand}`.toLowerCase();
+        const hits = tokens.filter((t) => hay.includes(t)).length;
+        return { p, hits };
+      })
+      .filter((s) => s.hits > 0)
+      .sort((a, b) => b.hits - a.hits);
+    return scored.slice(0, 6).map((s) => s.p);
+  }, [rawSlug, products]);
+
+  return (
+    <section className="pt-32 pb-20">
+      <div className="max-w-3xl mx-auto px-4 text-center">
+        <SearchX size={48} className="mx-auto text-gray-300 mb-4" />
+        <h1 className="text-2xl font-bold text-gray-900 mb-3">
+          Producto no encontrado
+        </h1>
+        <p className="text-gray-500 mb-6">
+          El producto que buscas no existe, cambió de nombre o ya no está
+          disponible. Búscalo en el catálogo:
+        </p>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const q = query.trim();
+            router.push(q ? `/catalogo?q=${encodeURIComponent(q)}` : "/catalogo");
+          }}
+          className="flex gap-2 max-w-lg mx-auto"
+        >
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Buscar productos..."
+            className="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand/40 text-sm"
+          />
+          <button
+            type="submit"
+            className="px-5 py-3 bg-brand text-white rounded-xl hover:bg-brand/90 transition-all cursor-pointer"
+            aria-label="Buscar"
+          >
+            <Search size={18} />
+          </button>
+        </form>
+
+        {suggestions.length > 0 && (
+          <div className="mt-10 text-left">
+            <h2 className="text-sm font-semibold text-gray-500 mb-4">
+              Quizás buscas alguno de estos:
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {suggestions.map((p) => (
+                <Link
+                  key={p.id}
+                  href={`/productos/${p.slug}`}
+                  className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all"
+                >
+                  <div className="aspect-[4/3] bg-gray-50 flex items-center justify-center p-3 overflow-hidden">
+                    <ProductImage
+                      src={p.image}
+                      alt={p.name}
+                      brand={p.brand}
+                      model={p.model}
+                      width={200}
+                      height={150}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-bold text-gray-900 line-clamp-2">
+                      {p.name}
+                    </h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <Link
+          href="/catalogo"
+          className="inline-block mt-8 text-brand font-semibold hover:text-brand-dark transition-colors"
+        >
+          Volver al catálogo
+        </Link>
+      </div>
+    </section>
+  );
+}
 
 export default function ProductDetailPage({
   params,
@@ -24,25 +197,56 @@ export default function ProductDetailPage({
 }) {
   const { slug } = use(params);
   const router = useRouter();
-  const { products: allProducts } = useProducts();
-  const product = allProducts.find((p) => p.slug === slug);
+  const {
+    products: allProducts,
+    loading,
+    error,
+    reload,
+  } = useProducts();
   const { addItem } = useCart();
+
+  const rawSlug = decodeSlug(slug);
+  const legacyTarget =
+    LEGACY_SLUGS[rawSlug] !== undefined ? LEGACY_SLUGS[rawSlug] : LEGACY_SLUGS[slug];
+
+  // Link antiguo: redirigir al slug actual
+  useEffect(() => {
+    const target =
+      LEGACY_SLUGS[decodeSlug(slug)] !== undefined
+        ? LEGACY_SLUGS[decodeSlug(slug)]
+        : LEGACY_SLUGS[slug];
+    if (target) router.replace(`/productos/${target}`);
+  }, [slug, router]);
+
+  // Corregir mayúsculas/encoding: redirigir al slug canónico
+  useEffect(() => {
+    if (loading) return;
+    const decoded = decodeSlug(slug);
+    const ci = allProducts.find(
+      (p) => p.slug.toLowerCase() === decoded.toLowerCase()
+    );
+    if (ci && ci.slug !== slug) router.replace(`/productos/${ci.slug}`);
+  }, [loading, allProducts, slug, router]);
+
+  const product = useMemo(() => {
+    if (!allProducts.length) return undefined;
+    return (
+      allProducts.find((p) => p.slug === rawSlug) ??
+      allProducts.find((p) => p.slug.toLowerCase() === rawSlug.toLowerCase())
+    );
+  }, [allProducts, rawSlug]);
+
+  if (error) {
+    return <CatalogError onRetry={reload} />;
+  }
+
+  if (loading || (legacyTarget !== undefined && !product)) {
+    return <ProductSkeleton />;
+  }
 
   if (!product) {
     return (
-      <section className="pt-32 pb-20 text-center">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">
-            Producto no encontrado
-          </h1>
-          <Link
-            href="/catalogo"
-            className="text-brand font-semibold hover:text-brand-dark"
-          >
-            Volver al catálogo
-          </Link>
-        </div>
-      </section>
+      <ProductNotFound key={rawSlug} rawSlug={rawSlug} products={allProducts} />
     );
   }
 

@@ -63,12 +63,23 @@ function mapRowToProduct(row: ProductRow): Product {
   };
 }
 
-export function useProducts(): { products: Product[]; loading: boolean } {
+export function useProducts(): {
+  products: Product[];
+  loading: boolean;
+  error: boolean;
+  reload: () => void;
+} {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
+
     async function load() {
+      setLoading(true);
+      setError(false);
       try {
         const supabase = createClient();
 
@@ -96,16 +107,28 @@ export function useProducts(): { products: Product[]; loading: boolean } {
           (r) => (r.data || []) as ProductRow[]
         );
 
+        if (cancelled) return;
         if (data && data.length > 0) {
           setAllProducts(data.map(mapRowToProduct));
+        } else if (total > 0) {
+          setError(true);
         }
       } catch {
-        setAllProducts([]);
+        if (!cancelled) setError(true);
+      } finally {
+        if (!cancelled) setLoading(false);
       }
-      setLoading(false);
     }
     load();
-  }, []);
+    return () => {
+      cancelled = true;
+    };
+  }, [attempt]);
 
-  return { products: allProducts, loading };
+  return {
+    products: allProducts,
+    loading,
+    error,
+    reload: () => setAttempt((a) => a + 1),
+  };
 }
