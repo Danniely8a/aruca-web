@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { createClient } from "@/lib/supabase/client";
 
 export interface Product {
   id: string;
@@ -81,37 +80,19 @@ export function useProducts(): {
       setLoading(true);
       setError(false);
       try {
-        const supabase = createClient();
-
-        const PAGE_SIZE = 1000;
-        const { count } = await supabase
-          .from("products")
-          .select("id", { count: "exact", head: true });
-
-        const total = count ?? 0;
-        const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
-
-        const pagePromises = [];
-        for (let i = 0; i < pageCount; i++) {
-          pagePromises.push(
-            supabase
-              .from("products")
-              .select("*")
-              .order("name")
-              .range(i * PAGE_SIZE, (i + 1) * PAGE_SIZE - 1)
-          );
-        }
-
-        const results = await Promise.all(pagePromises);
-        const data: ProductRow[] = results.flatMap(
-          (r) => (r.data || []) as ProductRow[]
-        );
+        // Una sola petición a nuestra API (cacheada en el CDN de Vercel)
+        // en vez de N consultas directas a Supabase desde el navegador.
+        const res = await fetch("/api/products");
+        if (!res.ok) throw new Error("products fetch failed");
+        const data: ProductRow[] = await res.json();
 
         if (cancelled) return;
-        if (data && data.length > 0) {
+        if (Array.isArray(data) && data.length > 0) {
           setAllProducts(data.map(mapRowToProduct));
-        } else if (total > 0) {
+        } else if (!Array.isArray(data)) {
           setError(true);
+        } else {
+          setAllProducts([]);
         }
       } catch {
         if (!cancelled) setError(true);
