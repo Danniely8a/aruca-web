@@ -28,6 +28,7 @@ const brandConfig = {
     { name: "Discos de corte", icon: "⚙️" },
     { name: "Fresas", icon: "🔧" },
     { name: "Accesorios", icon: "🛠️" },
+    { name: "Hojas", icon: "🪚" },
   ],
 };
 
