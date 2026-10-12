@@ -29,6 +29,7 @@ const brandConfig = {
     { name: "Fresas", icon: "🔧" },
     { name: "Accesorios", icon: "🛠️" },
     { name: "Hojas", icon: "🪚" },
+    { name: "Cuchillas", icon: "🔪" },
   ],
 };
 
