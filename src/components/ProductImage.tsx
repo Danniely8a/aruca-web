@@ -21,6 +21,7 @@ const BRAND_LOGOS: Record<string, string> = {
   thorex: "/assets/brands/thorex_x2.0.jpeg",
   tigra: "/assets/brands/tigra.jpg",
   sicar: "/assets/brands/sicar.jpg",
+  sambara: "/assets/brands/sambara.jpg",
   wespa: "/assets/brands/wespa.jpg",
   bluexpress: "/assets/brands/bluexpress_x2.0.jpeg",
   "bluexpress ": "/assets/brands/bluexpress_x2.0.jpeg",
